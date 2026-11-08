@@ -1,0 +1,918 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>NBA RISE Dossier</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+/* Layout: a front-office scouting report. Scoreboard band on top, sticky section rail on the left, one reading column, box-score tables. */
+:root{
+  --paper:#F2F4F8; --surface:#FFFFFF; --ink:#101A2E; --ink-2:#3B4760; --muted:#5F6B82; --rule:#D5DAE4; --rule-2:#E6E9F0;
+  --accent:#D24E17; --accent-ink:#A93E0F; --accent-wash:#FCEBE2; --link:#1D4CAE;
+  --good:#1F7A4D; --bad:#B42318;
+  --board:#0C1630; --board-2:#16244A; --board-ink:#F3F5FA; --board-muted:#A9B4CC; --board-accent:#FF7A3D;
+  --r-c:#7D8698; --r-uc:#26905A; --r-r:#2C68CF; --r-ur:#B8860B; --r-epic:#7E37C8; --r-legend:#C9361C;
+  --f-display:"Big Shoulders Display","Oswald","Arial Narrow",Impact,sans-serif;
+  --f-body:"Barlow","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#0B1120; --surface:#151D2E; --ink:#E7EBF3; --ink-2:#BAC3D4; --muted:#8C97AC; --rule:#2B3651; --rule-2:#1F2940;
+  --accent:#E8652B; --accent-ink:#FF9C6B; --accent-wash:#2A1B15; --link:#8FB2FF;
+  --good:#5CC48E; --bad:#FF8A7A;
+  --r-c:#9AA3B4; --r-uc:#4DBB82; --r-r:#6E9CF0; --r-ur:#E0B43A; --r-epic:#B07CF0; --r-legend:#F0684E;
+  color-scheme:dark }}
+:root[data-theme="dark"]{
+  --paper:#0B1120; --surface:#151D2E; --ink:#E7EBF3; --ink-2:#BAC3D4; --muted:#8C97AC; --rule:#2B3651; --rule-2:#1F2940;
+  --accent:#E8652B; --accent-ink:#FF9C6B; --accent-wash:#2A1B15; --link:#8FB2FF;
+  --good:#5CC48E; --bad:#FF8A7A;
+  --r-c:#9AA3B4; --r-uc:#4DBB82; --r-r:#6E9CF0; --r-ur:#E0B43A; --r-epic:#B07CF0; --r-legend:#F0684E;
+  color-scheme:dark }
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:16px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:16.5px;line-height:1.6}
+a{color:var(--link);text-underline-offset:2px}
+a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:3px}
+.wrap{max-width:1200px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* ---------- scoreboard header ---------- */
+.board{background:var(--board);color:var(--board-ink);position:relative;overflow:hidden}
+.board .wrap{padding-block:44px 30px;position:relative}
+.court{position:absolute;right:-60px;top:-30px;width:520px;max-width:70%;opacity:.13;pointer-events:none}
+.eyebrow{font-family:var(--f-mono);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--board-muted)}
+.board h1{font-family:var(--f-display);font-weight:900;font-size:clamp(64px,13vw,132px);line-height:.86;letter-spacing:.005em;margin:14px 0 8px;text-transform:uppercase}
+.board h1 span{color:var(--board-accent)}
+.board .sub{font-family:var(--f-display);font-weight:700;font-size:clamp(20px,3.2vw,28px);letter-spacing:.03em;text-transform:uppercase;color:var(--board-ink);margin:0}
+.board .lede{max-width:68ch;color:#D6DDEB;font-size:17.5px;margin:18px 0 0}
+.score{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));margin-top:30px;border-top:1px solid var(--board-2)}
+.score div{padding:14px 14px 4px 0;border-right:1px solid var(--board-2);min-width:0}
+.score div + div{padding-left:14px}
+.score div:last-child{border-right:0}
+.score b{display:block;font-family:var(--f-mono);font-weight:600;font-size:clamp(20px,3vw,30px);font-variant-numeric:tabular-nums;color:var(--board-ink);line-height:1.15}
+.score small{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--board-muted)}
+@media (max-width:760px){.score{grid-template-columns:repeat(2,minmax(0,1fr))}.score div{border-right:0;padding-left:0!important;border-bottom:1px solid var(--board-2)}.score div:last-child{grid-column:1/-1}}
+
+/* ---------- page grid ---------- */
+.page{display:grid;grid-template-columns:210px minmax(0,1fr);gap:48px;padding-block:36px 64px}
+.rail{position:sticky;top:max(16px,env(safe-area-inset-top,0px));align-self:start;max-height:calc(100vh - 32px);overflow:auto}
+.rail p{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
+.rail ol{list-style:none;margin:0;padding:0;border-left:2px solid var(--rule)}
+.rail a{display:block;padding:5px 0 5px 14px;margin-left:-2px;border-left:2px solid transparent;color:var(--ink-2);text-decoration:none;font-size:14.5px;line-height:1.3}
+.rail a:hover{color:var(--ink);border-left-color:var(--muted)}
+.rail a.on{color:var(--accent-ink);border-left-color:var(--accent);font-weight:600}
+@media (max-width:900px){
+  .page{grid-template-columns:minmax(0,1fr);gap:20px}
+  .rail{position:static;max-height:none}
+  .rail ol{display:flex;flex-wrap:wrap;gap:6px;border-left:0}
+  .rail a{border:1px solid var(--rule);border-radius:999px;padding:4px 11px;margin:0;font-size:13.5px;background:var(--surface)}
+  .rail a.on{border-color:var(--accent)}
+}
+
+main{min-width:0}
+section{padding-block:8px 34px;border-bottom:1px solid var(--rule);margin-bottom:34px}
+section:last-of-type{border-bottom:0}
+.kicker{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-ink);margin:0 0 4px}
+h2{font-family:var(--f-display);font-weight:800;font-size:clamp(34px,5vw,46px);line-height:1;letter-spacing:.01em;text-transform:uppercase;margin:0 0 16px;text-wrap:balance}
+h3{font-family:var(--f-display);font-weight:800;font-size:23px;letter-spacing:.02em;text-transform:uppercase;margin:30px 0 10px;text-wrap:balance}
+h4{font-size:16.5px;font-weight:700;margin:20px 0 6px}
+p,li{max-width:72ch}
+p{margin:0 0 14px}
+ul,ol.plain{padding-left:20px;margin:0 0 14px}
+li{margin-bottom:6px}
+li::marker{color:var(--muted)}
+strong{font-weight:700}
+code,.mono{font-family:var(--f-mono);font-size:.88em}
+code{background:var(--rule-2);padding:1px 5px;border-radius:4px;word-break:break-all}
+.q{font-style:italic;color:var(--ink-2)}
+.tr{color:var(--muted);font-size:.93em}
+.tag{display:inline-block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;padding:1px 6px;border-radius:3px;vertical-align:2px;border:1px solid var(--rule);color:var(--muted);white-space:nowrap}
+.tag.inf{border-style:dashed}
+
+/* callout */
+.callout{background:var(--surface);border:1px solid var(--rule);border-left:4px solid var(--accent);padding:16px 20px;margin:0 0 20px;border-radius:2px}
+.callout h4{margin:0 0 6px;font-family:var(--f-display);font-size:20px;text-transform:uppercase;letter-spacing:.03em}
+.callout p:last-child{margin-bottom:0}
+
+/* spec sheet */
+.spec{display:grid;grid-template-columns:minmax(150px,210px) minmax(0,1fr);border-top:2px solid var(--ink);margin:0 0 20px}
+.spec dt,.spec dd{padding:9px 0;border-bottom:1px solid var(--rule);margin:0}
+.spec dt{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding-right:16px;padding-top:12px}
+.spec dd{min-width:0}
+@media (max-width:560px){.spec{grid-template-columns:minmax(0,1fr)}.spec dt{border-bottom:0;padding-bottom:0}}
+
+/* tables */
+.tbl{overflow-x:auto;margin:0 0 20px;border-top:2px solid var(--ink)}
+table{border-collapse:collapse;width:100%;font-size:15px;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:8px 12px 8px 0;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:500}
+td.num,th.num{text-align:right;font-family:var(--f-mono);font-size:14px}
+tbody tr:hover td{background:var(--rule-2)}
+.tbl caption{caption-side:bottom;text-align:left;color:var(--muted);font-size:13.5px;padding-top:8px}
+.wide table{min-width:720px}
+
+/* rarity chips */
+.rar{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-mono);font-size:12.5px;font-weight:600;white-space:nowrap}
+.rar::before{content:"";width:10px;height:10px;border-radius:2px;background:var(--c)}
+.ladder{display:flex;flex-wrap:wrap;gap:0;margin:6px 0 18px;border:1px solid var(--rule);border-radius:3px;overflow:hidden;background:var(--surface)}
+.ladder div{flex:1 1 120px;padding:10px 12px;border-right:1px solid var(--rule);border-top:4px solid var(--c);min-width:0}
+.ladder div:last-child{border-right:0}
+.ladder b{display:block;font-family:var(--f-display);font-size:20px;letter-spacing:.03em;text-transform:uppercase}
+.ladder span{font-size:13px;color:var(--muted)}
+
+/* core loop */
+.loop{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;margin:8px 0 10px;counter-reset:step}
+.loop li{list-style:none;margin:0;padding:14px 14px 14px 0;position:relative;border-top:3px solid var(--ink);max-width:none}
+.loop li + li{padding-left:14px;border-left:1px solid var(--rule)}
+.loop b{display:block;font-family:var(--f-display);font-size:24px;text-transform:uppercase;letter-spacing:.03em}
+.loop b::before{counter-increment:step;content:counter(step);font-family:var(--f-mono);font-size:12px;color:var(--accent-ink);margin-right:8px;vertical-align:4px}
+.loop span{font-size:14.5px;color:var(--ink-2);display:block;line-height:1.45}
+.loopnote{font-family:var(--f-mono);font-size:12.5px;color:var(--muted);margin-bottom:20px}
+@media (max-width:820px){.loop{grid-template-columns:minmax(0,1fr)}.loop li + li{padding-left:0;border-left:0}.loop li{border-top-width:1px}.loop li:first-child{border-top-width:3px}}
+
+/* timeline */
+.tl{list-style:none;margin:0 0 20px;padding:0;border-left:2px solid var(--rule)}
+.tl li{position:relative;padding:0 0 14px 22px;margin:0;max-width:none;display:grid;grid-template-columns:118px minmax(0,1fr);gap:4px 16px}
+.tl li::before{content:"";position:absolute;left:-6px;top:7px;width:10px;height:10px;border-radius:50%;background:var(--paper);border:2px solid var(--muted)}
+.tl li.big::before{background:var(--accent);border-color:var(--accent)}
+.tl time{font-family:var(--f-mono);font-size:13px;color:var(--muted);padding-top:2px;font-variant-numeric:tabular-nums}
+.tl li.big div{font-weight:600}
+.tl .era{display:block;font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-ink);margin-top:2px;font-weight:500}
+@media (max-width:560px){.tl li{grid-template-columns:minmax(0,1fr)}}
+
+/* two-col */
+.cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 32px}
+.cols > *{min-width:0}
+@media (max-width:760px){.cols{grid-template-columns:minmax(0,1fr)}}
+.box{background:var(--surface);border:1px solid var(--rule);padding:16px 18px;border-radius:3px}
+.box h4{margin-top:0}
+.box ul{margin-bottom:0}
+
+/* charts */
+.chart{background:var(--surface);border:1px solid var(--rule);border-radius:3px;padding:18px 18px 12px;margin:0 0 20px;position:relative}
+.chart h4{margin:0 0 2px}
+.chart .cap{font-size:13.5px;color:var(--muted);margin:0 0 14px}
+.bars{display:grid;grid-template-columns:96px minmax(0,1fr);gap:6px 12px;align-items:center}
+.bars .lab{font-family:var(--f-mono);font-size:12.5px;color:var(--ink-2);display:flex;align-items:center;gap:6px}
+.bars .lab::before{content:"";width:8px;height:8px;border-radius:2px;background:var(--c)}
+.track{position:relative;height:24px;display:flex;align-items:center;cursor:default}
+.track i{display:block;height:16px;background:var(--accent);border-radius:0 4px 4px 0;min-width:2px}
+.track em{font-style:normal;font-family:var(--f-mono);font-size:12.5px;color:var(--ink);margin-left:8px;white-space:nowrap}
+.axis{display:flex;justify-content:space-between;margin-left:108px;border-top:1px solid var(--rule);padding-top:4px;font-family:var(--f-mono);font-size:11px;color:var(--muted)}
+.tip{position:absolute;pointer-events:none;background:var(--ink);color:var(--paper);font-family:var(--f-mono);font-size:12px;padding:6px 9px;border-radius:4px;white-space:nowrap;z-index:5;transform:translate(-50%,-110%)}
+
+.pity{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:20px;align-items:start}
+@media (max-width:760px){.pity{grid-template-columns:minmax(0,1fr)}}
+.pity svg{width:100%;height:auto;display:block;touch-action:pan-y}
+.pity svg text{font-family:var(--f-mono);font-size:11px;fill:var(--muted)}
+.pity .grid line{stroke:var(--rule);stroke-width:1}
+.readout b{display:block;font-family:var(--f-mono);font-size:38px;font-weight:600;line-height:1.1;font-variant-numeric:tabular-nums}
+.readout p{font-size:14.5px;color:var(--ink-2)}
+.readout label{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px}
+input[type=range]{width:100%;accent-color:var(--accent)}
+
+/* tactic matrix */
+.matrix td:first-child{font-weight:600}
+.arrow{font-family:var(--f-mono);color:var(--muted);text-align:center}
+.chip{display:inline-block;font-size:13px;padding:2px 9px;border-radius:999px;border:1px solid var(--rule);background:var(--surface);white-space:nowrap;margin:2px 4px 2px 0}
+.chip.off{border-color:var(--r-ur)}
+.chip.def{border-color:var(--r-uc)}
+
+.quotes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:0 0 20px}
+@media (max-width:760px){.quotes{grid-template-columns:minmax(0,1fr)}}
+blockquote{margin:0;background:var(--surface);border:1px solid var(--rule);padding:12px 16px;border-radius:3px;font-size:15px}
+blockquote p{margin:0 0 6px}
+blockquote footer{font-family:var(--f-mono);font-size:11.5px;color:var(--muted)}
+
+.srcs{columns:2;column-gap:32px;font-size:14px}
+.srcs h4{break-after:avoid;margin-top:0}
+.srcs ul{break-inside:auto;padding-left:16px}
+.srcs li{word-break:break-word;max-width:none}
+@media (max-width:760px){.srcs{columns:1}}
+footer.end{font-family:var(--f-mono);font-size:12px;color:var(--muted);padding-block:0 40px}
+</style>
+
+<header class="board">
+  <svg class="court" viewBox="0 0 500 470" fill="none" stroke="#FFFFFF" stroke-width="4" aria-hidden="true">
+    <rect x="10" y="10" width="480" height="450"/>
+    <rect x="170" y="10" width="160" height="190"/>
+    <circle cx="250" cy="200" r="60"/>
+    <path d="M40 10 V150 A215 215 0 0 0 460 150 V10"/>
+    <circle cx="250" cy="52" r="8"/>
+    <line x1="220" y1="40" x2="280" y2="40"/>
+    <path d="M190 460 A60 60 0 0 1 310 460"/>
+  </svg>
+  <div class="wrap">
+    <div class="eyebrow">Game dossier · compiled 8 November 2026</div>
+    <h1>NBA <span>Rise</span></h1>
+    <p class="sub">Basketball Strategy · GRAVITY Co., Ltd.</p>
+    <p class="lede">NBA RISE is an officially licensed NBA card game. You play as a team owner and head coach, never as a player on the court. You scout real players from card packs, train them, build a 13-man roster around synergies and tactics, then coach a full 48-minute 3D simulation of each game. This dossier covers what the game is, every system that has been documented, where it came from and how it is performing. It draws on store data, official notices, the legally required gacha odds disclosures, SEC filings, and Korean, Japanese and English press.</p>
+    <div class="score" role="list">
+      <div role="listitem"><b>20·10·26</b><small>Launch, 14:00 KST</small></div>
+      <div role="listitem"><b>8</b><small>Launch regions</small></div>
+      <div role="listitem"><b>298,491</b><small>Android installs</small></div>
+      <div role="listitem"><b>390</b><small>Base-set player cards</small></div>
+      <div role="listitem"><b>0.5%</b><small>Epic pull rate</small></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap page">
+  <nav class="rail" aria-label="Sections">
+    <p>Contents</p>
+    <ol id="toc">
+      <li><a href="#overview">What it is</a></li>
+      <li><a href="#store">Your store page</a></li>
+      <li><a href="#story">Story &amp; framing</a></li>
+      <li><a href="#lineage">Lineage</a></li>
+      <li><a href="#loop">Core loop</a></li>
+      <li><a href="#match">Match engine</a></li>
+      <li><a href="#tactics">Tactics</a></li>
+      <li><a href="#cards">Player cards</a></li>
+      <li><a href="#team">Team building</a></li>
+      <li><a href="#modes">Modes</a></li>
+      <li><a href="#economy">Economy &amp; gacha</a></li>
+      <li><a href="#japan">Japanese predecessor</a></li>
+      <li><a href="#reception">Reception</a></li>
+      <li><a href="#market">Market &amp; rivals</a></li>
+      <li><a href="#business">Business</a></li>
+      <li><a href="#gaps">Unpublished</a></li>
+      <li><a href="#sources">Sources</a></li>
+    </ol>
+  </nav>
+
+  <main>
+    <!-- ================= OVERVIEW ================= -->
+    <section id="overview">
+      <p class="kicker">Spec sheet</p>
+      <h2>What it is</h2>
+      <div class="callout">
+        <h4>Two games carry this name</h4>
+        <p><strong>NBA RISE (global, 2026)</strong> is the game on the store page you shared. GRAVITY's Seoul headquarters publishes it and built it in-house. It launched on 20 October 2026 in eight Asia-Pacific markets. It comes from a Japanese predecessor, <strong>NBA RISE TO STARDOM</strong>, which ran from 2021 to 2024, was relaunched as <strong>NBA RISE</strong> in 2025, and ended on 31 August 2026. That version was run by GRAVITY's Tokyo subsidiary, Gravity Game Arise. The two use separate apps, accounts, logos and operators. This dossier covers both, and labels which version each fact belongs to.</p>
+      </div>
+      <dl class="spec">
+        <dt>Store titles</dt><dd>“NBA RISE: Basketball Strategy” (Google Play) · “NBA RISE: Basketball Cards”, subtitle “Build a Team. Win by Strategy.” (App Store) · “NBA RISE: 농구 카드 전략” (Korea)</dd>
+        <dt>Publisher / developer</dt><dd>GRAVITY Co., Ltd., Mapo-gu, Seoul (NASDAQ: GRVY, the Ragnarok Online company). Developed in-house. The spokesperson is Noh Geon-seok, Global Mobile Business Team Lead.</dd>
+        <dt>Genre</dt><dd>Licensed sports-management card strategy. Matches are simulated and you never control players directly. The store FAQ asks “Real-time controls?” and answers “No. Set your lineup and tactics, then adjust substitutions and strategy during simulated games.”</dd>
+        <dt>Launch</dt><dd>20 Oct 2026, 14:00 KST. Closed beta (Android only) ran 21–29 Jul 2026. Pre-registration opened 17 Sep 2026.</dd>
+        <dt>Regions</dt><dd>South Korea, Philippines, Indonesia, Thailand, Malaysia, Singapore, Australia and New Zealand. Access is IP-locked to these eight, and the developer confirms this in review replies.</dd>
+        <dt>Platforms</dt><dd>Android <code>com.gravity.nbarisegv.aos</code> · iOS <code>id6762187862</code> (iOS 15+, 265 MB) · Windows through Google Play Games on PC. There is no Steam release.</dd>
+        <dt>License</dt><dd>Officially licensed by the NBA and the NBPA. The agreement was signed in May 2020 and extended in 2025. Real players, coaches, logos and 2025-26 season rosters.</dd>
+        <dt>Business model</dt><dd>Free-to-play. Revenue comes from card packs (“Scout”), packages, a monthly Season Pass and the paid “Elite Pass”.</dd>
+        <dt>Build</dt><dd>1.1.1: Google Play on 28 Oct 2026, iOS around 5 Nov 2026. Patch notes: “New Player Cards · New BM Products · November Season Pass”.</dd>
+        <dt>Installs &amp; rating</dt><dd>Google Play shows a “100K+” badge; the unrounded counter reads 298,491. Ratings run from 4.2★ (Australia) to 4.8★ (Indonesia, Malaysia), from 1,120 ratings.</dd>
+        <dt>Age ratings</dt><dd>Australia: Mature (Violence, Sexualised Imagery, Online Interactivity and Chat). Korea: 15+. Other launch regions: 16+ (Strong Violence). iOS: 17+, with “Loot Boxes” and “Ads” advisories.</dd>
+        <dt>Languages</dt><dd>English, Korean, Indonesian, Thai, Filipino, Simplified Chinese, Traditional Chinese.</dd>
+        <dt>Official channels</dt><dd><a href="https://nbarise.gnjoy.com/">nbarise.gnjoy.com</a> · Discord (2,740 members) · Facebook · Instagram <span class="mono">@playnbarise</span> · YouTube <span class="mono">@PLAYNBARISE</span>. No X account.</dd>
+      </dl>
+      <h3>The game in one paragraph</h3>
+      <p>You run an NBA franchise built from collectible player cards and never touch the ball. You open packs, level and promote cards, and field five starters plus an eight-man bench chosen for position fit and synergy bonuses. You set four offensive and defensive tactics against the opponent's plan. Then you coach a full 48-minute game rendered as a 3D sports broadcast. During the game you make substitutions, swap tactics, and once per quarter play a <strong>SET PLAY</strong>, a timing tap that swings team morale. Wins feed a league ladder that runs from “Rookie 3” to the NBA Finals, plus PvP leaderboards and club-versus-club wars. The tagline is <strong>“Collect. Build. Rise.”</strong></p>
+    </section>
+
+    <!-- ================= STORE PAGE ================= -->
+    <section id="store">
+      <p class="kicker">Reading your screenshot</p>
+      <h2>The store page you shared</h2>
+      <p>Your screenshot is the Australian Google Play listing. That is why it shows 4.2★ and the “M · Mature” classification badge. Every other launch region rates the game higher (see <a href="#reception">Reception</a>). The five screenshot captions describe the core loop in order:</p>
+      <div class="tbl wide"><table>
+        <thead><tr><th>Caption</th><th>Cover player</th><th>In-game screen shown</th></tr></thead>
+        <tbody>
+          <tr><td>Collect your stars</td><td>Stephen Curry (Warriors #30)</td><td>Collection grid of Lv 30 “THE Core” Epics rated 300–335: Towns, Tatum, Brunson, Booker, Cunningham, Edwards</td></tr>
+          <tr><td>Build your collection</td><td>Donovan Mitchell (Cavaliers #45)</td><td>TEAM FORMATION: TP 12,154 (+2,545), 4 synergies, Team Morale 710, Offense 6,226, Defense 3,739, per-player tactic chips, and an 8-man bench tallied “PG 2 · SG 1 · SF 2 · PF 1 · C 2”</td></tr>
+          <tr><td>Create your lineup</td><td>Luka Dončić (Lakers #77)</td><td>STARTING LINEUP, “Regular Schedule 5/5”: a Cavaliers five (Garland, Mitchell, Hunter, Mobley) against a user team of Gilgeous-Alexander, Harden, Porter Jr. and Antetokounmpo with 24,754 team power</td></tr>
+          <tr><td>Play with strategy</td><td>Devin Booker (Suns #1) and Jabari Smith Jr. (Rockets #10)</td><td>TACTICAL: Erik Spoelstra's side runs “Pass Interception (Mid)” and “Mid-Range Defense (Mid)” against JJ Redick's “PG Drive Priority 60%” and “PG Mid-Range Shot Priority 63%”</td></tr>
+          <tr><td>Rise to the top</td><td>Zion Williamson (Pelicans #1), with Curry</td><td>Key art only, with no game screen</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <!-- ================= STORY ================= -->
+    <section id="story">
+      <p class="kicker">Narrative</p>
+      <h2>Story &amp; framing</h2>
+      <p>There is no story campaign and no cast of original characters. The game's fiction is a role: <strong>you are the owner and head coach of an NBA team</strong>. The developer calls Korean players <span class="mono">구단주님</span> (“Team Owner”) and English players “Riser”. The store copy reads: <span class="q">“Coach from the sideline as each game plays out as a simulation.”</span> The beta site read: <span class="q">“From rookie to legend, start your professional journey in the NBA.”</span></p>
+      <ul>
+        <li><strong>The arc is the ladder.</strong> Season Mode starts you in the “Rookie 3” league and promotes you tier by tier toward an NBA Finals series.</li>
+        <li><strong>The real NBA calendar sets the content schedule.</strong> Cards follow current rosters (2025-26 at launch). Themed packs follow the season (a Halloween edition ran 29 Oct–12 Nov), and the Season Pass changes monthly.</li>
+        <li><strong>The marketing carries the narrative.</strong> GRAVITY released an animated series, “The Dream” (Episode 1 has 579K English views on the official YouTube channel), plus an animation teaser with 1.9M views.</li>
+        <li><strong>The predecessor told real NBA stories.</strong> The Japanese version ran “History Events” that unlocked story chapters as you levelled a featured player. Examples include “EARNED, NOT GIVEN”, the Yuta Watanabe story, and “BULLS DYNASTY”. That version's tutorial was hosted by Yuta Watanabe. The global version has none of these.</li>
+      </ul>
+    </section>
+
+    <!-- ================= LINEAGE ================= -->
+    <section id="lineage">
+      <p class="kicker">2020 → 2026</p>
+      <h2>Lineage</h2>
+      <ol class="tl">
+        <li class="big"><time>May 2020</time><div>GRAVITY signs a product license with the NBA and NBPA, paying license fees and guaranteed minimum royalties in installments.<span class="era">License</span></div></li>
+        <li><time>15 Feb 2021</time><div>The NBA announces the game as “free-to-play online strategy and deck-building”, launching first in Japan and then across Asia-Pacific.</div></li>
+        <li><time>28 Sep 2021</time><div>Japan pre-registration and open beta (28 Sep–5 Oct). Pre-registrations reach 50,000 on 1 Nov.</div></li>
+        <li class="big"><time>24 Nov 2021</time><div>NBA RISE TO STARDOM launches in Japan, published by Gravity Game Arise. Its planned date of 18 Nov had slipped, but the iOS build went live early on 18 Nov because of a release-date setting error. Ambassador: Yuta Watanabe.<span class="era">Japan · era 1</span></div></li>
+        <li><time>1 Dec 2021</time><div>200,000 downloads, and #1 in the Sports category on both Japanese stores. GRAVITY's filings promise a Korea launch in the first half of 2022; it never ships.</div></li>
+        <li><time>8 Dec 2022</time><div>Real-time “Player Match” PvP opens fully, using a shared, equal-strength card pool.</div></li>
+        <li><time>28 Feb 2023</time><div>A full-game renewal is announced and new events are frozen. Gold and Tour Pass sales stop on 18 Apr 2023.</div></li>
+        <li><time>2023</time><div>GRAVITY's investor decks list “Additional Launching: Southeast Asia, Korea, Australia, New Zealand”. These are exactly the 2026 launch markets.</div></li>
+        <li><time>Jan 2024</time><div>The second preview test confirms the new name <strong>NBA RISE</strong> and introduces Action Points.</div></li>
+        <li><time>30 Sep 2024</time><div>Japan service is suspended (“long-term maintenance”).</div></li>
+        <li class="big"><time>20 Feb 2025</time><div>NBA RISE relaunches in Japan as a major update to the same app. Matches now run on auto by default with Set Plays. The NBA/NBPA license is extended in 2025. Ambassadors: Yuki Kawamura (10 Jul) and Rui Hachimura (12 Aug).<span class="era">Japan · era 2</span></div></li>
+        <li><time>1 Jan 2026</time><div>The last new Japanese scout. Live operations stop after this; only maintenance notices follow.</div></li>
+        <li class="big"><time>21–29 Jul 2026</time><div>Global closed beta: Android only, in the eight target regions.<span class="era">Global</span></div></li>
+        <li><time>30 Jul 2026</time><div>Japan announces its shutdown: <span class="q">“considering the current development and operating structure… it would be difficult to keep providing a service that satisfies customers.”</span></div></li>
+        <li><time>31 Aug 2026</time><div>Japan service ends at 17:00 JST. Unused paid Gold is refunded at ¥2 per Gold until 16 Nov 2026.</div></li>
+        <li><time>17 Sep 2026</time><div>Global pre-registration opens.</div></li>
+        <li class="big"><time>20 Oct 2026</time><div>NBA RISE launches globally in the eight regions on Google Play and the App Store.</div></li>
+        <li><time>28 Oct 2026</time><div>Version 1.1.1: new player cards, new monetization products, November Season Pass.</div></li>
+      </ol>
+
+      <h3>The three versions side by side</h3>
+      <div class="tbl wide"><table>
+        <thead><tr><th></th><th>TO STARDOM (JP)</th><th>NBA RISE (JP)</th><th>NBA RISE (global)</th></tr></thead>
+        <tbody>
+          <tr><td>Live</td><td>Nov 2021 – Sep 2024</td><td>Feb 2025 – Aug 2026</td><td>Oct 2026 – now</td></tr>
+          <tr><td>Operator</td><td>Gravity Game Arise, Tokyo</td><td>Gravity Game Arise</td><td>GRAVITY Co., Ltd., Seoul</td></tr>
+          <tr><td>App</td><td><code>com.gravityga.nbarisetostardom</code></td><td>Same app, v2.0.0+</td><td><code>com.gravity.nbarisegv.aos</code></td></tr>
+          <tr><td>Match view</td><td>3D highlights or “Card View” duels</td><td>2D top-down simulation + 3D set plays</td><td>3D broadcast simulation + 3D set plays</td></tr>
+          <tr><td>Your input</td><td>Tactic, substitutions each quarter, Clutch Play rock-paper-scissors</td><td>Auto by default; Set Play action chains; Super Plays</td><td>Live substitutions and tactic swaps; once-per-quarter SET PLAY timing tap</td></tr>
+          <tr><td>Swing meter</td><td>Momentum + Clutch Gauge</td><td>Tension + Tension Links</td><td>Team Morale</td></tr>
+          <tr><td>Rarities</td><td>C · UC · R · UR · EPIC, LEGEND, SECRET</td><td>C–EPIC, LEGEND, Signed Collection</td><td>C · UC · R · UR · EPIC · LEGEND</td></tr>
+          <tr><td>Gacha</td><td>“Offer”: 5-card packs, 150-card BOX</td><td>“Scout”</td><td>“Scout”, with 100-card pity</td></tr>
+          <tr><td>PvP</td><td>Score Ranking (async) + Player Match (real-time)</td><td>Score Ranking (async)</td><td>Arena, Popularity Battle, Tower Race, Club Conquest</td></tr>
+          <tr><td>Social</td><td>Player-to-player trade</td><td>Trade</td><td>Clubs with chat; Market and Auction</td></tr>
+          <tr><td>Energy</td><td>None</td><td>Action Points (cap 100)</td><td>Per-player stamina and condition</td></tr>
+        </tbody>
+      </table></div>
+      <p>The global game keeps the franchise's core design: auto-simulated matches broken up by player-triggered set plays, scouting, training and promotion, a six-tier rarity ladder ending at LEGEND, and a tower event (now “Tower Race”). It adds Clubs, club-vs-club conquest, an open Market, a Season Pass and full 3D broadcast presentation. GRAVITY presents it as a new in-house title with a new app, accounts and branding, and no Japanese save data carries over.</p>
+    </section>
+
+    <!-- ================= LOOP ================= -->
+    <section id="loop">
+      <p class="kicker">How it plays</p>
+      <h2>Core loop</h2>
+      <ol class="loop">
+        <li><b>Collect</b><span>Scout packs, free daily packs (10 cards a day from login), quest rewards, the Auction and coupon codes.</span></li>
+        <li><b>Develop</b><span>Training (levels), Promotion, Grade Enhancement, Training Manuals, EXP cards and Club Facilities.</span></li>
+        <li><b>Build</b><span>5 starters + 8 bench. Stack synergies, assign 4 tactic slots and field a head coach.</span></li>
+        <li><b>Play</b><span>A 48-minute 3D simulation. Substitutions, tactic swaps, one SET PLAY per quarter, or Auto and Skip.</span></li>
+        <li><b>Compete</b><span>Season ladder, Arena, Popularity Battle, Tower Race, Daily Division and Club Conquest.</span></li>
+      </ol>
+      <p class="loopnote">↻ Competition pays Gold, Silver and packs, which go back into Collect.</p>
+
+      <h3>Screen map</h3>
+      <div class="cols">
+        <div class="box"><h4>Bottom navigation</h4><p style="margin:0">MY TEAM · SCOUT · <strong>PLAY</strong> (home) · CLUB · AUCTION</p></div>
+        <div class="box"><h4>Home tiles</h4><p style="margin:0">Event Board · Match Prediction · Takeover · Arena · Shop · Season Pass · Step Up · New Package · Club Clash · event progress bar (e.g. “3-Point Contest 66/90 → 200 Gold”)</p></div>
+        <div class="box"><h4>My Team menu</h4><p style="margin:0">Team Formation · Owned Players · Owned Coaches · Inventory · Training · Promotion · Club Facilities · Exchange · Sell</p></div>
+        <div class="box"><h4>Pre-match flow</h4><p style="margin:0">STARTING LINEUP (VS screen, rank, wins, team power, coach) → TEAM FORMATION (strategy, auto-substitution) → MATCH PREPARATION → “Q1 START”</p></div>
+      </div>
+    </section>
+
+    <!-- ================= MATCH ================= -->
+    <section id="match">
+      <p class="kicker">Simulation</p>
+      <h2>Match engine</h2>
+      <p>Every game is simulated on a real NBA clock. The match screen opens at <strong>Q1 12:00</strong> and runs a <strong>24-second shot clock</strong>, which means four 12-minute quarters of game time. The engine resolves play from player ratings, condition, stamina, synergies and the tactic matchup. You watch it as a TV-style broadcast with 3D player models on a full arena court with crowd. Quarter, team power, points and rebounds update live.</p>
+      <h3>What's on screen</h3>
+      <ul>
+        <li><strong>Performance Comparison.</strong> Paired bars for ALL, PG, SG, SF, PF and C show who is winning each positional matchup.</li>
+        <li><strong>Team Morale.</strong> A morale bar that grants a stat buff badge (e.g. “+5% stats”) when you are ahead on it.</li>
+        <li><strong>Live player cards</strong> show points and assists, with event pop-ups such as “REBOUND”.</li>
+        <li><strong>Stamina and condition.</strong> Each card has a stamina bar and a condition arrow (green up, yellow flat, orange down-right, red down). Condition changes a player's stats.</li>
+        <li><strong>Controls:</strong> Details · Substitution · Tactic Change · AUTO PLAY · SKIP · Pause · QUIT, plus an AUTO SUBSTITUTION toggle and automatic tactic selection.</li>
+        <li><strong>An adaptive AI coach.</strong> Mid-game the opponent switches plans, announced as <span class="q">“The opposing team has changed its tactics”</span> with the rival coach's portrait.</li>
+      </ul>
+
+      <h3>SET PLAY: the one hands-on moment</h3>
+      <p>Once per quarter the game stages a set play around a set mission: <strong>Shoot, Block, Drive or Layup</strong>. A 3-2-1 countdown starts, the camera cuts to a 3D one-on-one with both players' cards on screen, and a ring closes around an action button (a 1.9-second timer is shown in the screenshots). Tap inside the window to complete the play.</p>
+      <ul>
+        <li><strong>Success raises team morale by 30%.</strong> That is the biggest single swing you control.</li>
+        <li><strong>A tired player has a narrower window.</strong> The lower the stamina, the tighter the timing, so stamina management feeds directly into your execution.</li>
+        <li>Commentary lines play over the cutscene (<span class="q">“Unbelievable individual skill! The defense has completely collapsed!”</span>). The cutscene cannot be skipped, and players have asked for that option.</li>
+      </ul>
+
+      <h3>Rotation is a real decision</h3>
+      <p>Stamina drains on court and recovers on the bench. Korean outlet iNews24's hands-on test concluded that <span class="q">“you have to run a rotation using the bench rather than relying only on starters”</span>. The same review compared mid-game counter-tactics to Football Manager. If you would rather not manage this, Full Auto Mode, Auto Substitution and SKIP handle it. SKIP is padlocked on early match screens and unlocks with progression. One player reported different results from skipping at tip-off and skipping mid-game. There are no timeouts. “Clutch” appears only as a player stat.</p>
+    </section>
+
+    <!-- ================= TACTICS ================= -->
+    <section id="tactics">
+      <p class="kicker">Strategy layer</p>
+      <h2>Tactics</h2>
+      <p>Tactics are chips placed in <strong>four slots</strong>, and you can split them between offense and defense any way you like (screenshots show 1+3, 2+2 and 3+1). There are five offensive priorities and five defensive schemes, and each defensive scheme mirrors one offensive priority. The tactic list has a <span class="mono">상성</span> (“matchup”) column. It marks each option ▲ (advantage) or ▼ (disadvantage) against what the opponent is running at that moment.</p>
+      <div class="tbl matrix"><table>
+        <thead><tr><th>Offensive priority</th><th class="arrow">vs</th><th>Defensive answer</th></tr></thead>
+        <tbody>
+          <tr><td><span class="chip off">Pass Priority</span> <span class="tr">패스 우선</span></td><td class="arrow">⇄</td><td><span class="chip def">Pass Interception</span> <span class="tr">패스 차단</span></td></tr>
+          <tr><td><span class="chip off">Drive Priority</span> <span class="tr">돌파 우선</span></td><td class="arrow">⇄</td><td><span class="chip def">Drive Defense</span> <span class="tr">돌파 차단</span></td></tr>
+          <tr><td><span class="chip off">3-Point Shot Priority</span> <span class="tr">3점슛 우선</span></td><td class="arrow">⇄</td><td><span class="chip def">3-Point Lockdown</span> <span class="tr">3점슛 봉쇄</span></td></tr>
+          <tr><td><span class="chip off">Mid-Range Shot Priority</span> <span class="tr">미들슛 우선</span></td><td class="arrow">⇄</td><td><span class="chip def">Mid-Range Defense</span> <span class="tr">미들슛 봉쇄</span></td></tr>
+          <tr><td><span class="chip off">Paint Shot Priority</span> <span class="tr">골밑슛 우선</span></td><td class="arrow">⇄</td><td><span class="chip def">Protect the Paint</span> <span class="tr">골밑 사수</span></td></tr>
+        </tbody>
+        <caption>The pairings come from the mirrored names and the ▲/▼ markers in the Korean tactic screen. In the documented example the opponent prioritised SF paint and mid-range shots. Mid-Range Defense (Strong) and Protect the Paint showed ▲, and your own Mid-Range Shot Priority showed ▼.</caption>
+      </table></div>
+      <h3>How a tactic is tuned</h3>
+      <ul>
+        <li><strong>Offensive chips target a position and carry a percentage</strong>, e.g. “PG Drive Priority 60%” or “SG Drive Priority 73%”. That focuses the possession on one player's role.</li>
+        <li><strong>Defensive chips have three intensities:</strong> Low (하), Mid and Strong (강). Strong costs more stamina; the list's “stamina consumption” column shows two ⚡ for Strong against one for the others.</li>
+        <li><strong>Each player's card lists the chips assigned to them and a ⚡ load from 1 to 6.</strong> The more tactics you pile on one player, the faster that player tires.</li>
+        <li><strong>A head coach card sits beside your tactics.</strong> Seen so far: Erik Spoelstra, JJ Redick, Brian Keefe and Mark Daigneault. Coaches have their own owned-collection screen. They appear in no published pack table, and GRAVITY has not published what each coach does.</li>
+      </ul>
+      <p>The Korean store pitch sums up the design intent: <span class="q">“선수 별 포지션 배치와 상성에 맞는 뇌지컬 전술이 승리의 치트키!”</span> <span class="tr">(“Placing each player by position and using brainy tactics that fit the matchups is the cheat code to victory!”)</span></p>
+    </section>
+
+    <!-- ================= CARDS ================= -->
+    <section id="cards">
+      <p class="kicker">Collection</p>
+      <h2>Player cards</h2>
+      <h3>Six rarities</h3>
+      <div class="ladder">
+        <div style="--c:var(--r-c)"><b>Common</b><span>C · 50% of pulls</span></div>
+        <div style="--c:var(--r-uc)"><b>Uncommon</b><span>UC · 27%</span></div>
+        <div style="--c:var(--r-r)"><b>Rare</b><span>R · 15%</span></div>
+        <div style="--c:var(--r-ur)"><b>Ultra Rare</b><span>UR · 7.5% · gold frame</span></div>
+        <div style="--c:var(--r-epic)"><b>Epic</b><span>0.5% · purple frame</span></div>
+        <div style="--c:var(--r-legend)"><b>Legend</b><span>0.1% · themed packs only</span></div>
+      </div>
+
+      <h3>Editions</h3>
+      <div class="tbl wide"><table>
+        <thead><tr><th>Edition</th><th>What it is</th><th>Contents</th></tr></thead>
+        <tbody>
+          <tr><td><strong>25-26 SEASON</strong></td><td>The base set of current players</td><td>390 players, each at one fixed rarity: <span class="mono">119 C · 91 UC · 88 R · 63 UR · 29 EPIC</span></td></tr>
+          <tr><td><strong>The Core</strong></td><td>Epic-tier versions of stars</td><td>60 Epics, including stars who are only UR or Rare in the base set (Brunson, Towns, Harden, Paul George)</td></tr>
+          <tr><td><strong>The Edition</strong></td><td>Retired legends at LEGEND tier</td><td>Bill Laimbeer, Jermaine O'Neal, Dell Curry, Larry Johnson, Tony Parker, Detlef Schrempf, Jeff Hornacek, Zaza Pachulia, Derek Fisher, Peja Stojaković</td></tr>
+          <tr><td><strong>LOCKDOWN</strong> <span class="tr">22 Oct–5 Nov</span></td><td>Defender theme</td><td>10 Epics (Wembanyama, Gobert, Adebayo, Derrick White…) + Legend Horace Grant</td></tr>
+          <tr><td><strong>HALLOWEEN</strong> <span class="tr">29 Oct–12 Nov</span></td><td>Seasonal theme</td><td>10 Epics (Curry, LeBron, Brunson, Tatum, Zion, Embiid…) + Legend Kevin Garnett</td></tr>
+          <tr><td><strong>FLAME</strong> <span class="tr">5–19 Nov</span></td><td>Scorer theme</td><td>10 Epics (Dončić, Edwards, Durant, Antetokounmpo, Jokić, Gilgeous-Alexander…) + Legend Amar'e Stoudemire</td></tr>
+          <tr><td><strong>Starter</strong></td><td>Onboarding choice pack</td><td>26 Epics to choose from</td></tr>
+        </tbody>
+        <caption>Themed editions run 14 days each, and a new one starts every week, so two are always on sale at once.</caption>
+      </table></div>
+
+      <h3>Anatomy of a card</h3>
+      <div class="cols">
+        <div>
+          <ul>
+            <li><strong>OVR</strong>, the overall rating, in the top-left corner</li>
+            <li><strong>Position</strong>, single or dual (PG/SG, SF/SG, PF/C)</li>
+            <li>Team logo, <strong>level</strong>, edition label (“THE Core”, “25-26 SEASON”), rarity badge</li>
+            <li>In formation: condition arrow, stamina bar and an <strong>“S n”</strong> badge counting the synergies the player contributes to</li>
+          </ul>
+        </div>
+        <div>
+          <ul>
+            <li><strong>OVR grows steeply with level.</strong> Lv 1 Commons sit at 61–120. Lv 1 Ultra Rares sit at 123–145. Lv 30 Epics reach 228–335.</li>
+            <li>A Lv 1 Ultra Rare can outrate a low-level Epic, so levelling matters as much as rarity.</li>
+            <li>Named attributes so far: <strong>Chance Creation</strong> (기회 창출), <strong>Defensive Pressure</strong> (수비 압박) and <strong>Clutch</strong> (클러치).</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Growth, duplicates and disposal</h3>
+      <ul>
+        <li><strong>Training</strong> raises a card's level. It costs Silver and uses EXP cards and Intermediate or Advanced Training Manuals. Silver is the main bottleneck.</li>
+        <li><strong>Promotion</strong> and <strong>Grade Enhancement</strong> (등급 강화) raise a card's tier and its ceiling. Launch events paid out for completing five enhancements.</li>
+        <li><strong>Duplicates don't fuse.</strong> Spare cards go to the <strong>Exchange</strong>, where 3 players buy one item, or you <strong>Sell</strong> them for Silver. The Exchange stocks Epic-or-better packs for each edition, a Legend-or-better pack for The Edition, plus Small Energy Drinks, Small First-Aid Kits and Condition Boosters. When players asked for duplicate-fusion skill upgrades, the developer said it would pass the idea to the team.</li>
+      </ul>
+    </section>
+
+    <!-- ================= TEAM ================= -->
+    <section id="team">
+      <p class="kicker">Roster construction</p>
+      <h2>Team building</h2>
+      <p>A roster is <strong>5 starters plus an 8-man bench</strong>, 13 players in all. The bench header counts positions (e.g. “PG 3 · SG 1 · SF 1 · PF 2 · C 1”) so you can see gaps in your rotation. The team is summarised in four numbers: <strong>Team Power (TP)</strong> with its synergy bonus shown separately, <strong>Offense</strong>, <strong>Defense</strong> and <strong>Team Morale</strong>. On the match-prep screen in the store art, the team shows TP 11,717 with a +2,184 bonus from 10 active synergies.</p>
+      <h3>Synergies</h3>
+      <div class="tbl"><table>
+        <thead><tr><th>Synergy</th><th>Trigger</th><th>Effect</th></tr></thead>
+        <tbody>
+          <tr><td>Conference boost<br><span class="tr">“Regional Alliance”</span></td><td>5 players from the Eastern or Western Conference</td><td>Chance Creation +10, Defensive Pressure +10, Clutch +10; +30 TP per player; applies in all matches</td></tr>
+          <tr><td>Division boost<br><span class="tr">e.g. Southeast</span></td><td>3 players from one division</td><td>+20 TP per player; a “+” tier adds +140</td></tr>
+          <tr><td>Franchise teamwork<br><span class="tr">e.g. Warriors Teamwork / Teamwork+</span></td><td>Players from the same NBA team</td><td>+300 TP per tier for the Warriors, +100 for the Hawks</td></tr>
+          <tr><td>Event synergies</td><td>An “Event” tab in the synergy screen</td><td>Event-specific bonuses</td></tr>
+        </tbody>
+      </table></div>
+      <p>Synergy pushes you to build around real NBA franchises and conferences. One player put it this way: <span class="q">“the hardest part is looking for players from same club.”</span> The store copy describes it as <span class="q">“The same player can deliver different results depending on the lineup.”</span></p>
+      <h3>Condition, fatigue and facilities</h3>
+      <ul>
+        <li>The store tells you to <span class="q">“manage fatigue, condition, training, and rotations”</span>. The beta coverage adds <strong>injuries</strong>. Recovery consumables are the Small Energy Drink, Small First-Aid Kit and Condition Booster.</li>
+        <li><strong>Club Facilities</strong> is a separate, account-wide team-growth track.</li>
+        <li>There is no salary cap, contract or payroll. Roster strength is limited only by your collection and stamina.</li>
+      </ul>
+    </section>
+
+    <!-- ================= MODES ================= -->
+    <section id="modes">
+      <p class="kicker">Where you play</p>
+      <h2>Modes</h2>
+      <div class="tbl wide"><table>
+        <thead><tr><th>Mode</th><th>Type</th><th>How it works</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Season Mode</strong> <span class="tr">시즌 경기</span></td><td>PvE</td><td>A league ladder starting at “Rookie 3”. At Rookie 3 a sector is 3 regular-season games plus a Final (“Regular Schedule 5/5” appears in the store art). Winning a league unlocks the next tier, and the top tiers end in an <strong>NBA Finals</strong> series (one player swept theirs 4-0).</td></tr>
+          <tr><td><strong>Daily Division</strong> <span class="tr">데일리 디비전</span></td><td>PvE</td><td>A league that resets daily</td></tr>
+          <tr><td><strong>Arena</strong> <span class="tr">아레나</span></td><td>PvP</td><td>Ranked play against lineups other users have built. Runs in multi-day seasons with ranking resets. The Korean store calls it “real-time strategy PvP”.</td></tr>
+          <tr><td><strong>Popularity Battle</strong> <span class="tr">인기 쟁탈전</span></td><td>PvP</td><td>A competitive popularity contest</td></tr>
+          <tr><td><strong>Tower Race</strong> <span class="tr">타워 레이스</span></td><td>PvP</td><td>A floor-by-floor climb ranked on height reached. It descends from the Japanese Tower Event, where you beat the team on each floor and earn players at set floors.</td></tr>
+          <tr><td><strong>Club Conquest</strong> <span class="tr">클럽 점령전 · “Club Clash”</span></td><td>RvR</td><td>Clubs (guilds with member chat) register and fight other clubs. Clubs set their own power requirements to join (one Thai club asks for 30,000).</td></tr>
+          <tr><td><strong>Match Prediction</strong></td><td>Side</td><td>A timed prediction feature with weekly rewards</td></tr>
+          <tr><td><strong>Takeover · Events</strong></td><td>Live ops</td><td>Rotating events with progress bars, e.g. “3-Point Contest”</td></tr>
+          <tr><td><strong>Missions</strong></td><td>Daily</td><td>Quests that award player packs, 10 free cards a day from login, a 14-day check-in through 31 Dec, and match-count rewards</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <!-- ================= ECONOMY ================= -->
+    <section id="economy">
+      <p class="kicker">Monetization</p>
+      <h2>Economy &amp; gacha</h2>
+      <div class="cols">
+        <div class="box"><h4>Currencies</h4><ul>
+          <li><strong>Gold</strong>: the premium currency. 100,000 Gold sells for ₩19,000 / A$20.49 / S$18.00.</li>
+          <li><strong>Silver</strong>: the soft currency, spent on training and upgrades and earned by selling cards. Players describe it as always scarce.</li>
+          <li><strong>Diamond</strong>: the currency for the player Auction, obtained mainly from the Diamond Box.</li>
+        </ul></div>
+        <div class="box"><h4>Trading</h4><ul>
+          <li><strong>Market</strong> (거래소): <span class="q">“supports trading for all items, including player cards.”</span></li>
+          <li><strong>Auction</strong>: a bottom-navigation tab for <span class="q">“recruiting new players through the auction.”</span></li>
+        </ul></div>
+      </div>
+
+      <h3>Pack odds</h3>
+      <p>These come from GRAVITY's official probability disclosure (<a href="https://probability.gnjoy.com/NBA/NBARISE/NBARISE/NBA-NOTIFY">probability.gnjoy.com</a>), which Korean law requires. The odds are per card. Within a rarity every player is equally likely, so any single 25-26 Epic comes up 0.01724% of the time.</p>
+      <div class="chart" id="odds">
+        <h4>Paid pack odds per card: 25-26 Season and The Core</h4>
+        <p class="cap">One bar per rarity, on one scale. The Epic bar is drawn to scale.</p>
+        <div class="bars" id="oddsBars"></div>
+        <div class="axis"><span>0%</span><span>10%</span><span>20%</span><span>30%</span><span>40%</span><span>50%</span></div>
+      </div>
+      <div class="tbl"><table>
+        <thead><tr><th>Pack</th><th class="num">Legend</th><th class="num">Epic</th><th class="num">UR</th><th class="num">R</th><th class="num">UC</th><th class="num">C</th><th>Pity</th></tr></thead>
+        <tbody>
+          <tr><td>25-26 Season / The Core (paid)</td><td class="num">—</td><td class="num">0.5%</td><td class="num">7.5%</td><td class="num">15%</td><td class="num">27%</td><td class="num">50%</td><td>Epic at 100 cards</td></tr>
+          <tr><td>LOCKDOWN / HALLOWEEN / FLAME (paid)</td><td class="num">0.1%</td><td class="num">0.5%</td><td class="num">7.5%</td><td class="num">15%</td><td class="num">27%</td><td class="num">49.9%</td><td>Epic or better at 100 (Legend 16.67%)</td></tr>
+          <tr><td>The Edition (paid)</td><td class="num">0.1%</td><td class="num">0.5%</td><td class="num">7.5%</td><td class="num">15%</td><td class="num">27%</td><td class="num">49.9%</td><td>Legend at 200 cards</td></tr>
+          <tr><td>25-26 / The Core (free reward)</td><td class="num">—</td><td class="num">0.1%</td><td class="num">7.6%</td><td class="num">15%</td><td class="num">27.1%</td><td class="num">50.2%</td><td>—</td></tr>
+          <tr><td>Themed (free reward)</td><td class="num">0.02%</td><td class="num">0.1%</td><td class="num">7.55%</td><td class="num">15%</td><td class="num">27.1%</td><td class="num">50.23%</td><td>—</td></tr>
+          <tr><td>Starter (free)</td><td class="num">—</td><td class="num">0.1%</td><td class="num" colspan="4" style="text-align:left;font-family:var(--f-body)">balance across lower tiers</td><td>—</td></tr>
+        </tbody>
+        <caption>Pity: once you have bought 100 cards, an “EPIC 1 guaranteed” button appears and the counter resets when you claim it. A <strong>wishlist</strong> on the 25-26 pack makes any Epic you pull land on one of your wishlisted players, each equally likely.</caption>
+      </table></div>
+
+      <div class="chart">
+        <h4>How much of your first Epic is luck and how much is pity</h4>
+        <p class="cap">Chance of at least one Epic after N paid cards at 0.5% each. Pity guarantees one at card 100. Drag the slider or move over the chart.</p>
+        <div class="pity">
+          <svg id="pitySvg" viewBox="0 0 560 250" role="img" aria-label="Line chart: chance of at least one Epic rises from 0% to 39.4% at 99 cards, then jumps to 100% at 100 cards because of pity."></svg>
+          <div class="readout">
+            <label for="pityN">Cards opened: <span id="pityNOut" class="mono">50</span></label>
+            <input type="range" id="pityN" min="1" max="120" value="50">
+            <b id="pityP">22.2%</b>
+            <p id="pityTxt"></p>
+          </div>
+        </div>
+      </div>
+      <p><strong>The arithmetic:</strong> the chance of a natural Epic in 100 cards is 1 − 0.995<sup>100</sup> = <strong>39.4%</strong>. So <strong>60.6% of the time the pity counter delivers your Epic</strong>, not luck. Legends are harsher. At 0.1% the chance of a natural Legend within The Edition's 200-card pity is 18.1%, so pity delivers 81.9% of Legends. One Thai reviewer reported opening 200 cards and getting 2 Epics, one of them the guarantee. That matches the published rates exactly.</p>
+
+      <h3>The Diamond Box</h3>
+      <p>The cheapest item in every store (₩1,200 / ₱55 / A$1.39). It contains 10 packs. Each pack holds either a The Core Epic (0.5%) or Diamonds: 15,000 (56.5%), 30,000 (26%), 60,000 (12%) or 100,000 (5%).</p>
+
+      <h3>What's for sale</h3>
+      <div class="tbl wide"><table>
+        <thead><tr><th>Tier</th><th>Products</th><th>Example prices</th></tr></thead>
+        <tbody>
+          <tr><td>Entry (~US$1)</td><td>Diamond Box, Beginner Package (includes a guaranteed The Core Epic pack), Training Package, Currency Pack I, Light Core Support, Rookie Package</td><td>₩1,200 · ₱55 · A$1.39 · NZ$1.49 · Rp17K</td></tr>
+          <tr><td>Mid</td><td>Regular Core Support, Regular New Arrival Pack, Double-Double, Veteran, All-Star, Quadruple-Double</td><td>₩4,400 · A$4.69 · A$7.69 · S$6.99</td></tr>
+          <tr><td>High</td><td>MVP Core Support, MVP New Arrival Pack, Core Value Package, Hall of Fame Package, <strong>Elite Pass</strong>, 100,000 Gold</td><td>₩22,000 · A$15.49 (Elite Pass) · A$20.49 · RM57.90</td></tr>
+          <tr><td>Recurring</td><td>Monthly Season Pass (free track + paid Elite Pass), Step Up (escalating step purchases)</td><td>Range across the store: ₩1,200–55,000 · A$1.39–57.90</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>Onboarding</h3>
+      <ul>
+        <li>You start by <strong>picking your favourite NBA team's starter pack</strong>, then <strong>choosing one Epic</strong> from a 26-player list.</li>
+        <li>You can reroll by grade until you get the player you want (iNews24 hands-on).</li>
+        <li>The tutorial runs on every menu, and new players call it heavy.</li>
+        <li>Pre-registration codes <span class="mono">NBARISEPRE · PRE30 · PRE50 · PRE70</span> include a “Pre-Registration Exclusive Starter Epic Player Choice Pack”. You redeem codes under Menu → Redeem Coupon. Joining the Discord before 10 Nov paid 500 Gold and 10,000 Silver.</li>
+      </ul>
+    </section>
+
+    <!-- ================= JAPAN ================= -->
+    <section id="japan">
+      <p class="kicker">2021 – 2026</p>
+      <h2>The Japanese predecessor</h2>
+      <p>Gravity Game Arise's official news archive (480 posts on <a href="https://nbarise.com/">nbarise.com</a>) documents the original design in full. It shows where the global game's systems came from.</p>
+      <div class="cols">
+        <div class="box">
+          <h4>NBA RISE TO STARDOM (2021–24)</h4>
+          <ul>
+            <li><strong>Roster:</strong> head coach + 5 starters + 8 bench + 2 reserves. You start by choosing one of the 30 NBA teams.</li>
+            <li><strong>Six stats per card:</strong> SHOOT, DRIVE and PASS on offense; STEAL, BLOCK and PASSCUT on defense; plus Stamina. Playing a card at its favoured position gives a stat bonus.</li>
+            <li><strong>Simulation:</strong> possessions resolve as player-vs-player stat duels. You watch “Live View” highlights or a “Card View” card battle for every play.</li>
+            <li><strong>Clutch Play:</strong> when the Clutch Gauge fills, you pick a player and an action. Shoot, pass and drive face block, steal and pass-cut in a rock-paper-scissors cycle: the right counter multiplies your value ×1.5, but raw stats still win first. The winner gains Momentum, and the side with higher Momentum wins tied duels.</li>
+            <li><strong>Stamina:</strong> at zero a player's abilities are halved. Bench players recover faster.</li>
+            <li><strong>Head-coach tactics:</strong> a stat modifier (e.g. Drive +1 / Block −1), a key position, and a stamina cost. Coaches cost 30,000 Money each.</li>
+            <li><strong>Gacha (“Offer”):</strong> 5-card packs and 150-card BOXes. Three copies of a card raise its rarity (R → UR). Skill Training takes 24 hours and needs an Epic trainer.</li>
+            <li><strong>Modes:</strong> an 82-game season (PLAY-MATCH or SIM-MATCH), Score Ranking (async PvP), real-time Player Match on a shared card pool, and History and VS events.</li>
+            <li><strong>Trade:</strong> billed as an “industry-first online trade”. NPC Legend listings at 4,500 Gold refresh every 3 days.</li>
+            <li><strong>Base:</strong> an isometric city with 9 facility types, fans and an Official Store that generates Money.</li>
+          </ul>
+        </div>
+        <div class="box">
+          <h4>NBA RISE, Japan (2025–26)</h4>
+          <ul>
+            <li><strong>Pitch:</strong> <span class="q">“Games basically run on auto. At key moments you can trigger a Set Play in which you choose players' actions… succeed and Tension rises.”</span></li>
+            <li><strong>Simulation view:</strong> a 2D top-down court with position tokens, tactic labels (e.g. “Isolation Lv3”), a tug-of-war bar, AUTO and “Skip quarter”.</li>
+            <li><strong>Set Play:</strong> a 3D possession of up to 4 actions (pass, pass, then shoot or drive) with a “KEY PLAYER”. Defensive set plays exist too.</li>
+            <li><strong>Super Play:</strong> the signature skill on Epic and Legend cards (“Tatum Sky”, “Dame Rain”, Hachimura's “Rising Fuji”), e.g. Shoot +45 for −125 stamina.</li>
+            <li><strong>Tension + Tension Links:</strong> Tension replaces Momentum. Tension Links (Offense/Defense/Stamina Starter and Plan) are conditional team bonuses.</li>
+            <li><strong>Stats rescaled to three digits:</strong> e.g. Lv 70 Epic Jokić has Shoot 261, Pass 231, Drive 229, Stamina 1,566. Ultra Rares cap at Lv 60, Epics and Legends at Lv 70.</li>
+            <li><strong>Action Points</strong> (cap 100) gate Season play, and a calendar month can be auto-simulated.</li>
+            <li><strong>Scouts:</strong> standard, event-boost, limited, and START DASH (an Epic after 5 purchases). Standard rates: EPIC 1.5%, UR 10%, R 20%, UC 30%, C 38.5%.</li>
+            <li><strong>Events:</strong> VS, History (raise a player's rarity with points) and Tower (beat the team on each floor).</li>
+            <li><strong>Ambassadors:</strong> Yuki Kawamura and Rui Hachimura. Watanabe served earlier.</li>
+          </ul>
+        </div>
+      </div>
+      <h3>What carried into the global game</h3>
+      <ul>
+        <li><strong>The rarity ladder</strong> C · UC · R · UR · EPIC · LEGEND carried over unchanged.</li>
+        <li><strong>The Set Play hook</strong> survived. Japan used a multi-action choice chain; the global game condenses it into a once-per-quarter timing tap.</li>
+        <li><strong>The swing meter</strong> changed from Momentum to Tension to Team Morale.</li>
+        <li><strong>Matchup logic</strong> moved from the clutch duel into the tactic layer. Japan's shoot/drive/pass vs block/steal/pass-cut triangle became five offensive priorities, each mirrored by a defensive scheme.</li>
+        <li><strong>Tower events</strong> became Tower Race, and the “Scout” name and the Training and Promotion steps were kept.</li>
+        <li><strong>Global is noticeably more generous on pity</strong> (Epic guaranteed at 100 cards), but its base Epic rate is lower (0.5% vs Japan's 1.5% standard scout).</li>
+      </ul>
+    </section>
+
+    <!-- ================= RECEPTION ================= -->
+    <section id="reception">
+      <p class="kicker">Players &amp; press</p>
+      <h2>Reception</h2>
+      <div class="tbl"><table>
+        <thead><tr><th>Region</th><th class="num">Google Play</th><th class="num">App Store</th><th class="num">iOS ratings</th></tr></thead>
+        <tbody>
+          <tr><td>Thailand</td><td class="num">4.7</td><td class="num">4.89</td><td class="num">63</td></tr>
+          <tr><td>South Korea</td><td class="num">4.7</td><td class="num">4.81</td><td class="num">48</td></tr>
+          <tr><td>Philippines</td><td class="num">4.6</td><td class="num">4.80</td><td class="num">41</td></tr>
+          <tr><td>Indonesia</td><td class="num">4.8</td><td class="num">5.00</td><td class="num">28</td></tr>
+          <tr><td>Australia</td><td class="num">4.2</td><td class="num">4.27</td><td class="num">22</td></tr>
+          <tr><td>Malaysia</td><td class="num">4.8</td><td class="num">5.00</td><td class="num">13</td></tr>
+          <tr><td>Singapore</td><td class="num">4.5</td><td class="num">4.20</td><td class="num">10</td></tr>
+          <tr><td>New Zealand</td><td class="num">4.7</td><td class="num">4.33</td><td class="num">6</td></tr>
+        </tbody>
+        <caption>Snapshot from 8 Nov 2026. Google Play draws on one global pool of 1,120 ratings and weights it by region. That pool's histogram is 909 five-star ratings and 67 one-star.</caption>
+      </table></div>
+      <p><strong>The ratings are high, but there are few of them and they come from launch week.</strong> Korean Google Play reviews look manufactured. Of 498 written Korean reviews, 497 are 4 or 5 stars, 61% were posted in the first three days, and they average 32 characters. The developer answers nearly every review in English, Korean and Thai, and often asks the reviewer to <span class="q">“consider updating your rating to 5 stars.”</span></p>
+
+      <h3>What players praise</h3>
+      <div class="quotes">
+        <blockquote><p>“This game is fun, if you don't really have much time to play, you can use the skip button and also the prices of the offers are reasonable. It's easy to get good players.”</p><footer>Google Play · 5★ · 28 Oct 2026</footer></blockquote>
+        <blockquote><p>“Best for people who enjoy collecting players, improving line ups and strategy on offensive and defensive play… Also has a lot of room for improvement.”</p><footer>App Store PH · 5★</footer></blockquote>
+        <blockquote><p>“Very fun. Like a football game combining FC Mobile &amp; Football Manager.”</p><footer>Google Play ID · 5★ · translated</footer></blockquote>
+        <blockquote><p>“Fun building a dream team… but repetitive match flow, player gacha and spending pressure are drawbacks.”</p><footer>Google Play KR · 5★ · translated</footer></blockquote>
+      </div>
+
+      <h3>What players complain about</h3>
+      <ul>
+        <li><strong>Access and stability, the biggest negative cluster.</strong> Players report being stuck on the loading or title screen, often because they are outside the eight regions. Others report a black screen after the NBA logos, “not compatible” errors after 1.1.1, top-ups charged but not delivered (Thailand), and broken Tower Race, Club and Match Prediction rewards.</li>
+        <li><strong>Gacha and pay-to-win:</strong> <span class="q">“50 pulls no good card”</span>, <span class="q">“Good mechanics but rates are low”</span> (17 helpful votes), and <span class="q">“P2W game, period.”</span></li>
+        <li><strong>Pacing and fatigue:</strong> <span class="q">“The games take way too long with animation that is totally unnecessary… you have to manually subs tired players.”</span> Other players say stamina drains faster for them than for the AI. A Thai reviewer misses the direct control of NBA Live Mobile, which had just shut down.</li>
+        <li><strong>Depth:</strong> <span class="q">“Play ends up being just a few league games, finished with a few monotonous clicks.”</span> Requests include bulk pack opening, legends such as Yao Ming and Kareem, and limiting PvP tactic changes to once per quarter.</li>
+        <li><strong>Freshness and art:</strong> rosters are still 2025-26 although the 2026-27 season has started, and some reviewers accuse the art of being AI-generated.</li>
+      </ul>
+
+      <h3>Press</h3>
+      <p>No critical English-language review exists. Inven Global, GameMeca, UnGeek and GamingOnPhone ran news only. Korean outlet iNews24 published a positive hands-on on 31 Oct 2026 headlined <span class="q">“직접 컨트롤하지 않아도 재밌다”</span> <span class="tr">(“Fun even without direct control”)</span>. It praised the tactics, substitutions, condition-based stats and graphics, and concluded <span class="q">“users who like sports management games can fully enjoy it.”</span></p>
+
+      <h3>Japan's arc</h3>
+      <ul>
+        <li><strong>2021–22: about 1.8★.</strong> Players cited a 0.2% top-rarity rate, launch crashes, lost data, unskippable 3D and “browser-game” quality.</li>
+        <li><strong>2023–24: stagnation.</strong> Reviews asked “Has it shut down?”</li>
+        <li><strong>2025 renewal: about 4.5★.</strong> Players welcomed auto mode and skip, though some complained that event leaderboards required event-gacha boost players.</li>
+        <li><strong>2026: abandonment.</strong> <span class="q">“No announcements since Jan 29… abandoned. I feel betrayed again.”</span></li>
+        <li><strong>Final count:</strong> the App Store finished at 3.4★ from 1,858 ratings, with about 52.7K lifetime Android installs.</li>
+      </ul>
+    </section>
+
+    <!-- ================= MARKET ================= -->
+    <section id="market">
+      <p class="kicker">Position</p>
+      <h2>Market &amp; rivals</h2>
+      <div class="tbl"><table>
+        <thead><tr><th>Region</th><th class="num">iOS Sports top-grossing</th><th class="num">iOS Sports top-free</th></tr></thead>
+        <tbody>
+          <tr><td>Indonesia</td><td class="num">#12</td><td class="num">#56</td></tr>
+          <tr><td>Philippines</td><td class="num">#18</td><td class="num">#11</td></tr>
+          <tr><td>Singapore</td><td class="num">#20</td><td class="num">#39</td></tr>
+          <tr><td>Thailand</td><td class="num">#26</td><td class="num">#11</td></tr>
+          <tr><td>Malaysia</td><td class="num">#35</td><td class="num">#84</td></tr>
+          <tr><td>South Korea</td><td class="num">#38</td><td class="num">#49</td></tr>
+          <tr><td>New Zealand</td><td class="num">#38</td><td class="num">—</td></tr>
+          <tr><td>Australia</td><td class="num">#42</td><td class="num">#59</td></tr>
+        </tbody>
+        <caption>Apple charts, 8 Nov 2026. The game is outside the overall Games top 100 (grossing and free) in all eight regions. AppGoblin, a third party, estimates more than $10K a month in revenue.</caption>
+      </table></div>
+      <p><strong>The community is small.</strong> The Discord has 2,740 members, inflated by a join bonus. The YouTube channel has 90 subscribers, yet its trailers show 2.3M, 1.9M and 424K views, which points to paid placement. Instagram has 1,770 followers. There is no X account, no Reddit community and no YouTube tier lists yet.</p>
+
+      <h3>Competitive set</h3>
+      <div class="tbl wide"><table>
+        <thead><tr><th>Game</th><th>Play style</th><th>Status, Nov 2026</th><th>Against NBA RISE</th></tr></thead>
+        <tbody>
+          <tr><td><strong>NBA Basketball World 2026</strong> (QS Games)</td><td>Manager card game</td><td>Live since May 2026 in PH, KR, JP and AU; 329K installs</td><td>The closest direct rival in RISE's own markets</td></tr>
+          <tr><td>NBA 2K Mobile / 2K26 MyTEAM (2K)</td><td>Cards + real-time action</td><td>Live; 27.9M installs</td><td>Dominates; RISE offers no direct control</td></tr>
+          <tr><td>Dunk City Dynasty (NetEase)</td><td>3v3 action</td><td>Live; Sports top-grossing #10 in KR and #6 in PH</td><td>Takes the most basketball spending in Asia</td></tr>
+          <tr><td>NBA Infinite (Level Infinite)</td><td>Real-time PvP</td><td>No update since Mar 2026</td><td>Fading</td></tr>
+          <tr><td>NBA Collect (Topps)</td><td>Digital trading cards</td><td>Live; Sports top-grossing top 15 in PH, SG and NZ</td><td>Collecting only, with no matches</td></tr>
+          <tr><td>NBA LIVE Mobile (EA)</td><td>Action + team building</td><td>Reported shut down 27 Oct 2026</td><td>Its players are an audience RISE can pick up</td></tr>
+          <tr><td>NBA NOW (Com2uS), NBA SuperCard (2K), NBA Clash</td><td>Management / card battlers</td><td>All gone</td><td>RISE fills the empty licensed-management niche</td></tr>
+          <tr><td>Hoop Land; Basketball GM-style games</td><td>Unlicensed sims</td><td>Live</td><td>Deeper simulation, but no license</td></tr>
+        </tbody>
+      </table></div>
+      <p>NBA RISE is one of very few live, NBA-licensed games built entirely on strategy and simulation, with no reflex control. Action games such as 2K, Dunk City and Infinite own installs and spending. Earlier licensed management games all closed: NBA NOW, SuperCard and Clash.</p>
+    </section>
+
+    <!-- ================= BUSINESS ================= -->
+    <section id="business">
+      <p class="kicker">Corporate</p>
+      <h2>Business</h2>
+      <ul>
+        <li><strong>License terms.</strong> The May 2020 NBA + NBPA agreement covers <span class="q">“the right to develop and publish an NBA licensed game”</span>, paid as license fees and guaranteed minimum royalties in installments. In 2025 it <span class="q">“was extended and additional license fees were committed.”</span> Fee amounts are folded into aggregate purchase obligations (FY2025: ₩2.19bn due within 12 months).</li>
+        <li><strong>GRAVITY's scale.</strong> FY2025 revenue was about ₩560bn, with about ₩77bn operating profit. Q2 2026 revenue was ₩161.9bn, of which mobile was ₩128.6bn. Ragnarok carries the company, running in 91 markets.</li>
+        <li><strong>NBA RISE revenue has never been disclosed.</strong> The global launch was absent from GRAVITY's Q1 and Q2 2026 business updates. Q3 2026 results are due in mid-November.</li>
+        <li><strong>Gravity Game Arise</strong>, the Japanese operator, had 60 staff in 2025. It lost ₩6.2bn on ₩5.6bn revenue in 2024 and ₩2.5bn on ₩15.0bn in 2025. That covers all of its titles.</li>
+        <li><strong>A Korea launch was promised for the first half of 2022.</strong> It slipped to “2H 2022”, then “TBD”, and finally arrived on 20 Oct 2026 as part of the global release.</li>
+        <li><strong>Infrastructure.</strong> The terms, privacy and support pages are hosted on <span class="mono">withhive.com</span>, Com2uS's Hive platform.</li>
+        <li><strong>GRAVITY's other licensed sports titles:</strong> CPBL Pro-baseball 2021 (Taiwan) and JLPGA Heroine Collection (Japan, 2025). Both use the same licensed-sports card model.</li>
+      </ul>
+    </section>
+
+    <!-- ================= GAPS ================= -->
+    <section id="gaps">
+      <p class="kicker">Not yet public</p>
+      <h2>Unpublished</h2>
+      <p>GRAVITY has not published the following, and no player guide covers it yet:</p>
+      <ul>
+        <li>The exact rules of Tower Race, Popularity Battle, Daily Division, Takeover and Match Prediction.</li>
+        <li>The full attribute sheet, per-card skills, the maximum level (Lv 30 is the highest seen) and promotion cost tables.</li>
+        <li>What each head coach does, and how coaches are acquired.</li>
+        <li>Whether Arena is live or asynchronous. The store says “real-time strategy PvP”, while the press describes matches against lineups other users have built.</li>
+        <li>Club Facilities effects, Season Pass tiers and the Step Up structure.</li>
+        <li>Revenue, engine, team size, license fees, plans beyond the eight regions, and the date of the 2026-27 roster update.</li>
+      </ul>
+    </section>
+
+    <!-- ================= SOURCES ================= -->
+    <section id="sources">
+      <p class="kicker">Evidence</p>
+      <h2>Sources</h2>
+      <div class="srcs">
+        <h4>Stores &amp; official</h4>
+        <ul>
+          <li><a href="https://play.google.com/store/apps/details?id=com.gravity.nbarisegv.aos">Google Play: NBA RISE: Basketball Strategy</a></li>
+          <li><a href="https://apps.apple.com/ph/app/nba-rise-basketball-cards/id6762187862">App Store: NBA RISE: Basketball Cards</a></li>
+          <li><a href="https://nbarise.gnjoy.com/">Official global site</a></li>
+          <li><a href="https://probability.gnjoy.com/NBA/NBARISE/NBARISE/NBA-NOTIFY">Official probability disclosure</a></li>
+          <li><a href="https://discord.gg/Sz4Za6ZrMy">Official Discord</a></li>
+          <li><a href="https://www.youtube.com/@PLAYNBARISE">Official YouTube</a></li>
+          <li><a href="https://nbarise.com/">Japanese official news archive (nbarise.com)</a></li>
+          <li><a href="https://nbarise.com/reinsde/">Japan shutdown notice</a></li>
+          <li><a href="https://nbarise.com/ypgreqa/">Japan refund notice</a></li>
+          <li><a href="https://nbarise.com/tyujdk/">HOW TO RISE: match guide (Japan)</a></li>
+          <li><a href="https://nbarise.com/vkdios/">Renewal data-migration list (Japan)</a></li>
+          <li><a href="https://apps.apple.com/jp/app/id1574474570">App Store JP: predecessor</a></li>
+        </ul>
+        <h4>Corporate &amp; filings</h4>
+        <ul>
+          <li><a href="https://pr.nba.com/nba-nbpa-gravity-mobile-gaming-experience-asia-pacific">NBA press release, Feb 2021</a></li>
+          <li><a href="https://www.sec.gov/Archives/edgar/data/1313310/000162828026026985/grvy-20251231.htm">GRAVITY 20-F, FY2025</a></li>
+          <li><a href="https://www.sec.gov/Archives/edgar/data/0001313310/000162828026054549/a6-k_gravityxsecondquarter.htm">GRAVITY 6-K, Q2 2026</a></li>
+          <li><a href="https://gravityga.jp/category/press/">Gravity Game Arise press releases</a></li>
+          <li><a href="https://nz.finance.yahoo.com/news/nba-rise-stardom-official-launch-110000137.html">GlobeNewswire: Japan launch, Nov 2021</a></li>
+        </ul>
+        <h4>Press (English &amp; Korean)</h4>
+        <ul>
+          <li><a href="https://www.invenglobal.com/articles/27412/gravity-officially-launches-nba-rise-across-8-regions">Inven Global: launch across 8 regions</a></li>
+          <li><a href="https://www.invenglobal.com/articles/24039/gravity-launches-cbt-for-nba-rise-an-officially-licensed-nba-card-game">Inven Global: CBT</a></li>
+          <li><a href="https://www.inven.co.kr/webzine/news/?news=322325">Inven KR: launch</a></li>
+          <li><a href="https://m.inews24.com/v/2021080">iNews24 hands-on review</a></li>
+          <li><a href="https://www.consumernews.co.kr/news/articleView.html?idxno=767029">ConsumerNews hands-on</a></li>
+          <li><a href="https://www.gamemeca.com/en/view.php?gid=1782075">GameMeca: launch</a></li>
+          <li><a href="https://gamingonphone.com/news/nba-rise-opens-pre-registration-on-mobile-as-the-basketball-card-strategy-game-prepares-for-launch">GamingOnPhone: pre-registration</a></li>
+          <li><a href="https://www.ungeek.ph/2026/07/nba-rise-closed-beta-test-happening-now-in-the-philippines-and-other-asian-regions/">UnGeek: CBT</a></li>
+        </ul>
+        <h4>Press (Japanese)</h4>
+        <ul>
+          <li><a href="https://gamebiz.jp/news/337867">gamebiz review (2021)</a></li>
+          <li><a href="https://game.watch.impress.co.jp/docs/kikaku/1367576.html">Game Watch hands-on (2021)</a></li>
+          <li><a href="https://news.denfaminicogamer.jp/kikakuthetower/211125b">Denfaminicogamer feature (sponsored)</a></li>
+          <li><a href="https://www.oricon.co.jp/special/57709/">Oricon feature</a></li>
+          <li><a href="https://gamebiz.jp/news/401032">gamebiz: 2025 relaunch date</a></li>
+          <li><a href="https://gamebiz.jp/news/430264">gamebiz: shutdown</a></li>
+          <li><a href="https://dengekionline.com/article/202608/83074">Dengeki Online: shutdown</a></li>
+          <li><a href="https://prtimes.jp/main/html/rd/p/000000391.000071574.html">PR TIMES: 2025 relaunch</a></li>
+          <li><a href="https://gamerch.com/nba-rise/">Gamerch wiki</a></li>
+        </ul>
+        <h4>Market</h4>
+        <ul>
+          <li><a href="https://appgoblin.info/apps/com.gravity.nbarisegv.aos">AppGoblin estimate</a></li>
+          <li><a href="https://gaminghq.eu/2026/10/18/nba-live-mobile-shutdown-ea-2026/">GamingHQ: NBA Live Mobile shutdown</a></li>
+          <li><a href="https://2k.com/en-US/game/nba-supercard">2K: NBA SuperCard sunset</a></li>
+          <li>Apple RSS charts, genre 7016 (Sports), 8 Nov 2026</li>
+        </ul>
+      </div>
+    </section>
+    <footer class="end">Compiled 8 November 2026. Store figures are a snapshot from that date.</footer>
+  </main>
+</div>
+
+<div class="tip" id="tip" hidden></div>
+
+<script>
+(function(){
+  /* ---------- odds bars ---------- */
+  var odds=[["Common",50,"--r-c"],["Uncommon",27,"--r-uc"],["Rare",15,"--r-r"],["Ultra Rare",7.5,"--r-ur"],["Epic",0.5,"--r-epic"]];
+  var host=document.getElementById("oddsBars"), tip=document.getElementById("tip"), chart=document.getElementById("odds");
+  odds.forEach(function(o){
+    var lab=document.createElement("div"); lab.className="lab"; lab.style.setProperty("--c","var("+o[2]+")"); lab.textContent=o[0];
+    var tr=document.createElement("div"); tr.className="track";
+    var bar=document.createElement("i"); bar.style.width=(o[1]/50*88)+"%";
+    var v=document.createElement("em"); v.textContent=o[1]+"%";
+    tr.appendChild(bar); tr.appendChild(v);
+    var oneIn=Math.round(100/o[1]);
+    tr.setAttribute("aria-label",o[0]+": "+o[1]+"% per card, about 1 in "+oneIn);
+    tr.addEventListener("pointermove",function(e){
+      var r=chart.getBoundingClientRect();
+      tip.textContent=o[0]+" · "+o[1]+"% per card · ≈1 in "+oneIn;
+      tip.hidden=false;
+      chart.appendChild(tip);
+      tip.style.left=(e.clientX-r.left)+"px"; tip.style.top=(e.clientY-r.top-6)+"px";
+    });
+    tr.addEventListener("pointerleave",function(){tip.hidden=true});
+    host.appendChild(lab); host.appendChild(tr);
+  });
+  /* the bars use 88% of the track so value labels fit; align axis to that */
+  var axis=chart.querySelector(".axis"); axis.style.width="calc((100% - 108px) * .88)";
+
+  /* ---------- pity chart ---------- */
+  var svg=document.getElementById("pitySvg"), NS="http://www.w3.org/2000/svg";
+  var W=560,H=250,L=44,R=16,T=14,B=34, maxN=120;
+  function x(n){return L+(n/maxN)*(W-L-R)}
+  function y(p){return T+(1-p)*(H-T-B)}
+  function P(n){return n>=100?1:1-Math.pow(0.995,n)}
+  function el(t,a){var e=document.createElementNS(NS,t);for(var k in a)e.setAttribute(k,a[k]);return e}
+  var g=el("g",{"class":"grid"});
+  [0,.25,.5,.75,1].forEach(function(p){g.appendChild(el("line",{x1:L,x2:W-R,y1:y(p),y2:y(p)}));var t=el("text",{x:L-8,y:y(p)+4,"text-anchor":"end"});t.textContent=Math.round(p*100)+"%";svg.appendChild(t)});
+  svg.appendChild(g);
+  [0,20,40,60,80,100,120].forEach(function(n){var t=el("text",{x:x(n),y:H-12,"text-anchor":"middle"});t.textContent=n;svg.appendChild(t)});
+  var xl=el("text",{x:W-R,y:H-1,"text-anchor":"end"});xl.textContent="cards opened";svg.appendChild(xl);
+  var d="M"+x(0)+" "+y(0);
+  for(var n=1;n<=99;n++)d+=" L"+x(n).toFixed(1)+" "+y(P(n)).toFixed(1);
+  d+=" L"+x(100)+" "+y(P(99)).toFixed(1)+" L"+x(100)+" "+y(1)+" L"+x(maxN)+" "+y(1);
+  var area=el("path",{d:d+" L"+x(maxN)+" "+y(0)+" Z",fill:"var(--accent)","fill-opacity":".10",stroke:"none"});
+  svg.appendChild(area);
+  svg.appendChild(el("path",{d:d,fill:"none",stroke:"var(--accent)","stroke-width":2,"stroke-linejoin":"round","stroke-linecap":"round"}));
+  var lab=el("text",{x:x(100)-6,y:y(1)+16,"text-anchor":"end",style:"fill:var(--ink);font-weight:600"});lab.textContent="Pity: guaranteed at 100";svg.appendChild(lab);
+  var lab2=el("text",{x:x(99)-6,y:y(P(99))-8,"text-anchor":"end",style:"fill:var(--ink)"});lab2.textContent="39.4% by luck";svg.appendChild(lab2);
+  var cross=el("line",{x1:0,x2:0,y1:T,y2:H-B,stroke:"var(--muted)","stroke-width":1});svg.appendChild(cross);
+  var dot=el("circle",{r:5,fill:"var(--accent)",stroke:"var(--surface)","stroke-width":2});svg.appendChild(dot);
+  var slider=document.getElementById("pityN"), out=document.getElementById("pityNOut"), pP=document.getElementById("pityP"), txt=document.getElementById("pityTxt");
+  function upd(n){
+    n=Math.max(1,Math.min(maxN,Math.round(n)));
+    slider.value=n; out.textContent=n;
+    var p=P(n);
+    cross.setAttribute("x1",x(n));cross.setAttribute("x2",x(n));
+    dot.setAttribute("cx",x(n));dot.setAttribute("cy",y(p));
+    pP.textContent=(p*100).toFixed(1)+"%";
+    if(n<100){
+      txt.textContent="Chance of a natural Epic within "+n+" cards. Pity is "+(100-n)+" cards away. Expected natural Epics so far: "+(n*0.005).toFixed(2)+".";
+    }else{
+      txt.textContent="Pity has paid out. 60.6% of players who reach card 100 got no Epic by luck and are relying on the guaranteed one.";
+    }
+  }
+  slider.addEventListener("input",function(){upd(+slider.value)});
+  svg.addEventListener("pointermove",function(e){
+    var r=svg.getBoundingClientRect(); var sx=(e.clientX-r.left)/r.width*W;
+    upd((sx-L)/(W-L-R)*maxN);
+  });
+  upd(50);
+
+  /* ---------- section rail highlight ---------- */
+  var links=[].slice.call(document.querySelectorAll("#toc a"));
+  var map={}; links.forEach(function(a){map[a.getAttribute("href").slice(1)]=a});
+  if("IntersectionObserver" in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(en){ if(en.isIntersecting){ links.forEach(function(a){a.classList.remove("on")}); var a=map[en.target.id]; if(a)a.classList.add("on"); } });
+    },{rootMargin:"-20% 0px -70% 0px"});
+    document.querySelectorAll("main section[id]").forEach(function(s){io.observe(s)});
+  }
+})();
+</script>
+
+</body>
+</html>
