@@ -15,7 +15,9 @@ Both are computed with `../tools/sample.py`. Coordinates are in the source image
 | AS-PH-4 | App Store PH screenshot 4, "Play with strategy" (Tactical) | 1260×2736 | same, `[3]` |
 | AS-PH-6 | App Store PH screenshot 6, Match Preparation (full-bleed UI) | 1260×2736 | same, `[5]` |
 | AS-KR-7 | App Store KR iPhone screenshot 7, in-match SET PLAY | 1260×2736 | `country=kr`, `screenshotUrls[6]` |
-| NB-02 / 25 / 31 / 32 / 33 | Player blog captures: home hub, card back, Scout, The Edition pack result, Auction | 1080×1920 (33: 886×836) | `blog.naver.com/12512512/224449341627` |
+| AS-PH-7 | App Store PH screenshot 7, in-match gameplay with the SET PLAY countdown | 1260×2736 | same, `[6]` |
+| NB-02 / 25 / 27 / 31 / 32 / 33 | Player blog captures: home hub, card back, Condition info panel, Scout, The Edition pack result, Auction | 1080×1920 (27: 886×779, 33: 886×836) | `blog.naver.com/12512512/224449341627` |
+| DK-13 / 18 | Player blog captures of SET PLAY: defence action select, offence select with the auto pill | 1399×3000, 358×765 | `blog.naver.com/dekiruho123/224451027691` |
 | IN-z3 / z4 / z9 | iNews24 hands-on: live match, SET PLAY sequence, home hub | 780×880, 1160×478, 900×1170 | `m.inews24.com/v/2021080` |
 | SITE-card | Official site card art (Epic, Ultra Rare, Rare) | 377×497 | `imgc.gnjoy.com/games/nbarise/official/card/card-N.webp` |
 
@@ -138,6 +140,41 @@ Sources:
 | Shot clock digits · label | `#03EEFE`, halo `#0D6575`; label `#A5A7AD` | 1000,2260–1100,2340; 960,2355–1130,2380 |
 | Header board | ground `#2A2E32`; full-height stripes home `#168CFB`, away `#DF263D`; clock `#C5C9CC`; ID `#B8BCBF`; name `#ADB1B4` | AS-PH-6 stripe profile at x=4 (y 440–590); text regions |
 | Header divider · pill | divider `#1C1D1F`; pill `#1C1C1C`, text `#E9EDF1` | vertical profile at x=630 |
+
+## Set play, card back and hubs
+
+Sources:
+- **Countdown:** AS-PH-7. Ring centre ≈ (630, 1367); vertical scan at x=630 and horizontal scan at y=1367.
+- **Action select:** DK-13 (value chips and action discs), DK-18 (auto pill).
+- **Timing tap and result:** IN-z4. **Toast:** IN-z3.
+- **Card back:** NB-25, a Starter Epic K. Irving at 148 (+8), level 14/30.
+- **Condition info panel:** NB-27. Its five steps read 최상 +10, 상 +5, 중 no change, 하 −5, 최하 −10, applied to attack and defence. Condition then rises, holds or falls by a set chance at the end of each match, depending on the result.
+- **Home bar:** NB-02. **Scout tiles:** NB-31.
+
+| Part | Values | Sample |
+|---|---|---|
+| Countdown disc · inner ring | disc `#0D0D1C`; thin inner ring `#24272F` / `#22282D` | 600,1300–640,1320; scan y≈1264 and x≈732 |
+| Countdown track · arc · digit | track `#3C4146` (outer edge `#444A4E`); arc `#3BD738` / `#3FEE3A`; digit `#38FF35` | 700,1240–730,1255; 555,1225–600,1240; bright-green median in 580,1300–690,1450 |
+| Value chips | home `#015FC1`, away `#C22600` | DK-13 212,1530–232,1600 and 1028,1528–1046,1590 |
+| Action disc | face `#2E2F35` (clusters `#40434A` → `#34363B` → `#26262A`), rim `#373B41`, label `#D8E1E3` | DK-13 200,1900–240,1920; 150,1800–160,1840; 250,1860–330,1885 |
+| Auto pill | `#021027`, icon and text `#14A3B5` | DK-18 150,650–240,665 |
+| Tap ring · button | ring `#BB3C39`; button `#2E7824` / `#255F1E`, edge `#0F3C0D`, icon `#A9D7A7` | IN-z4 543,140–553,190; 560,140–600,175 |
+| Tap timer · label | timer ground `#171F24`, arc `#2E9B43`; label pill `#161E2C`, rim `#273040` | IN-z4 562,255–575,290; 560,213–600,230 |
+| Banner text | `#ECFEFD`, glow `#A7FDFD` | IN-z4 150,215–230,245 |
+| Success · bubble | success `#1CA5D8`, rim `#ACDDED`; bubble `#0C6AC8`, rim `#558FC5`, mic disc `#A4C7DE` | IN-z4 910,40–1020,75; 120,295–290,320 |
+| Toast | `#B80B0B`, rim `#DFBABA`; icon disc `#850D0D`, icon `#F2EAEA` | IN-z3 250,700–500,730; 120,700–150,725 |
+| Card-back frame · header | frame `#5C6063` → `#878E96` (horizontal profile at y=900, x 40–110); header `#333E52`, top `#28344A` | NB-25 930,320–960,345; vertical profile at x=540 |
+| Card-back cells | cell `#1D2532`, divider `#2E384A`; level bar `#2AC2E7` on `#0D1119` | 110,560–130,580; 384,520–388,560; 410,584–470,590; 520,584–580,590 |
+| Fatigue · condition | cell `#252629`; Recover `#0AA0DD`; fatigue bar `#16BEE7`; condition pill `#254229`, text `#00FF58` | 200,615–240,640; 110,760–130,780; 240,705–300,715; 840,725–900,745 |
+| Ability rings | offence `#D5AC2B`, defence `#16C988`, mental `#B1C1D4`, track `#363739`; boosted value `#00E3FF`, plain `#EBF0F4` | 244,925–256,935; 533,918–548,932; 821,918–836,932; 215,985–275,1035; 790,985–860,1035 |
+| Abilities ground · band | ground `#232527`; section band `#1C1E20` | 100,1010–140,1030; 180,855–220,870 |
+| Header details | magnifier `#F0F4FA` on `#444A54`; position pill `#191E26`; +8 chip `#173548`, text `#00E2FD` | 770,245–780,255; 420,330–440,350; 270,525–295,545 |
+| Skill medal | `#C7B427`, shade `#36300B` | 500,1300–520,1320 |
+| Condition panel | header `#2A2D32`; divider `#50575D` / `#4E555B`; body `#222629`; card `#2E3235` | NB-27 300,40–600,90; vertical profile at x=400; 40,170–700,173; 60,300–100,320 |
+| Condition panel text | chip `#2C3F3B`, text `#34BD8B`; description `#B3B5BE`; rows `#ECF0F4` | 108,228–118,236; bright-pixel medians in 110,225–225,280, 100,300–760,395 and 175,425–490,700 |
+| Home bar | rim `#2F3142`, then `#1D1F2C` falling to `#15161D`; hump rim `#3A3B4B`; icons and labels `#8B94A2` | NB-02 vertical profiles at x=150 (y 1660–1712) and x=330 (y 1662); 140,1870–180,1900; 85,1720–95,1740 |
+| Scout buttons | `#00AEEF`; price inset `#00729E`, gold bar `#D8A325` / `#F6E154` | NB-31 90,1200–110,1280; 200,1225–300,1258 |
+| Scout pity · tooltip | pity chip `#231430`; track `#4B535A`; Free bar `#768478`; tooltip `#EBF0F4`, text `#2C3034` | 890,1090–905,1115; 100,1148–300,1156; 900,640–980,700; 600,585–620,600 |
 
 ## Absent-colour search
 

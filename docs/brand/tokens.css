@@ -54,6 +54,25 @@
   --rw-sbg-id:#F6F8FA; --rw-sbg-city:#9EA3AA; --rw-sbg-team:#EDF0F2; --rw-disc-you:#061C5A; --rw-disc-away:#F3F3F2;
   --rw-sclk-core:#103E4E; --rw-sclk-mid:#0E2832; --rw-sclk-edge:#0D1519; --rw-sclk-rim:#19202A; --rw-sclk-digit:#03EEFE; --rw-sclk-halo:#0D6575; --rw-sclk-label:#A5A7AD;
   --rw-board-home:#168CFB; --rw-board-away:#DF263D; --rw-board-clock:#C5C9CC; --rw-board-id:#B8BCBF; --rw-board-name:#ADB1B4; --rw-board-divider:#1C1D1F; --rw-board-pill:#1C1C1C; --rw-board-pill-ink:#E9EDF1;
+  /* set play */
+  --rw-cd-disc:#0D0D1C; --rw-cd-inner:#23262F; --rw-cd-track:#3C4146; --rw-cd-arc:#3BD738; --rw-cd-digit:#38FF35;
+  --rw-vchip-home:#015FC1; --rw-vchip-away:#C22600; --rw-act-face:#2E2F35; --rw-act-rim:#373B41; --rw-act-hi:#5C5D62; --rw-act-outer:#192030; --rw-act-label:#D8E1E3;
+  --rw-auto:#021027; --rw-auto-icon:#14A3B5; --rw-tap-ring:#BB3C39; --rw-tap:#2E7824; --rw-tap-lo:#255F1E; --rw-tap-icon:#A9D7A7; --rw-tap-timer:#2E9B43;
+  --rw-success:#1CA5D8; --rw-bubble:#0C6AC8; --rw-bubble-rim:#558FC5; --rw-bang:#ECFEFD; --rw-bang-glow:#A7FDFD; --rw-toast:#B80B0B; --rw-toast-icon:#850D0D;
+  /* card back */
+  --rw-cb-frame:#5C6063; --rw-cb-frame-hi:#878E96; --rw-cb-head:#28344A; --rw-cb-head-hi:#333E52; --rw-cb-cell:#1D2532; --rw-cb-divider:#2E384A;
+  --rw-cb-level:#2AC2E7; --rw-cb-level-track:#0D1119; --rw-cb-fat-cell:#252629; --rw-cb-recover:#0AA0DD; --rw-cb-fatigue:#16BEE7; --rw-cb-fatigue-track:#3F474A;
+  --rw-cb-cond:#254229; --rw-cb-cond-ink:#00FF58; --rw-cb-ring-off:#D5AC2B; --rw-cb-ring-def:#16C988; --rw-cb-ring-mental:#B1C1D4; --rw-cb-ring-track:#363739;
+  --rw-cb-boost:#00E3FF; --rw-cb-plain:#EBF0F4; --rw-cb-band:#1C1E20; --rw-cb-abil:#232527; --rw-cb-pill:#191E26; --rw-cb-plus:#173548; --rw-cb-plus-ink:#00E2FD;
+  --rw-cb-skill:#C7B427; --rw-cb-skill-lo:#36300B;
+  /* condition info panel */
+  --rw-cp-head:#2A2D32; --rw-cp-divider:#4E555B; --rw-cp-body:#222629; --rw-cp-card:#2E3235; --rw-cp-chip:#2C3F3B; --rw-cp-chip-ink:#34BD8B;
+  --rw-cp-desc:#B3B5BE; --rw-cp-row:#ECF0F4; --rw-cond-outline:#101B14;
+  /* home bar */
+  --rw-home-bar:#1D1F2C; --rw-home-bar-lo:#15161D; --rw-home-rim:#2F3142; --rw-home-hump:#3A3B4B; --rw-home-icon:#8B94A2;
+  /* scout */
+  --rw-scout-price:#00729E; --rw-gold-bar:#D8A325; --rw-gold-bar-hi:#F6E154; --rw-pity-chip:#231430; --rw-pity-track:#4B535A; --rw-free-bar:#768478;
+  --rw-tip:#EBF0F4; --rw-tip-ink:#2C3034;
   --rw-r-legend:unset; --rw-r-elite:unset; --rw-r-prime:unset; --rw-r-iconic:unset; --rw-r-goat:unset; /* measure on release */
   /* ours — the clipboard */
   --rw-board:#F5F5F1; --rw-board-ghost:#ECEBE5; --rw-print:#C8CCD0; --rw-marker:#121314; --rw-clip:#1B1C1E;
