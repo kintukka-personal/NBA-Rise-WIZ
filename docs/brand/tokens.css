@@ -37,6 +37,13 @@
   --rw-r-r:#6E8FA9; --rw-r-r-hi:#88B9CC; --rw-r-r-badge:#2B89CC;
   --rw-r-ur:#C1A863; --rw-r-ur-hi:#DECB98; --rw-r-ur-lo:#B79F53; --rw-r-ur-in:#473508;
   --rw-r-ep:#9F27C6; --rw-r-ep-hi:#B934E6; --rw-r-ep-pk:#FEE2FD; --rw-r-ep-neon:#4AE3F8; --rw-r-ep-in:#3B075B;
+  /* rarity cards: frame by rarity, field by edition */
+  --rw-ep-frame-hi:#F6D9FF; --rw-ep-frame-lo:#571E82; --rw-ep-ovr-ring:#52E2F7; --rw-ep-ovr-halo:#723B94;
+  --rw-ep-badge-gem:#1AF9FA; --rw-ur-badge-ink:#F7C3BE; --rw-ur-wing:#F5DB7C; --rw-ur-wing-lo:#A7783E; --rw-ovr-rim:#E1D5B3;
+  --rw-field-starter:#D7D6E6; --rw-field-starter-lo:#C2C1D6; --rw-field-starter-ring:#E1DFED; --rw-plate-starter:#232B3B; --rw-plate-starter-rim:#9FAAB4;
+  --rw-field-season:#21252A; --rw-field-season-ring:#373E47;
+  --rw-field-core-hi:#710384; --rw-field-core-mid:#231660; --rw-field-core-lo:#1B043B; --rw-field-core-shard:#CEC8EC; --rw-field-core-beam:#8ACAD7;
+  --rw-ed-starter:#B9EBFF; --rw-ed-starter-outline:#393C4D; --rw-ed-season:#FEFBDC; --rw-ed-core:#82E3FC; --rw-ed-core-glow:#A130CA;
   --rw-r-legend:unset; --rw-r-elite:unset; --rw-r-prime:unset; --rw-r-iconic:unset; --rw-r-goat:unset; /* measure on release */
   /* ours — the clipboard */
   --rw-board:#F5F5F1; --rw-board-ghost:#ECEBE5; --rw-print:#C8CCD0; --rw-marker:#121314; --rw-clip:#1B1C1E;

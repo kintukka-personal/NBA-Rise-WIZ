@@ -331,24 +331,92 @@ th { font-weight: 700; font-size: 11.5px; letter-spacing: .1em; text-transform: 
 .pcard--bench .pcard__foot div { background: #24282C; }
 .grade { display: grid !important; place-items: center; font-size: 22px; color: #CBA171 !important; font-style: italic; }
 
-/* collection card — the grid style, with metal frames by rarity */
-.ccard { width: 128px; border-radius: 10px; padding: 5px; position: relative; flex: 0 0 auto; }
-.ccard__in { background: #1E2125; border-radius: 6px; height: 122px; position: relative; overflow: hidden; }
-.ccard__in svg.sil { position: absolute; right: 4px; bottom: 0; width: 70px; height: 80px; color: #2C3035; }
-.ccard__ovr { position: absolute; left: 5px; top: 5px; background: #202125; border: 2px solid #D9CDA3; border-radius: 8px; padding: 0 6px; font-weight: 800; font-size: 17px; color: #FFFFFF; }
-.ccard__name { background: #1E1F21; border-radius: 0 0 6px 6px; text-align: center; font-weight: 700; font-size: 12.5px; padding: 5px 2px 4px; margin-top: 3px; }
-.ccard .rarity { width: 24px; height: 24px; right: 9px; top: 12px; } .ccard .rarity span { font-size: 9px; }
-.ccard--c  { background: linear-gradient(180deg, var(--r-c-hi), var(--r-c) 30%, #4C5056); }
-.ccard--uc { background: linear-gradient(180deg, #A9D49A, var(--r-uc) 30%, #4E7A45); }
-.ccard--r  { background: linear-gradient(180deg, var(--r-r-hi), var(--r-r) 30%, #4C6A83); }
-.ccard--ur { background: linear-gradient(180deg, var(--r-ur-hi), var(--r-ur) 30%, var(--r-ur-lo) 70%, #E4CF79); box-shadow: inset 0 0 0 1px var(--r-ur-in); }
-.ccard--ep { background: linear-gradient(180deg, var(--r-ep-pk), var(--r-ep-hi) 18%, #A34ACA 50%, var(--r-ep) 80%); }
-.ccard--ep .ccard__in { box-shadow: inset 0 0 0 2px var(--r-ep-neon); background: #1D2028; }
-.ccard--ep .ccard__ovr { background: #B145CB; border-color: #C8F4FD; }
-.ccard--ep .ccard__name { background: #1D2028; }
-.edition { position: absolute; right: 5px; bottom: 5px; font-weight: 800; font-style: italic; font-size: 10px; letter-spacing: .02em; }
-.edition--core { color: #8FD0F7; text-shadow: 0 0 6px #9C27C2; }
-.edition--season { color: #FEFCE3; }
+/* ============ RARITY CARDS — rarity sets the frame, edition sets the field ============ */
+.rcards { width: 100%; display: flex; flex-wrap: wrap; gap: 34px 26px; align-items: flex-end; justify-content: center; perspective: 1100px; padding: 8px 4px 6px; }
+.rcards--ladder { display: grid; grid-template-columns: repeat(3, var(--cw, 220px)); justify-content: center; }
+.rcards--ladder .rc { --w: var(--cw, 220px); }
+.rc { --w: 200px; width: var(--w); flex: 0 0 auto; position: relative; transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); transition: transform .45s cubic-bezier(.2,.7,.2,1); transform-style: preserve-3d; }
+.rc.is-live { transition: transform .08s linear; }
+.rc__frame { position: relative; border-radius: 16px; padding: var(--fp, 5px); background: var(--metal); box-shadow: var(--cast, 0 8px 18px rgba(0,0,0,.5)); isolation: isolate; }
+.rc__field { position: relative; height: var(--w); border-radius: 11px 11px 3px 3px; overflow: hidden; background: var(--field, #1C1E21); box-shadow: inset 0 0 0 var(--pin-w, 1px) var(--pin, rgba(0,0,0,.45)); }
+.rc__art { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.rc__art .bust { filter: drop-shadow(0 0 7px var(--rim-glow, transparent)); }
+.rc__art .shards { filter: blur(1.2px); }
+.rc__ovr { position: absolute; left: 7px; top: 7px; z-index: 3; min-width: 56px; height: 40px; padding: 0 8px; border-radius: 12px; background: #202125; border: 2px solid var(--ovr-rim, #E1D5B3); display: grid; place-items: center; font-weight: 800; font-size: 24px; letter-spacing: -.01em; color: #FFFFFF; font-variant-numeric: tabular-nums; box-shadow: 0 2px 6px rgba(0,0,0,.45); }
+.rc__pos { position: absolute; left: 8px; top: 54px; z-index: 3; background: #1F2126; color: #FFFFFF; font-weight: 800; font-size: 12px; border-radius: 6px; padding: 1px 9px; box-shadow: 0 1px 3px rgba(0,0,0,.4); }
+.rc__pos small { color: #9CA0A5; font-size: 10px; font-weight: 700; }
+.rc__team { position: absolute; left: 8px; top: 78px; z-index: 3; font-weight: 800; font-size: 10px; letter-spacing: .08em; color: #C9CDCF; background: rgba(31,33,38,.88); border-radius: 5px; padding: 1px 6px; }
+.rc__badge { position: absolute; right: 4px; top: 4px; z-index: 3; width: 54px; height: 54px; overflow: visible; }
+.rc--ur .rc__badge { width: 58px; height: 58px; }
+.rc--ep .rc__badge { width: 64px; height: 64px; right: 2px; top: 2px; }
+.rc__lv { position: absolute; left: 0; bottom: 0; z-index: 3; font-weight: 800; font-size: 12.5px; color: #FFFFFF; padding: 4px 16px 3px 9px; background: linear-gradient(90deg, rgba(8,8,10,.92) 55%, rgba(8,8,10,0)); border-top-right-radius: 9px; }
+.rc__ed { position: absolute; right: 7px; bottom: 4px; z-index: 3; font-weight: 800; font-style: italic; font-size: 13px; letter-spacing: .01em; white-space: nowrap; }
+.rc__ed--season { color: #FEFBDC; text-shadow: 0 0 1px #26160D, 0 1px 2px #26160D, 0 0 4px rgba(0,0,0,.8); }
+.rc__ed--core { color: #82E3FC; text-shadow: 0 0 1px #4E1A89, 0 0 2px #4E1A89, 0 0 8px #A130CA, 0 0 16px rgba(161,48,202,.85); }
+.rc__ed--starter { color: #B9EBFF; font-style: normal; text-shadow: 0 0 1px #393C4D, 1px 1px 0 #393C4D, -1px -1px 0 #393C4D, 1px -1px 0 #393C4D, -1px 1px 0 #393C4D, 0 0 4px #393C4D; }
+.rc__plate { position: relative; margin-top: 4px; border-radius: 3px 3px 11px 11px; background: var(--plate, #1E1F21); text-align: center; padding: 5px 6px 7px; box-shadow: inset 0 0 0 1px var(--plate-rim, rgba(255,255,255,.06)); }
+.rc__plate small { display: block; font-weight: 600; font-size: 11.5px; color: #C9CDCF; line-height: 1.25; }
+.rc__plate b { display: block; font-weight: 800; font-size: 19px; line-height: 1.1; text-transform: uppercase; color: #FFFFFF; letter-spacing: .01em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.rc__sheen { position: absolute; inset: 0; z-index: 7; border-radius: inherit; pointer-events: none; opacity: var(--sheen, 0); background: radial-gradient(farthest-corner circle at var(--mx, 28%) var(--my, 12%), rgba(255,255,255,.55), rgba(255,255,255,0) 44%); mix-blend-mode: soft-light; transition: opacity .3s; }
+.rc:hover .rc__sheen { opacity: calc(var(--sheen, 0) + .3); }
+.rc__tag { margin-top: 12px; text-align: center; font-weight: 700; font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-4); }
+.rc__tag b { color: var(--ink-1); font-weight: 800; }
+
+/* Common — matte graphite. No light, no pattern, no sheen. */
+.rc--c { --metal: linear-gradient(165deg, #8A9097, #71767D 38%, #5E6268 72%, #4C5056); --fp: 4px; --ovr-rim: #B8B19C; --field: #1B1D20;
+  --bust: #33373C; --jersey: #3B4046; --trim: #4A5057; --num: #5A6168; --rim: transparent; --ring: rgba(255,255,255,.025); }
+/* Uncommon — mint steel, a pinline appears */
+.rc--uc { --metal: linear-gradient(165deg, #C2E6B4, #81B76C 30%, #5F9150 64%, #3E6334); --fp: 5px; --pin: rgba(169,212,154,.55);
+  --field: radial-gradient(130% 90% at 75% 0%, #262B2C, #1A1D1F 70%);
+  --bust: #2F3437; --jersey: #3C5A39; --trim: #81B76C; --num: #C2E6B4; --rim: rgba(169,212,154,.45); --ring: rgba(169,212,154,.05); }
+/* Rare — brushed, anodised steel-blue; first rim light, first sheen */
+.rc--r { --metal: repeating-linear-gradient(90deg, rgba(255,255,255,.07) 0 1px, rgba(255,255,255,0) 1px 3px), linear-gradient(165deg, #C9E3EE, #88B9CC 20%, #7191AD 52%, #59778F 80%, #7B99AF);
+  --fp: 6px; --pin: rgba(136,185,204,.65); --field: radial-gradient(120% 80% at 70% 0%, #1B1F27, #111116 70%);
+  --bust: #2A313A; --jersey: #2E5674; --trim: #88B9CC; --num: #E2F1F7; --rim: rgba(136,185,204,.75); --rim-glow: rgba(136,185,204,.25); --ring: rgba(136,185,204,.07);
+  --sheen: .12; --cast: 0 10px 22px rgba(0,0,0,.55), 0 0 0 1px rgba(136,185,204,.25); }
+/* Ultra Rare — black frame, champagne-gold bevel, season watermark, gold foil */
+.rc--ur { --fp: 6px; --ovr-rim: #F9F4CE; --field: radial-gradient(120% 90% at 70% 5%, #2A2F34, #1C1F23 60%, #17191C);
+  --bust: #2C2F33; --jersey: #141517; --trim: #C1A863; --num: #E4CF79; --rim: rgba(228,207,121,.8); --rim-glow: rgba(228,207,121,.3); --ring: rgba(255,255,255,.06);
+  --sheen: .18; --plate-rim: rgba(193,168,99,.45);
+  --cast: 0 12px 26px rgba(0,0,0,.6), 0 0 18px rgba(228,207,121,.18); }
+.rc--ur .rc__frame { border: 2.5px solid transparent;
+  background: linear-gradient(#0B0B0C, #0B0B0C) padding-box,
+              linear-gradient(150deg, #FFF3C4, #E4CF79 14%, #C1A863 30%, #7E5F22 47%, #DECB98 62%, #B79F53 80%, #F5DB7C) border-box; }
+.rc--ur .rc__field { box-shadow: inset 0 0 0 1.5px #C1A863, inset 0 0 0 3px rgba(71,53,8,.8); }
+/* Epic — holographic violet, cyan neon pinline, light-shard field */
+.rc--ep { --fp: 8px; --metal: linear-gradient(150deg, #F6D9FF 0%, #D292F5 13%, #BA68D9 28%, #A34ACA 46%, #9F27C6 60%, #6B1E95 82%, #571E82 100%);
+  --field: radial-gradient(110% 80% at 88% 0%, #9A12BD 0%, #710384 26%, rgba(113,3,132,0) 62%), linear-gradient(205deg, #5A0F86 0%, #2B1468 46%, #1B043B 100%);
+  --plate: #1E2129; --plate-rim: rgba(74,227,248,.3);
+  --bust: #2A0A45; --jersey: #5B1F8C; --trim: #4AE3F8; --num: #FEE2FD; --rim: #4AE3F8; --rim-glow: rgba(74,227,248,.65); --ring: rgba(165,232,251,.12);
+  --sheen: .3; --cast: 0 0 0 1px rgba(254,226,253,.45), 0 0 26px rgba(186,104,217,.6), 0 16px 34px rgba(25,0,45,.7); }
+.rc--ep .rc__field { box-shadow: inset 0 0 0 2px #4AE3F8, inset 0 0 16px rgba(74,227,248,.55); }
+.rc--ep .rc__ovr { width: 58px; height: 58px; min-width: 0; padding: 0; border-radius: 50%; background: radial-gradient(circle at 50% 32%, #2A2F3B, #12151C 72%); border: 3px solid #52E2F7; font-size: 23px;
+  box-shadow: 0 0 0 3px #723B94, 0 0 18px rgba(82,226,247,.75), inset 0 -6px 10px rgba(0,0,0,.5); }
+.rc--ep .rc__pos { top: 72px; } .rc--ep .rc__team { top: 96px; }
+.rc--ep .rc__badge { filter: drop-shadow(0 0 6px rgba(26,249,250,.55)) drop-shadow(0 0 10px rgba(186,104,217,.5)); }
+.rc--ep .rc__plate::before { content: ""; position: absolute; left: 16px; right: 16px; top: 0; height: 2px; background: linear-gradient(90deg, rgba(74,227,248,0), #4AE3F8, rgba(74,227,248,0)); }
+.rc--ep .rc__frame::after { content: ""; position: absolute; left: 6%; right: 6%; bottom: -22px; height: 22px; background: radial-gradient(closest-side, rgba(186,104,217,.7), rgba(186,104,217,0)); filter: blur(5px); z-index: -1; pointer-events: none; }
+/* Starter field — pale ice, rings, STARTER watermark */
+.rc--starter { --field: radial-gradient(120% 90% at 70% 0%, #E3E2EF, #CFCEE0 55%, #BDBCD2); --bust: #9796B0; --jersey: #8C6FBD; --trim: #F6FBFF; --num: #FFFFFF; --ring: rgba(255,255,255,.55);
+  --plate: #232B3B; --plate-rim: rgba(159,170,180,.7); }
+.rc--starter .rc__lv { color: #FFFFFF; }
+/* the holo and foil sweeps */
+.rc--ep .rc__frame::before, .rc--ur .rc__frame::before { content: ""; position: absolute; inset: 0; border-radius: inherit; z-index: 6; pointer-events: none; background-size: 320% 100%; }
+.rc--ep .rc__frame::before { background-image: linear-gradient(112deg, rgba(255,255,255,0) 32%, rgba(165,232,251,.6) 43%, rgba(254,226,253,.7) 49%, rgba(186,104,217,.4) 55%, rgba(255,255,255,0) 66%); mix-blend-mode: overlay; animation: rc-sweep 5.2s ease-in-out infinite; }
+.rc--ur .rc__frame::before { background-image: linear-gradient(112deg, rgba(255,255,255,0) 38%, rgba(255,243,196,.55) 48%, rgba(255,255,255,0) 58%); mix-blend-mode: soft-light; animation: rc-sweep 8s ease-in-out infinite 1.5s; }
+@keyframes rc-sweep { 0%, 18% { background-position: 108% 0; } 62%, 100% { background-position: -8% 0; } }
+/* Legend — reserved, not yet measured */
+.rc--lg .rc__frame { background: transparent; border: 2px dashed #4E535A; padding: 4px; box-shadow: none; }
+.rc--lg .rc__field { background: repeating-linear-gradient(135deg, #1D1F23 0 10px, #1A1C1F 10px 20px); display: grid; place-items: center; text-align: center; }
+.rc--lg .rc__field span { font-weight: 800; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: #6C7278; line-height: 1.5; }
+.rc--lg .rc__plate { background: transparent; box-shadow: none; color: #6C7278; }
+.rc--lg .rc__plate b { color: #6C7278; }
+@media (prefers-reduced-motion: reduce) {
+  .rc { transition: none; }
+  .rc--ep .rc__frame::before, .rc--ur .rc__frame::before { animation: none; background-position: 50% 0; opacity: .5; }
+}
+@media (max-width: 860px) { .rcards--ladder { grid-template-columns: repeat(2, var(--cw)); --cw: 190px; } }
+@media (max-width: 480px) { .rcards { gap: 28px 12px; } .rc, .rcards--ladder { --w: 160px; --cw: 160px; } .rc__plate b { font-size: 16px; } .rc__ovr { font-size: 20px; min-width: 48px; height: 34px; } .rc--ep .rc__ovr { width: 50px; height: 50px; } .rc__ed { font-size: 11px; } }
 
 /* performance comparison */
 .perf { display: grid; grid-template-columns: 34px minmax(0, 1fr) 34px; gap: 9px 10px; align-items: center; width: 100%; max-width: 640px; }
@@ -485,6 +553,36 @@ footer.end { color: var(--ink-4); font-size: 13.5px; padding-block: 30px 60px; }
       <circle cx="21" cy="27" r="5.4" fill="#F5F5F1" stroke="#121314" stroke-width="3"/>
       <circle cx="79" cy="25" r="6.2" fill="#121314"/>
     </symbol>
+    <!-- rarity card art -->
+    <linearGradient id="g-gold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFF3C4"/><stop offset=".3" stop-color="#E4CF79"/><stop offset=".55" stop-color="#A7783E"/><stop offset=".8" stop-color="#F5DB7C"/><stop offset="1" stop-color="#B79F53"/></linearGradient>
+    <linearGradient id="g-urtxt" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFBFA"/><stop offset=".55" stop-color="#F7C3BE"/><stop offset="1" stop-color="#E4705A"/></linearGradient>
+    <linearGradient id="g-r" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7CC3F2"/><stop offset=".5" stop-color="#2B89CC"/><stop offset="1" stop-color="#175A8E"/></linearGradient>
+    <linearGradient id="g-uc" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4F8A45"/><stop offset="1" stop-color="#244020"/></linearGradient>
+    <linearGradient id="g-ep" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C77DF0"/><stop offset=".45" stop-color="#9F27C6"/><stop offset="1" stop-color="#40015A"/></linearGradient>
+    <linearGradient id="g-epwing" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#FEE2FD"/><stop offset="1" stop-color="#8C6FBD"/></linearGradient>
+    <linearGradient id="g-cy" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E9FFFF"/><stop offset=".45" stop-color="#1AF9FA"/><stop offset="1" stop-color="#0E7FA8"/></linearGradient>
+    <pattern id="wm-season" width="118" height="40" patternUnits="userSpaceOnUse" patternTransform="rotate(-24)"><text x="2" y="26" font-family="Open Sans, sans-serif" font-weight="800" font-style="italic" font-size="15" fill="#FFFFFF" fill-opacity=".05">25-26 Season</text></pattern>
+    <pattern id="wm-starter" width="96" height="38" patternUnits="userSpaceOnUse" patternTransform="rotate(-24)"><text x="2" y="25" font-family="Open Sans, sans-serif" font-weight="800" font-style="italic" font-size="15" fill="#6E6D88" fill-opacity=".14">STARTER</text></pattern>
+    <symbol id="rings" viewBox="0 0 200 200"><g fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="128" cy="70" r="24"/><circle cx="128" cy="70" r="42"/><circle cx="128" cy="70" r="60"/><circle cx="128" cy="70" r="78"/><circle cx="128" cy="70" r="96"/><circle cx="128" cy="70" r="114"/><circle cx="128" cy="70" r="132"/></g></symbol>
+    <symbol id="shards" viewBox="0 0 200 200">
+      <polygon points="-10,46 74,-10 112,-10 6,98" fill="#CEC8EC" opacity=".2"/>
+      <polygon points="-10,104 128,-10 146,-10 -10,134" fill="#8ACAD7" opacity=".38"/>
+      <polygon points="-10,152 64,92 74,104 -10,174" fill="#A5E8FB" opacity=".3"/>
+      <polygon points="30,200 186,28 200,38 62,200" fill="#FEE2FD" opacity=".1"/>
+      <polygon points="122,200 210,104 210,138 156,200" fill="#BA68D9" opacity=".4"/>
+      <polygon points="150,-10 210,-10 210,30" fill="#FEE2FD" opacity=".18"/>
+    </symbol>
+    <symbol id="bust" viewBox="0 0 150 162">
+      <path d="M6 162 C8 120 30 98 56 90 L62 86 C66 97 84 97 88 86 L94 90 C120 98 142 120 144 162 Z" style="fill:var(--bust);stroke:var(--rim);stroke-width:2.4"/>
+      <rect x="63" y="64" width="24" height="28" rx="8" style="fill:var(--bust)"/>
+      <circle cx="75" cy="48" r="24" style="fill:var(--bust);stroke:var(--rim);stroke-width:2.4"/>
+      <path d="M40 166 L40 116 C47 109 53 100 57 91 C64 104 86 104 93 91 C97 100 103 109 110 116 L110 166 Z" style="fill:var(--jersey);stroke:var(--trim);stroke-width:3.2;stroke-linejoin:round"/>
+    </symbol>
+    <symbol id="b-c" viewBox="0 0 60 60"><rect x="15" y="15" width="30" height="30" rx="4" transform="rotate(45 30 30)" fill="#2A2F31" stroke="#9AA0A6" stroke-width="2.5"/><text x="30" y="35.5" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-size="15" fill="#FFFFFF">C</text></symbol>
+    <symbol id="b-uc" viewBox="0 0 60 60"><rect x="14" y="14" width="32" height="32" rx="4" transform="rotate(45 30 30)" fill="url(#g-uc)" stroke="#A9D49A" stroke-width="2.5"/><text x="30" y="34.5" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-size="12.5" fill="#E8F6E2">UC</text></symbol>
+    <symbol id="b-r" viewBox="0 0 60 60"><rect x="13" y="13" width="34" height="34" rx="4" transform="rotate(45 30 30)" fill="url(#g-r)" stroke="#DEECF3" stroke-width="2.8"/><rect x="19" y="19" width="22" height="22" rx="2" transform="rotate(45 30 30)" fill="none" stroke="#C5DBE9" stroke-opacity=".45" stroke-width="1.2"/><text x="30" y="36" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-size="17" fill="#FFFFFF" stroke="#0E3A5E" stroke-width="1.2" paint-order="stroke">R</text></symbol>
+    <symbol id="b-ur" viewBox="0 0 60 60"><polygon points="14,40 30,49 46,40 46,46 30,57 14,46" fill="url(#g-gold)"/><polygon points="30,5 45,13.5 45,30.5 30,39 15,30.5 15,13.5" fill="#160A0A" stroke="url(#g-gold)" stroke-width="2.6"/><text x="30" y="27.5" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-size="14" fill="url(#g-urtxt)" stroke="#3A0A0A" stroke-width="1" paint-order="stroke">UR</text></symbol>
+    <symbol id="b-ep" viewBox="0 0 60 60"><polygon points="2,16 15,12 15,32 7,28" fill="url(#g-epwing)" opacity=".95"/><polygon points="58,16 45,12 45,32 53,28" fill="url(#g-epwing)" opacity=".95"/><polygon points="30,0.5 35,7 25,7" fill="#F6FBFF"/><polygon points="30,7 45,15.5 45,32.5 30,41 15,32.5 15,15.5" fill="url(#g-ep)" stroke="#F6FBFF" stroke-width="2"/><polygon points="30,38 37,46 30,59 23,46" fill="url(#g-cy)" stroke="#E9FFFF" stroke-width=".8"/><text x="30" y="28" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-size="10.5" letter-spacing=".3" fill="#F6FBFF" stroke="#652A7B" stroke-width="1.8" paint-order="stroke">EPIC</text></symbol>
   </defs>
 </svg>
 
@@ -915,27 +1013,182 @@ footer.end { color: var(--ink-4); font-size: 13.5px; padding-block: 30px 60px; }
     <section id="rarities">
       <div class="sec-head"><div class="wrap"><div class="sec-head__inner"><h2>Rarities</h2><p>Six metals, measured off card frames</p></div></div></div>
       <div class="wrap sec-body">
-        <div class="stage" style="gap:14px">
-          <div class="ccard ccard--c"><div class="ccard__in"><svg class="sil"><use href="#sil"/></svg><span class="ccard__ovr">60</span><span class="rarity rarity--c"><span>C</span></span></div><div class="ccard__name">T. Watford</div></div>
-          <div class="ccard ccard--uc"><div class="ccard__in"><svg class="sil"><use href="#sil"/></svg><span class="ccard__ovr">77</span><span class="rarity rarity--uc"><span>UC</span></span></div><div class="ccard__name">D. Melton</div></div>
-          <div class="ccard ccard--r"><div class="ccard__in"><svg class="sil"><use href="#sil"/></svg><span class="ccard__ovr">117</span><span class="rarity rarity--r"><span>R</span></span></div><div class="ccard__name">R. Gobert</div></div>
-          <div class="ccard ccard--ur"><div class="ccard__in"><svg class="sil"><use href="#sil"/></svg><span class="ccard__ovr">145</span><span class="rarity rarity--ur"><span>UR</span></span><span class="edition edition--season">25-26 SEASON</span></div><div class="ccard__name">D. Fox</div></div>
-          <div class="ccard ccard--ep"><div class="ccard__in"><svg class="sil"><use href="#sil"/></svg><span class="ccard__ovr">236</span><span class="rarity rarity--ep"><span>EP</span></span><span class="edition edition--core">THE Core</span></div><div class="ccard__name">S. Curry</div></div>
+        <p class="lede">Rarity is the first thing a player reads, before the number. Each step up the ladder adds one more material: a pinline at Uncommon, brushed metal and rim light at Rare, a gold bevel and foil at Ultra Rare, and holo, neon and light shards at Epic. Move over a card to tilt it.</p>
+        <div class="stage dark" style="padding:28px 22px 26px">
+          <div class="rcards rcards--ladder">
+          <div class="rc rc--c" data-tilt>
+            <div class="rc__frame">
+              <div class="rc__field">
+                <svg class="rc__art" viewBox="0 0 200 200" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+                  <use href="#rings" width="200" height="200" style="color:var(--ring)"/>
+                  <g class="bust"><use href="#bust" x="25" y="38" width="150" height="162"/></g>
+                  <text x="100" y="172" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-size="28" style="fill:var(--num)">12</text>
+                </svg>
+                <span class="rc__ovr">60</span><span class="rc__pos">PF<small>/SF</small></span><span class="rc__team">PHI</span>
+                <svg class="rc__badge" viewBox="0 0 60 60" aria-hidden="true"><use href="#b-c"/></svg>
+                <span class="rc__lv">Lv.1</span>
+              </div>
+              <div class="rc__plate"><small>Trendon</small><b>Watford</b></div>
+              <i class="rc__sheen"></i>
+            </div>
+            <div class="rc__tag"><b>Common</b> · 50%</div>
+          </div>
+          <div class="rc rc--uc" data-tilt>
+            <div class="rc__frame">
+              <div class="rc__field">
+                <svg class="rc__art" viewBox="0 0 200 200" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+                  <use href="#rings" width="200" height="200" style="color:var(--ring)"/>
+                  <g class="bust"><use href="#bust" x="25" y="38" width="150" height="162"/></g>
+                  <text x="100" y="172" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-size="28" style="fill:var(--num)">8</text>
+                </svg>
+                <span class="rc__ovr">77</span><span class="rc__pos">SG<small>/PG</small></span><span class="rc__team">GSW</span>
+                <svg class="rc__badge" viewBox="0 0 60 60" aria-hidden="true"><use href="#b-uc"/></svg>
+                <span class="rc__lv">Lv.1</span>
+              </div>
+              <div class="rc__plate"><small>De'Anthony</small><b>Melton</b></div>
+              <i class="rc__sheen"></i>
+            </div>
+            <div class="rc__tag"><b>Uncommon</b> · 27%</div>
+          </div>
+          <div class="rc rc--r" data-tilt>
+            <div class="rc__frame">
+              <div class="rc__field">
+                <svg class="rc__art" viewBox="0 0 200 200" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+                  <use href="#rings" width="200" height="200" style="color:var(--ring)"/><rect width="200" height="200" fill="url(#wm-season)"/>
+                  <g class="bust"><use href="#bust" x="25" y="38" width="150" height="162"/></g>
+                  <text x="100" y="172" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-size="28" style="fill:var(--num)">27</text>
+                </svg>
+                <span class="rc__ovr">117</span><span class="rc__pos">C</span><span class="rc__team">MIN</span>
+                <svg class="rc__badge" viewBox="0 0 60 60" aria-hidden="true"><use href="#b-r"/></svg>
+                <span class="rc__lv">Lv.1</span><span class="rc__ed rc__ed--season">25-26 SEASON</span>
+              </div>
+              <div class="rc__plate"><small>Rudy</small><b>Gobert</b></div>
+              <i class="rc__sheen"></i>
+            </div>
+            <div class="rc__tag"><b>Rare</b> · 15%</div>
+          </div>
+          <div class="rc rc--ur" data-tilt>
+            <div class="rc__frame">
+              <div class="rc__field">
+                <svg class="rc__art" viewBox="0 0 200 200" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+                  <use href="#rings" width="200" height="200" style="color:var(--ring)"/><rect width="200" height="200" fill="url(#wm-season)"/>
+                  <g class="bust"><use href="#bust" x="25" y="38" width="150" height="162"/></g>
+                  <text x="100" y="172" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-size="28" style="fill:var(--num)">4</text>
+                </svg>
+                <span class="rc__ovr">145</span><span class="rc__pos">PG</span><span class="rc__team">SAS</span>
+                <svg class="rc__badge" viewBox="0 0 60 60" aria-hidden="true"><use href="#b-ur"/></svg>
+                <span class="rc__lv">Lv.1</span><span class="rc__ed rc__ed--season">25-26 SEASON</span>
+              </div>
+              <div class="rc__plate"><small>De'Aaron</small><b>Fox</b></div>
+              <i class="rc__sheen"></i>
+            </div>
+            <div class="rc__tag"><b>Ultra Rare</b> · 7.5%</div>
+          </div>
+          <div class="rc rc--ep" data-tilt>
+            <div class="rc__frame">
+              <div class="rc__field">
+                <svg class="rc__art" viewBox="0 0 200 200" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+                  <g class="shards"><use href="#shards" width="200" height="200"/></g><use href="#rings" width="200" height="200" style="color:var(--ring)"/>
+                  <g class="bust"><use href="#bust" x="25" y="38" width="150" height="162"/></g>
+                  <text x="100" y="172" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-size="28" style="fill:var(--num)">30</text>
+                </svg>
+                <span class="rc__ovr">236</span><span class="rc__pos">PG</span><span class="rc__team">GSW</span>
+                <svg class="rc__badge" viewBox="0 0 60 60" aria-hidden="true"><use href="#b-ep"/></svg>
+                <span class="rc__lv">Lv.30</span><span class="rc__ed rc__ed--core">THE Core</span>
+              </div>
+              <div class="rc__plate"><small>Stephen</small><b>Curry</b></div>
+              <i class="rc__sheen"></i>
+            </div>
+            <div class="rc__tag"><b>Epic</b> · 0.5%</div>
+          </div>
+          <div class="rc rc--lg">
+            <div class="rc__frame">
+              <div class="rc__field"><span>Legend<br>measured<br>on release</span></div>
+              <div class="rc__plate"><small>Not yet seen</small><b>Unmeasured</b></div>
+            </div>
+            <div class="rc__tag"><b>Legend</b> · 0.1%</div>
+          </div>
+          </div>
         </div>
+        <p class="cap">Drawn in code from the measured frames. The player is a plain bust with the jersey number; no portrait, logo or card art is reproduced.</p>
         <div class="tbl"><table>
           <thead><tr><th>Rarity</th><th>Frame metal</th><th>Badge</th><th>Pull rate (paid)</th></tr></thead>
           <tbody>
-            <tr><td>Common</td><td><span class="sw" style="background:#828990"></span>graphite <code>#828990 → #71767D → #63676D</code></td><td>dark diamond <code>#353B3C</code>, white C</td><td>50%</td></tr>
+            <tr><td>Common</td><td><span class="sw" style="background:#828990"></span>graphite <code>#828990 → #71767D → #63676D</code></td><td>dark diamond, graphite rim, white C</td><td>50%</td></tr>
             <tr><td>Uncommon</td><td><span class="sw" style="background:#81B76C"></span>mint face border <code>#81B76C</code></td><td><code>#7A9F73</code> on <code>#244020</code></td><td>27%</td></tr>
             <tr><td>Rare</td><td><span class="sw" style="background:#88B9CC"></span>steel <code>#88B9CC → #839EB4 → #6E8FA9</code></td><td>blue <code>#2B89CC</code>, face <code>#C5DBE9</code></td><td>15%</td></tr>
-            <tr><td>Ultra Rare</td><td><span class="sw" style="background:#C1A863"></span>champagne <code>#DECB98 → #C1A863 → #B79F53 → #E4CF79</code>, inner <code>#473508</code></td><td>gold diamond</td><td>7.5%</td></tr>
-            <tr><td>Epic</td><td><span class="sw" style="background:#9F27C6"></span>violet <code>#B934E6 → #A34ACA → #9F27C6</code>, neon pinline <code>#4AE3F8</code>, inner <code>#3B075B</code></td><td>violet, OVR disc <code>#B145CB</code></td><td>0.5%</td></tr>
+            <tr><td>Ultra Rare</td><td><span class="sw" style="background:#C1A863"></span>champagne <code>#DECB98 → #C1A863 → #B79F53 → #E4CF79</code>, inner <code>#473508</code></td><td>dark hexagon in a gold bevel, cream-to-coral UR, gold wing</td><td>7.5%</td></tr>
+            <tr><td>Epic</td><td><span class="sw" style="background:#9F27C6"></span>violet <code>#B934E6 → #A34ACA → #9F27C6</code>, neon pinline <code>#4AE3F8</code>, inner <code>#3B075B</code></td><td>violet crystal with wings and a cyan drop; OVR in a round disc with a cyan <code>#52E2F7</code> ring</td><td>0.5%</td></tr>
             <tr><td>Legend</td><td>Not measured. No Legend card appears in any public screenshot as of 9 Nov 2026.</td><td>—</td><td>0.1% (themed packs)</td></tr>
           </tbody>
         </table></div>
         <p>GRAVITY's odds pages already define four grades above Legend: <strong>Elite, Prime, Iconic and GOAT</strong>. None holds a card yet. The token set reserves <code>--r-elite</code> through <code>--r-goat</code>, to be measured on release.</p>
-        <h3>Edition labels</h3>
-        <p>Editions print in italic caps at the card's lower right. <span style="color:#8FD0F7;font-style:italic;font-weight:800;text-shadow:0 0 6px #9C27C2">THE Core</span> glows cyan on violet. <span style="color:#FEFCE3;font-style:italic;font-weight:800">25-26 SEASON</span> is cream. The set list (25-26 SEASON, Starter, The Core, The Edition, LOCKDOWN, HALLOWEEN, FLAME) comes from the 878-card official dataset.</p>
+        <h3>Rarity sets the frame, edition sets the field</h3>
+        <p>The frame metal comes from rarity, and the background behind the player comes from the edition. An Epic from the Starter set and an Epic from The Core share a violet frame and nothing else.</p>
+        <div class="stage dark" style="padding:28px 22px 26px">
+          <div class="rcards">
+          <div class="rc rc--ep rc--starter" data-tilt>
+            <div class="rc__frame">
+              <div class="rc__field">
+                <svg class="rc__art" viewBox="0 0 200 200" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+                  <use href="#rings" width="200" height="200" style="color:var(--ring)"/><rect width="200" height="200" fill="url(#wm-starter)"/>
+                  <g class="bust"><use href="#bust" x="25" y="38" width="150" height="162"/></g>
+                  <text x="100" y="172" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-size="28" style="fill:var(--num)">11</text>
+                </svg>
+                <span class="rc__ovr">156</span><span class="rc__pos">PG<small>/SG</small></span><span class="rc__team">DAL</span>
+                <svg class="rc__badge" viewBox="0 0 60 60" aria-hidden="true"><use href="#b-ep"/></svg>
+                <span class="rc__lv">Lv.14</span><span class="rc__ed rc__ed--starter">Starter</span>
+              </div>
+              <div class="rc__plate"><small>Kyrie</small><b>Irving</b></div>
+              <i class="rc__sheen"></i>
+            </div>
+            <div class="rc__tag"><b>Starter</b> field</div>
+          </div>
+          <div class="rc rc--ur" data-tilt>
+            <div class="rc__frame">
+              <div class="rc__field">
+                <svg class="rc__art" viewBox="0 0 200 200" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+                  <use href="#rings" width="200" height="200" style="color:var(--ring)"/><rect width="200" height="200" fill="url(#wm-season)"/>
+                  <g class="bust"><use href="#bust" x="25" y="38" width="150" height="162"/></g>
+                  <text x="100" y="172" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-size="28" style="fill:var(--num)">4</text>
+                </svg>
+                <span class="rc__ovr">145</span><span class="rc__pos">PG</span><span class="rc__team">SAS</span>
+                <svg class="rc__badge" viewBox="0 0 60 60" aria-hidden="true"><use href="#b-ur"/></svg>
+                <span class="rc__lv">Lv.1</span><span class="rc__ed rc__ed--season">25-26 SEASON</span>
+              </div>
+              <div class="rc__plate"><small>De'Aaron</small><b>Fox</b></div>
+              <i class="rc__sheen"></i>
+            </div>
+            <div class="rc__tag"><b>25-26 Season</b> field</div>
+          </div>
+          <div class="rc rc--ep" data-tilt>
+            <div class="rc__frame">
+              <div class="rc__field">
+                <svg class="rc__art" viewBox="0 0 200 200" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+                  <g class="shards"><use href="#shards" width="200" height="200"/></g><use href="#rings" width="200" height="200" style="color:var(--ring)"/>
+                  <g class="bust"><use href="#bust" x="25" y="38" width="150" height="162"/></g>
+                  <text x="100" y="172" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-size="28" style="fill:var(--num)">30</text>
+                </svg>
+                <span class="rc__ovr">236</span><span class="rc__pos">PG</span><span class="rc__team">GSW</span>
+                <svg class="rc__badge" viewBox="0 0 60 60" aria-hidden="true"><use href="#b-ep"/></svg>
+                <span class="rc__lv">Lv.30</span><span class="rc__ed rc__ed--core">THE Core</span>
+              </div>
+              <div class="rc__plate"><small>Stephen</small><b>Curry</b></div>
+              <i class="rc__sheen"></i>
+            </div>
+            <div class="rc__tag"><b>The Core</b> field</div>
+          </div>
+          </div>
+        </div>
+        <div class="tbl"><table>
+          <thead><tr><th>Edition</th><th>Field</th><th>Label</th></tr></thead>
+          <tbody>
+            <tr><td>Starter</td><td><span class="sw" style="background:#C6C5DA"></span>pale ice <code>#D7D6E6 → #C2C1D6</code>, rings <code>#E1DFED</code>, repeated STARTER watermark</td><td><span style="color:#B9EBFF;font-weight:800;text-shadow:1px 1px 0 #393C4D,-1px -1px 0 #393C4D,1px -1px 0 #393C4D,-1px 1px 0 #393C4D">Starter</span>, upright ice <code>#B9EBFF</code> in a thick slate outline <code>#393C4D</code>; nameplate <code>#232B3B</code></td></tr>
+            <tr><td>25-26 SEASON</td><td><span class="sw" style="background:#21252A"></span>charcoal <code>#21252A</code>, rings <code>#373E47</code>, diagonal "25-26 Season" watermark</td><td><span style="color:#FEFBDC;font-style:italic;font-weight:800">25-26 SEASON</span>, italic cream <code>#FEFBDC</code></td></tr>
+            <tr><td>The Core</td><td><span class="sw" style="background:#710384"></span>magenta-violet <code>#710384</code> into indigo <code>#231660 → #1B043B</code>, light shards <code>#CEC8EC</code> <code>#8ACAD7</code></td><td><span style="color:#82E3FC;font-style:italic;font-weight:800;text-shadow:0 0 6px #A130CA">THE Core</span>, italic cyan <code>#82E3FC</code> with a violet <code>#A130CA</code> glow</td></tr>
+          </tbody>
+        </table></div>
+        <p>The set list (25-26 SEASON, Starter, The Core, The Edition, LOCKDOWN, HALLOWEEN, FLAME) comes from the 878-card official dataset. The Edition and the three themed sets are drawn when their fields are measured.</p>
       </div>
     </section>
 
@@ -1093,6 +1346,13 @@ footer.end { color: var(--ink-4); font-size: 13.5px; padding-block: 30px 60px; }
   --rw-r-r:#6E8FA9; --rw-r-r-hi:#88B9CC; --rw-r-r-badge:#2B89CC;
   --rw-r-ur:#C1A863; --rw-r-ur-hi:#DECB98; --rw-r-ur-lo:#B79F53; --rw-r-ur-in:#473508;
   --rw-r-ep:#9F27C6; --rw-r-ep-hi:#B934E6; --rw-r-ep-pk:#FEE2FD; --rw-r-ep-neon:#4AE3F8; --rw-r-ep-in:#3B075B;
+  /* rarity cards: frame by rarity, field by edition */
+  --rw-ep-frame-hi:#F6D9FF; --rw-ep-frame-lo:#571E82; --rw-ep-ovr-ring:#52E2F7; --rw-ep-ovr-halo:#723B94;
+  --rw-ep-badge-gem:#1AF9FA; --rw-ur-badge-ink:#F7C3BE; --rw-ur-wing:#F5DB7C; --rw-ur-wing-lo:#A7783E; --rw-ovr-rim:#E1D5B3;
+  --rw-field-starter:#D7D6E6; --rw-field-starter-lo:#C2C1D6; --rw-field-starter-ring:#E1DFED; --rw-plate-starter:#232B3B; --rw-plate-starter-rim:#9FAAB4;
+  --rw-field-season:#21252A; --rw-field-season-ring:#373E47;
+  --rw-field-core-hi:#710384; --rw-field-core-mid:#231660; --rw-field-core-lo:#1B043B; --rw-field-core-shard:#CEC8EC; --rw-field-core-beam:#8ACAD7;
+  --rw-ed-starter:#B9EBFF; --rw-ed-starter-outline:#393C4D; --rw-ed-season:#FEFBDC; --rw-ed-core:#82E3FC; --rw-ed-core-glow:#A130CA;
   --rw-r-legend:unset; --rw-r-elite:unset; --rw-r-prime:unset; --rw-r-iconic:unset; --rw-r-goat:unset; /* measure on release */
   /* ours — the clipboard */
   --rw-board:#F5F5F1; --rw-board-ghost:#ECEBE5; --rw-print:#C8CCD0; --rw-marker:#121314; --rw-clip:#1B1C1E;
@@ -1141,6 +1401,24 @@ footer.end { color: var(--ink-4); font-size: 13.5px; padding-block: 30px 60px; }
   if(!('IntersectionObserver' in window)) return;
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(a){a.classList.remove('is-active');}); var a=map[e.target.id]; if(a) a.classList.add('is-active');}});},{rootMargin:'-25% 0px -65% 0px'});
   document.querySelectorAll('main section[id]').forEach(function(s){io.observe(s);});
+})();
+(function(){
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.querySelectorAll('.rc[data-tilt]').forEach(function(c){
+    c.addEventListener('pointermove', function(e){
+      var r = c.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+      c.classList.add('is-live');
+      c.style.setProperty('--ry', ((x - .5) * 18).toFixed(2) + 'deg');
+      c.style.setProperty('--rx', ((.5 - y) * 14).toFixed(2) + 'deg');
+      c.style.setProperty('--mx', (x * 100).toFixed(1) + '%');
+      c.style.setProperty('--my', (y * 100).toFixed(1) + '%');
+    });
+    c.addEventListener('pointerleave', function(){
+      c.classList.remove('is-live');
+      c.style.setProperty('--rx', '0deg'); c.style.setProperty('--ry', '0deg');
+      c.style.removeProperty('--mx'); c.style.removeProperty('--my');
+    });
+  });
 })();
 </script>
 

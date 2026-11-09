@@ -7,7 +7,7 @@ The visual system and brand for **RiseWiz**, a fan companion for GRAVITY's NBA R
 | Path | What it is |
 |---|---|
 | [`RiseWiz_Visual_System.html`](RiseWiz_Visual_System.html) | The full system: identity, voice, foundation, colour, type, texture, live components, rarities, the clipboard, rules, build and limits. Open it in a browser. Published copy: https://claude.ai/artifact/HQYr5ho3buzBmXzckeeSbf |
-| [`tokens.css`](tokens.css) | 117 drop-in custom properties (`--rw-*`), the same values the document uses |
+| [`tokens.css`](tokens.css) | 143 drop-in custom properties (`--rw-*`), the same values the document uses |
 | [`measurements/samples.md`](measurements/samples.md) | Where every measured value came from: image, region and method |
 | [`measurements/font_fit.json`](measurements/font_fit.json) | Typeface identification: 32 faces scored against in-game text |
 | [`measurements/hue_occupancy.json`](measurements/hue_occupancy.json) | Hue distribution of the game's saturated UI pixels |

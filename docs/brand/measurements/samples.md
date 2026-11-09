@@ -90,6 +90,20 @@ Both are computed with `../tools/sample.py`. Coordinates are in the source image
 | Epic | `#9D67C2 → #A34ACA → #9F27C6`, inner `#4E006E / #3B075B`, neon `#4AE3F8`, OVR disc `#B145CB` | SITE-card 1 horizontal profile at y=250 |
 | Legend | not measured | No Legend card appears in any public screenshot as of 9 Nov 2026 |
 
+## Card art: frame by rarity, field by edition
+
+| Part | Values | Sample |
+|---|---|---|
+| Epic frame | `#F6D9FF` → `#D292F5` → `#BA68D9` → `#9F27C6` → `#571E82` (top-left to bottom-right) | SITE-card 1 corners (`#BA68D9` top-left, `#571E82` bottom-right) plus horizontal profile |
+| Epic OVR disc | digits `#EDF1F5` on `#151920`, ring `#52E2F7` / `#A5E8FB`, halo `#723B94` | SITE-card 1, OVR region |
+| Epic crest | hexagon `#40015A` → `#652A7B`, letters `#F6FBFF`, cyan gem `#1AF9FA` | SITE-card 1, badge top / mid / low |
+| UR crest | dark hexagon `#08080A`, letters `#FFFBFA` → `#F7C3BE`, wing `#F5DB7C` / `#A7783E` | SITE-card 10, badge regions |
+| OVR rim (non-Epic) | `#E1D5B3` / `#F9F4CE` | SITE-card 10 and 19 |
+| The Core field | `#710384` (top right) into `#231660` / `#1B043B`, shards `#CEC8EC`, beams `#8ACAD7` | SITE-card 1 field regions |
+| 25-26 SEASON field | `#21252A`, ring watermark `#373E47` | SITE-card 10 |
+| Starter field | `#D7D6E6` / `#C2C1D6`, rings `#E1DFED`; nameplate `#232B3B`, rim `#9FAAB4` | NB-23 Starter Epic card (K. Irving) |
+| Edition labels | Starter `#B9EBFF` upright, outline `#393C4D` · 25-26 SEASON `#FEFBDC` italic · THE Core `#82E3FC` italic, glow `#A130CA`, outline `#4E1A89` | NB-23 label region (bright and dark pixel medians); SITE-card 10; SITE-card 1 |
+
 ## Absent-colour search
 
 `../tools/absent.py` scores candidate colours against 34 game accents. The grid covers hue in 2° steps, HSL lightness 0.38–0.64 and saturation 0.75–1.0. Each candidate gets its minimum OKLab ΔE×100 under normal vision and Machado-2009 protan, deutan and tritan simulation.
