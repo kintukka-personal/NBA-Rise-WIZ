@@ -6,7 +6,7 @@
 <style>:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
 <body>
-<title>RiseWiz Visual System</title>
+<title>NBARiseWiz Visual System</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,7 +14,7 @@
 
 <style>
 /* ============================================================
-   RiseWiz Visual System
+   NBARiseWiz Visual System
    Measured from a corpus of 424 screenshots of NBA RISE (GRAVITY, global build 1.1.x),
    142 of them full in-game UI across 42 distinct screens: App Store and Google Play
    sets, iPad and iPhone captures, press hands-ons and player blogs. Typeface identified by glyph overlap against 32 faces.
@@ -85,18 +85,18 @@
   --gd-light:  #F8E1A2;
 
   /* bronze — offensive tactic */
-  --of-deep:   #3F2B10;
-  --of:        #6C5322;
-  --of-mid:    #AA965A;
-  --of-ink:    #DECB87;
-  --of-peak:   #FEF1A3;
+  --of-deep:   #403011;   /* share pill */
+  --of:        #6C5322;   /* chip */
+  --of-sel:    #6A552A;   /* picked list row */
+  --of-head:   #CCBD82;   /* list column head */
+  --of-ink:    #FFECA0;   /* label, ball, cross, matchup arrow */
 
   /* mint — defensive tactic */
-  --df-deep:   #114430;
-  --df:        #225542;
-  --df-mid:    #378E62;
-  --df-ink:    #6FE9A4;
-  --df-peak:   #3DFE8F;
+  --df:        #175B42;   /* chip */
+  --df-sel:    #1C5D45;   /* picked list row */
+  --df-head:   #37CC74;   /* list column head */
+  --df-ink:    #3DFF9E;   /* label */
+  --df-peak:   #3DFF8F;   /* shield, cross, matchup arrow */
 
   /* green — stamina, success, countdown */
   --gr-deep:   #0F3C0D;
@@ -282,12 +282,6 @@ th { font-weight: 700; font-size: 11.5px; letter-spacing: .1em; text-transform: 
 
 /* chips */
 .chip { display: inline-flex; align-items: center; gap: 6px; border-radius: 999px; padding: 4px 13px 4px 10px; font-weight: 700; font-size: 14px; white-space: nowrap; }
-.chip--off { background: var(--of); color: var(--of-ink); }
-.chip--def { background: var(--df); color: var(--df-ink); }
-.chip--off svg { color: var(--of-peak); } .chip--def svg { color: var(--df-peak); }
-.chip .pct { background: #3F2B10; color: #5BD92D; border-radius: 6px; padding: 0 6px; font-size: 12.5px; }
-.chip .x { color: var(--of-peak); margin-left: 4px; font-weight: 800; }
-.chip--def .x { color: var(--df-peak); }
 @media (max-width: 360px) { .chip { white-space: normal; max-width: 100%; } }
 .chip--syn { background: var(--gd-mid); color: #FFFFFF; padding: 3px 11px 3px 6px; text-shadow: 0 1px 1px rgba(80,40,0,.6); }
 .s-ico { display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 6px; background: rgba(82,50,6,.55); font-size: 13px; font-weight: 800; }
@@ -297,10 +291,6 @@ th { font-weight: 700; font-size: 11.5px; letter-spacing: .1em; text-transform: 
 .tp { display: inline-flex; align-items: center; gap: 8px; font-family: var(--num-face); font-weight: 400; letter-spacing: .015em; color: var(--gd-peak); font-size: 34px; line-height: 1; }
 .tp i { font-family: var(--ui); font-weight: 800; }
 .tp i { font-style: normal; background: linear-gradient(180deg, var(--gd-light), var(--gd-rim) 55%, #C08B0B); color: #3A2600; font-size: 12px; border-radius: 4px; padding: 1px 5px; }
-.load { display: inline-flex; align-items: center; gap: 2px; background: var(--void); color: #E4C401; font-weight: 800; border-radius: 6px; padding: 1px 7px; font-size: 14px; }
-.disc { display: inline-grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; color: #FFFFFF; font-weight: 800; font-size: 13px; box-shadow: 0 0 0 2px #FFFFFF inset; }
-.disc--home { background: var(--hm-disc); } .disc--away { background: var(--aw-disc); }
-.postab { display: inline-block; background: var(--cy-tab); color: #0D2240; font-weight: 800; border-radius: 6px; padding: 1px 10px; font-size: 15px; }
 
 /* ============ MATCH PREP LINEUP — navy slot, rarity mini-card, stamina, box score ============ */
 .lineup { width: 100%; background: #1C1D1F; border-radius: 8px; padding: 22px 0 18px; position: relative; overflow: hidden; }
@@ -367,7 +357,7 @@ th { font-weight: 700; font-size: 11.5px; letter-spacing: .1em; text-transform: 
 .stam2 svg { width: 12px; height: 16px; color: #00BE0D; flex: 0 0 auto; filter: drop-shadow(0 0 3px rgba(0,190,13,.5)); }
 .stam2 span { flex: 1; display: grid; grid-template-columns: repeat(5, 1fr); gap: 3px; background: #000000; border-radius: 5px; padding: 2px 3px; }
 .stam2 i { height: 7px; border-radius: 2.5px; background: linear-gradient(180deg, #2BE43A, #00BE0D 55%, #009908); }
-.stam2 i.low { background: linear-gradient(180deg, #FFE45C, #FFD617 55%, #CDA511); } .stam2 i.off { background: #0B140C; }
+.stam2 i.low { background: linear-gradient(180deg, #FFE45C, #FFCE16 55%, #CDA511); } .stam2 i.off { background: #0B140C; }
 .box3 { display: grid; grid-template-columns: 44px 1fr 1fr; gap: 4px; }
 .box3 > span { border-radius: 7px; text-align: center; padding: 3px 0 2px; background: #0C2A65; color: #EBF0F4; font-weight: 800; font-size: 18px; line-height: 1.05; font-variant-numeric: tabular-nums; }
 .box3 > span small { display: block; font-size: 11px; color: #BFC5CE; font-weight: 700; letter-spacing: .02em; }
@@ -766,6 +756,127 @@ th { font-weight: 700; font-size: 11.5px; letter-spacing: .1em; text-transform: 
 .freebar em { position: absolute; top: -16px; left: 50%; transform: translateX(-50%); font-style: normal; background: #EBF0F4; color: #2C3034; border-radius: 999px; font-size: 11px; font-weight: 700; padding: 2px 10px; white-space: nowrap; box-shadow: 0 2px 6px rgba(0,0,0,.3); }
 @media (max-width: 420px) { .ptile { grid-template-columns: 80px minmax(0,1fr); column-gap: 12px; } .pack-art { width: 80px; height: 120px; } .ptile h5 { font-size: 17px; } .pbtn { font-size: 13px; gap: 5px; } .pbtn span { font-size: 11.5px; } }
 
+
+/* ============ TACTICS — the tactic-change board (NB-17) ============ */
+.tac { width: 100%; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: 14px; align-items: start; }
+@media (min-width: 1000px) { .tac { grid-template-columns: minmax(0,1.25fr) minmax(0,1fr); } }
+.tac__panel { border-radius: 14px; overflow: hidden; background: #2A2E32; box-shadow: inset 0 0 0 1px rgba(255,255,255,.05), 0 10px 24px rgba(0,0,0,.45); }
+.thead { position: relative; display: grid; grid-template-columns: 38px minmax(0,1fr) minmax(0,1fr) minmax(0,1.15fr); align-items: center; gap: 10px; padding: 9px 14px 9px 16px; background: #2A2E32; }
+.thead::before { content: ""; position: absolute; top: 0; bottom: 0; left: 0; width: 5px; background: #168DFD; }
+.thead--away { padding: 9px 16px 9px 14px; }
+.thead--away::before { left: auto; right: 0; background: #DF263D; }
+.tdisc { width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; font-weight: 800; font-size: 10.5px; letter-spacing: .02em; }
+.tdisc--you { background: #061C5A; color: #EAF1FF; box-shadow: 0 0 0 2px #2A4A8A; }
+.tdisc--away { background: #F3F3F2; color: #2A2E32; box-shadow: 0 0 0 2px #C9CDD1; }
+.thead small { display: block; font-weight: 700; font-size: 10px; letter-spacing: .04em; text-transform: uppercase; color: #B0B3BE; }
+.thead b { font-family: var(--num-face); font-weight: 400; font-size: 23px; line-height: 1.1; color: #F4FAFF; text-shadow: var(--tmp-outline); }
+.thead em { font-style: normal; display: inline-block; margin-left: 5px; vertical-align: 4px; background: #285A65; color: #07C1D9; border-radius: 6px; padding: 0 5px; font-weight: 700; font-size: 11px; }
+.thead .coach { display: block; font-weight: 800; font-size: 12.5px; line-height: 1.25; color: #F4FAFF; }
+.tcourt { position: relative; overflow: hidden; padding: 10px 10px 12px; background: #1F2022; }
+.tcourt__lines { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.tchips { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 196px), 1fr)); gap: 7px 8px; }
+.tchip { position: relative; display: flex; align-items: center; min-width: 0; min-height: 32px; border-radius: 13px; padding: 4px 12px 4px 34px; font-weight: 700; font-size: 12.5px; line-height: 1.2; box-shadow: 0 2px 6px rgba(0,0,0,.35); }
+.tchip--x { padding-right: 30px; }
+.tchip > svg { position: absolute; left: 8px; top: 50%; width: 20px; height: 20px; margin-top: -10px; }
+.tchip > span { flex: 1; min-width: 0; text-align: center; }
+.tchip--def { background: #175B42; color: #3DFF9E; } .tchip--def > svg { color: #3DFF8F; }
+.tchip--off { background: #6C5322; color: #FFECA0; } .tchip--off > svg { color: #FFECA0; }
+.tchip b { display: inline-block; white-space: nowrap; margin-left: 5px; background: #403011; color: #5FEB31; border-radius: 6px; padding: 0 5px; font-size: 11.5px; line-height: 1.5; }
+.tchip i { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); font-style: normal; font-weight: 800; font-size: 15px; line-height: 1; }
+.tchip--def i { color: #3DFF8F; } .tchip--off i { color: #FFECA0; }
+.tplayers { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 6px; align-items: end; padding: 16px 0 14px; }
+.tp1 { display: flex; flex-direction: column; align-items: center; gap: 4px; min-width: 0; }
+.tp1--up { margin-bottom: 30px; }
+.ttag { display: inline-flex; align-items: center; gap: 4px; max-width: 100%; border-radius: 9px; padding: 3px 11px; font-weight: 700; font-size: 11.5px; white-space: nowrap; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,.35); }
+.ttag--def { background: #175940; color: #55E49D; }
+.ttag--off { background: #695122; color: #F5E296; --mu-ol: #493815; }
+.ttag svg { flex: 0 0 auto; width: 13px; height: 11px; }
+.tav { position: relative; width: 64px; height: 64px; margin-top: 6px; }
+.tav__face { display: grid; width: 100%; height: 100%; border-radius: 50%; overflow: hidden; background: radial-gradient(circle at 50% 30%, #F2F6F9, #CCD6DE); box-shadow: 0 0 0 2px #FFFFFF, 0 4px 10px rgba(0,0,0,.5); }
+.tav__face svg, .sfaces svg { width: 78%; height: 84%; margin: auto auto 0; color: #6A7782; }
+.tav__pos { position: absolute; left: -7px; top: -5px; width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; background: #265AA5; color: #F4F5F7; box-shadow: 0 0 0 2px #F4F5F7; font-weight: 800; font-size: 9.5px; }
+.tav__grade { position: absolute; left: -13px; bottom: -7px; font-weight: 800; font-style: italic; font-size: 27px; line-height: 1; letter-spacing: -.05em; padding-right: 3px;
+  background-image: linear-gradient(180deg, #F3E4CE 0%, #D2B08A 38%, #967F62 68%, #6A5541 100%); -webkit-background-clip: text; background-clip: text; color: transparent;
+  filter: drop-shadow(0 0 1px #110E0E) drop-shadow(0 0 1px #110E0E) drop-shadow(0 2px 1px rgba(0,0,0,.6)); }
+.tav__grade--b { background-image: linear-gradient(180deg, #F4F8FA 0%, #C6D7DF 38%, #74868F 70%, #4C5961 100%); }
+.tav__load { position: absolute; right: -16px; bottom: 1px; display: inline-flex; align-items: center; gap: 1px; background: #000000; color: #FDD800; border-radius: 7px; padding: 1px 5px 1px 6px; font-weight: 800; font-size: 12px; line-height: 1.4; }
+.tav__load svg { width: 8px; height: 11px; }
+.tstam { display: flex; align-items: center; gap: 3px; margin-top: 7px; }
+.tstam > svg { width: 9px; height: 13px; filter: drop-shadow(0 0 1px #000000); }
+.tstam i { display: flex; gap: 2px; background: #000000; border-radius: 3px; padding: 2px; }
+.tstam i b { width: 9px; height: 4px; border-radius: 1px; background: #262628; }
+.tstam--low { color: #FFCE16; } .tstam--low b.on { background: #FFCE16; }
+.tstam--mid { color: #86CD00; } .tstam--mid b.on { background: #86CD00; }
+.tlist { padding-bottom: 14px; }
+.tlist__bar { display: flex; justify-content: center; align-items: center; gap: 10px; padding: 8px; background: #454B53; color: #E6EAEE; font-weight: 700; font-size: 13.5px; }
+.tlist__bar i { display: grid; place-items: center; width: 44px; height: 22px; border-radius: 7px; background: #D9DFE5; color: #2A2E32; }
+.tlist__bar i svg { width: 14px; height: 9px; }
+.tlist__cols { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 8px; padding: 0 10px; }
+.tlist__head { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; column-gap: 5px; padding: 12px 0 9px; font-weight: 700; font-size: 11.5px; white-space: nowrap; }
+.tlist__head svg { flex: 0 0 auto; width: 15px; height: 15px; }
+.tlist__head s { text-decoration: none; opacity: .55; }
+.tlist__sub { display: inline-flex; gap: 5px; }
+.tlist__head--off { color: #CCBD82; } .tlist__head--def { color: #37CC74; }
+.trow { display: flex; align-items: center; gap: 7px; min-height: 40px; border-radius: 9px; padding: 4px 9px 4px 12px; margin-bottom: 7px; background: #3D454B; color: #F0F0F0; font-weight: 700; font-size: 12.5px; line-height: 1.15; --mu-ol: #2B3034; }
+.trow > span:first-child { flex: 1; min-width: 0; }
+.trow--off { background: #6A552A; --mu-ol: #493815; } .trow--def { background: #1C5D45; --mu-ol: #123B2B; }
+.trow .bolts { display: flex; color: #E2B837; filter: drop-shadow(0 0 1px #1E1B10) drop-shadow(0 0 .5px #1E1B10); }
+.trow .bolts svg { width: 10px; height: 14px; }
+.trow .vr { flex: 0 0 auto; width: 2px; height: 22px; border-radius: 1px; background: #32383D; }
+.trow--off .vr { background: #4E3E1D; } .trow--def .vr { background: #154A36; }
+.trow .mu { flex: 0 0 auto; width: 20px; display: grid; place-items: center; }
+.trow .mu svg { width: 18px; height: 15px; }
+.trow .mu--up2 svg { height: 21px; }
+.mu--up-off { color: #FFECA0; } .mu--down { color: #FD5B4B; } .mu--up-def { color: #3DFF8F; }
+.mu--even::before { content: ""; width: 12px; height: 4px; border-radius: 2px; background: #A2A6AB; }
+.tlist__btns { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1.9fr); gap: 10px; padding: 7px 10px 0; }
+.tbtn { display: grid; place-items: center; height: 46px; border-radius: 13px; background: #3D454B; color: #FFFFFF; font-weight: 800; font-size: 15px; text-shadow: var(--tmp-outline); box-shadow: inset 0 0 0 1px rgba(255,255,255,.07), 0 4px 10px rgba(0,0,0,.35); }
+.tbtn--go { background: #00AEEF; box-shadow: inset 0 0 0 1px rgba(160,232,255,.35), 0 0 16px rgba(0,174,239,.4); }
+@media (max-width: 520px) { .tlist__sub { flex-basis: 100%; justify-content: center; font-size: 10px; margin-top: 1px; } .tlist__sub s:first-child { display: none; } .ttag { font-size: 10px; padding: 2px 8px; } .thead em { display: block; width: fit-content; margin: 1px 0 0; vertical-align: 0; } .tchip { font-size: 12px; } .trow { font-size: 11.5px; padding-left: 9px; gap: 5px; } .tlist__head { font-size: 10.5px; } .tlist__cols { gap: 6px; padding: 0 8px; } .thead { gap: 7px; padding-right: 10px; } .thead b { font-size: 20px; } .thead em { margin-left: 2px; font-size: 10px; } }
+
+/* ============ SYNERGY — the synergy list (NB-28, NB-29) ============ */
+.syn { width: 100%; border-radius: 14px; overflow: hidden; background: #1C1C1C; box-shadow: inset 0 0 0 1px rgba(255,255,255,.05), 0 10px 24px rgba(0,0,0,.45); }
+.synbar { display: flex; align-items: center; gap: 8px; padding: 10px 12px; background: #2A2E32; }
+.synbar .box { flex: 0 0 auto; width: 24px; height: 24px; border-radius: 6px; background: #515559; }
+.synbar > svg { flex: 0 0 auto; width: 22px; height: 22px; color: #EBF0F4; }
+.synbar .n { background: #1C1F21; color: #F2C22E; border-radius: 6px; padding: 0 6px; font-weight: 800; font-size: 15px; line-height: 1.6; }
+.synbar .lbl { flex: 1; min-width: 0; font-weight: 700; font-size: 14px; color: #EBF0F4; }
+.synbar .all { flex: 0 0 auto; background: #3D454B; color: #EBF0F4; border-radius: 10px; padding: 6px 12px; font-weight: 800; font-size: 12.5px; box-shadow: inset 0 0 0 1px rgba(255,255,255,.06); }
+.syn__cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr)); column-gap: 6px; padding: 22px 0 2px; }
+.srow { position: relative; display: flex; align-items: center; gap: 10px; margin: 0 12px 16px; min-height: 60px; border-radius: 30px; padding: 8px 9px 8px 22px; background: #2E3235; box-shadow: inset 0 3px 0 #373C3C, 0 3px 6px rgba(0,0,0,.45); }
+.srow--ev { margin-top: 24px; }
+.syn__cols > div > .srow:first-child:not(.srow--ev) { margin-top: 0; }
+.srow__txt { flex: 1; min-width: 0; }
+.srow__txt b { display: block; font-weight: 800; font-size: 17px; line-height: 1.15; color: #EBF0F4; }
+.srow__txt small { font-weight: 700; font-size: 11.5px; color: #C2C3C4; }
+.srow__tp { display: flex; align-items: center; gap: 6px; font-weight: 700; font-size: 11.5px; color: #BBBBBB; white-space: nowrap; }
+.srow__tp em { font-style: normal; background: #1F2123; color: #F2C22E; border-radius: 9px; padding: 3px 8px; font-weight: 800; font-size: 14px; }
+.chev { flex: 0 0 auto; width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: #3D454B; color: #D9DFE5; box-shadow: 0 2px 4px rgba(0,0,0,.35); }
+.chev svg { width: 16px; height: 10px; }
+.chev--up { background: #555F67; } .chev--up svg { transform: rotate(180deg); }
+.srow--on, .scard { background: #35322E; box-shadow: inset 0 0 0 2px #DBB745, inset 0 0 0 3px #C2A240, 0 0 20px rgba(140,90,25,.45); }
+.sev { position: absolute; left: 22px; top: -14px; display: flex; gap: 6px; }
+.sev .ev { background: #169567; color: #FDFDFD; border-radius: 9px; padding: 2px 10px; font-weight: 800; font-size: 11.5px; }
+.sev .tm { display: inline-flex; align-items: center; gap: 5px; background: #0D0D1C; color: #DBE1E5; border-radius: 9px; padding: 2px 9px 2px 5px; font-weight: 700; font-size: 11.5px; }
+.sev .tm svg { width: 13px; height: 13px; }
+.scard { margin: -2px 22px 16px; border-radius: 22px; overflow: hidden; }
+.scard__head { display: flex; align-items: center; gap: 10px; padding: 12px 14px 11px 18px; }
+.scard__head b { flex: 1; min-width: 0; font-weight: 800; font-size: 16px; color: #EBF0F4; }
+.scard__body { display: grid; gap: 10px; border-top: 2px solid #52504E; margin: 0 3px; padding: 11px 12px 13px; }
+.sreq { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 12.5px; color: #D9DFE5; }
+.sreq i { flex: 0 0 auto; width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center; background: #D89B16; color: #FAF4E9; }
+.sreq i svg { width: 12px; height: 10px; }
+.sreq span { color: #ACAFBC; }
+.sfaces { display: flex; flex-wrap: wrap; gap: 8px; }
+.sfaces span { display: grid; width: 44px; height: 44px; border-radius: 50%; overflow: hidden; background: radial-gradient(circle at 50% 30%, #F2F6F9, #CCD6DE); box-shadow: 0 0 0 2px #FFFFFF, 0 3px 8px rgba(0,0,0,.5); }
+.starget { background: #24211F; border-radius: 14px; padding: 9px 12px 11px; }
+.starget p { margin: 0 0 8px; font-weight: 700; font-size: 12.5px; color: #D9DFE5; }
+.starget p span { color: #ACAFBC; }
+.statchips { display: flex; flex-wrap: wrap; gap: 6px; }
+.stat { border-radius: 10px; padding: 3px 10px; font-weight: 700; font-size: 12.5px; white-space: nowrap; }
+.stat--off { background: #514322; color: #D0A92D; } .stat--def { background: #264836; color: #2AD898; } .stat--men { background: #44484F; color: #B5C8DF; }
+@media (max-width: 480px) { .srow { margin-left: 8px; margin-right: 8px; padding-left: 16px; gap: 7px; } .srow__txt b { font-size: 15px; } .srow__tp { flex-direction: column; align-items: flex-end; gap: 2px; font-size: 9.5px; } .srow__tp em { font-size: 13px; padding: 2px 7px; } .chev { width: 34px; height: 34px; } .scard { margin-left: 14px; margin-right: 14px; } .sev { left: 16px; } .synbar .lbl { font-size: 13px; } }
+
 /* ============ THE CLIPBOARD (ours) ============ */
 .board-fig { margin: 18px 0 24px; max-width: 560px; }
 .board-fig svg { width: 100%; height: auto; display: block; }
@@ -788,7 +899,7 @@ th { font-weight: 700; font-size: 11.5px; letter-spacing: .1em; text-transform: 
 /* lockup */
 .lockup { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; margin: 6px 0 26px; }
 .lockup svg { width: 110px; height: auto; flex: 0 0 auto; }
-.lockup .wordmark { font-size: clamp(52px, 8vw, 84px); }
+.lockup .wordmark { font-size: clamp(44px, 7.4vw, 80px); }
 .family { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin: 16px 0; }
 .family > div { background: var(--well); border-radius: 8px; padding: 14px 18px; }
 .family h4 { margin-top: 0; font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-4); }
@@ -823,9 +934,16 @@ footer.end { color: var(--ink-4); font-size: 13.5px; padding-block: 30px 60px; }
       <path d="M28 66 H72 M50 44 V88 M35 50 C42 58 42 74 35 82 M65 50 C58 58 58 74 65 82" fill="none" style="stroke:var(--pk-ink,#1B1C1E)" stroke-width="2.2"/>
       <text x="14" y="26" font-family="Open Sans, sans-serif" font-weight="800" font-size="8" letter-spacing="1" style="fill:var(--pk-ink,#1B1C1E)">CARDPACK</text>
     </symbol>
+    <symbol id="ic-syn" viewBox="0 0 24 24"><path d="M18 5.5 H9.5 a3.6 3.6 0 0 0 0 7.2 h5 a3.6 3.6 0 0 1 0 7.2 H6" fill="none" stroke="#1F2225" stroke-width="6.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M18 5.5 H9.5 a3.6 3.6 0 0 0 0 7.2 h5 a3.6 3.6 0 0 1 0 7.2 H6" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="ic-chev" viewBox="0 0 16 10"><path d="M2 2 L8 8 L14 2" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="ic-tick" viewBox="0 0 12 10"><path d="M1.6 5.2 L4.6 8.1 L10.4 1.9" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="ic-clock" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="M8 4.2 V8.4 H11" fill="none" stroke="#0D0D1C" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="mu-up" viewBox="0 0 20 16"><path d="M10 2.2 L17.6 13.8 H2.4 Z" fill="currentColor" stroke-linejoin="round" paint-order="stroke" style="stroke:var(--mu-ol,#24282C);stroke-width:3.2"/></symbol>
+    <symbol id="mu-down" viewBox="0 0 20 16"><path d="M2.4 2.2 H17.6 L10 13.8 Z" fill="currentColor" stroke-linejoin="round" paint-order="stroke" style="stroke:var(--mu-ol,#24282C);stroke-width:3.2"/></symbol>
+    <symbol id="mu-up2" viewBox="0 0 20 22"><path d="M10 1.8 L17.4 11.4 H2.6 Z M10 9.4 L17.4 20.2 H2.6 Z" fill="currentColor" stroke-linejoin="round" paint-order="stroke" style="stroke:var(--mu-ol,#24282C);stroke-width:3"/></symbol>
     <symbol id="i-bolt" viewBox="0 0 10 14"><path d="M6.5 0 L0 8 H4 L3 14 L10 5.5 H6 Z" fill="currentColor"/></symbol>
-    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 2 L20 5 V11 C20 16.5 16.4 20.4 12 22 C7.6 20.4 4 16.5 4 11 V5 Z" fill="currentColor"/></symbol>
-    <symbol id="i-ballic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="currentColor"/><path d="M2 12 H22 M12 2 V22 M5 5 C9 9 9 15 5 19 M19 5 C15 9 15 15 19 19" stroke="#6C5322" stroke-width="1.6" fill="none"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 2 L20 5 V11 C20 16.5 16.4 20.4 12 22 C7.6 20.4 4 16.5 4 11 V5 Z" fill="currentColor"/><path d="M12 5.4 L17 7.3 V11.2 C17 14.9 14.7 17.6 12 18.7 C9.3 17.6 7 14.9 7 11.2 V7.3 Z" fill="none" stroke="#15563E" stroke-width="1.5" stroke-linejoin="round"/></symbol>
+    <symbol id="i-ballic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="currentColor"/><path d="M2 12 H22 M12 2 V22 M5 5 C9 9 9 15 5 19 M19 5 C15 9 15 15 19 19" stroke="#664F20" stroke-width="1.7" fill="none"/></symbol>
     <symbol id="sil" viewBox="0 0 86 92"><circle cx="43" cy="26" r="17" fill="currentColor"/><path d="M8 92 C8 62 22 50 43 50 C64 50 78 62 78 92 Z" fill="currentColor"/></symbol>
     <symbol id="c-best" viewBox="0 0 24 24"><path d="M12 2.5 L21 12.5 H15.5 V21.5 H8.5 V12.5 H3 Z" fill="#01D64B" stroke="#101B14" stroke-width="1.6" stroke-linejoin="round" paint-order="stroke"/></symbol>
     <symbol id="c-good" viewBox="0 0 24 24"><path d="M5 5 H18 V18 L14 14 L7.5 20.5 L3.5 16.5 L10 10 Z" fill="#AEFE01" transform="rotate(-90 12 12)" stroke="#101B14" stroke-width="1.6" stroke-linejoin="round" paint-order="stroke"/></symbol>
@@ -880,7 +998,7 @@ footer.end { color: var(--ink-4); font-size: 13.5px; padding-block: 30px 60px; }
 <div class="shell">
 
   <nav class="rail" aria-label="Sections">
-    <div class="rail__mark"><b class="wordmark"><i>RISE</i>WIZ</b><span>Visual System</span></div>
+    <div class="rail__mark"><b class="wordmark"><i>NBARISE</i>WIZ</b><span>Visual System</span></div>
     <a href="#identity" class="is-active">Identity</a>
     <a href="#voice">Voice</a>
     <a href="#foundation">Foundation</a>
@@ -902,7 +1020,7 @@ footer.end { color: var(--ink-4); font-size: 13.5px; padding-block: 30px 60px; }
       <div class="masthead__body"><div class="wrap">
         <div class="eyebrow">Visual system · NBA RISE companion</div>
         <h1>Their <span class="hues">colour</span>.<br>Our <span class="mk">marker</span>.</h1>
-        <p>The visual system for RiseWiz, the companion to GRAVITY's NBA&nbsp;RISE. Everything that shows the game's data is measured, from a corpus of 424 screenshots of the global build. 142 of them show full in-game UI, across 42 distinct screens. That includes the typeface, which was identified by glyph overlap. NBA RISE paints with every hue on the wheel, so RiseWiz takes no colour of its own. It takes a material instead: black marker on a white coach's clipboard. Nothing in the game looks like that.</p>
+        <p>The visual system for NBARiseWiz, the companion to GRAVITY's NBA&nbsp;RISE. Everything that shows the game's data is measured, from a corpus of 424 screenshots of the global build. 142 of them show full in-game UI, across 42 distinct screens. That includes the typeface, which was identified by glyph overlap. NBA RISE paints with every hue on the wheel, so NBARiseWiz takes no colour of its own. It takes a material instead: black marker on a white coach's clipboard. Nothing in the game looks like that.</p>
         <ul class="stats">
           <li><b>424</b> Screenshots</li>
           <li><b>34</b> Accents measured</li>
@@ -919,30 +1037,31 @@ footer.end { color: var(--ink-4); font-size: 13.5px; padding-block: 30px 60px; }
       <div class="sec-head"><div class="wrap"><div class="sec-head__inner"><h2>Identity</h2><p>The third sibling</p></div></div></div>
       <div class="wrap sec-body">
         <div class="lockup">
-          <svg viewBox="0 0 100 92" role="img" aria-label="RiseWiz mark"><use href="#mark-rise"/></svg>
-          <span class="wordmark"><i>RISE</i>WIZ</span>
+          <svg viewBox="0 0 100 92" role="img" aria-label="NBARiseWiz mark"><use href="#mark-rise"/></svg>
+          <span class="wordmark"><i>NBARISE</i>WIZ</span>
         </div>
-        <p class="lede">The site is <strong>RiseWiz</strong>. The name splits in two, and so does the design:</p>
+        <p class="lede">The site is <strong>NBARiseWiz</strong>. The name splits in two, and so does the design:</p>
         <ul class="clean">
-          <li><b>RISE is the game's world.</b> Anything that shows the game's own data is drawn in the measured system in Foundation through Rarities. That covers cards, OVR, rarities, condition, tactics, packs and the market.</li>
+          <li><b>NBA RISE is the game's world.</b> Anything that shows the game's own data is drawn in the measured system in Foundation through Rarities. That covers cards, OVR, rarities, condition, tactics, packs and the market.</li>
           <li><b>WIZ is ours.</b> Our analysis, our play diagrams and our teaching material go on the clipboard.</li>
         </ul>
         <div class="note"><p>One rule settles which: <strong>their data goes out on the broadcast, our thinking goes on the clipboard.</strong></p></div>
 
-        <h3>Why RISE and not the acronym</h3>
-        <p>FHCWiz and UFMWiz both take the game's acronym. Here the acronym would start with <em>NBA</em>, which is the league's trademark, not the game's. So the family pattern takes the game's own word: <strong>RISE</strong>. It is the part of the title GRAVITY chose, and it carries no league mark.</p>
+        <h3>Why the full title</h3>
+        <p>FHCWiz and UFMWiz take the game's acronym, because players type the acronym. Nobody types "NR". They type <strong>NBA Rise</strong>, and a name built on RISE alone would never come up for that search, since "rise" on its own says nothing about basketball. So the family pattern takes the game's full title: <strong>NBARiseWiz</strong>, the name a player already searches for, plus the family's Wiz.</p>
+        <p>"NBA" belongs to the league, so it appears in only two places. It sits directly before Rise, as part of the game's title. It also appears in a sentence that explains what NBA RISE is, such as "GRAVITY's officially licensed NBA card-strategy game". It never stands on its own as our brand. Two things sit outside the rule. The disclaimer names the league because it has to. Game data that contains the word, like the 25-26 NBA MVP synergy, is shown exactly as the game writes it.</p>
 
         <h3>The mark</h3>
         <p><strong>A W run off two screens.</strong> The shooter starts at the circle and cuts to the baseline. They curl off the first screen, drift back up the lane, then come off the second screen to the wing and catch. In basketball's own notation, the bar at each lower point of the W is a screen and the filled disc is the ball arriving. It is drawn in black marker on a white clipboard with the half-court printed faintly underneath.</p>
         <p>It is the one piece of the identity that owes nothing to the game, and it survives intact if the word ever has to go.</p>
 
         <h3>The wordmark</h3>
-        <p><strong>RISEWIZ</strong> in Big Shoulders Display Black, one line, with a rule beneath the full width. <strong>RISE</strong> sits in <code>#8B94A2</code>, the game's own inactive-nav grey, and <strong>WIZ</strong> sits in <code>#FFFFFF</code>. The acronym names the subject and the brand is the lit half.</p>
+        <p><strong>NBARISEWIZ</strong> in Big Shoulders Display Black, one line, with a rule beneath the full width. <strong>NBARISE</strong> sits in <code>#8B94A2</code>, the game's own inactive-nav grey, and <strong>WIZ</strong> sits in <code>#FFFFFF</code>. The game's title names the subject and the brand is the lit half. NBA and RISE are set solid, with no space and no change of weight, so the muted half reads as one title.</p>
         <p>The rule is a marker stroke in board white, <code>#F5F5F1</code>, with round ends. The game never draws a round-capped white stroke on slate, so the lockup reads as ours without borrowing a colour.</p>
         <ul class="never-list">
-          <li>Never set RISE alone, in any face, at any size.</li>
-          <li>Never set RISEWIZ in one flat colour. The halves always differ in value.</li>
-          <li>Never put "NBA" in the wordmark, beside it or above it. The league's name is never brand type.</li>
+          <li>Never set NBARISE alone, and never set NBA alone, in any face, at any size.</li>
+          <li>Never set NBARISEWIZ in one flat colour. The halves always differ in value.</li>
+          <li>Never split NBA from RISE. Don't stack it above, tint it apart, set it in another face, or move it beside WIZ.</li>
           <li>Never colour the rule. It is the marker, and marker on slate is white.</li>
         </ul>
 
@@ -958,7 +1077,7 @@ footer.end { color: var(--ink-4); font-size: 13.5px; padding-block: 30px 60px; }
             </ul>
           </div>
           <div>
-            <h4>Owned by RiseWiz</h4>
+            <h4>Owned by NBARiseWiz</h4>
             <ul class="clean">
               <li>The whole measured half: cool slate grounds, flat fills, glow elevation, Open Sans</li>
               <li>The clipboard: white board, black marker, basketball notation</li>
@@ -967,10 +1086,10 @@ footer.end { color: var(--ink-4); font-size: 13.5px; padding-block: 30px 60px; }
             </ul>
           </div>
         </div>
-        <p>FHCWiz is chalk on a dark board and UFMWiz is marker on grass. RiseWiz is the only light surface in the family. The three can sit side by side and never be mistaken for each other.</p>
+        <p>FHCWiz is chalk on a dark board and UFMWiz is marker on grass. NBARiseWiz is the only light surface in the family. The three can sit side by side and never be mistaken for each other.</p>
 
         <h3>Name and address</h3>
-        <p><code>risewiz.com</code> is registered to someone else and parked. <code>risewiz.gg</code>, <code>risewiz.app</code> and <code>risewiz.net</code> return NXDOMAIN, and the .net registry has no record (checked 9 Nov 2026). <strong>risewiz.gg</strong> fits the category, alongside fut.gg.</p>
+        <p><code>nbarisewiz.com</code>, <code>nbarisewiz.net</code> and <code>nbarisewiz.app</code> have no record at their registries. <code>nbarisewiz.gg</code> and <code>nbarisewiz.io</code> return NXDOMAIN (checked 9 Nov 2026). <strong>nbarisewiz.com</strong> is the address people will guess. Take <strong>nbarisewiz.gg</strong> with it, which fits the category alongside fut.gg, and redirect one to the other.</p>
       </div>
     </section>
 
@@ -978,14 +1097,14 @@ footer.end { color: var(--ink-4); font-size: 13.5px; padding-block: 30px 60px; }
     <section id="voice">
       <div class="sec-head"><div class="wrap"><div class="sec-head__inner"><h2>Voice</h2><p>An assistant coach with the numbers</p></div></div></div>
       <div class="wrap sec-body">
-        <p class="lede">RiseWiz talks like the assistant who carries the clipboard: short, specific, numbers first, never hype.</p>
+        <p class="lede">NBARiseWiz talks like the assistant who carries the clipboard: short, specific, numbers first, never hype.</p>
         <div class="tbl"><table>
           <thead><tr><th>Principle</th><th>Write</th><th>Not</th></tr></thead>
           <tbody>
             <tr><td>Numbers first</td><td>100 cards guarantees an Epic. Your first one is luck only 39% of the time.</td><td>Unlock amazing Epic players!</td></tr>
             <tr><td>The game's words for the game's things</td><td>Scout, Promotion, Grade Enhancement, Synergy, Team Power</td><td>Gacha, pulls, rank-up, chemistry, rating</td></tr>
             <tr><td>Our words for our analysis</td><td>Odds, cost to Epic, rotation load, counter</td><td>Secret meta, OP, broken</td></tr>
-            <tr><td>Name the league once, in prose</td><td>RiseWiz is a fan tool for GRAVITY's NBA&nbsp;RISE.</td><td>The NBA RISE database · Official NBA stats</td></tr>
+            <tr><td>"NBA" only as the game's title</td><td>NBARiseWiz is a fan tool for NBA&nbsp;RISE, GRAVITY's officially licensed NBA card-strategy game.</td><td>Official NBA stats · NBA-approved · The NBA companion</td></tr>
             <tr><td>Sentence case everywhere except buttons and screen titles, which stay caps like the game</td><td>Pack odds · Cost to Epic</td><td>PACK ODDS FOR EVERY PACK</td></tr>
             <tr><td>Ready for five languages</td><td>Short labels, no idioms, numbers outside the sentence</td><td>Puns, slang, "slam dunk deal"</td></tr>
           </tbody>
@@ -1036,10 +1155,10 @@ footer.end { color: var(--ink-4); font-size: 13.5px; padding-block: 30px 60px; }
           <div class="ramp__stops"><div style="background:#6A1414;color:#F2C2C2">#6A1414</div><div style="background:#B80B0B;color:#FFE3E3">#B80B0B</div><div style="background:#C70D2E;color:#FFE3E8">#C70D2E</div><div style="background:#DF263D;color:#FFF1F3">#DF263D</div><div style="background:#DD4A7F;color:#FFF0F6">#DD4A7F</div></div></div>
         <div class="ramp"><div class="ramp__name"><b style="color:#F6C526">Gold</b><span>Team Power · synergy · value</span></div>
           <div class="ramp__stops"><div style="background:#523206;color:#F8E1A2">#523206</div><div style="background:#A77422;color:#FFF3D6">#A77422</div><div style="background:#C28422;color:#2A1800">#C28422</div><div style="background:#DEAE1E;color:#2A1C00">#DEAE1E</div><div style="background:#F6C526;color:#2A1F00">#F6C526</div></div></div>
-        <div class="ramp"><div class="ramp__name"><b style="color:#DECB87">Bronze</b><span>Offensive tactic chips</span></div>
-          <div class="ramp__stops"><div style="background:#3F2B10;color:#DECB87">#3F2B10</div><div style="background:#6C5322;color:#FEF1A3">#6C5322</div><div style="background:#AA965A;color:#211A06">#AA965A</div><div style="background:#DECB87;color:#2B2208">#DECB87</div><div style="background:#FEF1A3;color:#2B2208">#FEF1A3</div></div></div>
-        <div class="ramp"><div class="ramp__name"><b style="color:#6FE9A4">Mint</b><span>Defensive tactic chips</span></div>
-          <div class="ramp__stops"><div style="background:#114430;color:#6FE9A4">#114430</div><div style="background:#225542;color:#BFF5D6">#225542</div><div style="background:#378E62;color:#E6FFF1">#378E62</div><div style="background:#6FE9A4;color:#0B2A1C">#6FE9A4</div><div style="background:#3DFE8F;color:#0B2A1C">#3DFE8F</div></div></div>
+        <div class="ramp"><div class="ramp__name"><b style="color:#FFECA0">Bronze</b><span>Offensive tactics</span></div>
+          <div class="ramp__stops"><div style="background:#403011;color:#5FEB31">#403011</div><div style="background:#6A552A;color:#FFECA0">#6A552A</div><div style="background:#6C5322;color:#FFECA0">#6C5322</div><div style="background:#CCBD82;color:#2B2208">#CCBD82</div><div style="background:#FFECA0;color:#2B2208">#FFECA0</div></div></div>
+        <div class="ramp"><div class="ramp__name"><b style="color:#3DFF9E">Mint</b><span>Defensive tactics</span></div>
+          <div class="ramp__stops"><div style="background:#175B42;color:#3DFF9E">#175B42</div><div style="background:#1C5D45;color:#3DFF9E">#1C5D45</div><div style="background:#37CC74;color:#0B2A1C">#37CC74</div><div style="background:#55E49D;color:#0B2A1C">#55E49D</div><div style="background:#3DFF8F;color:#0B2A1C">#3DFF8F</div></div></div>
         <div class="ramp"><div class="ramp__name"><b style="color:#00C10D">Green</b><span>Stamina · countdown · success states</span></div>
           <div class="ramp__stops"><div style="background:#0F3C0D;color:#A9D7A7">#0F3C0D</div><div style="background:#007F08;color:#DDFFD9">#007F08</div><div style="background:#00C10D;color:#03260A">#00C10D</div><div style="background:#39FF35;color:#062A06">#39FF35</div><div style="background:#00FF58;color:#062A12">#00FF58</div></div></div>
 
@@ -1055,7 +1174,7 @@ footer.end { color: var(--ink-4); font-size: 13.5px; padding-block: 30px 60px; }
             <tr><td>Home · away</td><td><span class="sw" style="background:#158EFD"></span>home <code>#158EFD</code> · <span class="sw" style="background:#DF263D"></span>away <code>#DF263D</code></td><td>Scorebug stripes, comparison bars, matchup frames, position discs</td></tr>
             <tr><td>Matchup OVR</td><td><span class="sw" style="background:#CAFFFF"></span>ahead <code>#CAFFFF</code> · <span class="sw" style="background:#E02540"></span>behind <code>#E02540</code></td><td>In-match card pair: the lower OVR turns red</td></tr>
             <tr><td>Card stats</td><td><span class="sw" style="background:#E3B72A"></span>Offence · <span class="sw" style="background:#16C988"></span>Defence · <span class="sw" style="background:#B1C1D4"></span>Mental</td><td>Card-back stat rings</td></tr>
-            <tr><td>Stamina</td><td><span class="sw" style="background:#00C10D"></span>full · <span class="sw" style="background:#FFD617"></span>low · <span class="sw" style="background:#E4C401"></span>⚡ load on black</td><td>Five-segment bars; tactic load chips</td></tr>
+            <tr><td>Stamina</td><td><span class="sw" style="background:#00C10D"></span>full · <span class="sw" style="background:#86CD00"></span>four of five · <span class="sw" style="background:#FFCE16"></span>low · <span class="sw" style="background:#FDD800"></span>⚡ load on black</td><td>Five-segment bars; tactic load chips</td></tr>
             <tr><td>Fatigue / recovery</td><td><span class="sw" style="background:#16BEE7"></span><code>#16BEE7</code> on <span class="sw" style="background:#3F474A"></span><code>#3F474A</code></td><td>Formation bars, card-back fatigue</td></tr>
             <tr><td>Bonus chips</td><td><span class="sw" style="background:#02BBD0"></span>+TP on <code>#29485B</code> · <span class="sw" style="background:#00DCF1"></span>+synergy on <code>#044048</code></td><td>Team Power row, synergy tooltip</td></tr>
             <tr><td>Notices</td><td><span class="sw" style="background:#FD5B4B"></span>new card <code>#FD5B4B</code> · <span class="sw" style="background:#D63018"></span>alert <code>#D63018</code></td><td>Pack results, home tiles</td></tr>
@@ -1073,13 +1192,13 @@ footer.end { color: var(--ink-4); font-size: 13.5px; padding-block: 30px 60px; }
             <tr><td>Secondary</td><td><span class="sw" style="background:#C9CDCF"></span><code>#C9CDCF</code></td><td>Game clock, sub-values</td></tr>
             <tr><td>Tab off</td><td><span class="sw" style="background:#A1AAB2"></span><code>#A1AAB2</code></td><td>Unselected tab labels</td></tr>
             <tr><td>Label</td><td><span class="sw" style="background:#9C9EAB"></span><code>#9C9EAB</code></td><td>Caps labels: DEFENSE, COACH, SHOT CLOCK</td></tr>
-            <tr><td>Inactive</td><td><span class="sw" style="background:#8B94A2"></span><code>#8B94A2</code></td><td>Bottom-nav icons and labels; the RISE in our wordmark</td></tr>
+            <tr><td>Inactive</td><td><span class="sw" style="background:#8B94A2"></span><code>#8B94A2</code></td><td>Bottom-nav icons and labels; the NBARISE in our wordmark</td></tr>
             <tr><td>Value</td><td><span class="sw" style="background:#F6C526"></span><code>#F6C526</code></td><td>Team Power figure, currency</td></tr>
           </tbody>
         </table></div>
 
         <h3>Every hue is spoken for</h3>
-        <p>FHCWiz reuses the game's red for its pen, and UFMWiz found a bib orange the game never uses. We looked for the RiseWiz equivalent and there isn't one.</p>
+        <p>FHCWiz reuses the game's red for its pen, and UFMWiz found a bib orange the game never uses. We looked for the NBARiseWiz equivalent and there isn't one.</p>
         <p>We searched the full colour space for the colour farthest from all 34 measured accents. Each candidate was scored under normal vision and simulated protan, deutan and tritan vision. The best possible result is only <strong>6.3 ΔE</strong> from its nearest game colour, which is below the 8 ΔE a categorical colour needs to stand alone. Once the colour must also read on the white board and on the slate, the winner is a purple or a blue: both are the game's.</p>
         <p>So the brand is <strong>black and white</strong>. The game never draws dark strokes on a white surface, and the clipboard owns that.</p>
       </div>
@@ -1126,7 +1245,7 @@ footer.end { color: var(--ink-4); font-size: 13.5px; padding-block: 30px 60px; }
         </table></div>
         <h3>What the official site uses, and why we don't</h3>
         <p>GRAVITY's website (nbarise.gnjoy.com) loads Nexon Football Gothic, Pretendard, S-Core Dream, Oswald and Inter. None of them is the in-game face. They mark the marketing site, not the game. The store captions use a heavy condensed italic with a blue-to-red fill ("COLLECT YOUR STARS"); that is marketing art too.</p>
-        <p><strong>RiseWiz's own face</strong> is Big Shoulders Display Black, used in the wordmark and nowhere else. UFM took Bebas Neue. FHC took Anton, which here turns out to be the game's own numeral face, so in RiseWiz Anton only ever carries the game's numbers and never our brand. Big Shoulders was drawn for Chicago, a basketball city, and appears nowhere in the game or on its site.</p>
+        <p><strong>NBARiseWiz's own face</strong> is Big Shoulders Display Black, used in the wordmark and nowhere else. UFM took Bebas Neue. FHC took Anton, which here turns out to be the game's own numeral face, so in NBARiseWiz Anton only ever carries the game's numbers and never our brand. Big Shoulders was drawn for Chicago, a basketball city, and appears nowhere in the game or on its site.</p>
       </div>
     </section>
 
@@ -1184,17 +1303,105 @@ footer.end { color: var(--ink-4); font-size: 13.5px; padding-block: 30px 60px; }
         <h3>Team Power and synergy</h3>
         <div class="stage" style="align-items:center">
           <span class="tp"><i>TP</i>11,717</span><span class="bonus bonus--tp">+2,184</span>
-          <span class="chip chip--syn"><span class="s-ico">S</span>Synergy</span>
+          <span class="chip chip--syn"><span class="s-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-syn"/></svg></span>Synergy</span>
           <span style="font-weight:700">Warriors Teamwork+</span><span class="bonus bonus--syn">+300</span>
         </div>
-
-        <h3>Tactic chips</h3>
-        <div class="stage col" style="gap:10px">
-          <div><span class="chip chip--def"><svg width="16" height="16"><use href="#i-shield"/></svg>Pass Interception (Mid)<span class="x">✕</span></span> <span class="chip chip--def"><svg width="16" height="16"><use href="#i-shield"/></svg>Protect the Paint (Strong)<span class="x">✕</span></span></div>
-          <div><span class="chip chip--off"><svg width="16" height="16"><use href="#i-ballic"/></svg>PG Drive Priority <span class="pct">60%</span><span class="x">✕</span></span> <span class="chip chip--off"><svg width="16" height="16"><use href="#i-ballic"/></svg>PG Mid-Range Shot Priority <span class="pct">63%</span><span class="x">✕</span></span></div>
-          <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><span class="disc disc--away">C</span><span class="disc disc--home">SG</span><span class="load">6<svg width="9" height="12"><use href="#i-bolt"/></svg></span><span class="load">1<svg width="9" height="12"><use href="#i-bolt"/></svg></span><span class="postab">PF</span></div>
+        <h3>Synergy list</h3>
+        <div class="stage dark" style="padding:14px">
+          <div class="syn">
+            <div class="synbar"><span class="box"></span><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-syn"/></svg><span class="n">6</span><span class="lbl">active synergies</span><span class="all">Expand all</span></div>
+            <div class="syn__cols">
+              <div>
+                <div class="srow srow--ev"><div class="sev"><span class="ev">EVENT</span><span class="tm"><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-clock"/></svg>41d 10h</span></div><div class="srow__txt"><b>25-26 NBA MVP</b><small>Active 0 · Total 2</small></div><div class="srow__tp">Extra TP per player<em>+120</em></div><span class="chev"><svg viewBox="0 0 16 10" aria-hidden="true"><use href="#ic-chev"/></svg></span></div>
+                <div class="srow"><div class="srow__txt"><b>THE BEST CORE</b><small>Active 0 · Total 2</small></div><div class="srow__tp">Extra TP per player<em>+120</em></div><span class="chev"><svg viewBox="0 0 16 10" aria-hidden="true"><use href="#ic-chev"/></svg></span></div>
+                <div class="srow srow--on"><div class="srow__txt"><b>ATLANTIC</b><small>Active 1 · Total 12</small></div><div class="srow__tp">Extra TP per player<em>+20</em></div><span class="chev"><svg viewBox="0 0 16 10" aria-hidden="true"><use href="#ic-chev"/></svg></span></div>
+                <div class="srow"><div class="srow__txt"><b>CENTRAL</b><small>Active 0 · Total 12</small></div><div class="srow__tp">Extra TP per player<em>+20</em></div><span class="chev"><svg viewBox="0 0 16 10" aria-hidden="true"><use href="#ic-chev"/></svg></span></div>
+              </div>
+              <div>
+                <div class="srow srow--on"><div class="srow__txt"><b>Regional Alliance</b><small>Active 2 · Total 2</small></div><div class="srow__tp">Extra TP per player<em>+30</em></div><span class="chev chev--up"><svg viewBox="0 0 16 10" aria-hidden="true"><use href="#ic-chev"/></svg></span></div>
+                <div class="scard">
+                  <div class="scard__head"><b>Western Conference Boost</b><div class="srow__tp">Extra TP per player<em>+30</em></div></div>
+                  <div class="scard__body">
+                    <div class="sreq"><i><svg viewBox="0 0 12 10" aria-hidden="true"><use href="#ic-tick"/></svg></i>Activates with 5 Western Conference players. (5/5)</div>
+                    <div class="sfaces"><span><svg viewBox="0 0 86 92" aria-hidden="true"><use href="#sil"/></svg></span><span><svg viewBox="0 0 86 92" aria-hidden="true"><use href="#sil"/></svg></span><span><svg viewBox="0 0 86 92" aria-hidden="true"><use href="#sil"/></svg></span><span><svg viewBox="0 0 86 92" aria-hidden="true"><use href="#sil"/></svg></span><span><svg viewBox="0 0 86 92" aria-hidden="true"><use href="#sil"/></svg></span></div>
+                    <div class="sreq"><i><svg viewBox="0 0 12 10" aria-hidden="true"><use href="#ic-tick"/></svg></i><span>Applies to matches:</span>All</div>
+                    <div class="starget"><p><span>Applies to:</span> Western Conference players</p><div class="statchips"><span class="stat stat--off">Chance Creation + 10</span><span class="stat stat--def">Defensive Pressure + 10</span><span class="stat stat--men">Clutch + 10</span></div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <p class="cap">Defence is mint with a shield, and offence is bronze with a ball. The ⚡ chip is the stamina load a player carries from assigned tactics. Position discs take the side's colour: red for the opponent, blue for you. Formation slots use the cyan tab.</p>
+        <p class="cap">The synergy list, redrawn from launch-week captures. Every synergy adds Team Power for each player who fits it, and an active one turns warm and gold.</p>
+        <ul class="clean">
+          <li><b>Rows</b> are <code>#2E3235</code> pills on a <code>#1C1C1C</code> list, lit by a <code>#373C3C</code> top rim. The extra TP per player sits in <code>#F2C22E</code> on a <code>#1F2123</code> pill, and the chevron disc is <code>#3D454B</code>.</li>
+          <li><b>Active synergies</b> and their boosts turn <code>#35322E</code>, with a 2px <code>#DBB745</code> rim and a brown glow. An open group's chevron lifts to <code>#555F67</code>.</li>
+          <li><b>Event synergies</b> carry a <code>#169567</code> EVENT tag and a countdown on <code>#0D0D1C</code>, set on the row's top edge.</li>
+          <li><b>An open boost</b> lists its requirement with a <code>#D89B16</code> tick and a count, then its players, the matches it applies to, and the players it affects.</li>
+          <li><b>Stat chips keep the three ability families:</b> offence <code>#514322</code> / <code>#D0A92D</code>, defence <code>#264836</code> / <code>#2AD898</code>, mental <code>#44484F</code> / <code>#B5C8DF</code>. They are the same three hues as the card-back rings, so a stat is the same colour wherever it appears.</li>
+          <li><b>The S glyph</b> is a white rounded-stroke S with a dark outline. The active count beside it is <code>#F2C22E</code>.</li>
+        </ul>
+
+
+        <h3>Tactics — the tactic-change board</h3>
+        <div class="stage dark" style="padding:14px">
+          <div class="tac">
+            <div class="tac__panel">
+              <div class="thead thead--away"><span class="tdisc tdisc--away">SAC</span><div><small>Offense</small><b>8086</b><em>+836</em></div><div><small>Defense</small><b>6863</b><em>+888</em></div><div><small>Coach</small><span class="coach">Doug Christie</span></div></div>
+              <div class="tcourt"><svg class="tcourt__lines" viewBox="0 0 400 420" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#FFFFFF" stroke-opacity=".055" stroke-width="4"><path d="M30 -4 V96 A176 176 0 0 0 370 96 V-4"/><rect x="138" y="-4" width="124" height="170"/><circle cx="200" cy="166" r="50"/><path d="M-4 330 H404"/><circle cx="200" cy="330" r="50"/></g></svg>
+                <div class="tchips">
+                  <span class="tchip tchip--def"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-shield"/></svg><span>3-Point Lockdown (Strong)</span></span>
+                  <span class="tchip tchip--off"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-ballic"/></svg><span>C Inside Shot Priority<b>58%</b></span></span>
+                  <span class="tchip tchip--off"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-ballic"/></svg><span>SG Mid-Range Shot Priority<b>63%</b></span></span>
+                  <span class="tchip tchip--off"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-ballic"/></svg><span>SG Inside Shot Priority<b>66%</b></span></span>
+                </div>
+                <div class="tplayers">
+                  <div class="tp1"><span class="ttag ttag--def">Drive Defense</span><span class="ttag ttag--off">3-Point<svg viewBox="0 0 20 16" aria-hidden="true"><use href="#mu-down"/></svg></span><div class="tav"><span class="tav__face"><svg viewBox="0 0 86 92" aria-hidden="true"><use href="#sil"/></svg></span><span class="tav__pos">SF</span><span class="tav__grade tav__grade--b">B+</span><span class="tav__load">5<svg viewBox="0 0 10 14" aria-hidden="true"><use href="#i-bolt"/></svg></span></div><span class="tstam tstam--low"><svg viewBox="0 0 10 14" aria-hidden="true"><use href="#i-bolt"/></svg><i><b class="on"></b><b class="on"></b><b></b><b></b><b></b></i></span></div>
+                  <div class="tp1 tp1--up"><span class="ttag ttag--def">Drive Defense</span><span class="ttag ttag--off">Drive<svg viewBox="0 0 20 16" aria-hidden="true"><use href="#mu-up"/></svg></span><span class="ttag ttag--off">Mid-Range<svg viewBox="0 0 20 16" aria-hidden="true"><use href="#mu-up"/></svg></span><div class="tav"><span class="tav__face"><svg viewBox="0 0 86 92" aria-hidden="true"><use href="#sil"/></svg></span><span class="tav__pos">PG</span><span class="tav__grade">C+</span><span class="tav__load">5<svg viewBox="0 0 10 14" aria-hidden="true"><use href="#i-bolt"/></svg></span></div><span class="tstam tstam--low"><svg viewBox="0 0 10 14" aria-hidden="true"><use href="#i-bolt"/></svg><i><b class="on"></b><b class="on"></b><b class="on"></b><b></b><b></b></i></span></div>
+                  <div class="tp1"><span class="ttag ttag--def">Drive Defense</span><div class="tav"><span class="tav__face"><svg viewBox="0 0 86 92" aria-hidden="true"><use href="#sil"/></svg></span><span class="tav__pos">C</span><span class="tav__grade">C</span><span class="tav__load">2<svg viewBox="0 0 10 14" aria-hidden="true"><use href="#i-bolt"/></svg></span></div><span class="tstam tstam--mid"><svg viewBox="0 0 10 14" aria-hidden="true"><use href="#i-bolt"/></svg><i><b class="on"></b><b class="on"></b><b class="on"></b><b class="on"></b><b></b></i></span></div>
+                </div>
+                <div class="tchips">
+                  <span class="tchip tchip--def tchip--x"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-shield"/></svg><span>Drive Defense (Mid)</span><i>✕</i></span>
+                  <span class="tchip tchip--off tchip--x"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-ballic"/></svg><span>PG Drive Priority<b>43%</b></span><i>✕</i></span>
+                  <span class="tchip tchip--off tchip--x"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-ballic"/></svg><span>PG Mid-Range Shot Priority<b>41%</b></span><i>✕</i></span>
+                  <span class="tchip tchip--off tchip--x"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-ballic"/></svg><span>SF 3-Point Shot Priority<b>50%</b></span><i>✕</i></span>
+                </div>
+              </div>
+              <div class="thead"><span class="tdisc tdisc--you">YOU</span><div><small>Offense</small><b>8830</b><em>+1005</em></div><div><small>Defense</small><b>5020</b><em>+739</em></div><div><small>Coach</small><span class="coach">Joe Mazzulla</span></div></div>
+            </div>
+            <div class="tac__panel tlist">
+              <div class="tlist__bar">Select tactic<i><svg viewBox="0 0 16 10" aria-hidden="true"><use href="#ic-chev"/></svg></i></div>
+              <div class="tlist__cols">
+                <div>
+                  <div class="tlist__head tlist__head--off"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-ballic"/></svg>Offense<span class="tlist__sub"><s>|</s> Stamina <s>|</s> Matchup</span></div>
+                  <div class="trow"><span>Pass Priority</span><span class="bolts"><svg viewBox="0 0 10 14" aria-hidden="true"><use href="#i-bolt"/></svg></span><span class="vr"></span><span class="mu mu--up-off"><svg viewBox="0 0 20 16" aria-hidden="true"><use href="#mu-up"/></svg></span></div>
+                  <div class="trow trow--off"><span>Drive Priority</span><span class="bolts"><svg viewBox="0 0 10 14" aria-hidden="true"><use href="#i-bolt"/></svg></span><span class="vr"></span><span class="mu mu--up-off"><svg viewBox="0 0 20 16" aria-hidden="true"><use href="#mu-up"/></svg></span></div>
+                  <div class="trow trow--off"><span>3-Point Shot Priority</span><span class="bolts"><svg viewBox="0 0 10 14" aria-hidden="true"><use href="#i-bolt"/></svg></span><span class="vr"></span><span class="mu mu--down"><svg viewBox="0 0 20 16" aria-hidden="true"><use href="#mu-down"/></svg></span></div>
+                  <div class="trow trow--off"><span>Mid-Range Shot Priority</span><span class="bolts"><svg viewBox="0 0 10 14" aria-hidden="true"><use href="#i-bolt"/></svg></span><span class="vr"></span><span class="mu mu--up-off"><svg viewBox="0 0 20 16" aria-hidden="true"><use href="#mu-up"/></svg></span></div>
+                  <div class="trow"><span>Inside Shot Priority</span><span class="bolts"><svg viewBox="0 0 10 14" aria-hidden="true"><use href="#i-bolt"/></svg></span><span class="vr"></span><span class="mu mu--up-off"><svg viewBox="0 0 20 16" aria-hidden="true"><use href="#mu-up"/></svg></span></div>
+                </div>
+                <div>
+                  <div class="tlist__head tlist__head--def"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-shield"/></svg>Defense<span class="tlist__sub"><s>|</s> Stamina <s>|</s> Matchup</span></div>
+                  <div class="trow"><span>Pass Interception</span><span class="bolts"></span><span class="vr"></span><span class="mu mu--even"></span></div>
+                  <div class="trow trow--def"><span>Drive Defense (Mid)</span><span class="bolts"><svg viewBox="0 0 10 14" aria-hidden="true"><use href="#i-bolt"/></svg><svg viewBox="0 0 10 14" aria-hidden="true"><use href="#i-bolt"/></svg></span><span class="vr"></span><span class="mu mu--even"></span></div>
+                  <div class="trow"><span>3-Point Lockdown</span><span class="bolts"></span><span class="vr"></span><span class="mu mu--even"></span></div>
+                  <div class="trow"><span>Mid-Range Defense</span><span class="bolts"></span><span class="vr"></span><span class="mu mu--up-def"><svg viewBox="0 0 20 16" aria-hidden="true"><use href="#mu-up"/></svg></span></div>
+                  <div class="trow"><span>Protect the Paint</span><span class="bolts"></span><span class="vr"></span><span class="mu mu--up-def mu--up2"><svg viewBox="0 0 20 22" aria-hidden="true"><use href="#mu-up2"/></svg></span></div>
+                </div>
+              </div>
+              <div class="tlist__btns"><span class="tbtn">Auto swap</span><span class="tbtn tbtn--go">Confirm</span></div>
+            </div>
+          </div>
+        </div>
+        <p class="cap">A launch-week tactic change, redrawn. The opponent's four tactics sit at the top, yours sit at the bottom with a cross to remove each one, and the players between them carry what they were told to do.</p>
+        <ul class="clean">
+          <li><b>Two chip families.</b> Defence is a <code>#175B42</code> chip with a <code>#3DFF8F</code> shield and a <code>#3DFF9E</code> label. Offence is a <code>#6C5322</code> chip with a <code>#FFECA0</code> ball and label, and its share sits in a <code>#5FEB31</code> on <code>#403011</code> pill. Only your own chips carry the cross.</li>
+          <li><b>Player tags</b> stack above each player. The defensive job comes first, in <code>#175940</code> with <code>#55E49D</code> text. Each offensive priority follows in <code>#695122</code> with <code>#F5E296</code> text and its matchup arrow.</li>
+          <li><b>Under each player:</b> the position disc in <code>#265AA5</code>, a metal grade letter (bronze for C grades, silver for B), the ⚡ load in <code>#FDD800</code> on black, and the stamina bar. The bar is yellow <code>#FFCE16</code> at two or three segments and lime <code>#86CD00</code> at four.</li>
+          <li><b>The list.</b> Rows are <code>#3D454B</code>. A picked offence row turns <code>#6A552A</code> and a picked defence row turns <code>#1C5D45</code>. The ⚡ count is the stamina cost, and a Mid defence costs two.</li>
+          <li><b>Matchup arrows read the other side's tactics.</b> Cream ▲ for offence, green ▲ for defence, a double green ▲ for a strong edge, red <code>#FD5B4B</code> ▼ when you are countered, and a grey dash when nothing meets. Here the opponent runs 3-Point Lockdown (Strong), so your 3-Point Shot Priority and your SF's 3-Point tag both turn red.</li>
+          <li><b>Names.</b> "3-Point Lockdown" and "Inside Shot Priority" are our translations of 3점슛 봉쇄 and 골밑슛 우선, because no English screenshot shows them yet. Every other tactic name is the game's own English.</li>
+        </ul>
 
         <h3>Player card — match preparation</h3>
         <div class="stage dark" style="padding:14px">
@@ -1734,7 +1941,7 @@ footer.end { color: var(--ink-4); font-size: 13.5px; padding-block: 30px 60px; }
       <div class="wrap sec-body">
         <p class="lede">Everything above exists so the app can show the game's data faithfully. The clipboard exists so that when we explain something, it is obvious who is talking.</p>
         <h3>Dark and light</h3>
-        <p>The game's world is dark and cool: slate, cyan, glow. The clipboard is light: a white dry-erase board in a black frame, with black marker on it. It is the only light working surface on any RiseWiz screen, and the eye finds it before reading a word.</p>
+        <p>The game's world is dark and cool: slate, cyan, glow. The clipboard is light: a white dry-erase board in a black frame, with black marker on it. It is the only light working surface on any NBARiseWiz screen, and the eye finds it before reading a word.</p>
         <h3>The materials</h3>
         <div class="materials">
           <div style="background:#F5F5F1;color:#121314"><b>#F5F5F1</b><span>Board</span></div>
@@ -1849,85 +2056,97 @@ footer.end { color: var(--ink-4); font-size: 13.5px; padding-block: 30px 60px; }
         <p>Drop-in custom properties. The same values ship as <code>tokens.css</code> beside this file.</p>
         <pre class="tokens">:root {
   /* grounds */
-  --rw-void:#000000; --rw-pill:#0D0D0D; --rw-well-blue:#0F141C; --rw-letterbox:#1A1B1E;
-  --rw-well:#1C1D1F; --rw-well-2:#202125; --rw-ground:#2A2E32; --rw-bench:#363A40;
-  --rw-raised:#3D454B; --rw-tab-off:#40474B;
+  --nrw-void:#000000; --nrw-pill:#0D0D0D; --nrw-well-blue:#0F141C; --nrw-letterbox:#1A1B1E;
+  --nrw-well:#1C1D1F; --nrw-well-2:#202125; --nrw-ground:#2A2E32; --nrw-bench:#363A40;
+  --nrw-raised:#3D454B; --nrw-tab-off:#40474B;
   /* text */
-  --rw-ink:#FFFFFF; --rw-ink-1:#E5EAEE; --rw-ink-2:#C9CDCF; --rw-ink-3:#A1AAB2;
-  --rw-ink-4:#9C9EAB; --rw-ink-5:#8B94A2; --rw-value:#F6C526;
+  --nrw-ink:#FFFFFF; --nrw-ink-1:#E5EAEE; --nrw-ink-2:#C9CDCF; --nrw-ink-3:#A1AAB2;
+  --nrw-ink-4:#9C9EAB; --nrw-ink-5:#8B94A2; --nrw-value:#F6C526;
   /* cyan */
-  --rw-cy-deep:#0C1C24; --rw-cy-body:#00729E; --rw-cy:#00AEEF; --rw-cy-rim:#21F9FD; --rw-cy-peak:#CAFFFF;
-  --rw-cy-tab:#39D3FF; --rw-cy-bar:#16BEE7; --rw-cy-clock:#03EBFD; --rw-cy-glow:#39EFFB;
+  --nrw-cy-deep:#0C1C24; --nrw-cy-body:#00729E; --nrw-cy:#00AEEF; --nrw-cy-rim:#21F9FD; --nrw-cy-peak:#CAFFFF;
+  --nrw-cy-tab:#39D3FF; --nrw-cy-bar:#16BEE7; --nrw-cy-clock:#03EBFD; --nrw-cy-glow:#39EFFB;
   /* home · away */
-  --rw-hm-deep:#0C204C; --rw-hm-body:#143B85; --rw-hm-mid:#1C57C3; --rw-hm:#158EFD; --rw-hm-peak:#63A9E7;
-  --rw-hm-disc:#1E4484; --rw-hm-box:#0C2A65;
-  --rw-aw-deep:#6A1414; --rw-aw-body:#B80B0B; --rw-aw-nba:#C70D2E; --rw-aw:#DF263D; --rw-aw-sel:#DD4A7F; --rw-aw-disc:#D01B1B;
+  --nrw-hm-deep:#0C204C; --nrw-hm-body:#143B85; --nrw-hm-mid:#1C57C3; --nrw-hm:#158EFD; --nrw-hm-peak:#63A9E7;
+  --nrw-hm-disc:#1E4484; --nrw-hm-box:#0C2A65;
+  --nrw-aw-deep:#6A1414; --nrw-aw-body:#B80B0B; --nrw-aw-nba:#C70D2E; --nrw-aw:#DF263D; --nrw-aw-sel:#DD4A7F; --nrw-aw-disc:#D01B1B;
   /* gold · bronze · mint · green */
-  --rw-gd-deep:#523206; --rw-gd-body:#A77422; --rw-gd-mid:#C28422; --rw-gd-rim:#DEAE1E; --rw-gd-peak:#F6C526; --rw-gd-light:#F8E1A2;
-  --rw-of-deep:#3F2B10; --rw-of:#6C5322; --rw-of-mid:#AA965A; --rw-of-ink:#DECB87; --rw-of-peak:#FEF1A3;
-  --rw-df-deep:#114430; --rw-df:#225542; --rw-df-mid:#378E62; --rw-df-ink:#6FE9A4; --rw-df-peak:#3DFE8F;
-  --rw-gr-deep:#0F3C0D; --rw-gr-body:#007F08; --rw-gr:#00C10D; --rw-gr-peak:#39FF35; --rw-stam-low:#FFD617; --rw-load:#E4C401;
+  --nrw-gd-deep:#523206; --nrw-gd-body:#A77422; --nrw-gd-mid:#C28422; --nrw-gd-rim:#DEAE1E; --nrw-gd-peak:#F6C526; --nrw-gd-light:#F8E1A2;
+  --nrw-of-deep:#403011; --nrw-of:#6C5322; --nrw-of-sel:#6A552A; --nrw-of-head:#CCBD82; --nrw-of-ink:#FFECA0; --nrw-of-tag:#695122; --nrw-of-tag-ink:#F5E296;
+  --nrw-df:#175B42; --nrw-df-sel:#1C5D45; --nrw-df-head:#37CC74; --nrw-df-ink:#3DFF9E; --nrw-df-peak:#3DFF8F; --nrw-df-tag:#175940; --nrw-df-tag-ink:#55E49D;
+  --nrw-gr-deep:#0F3C0D; --nrw-gr-body:#007F08; --nrw-gr:#00C10D; --nrw-gr-peak:#39FF35; --nrw-stam-low:#FFCE16; --nrw-stam-mid:#86CD00; --nrw-load:#FDD800;
   /* the ball */
-  --rw-ball-peak:#FFA64F; --rw-ball-mid:#DE6624; --rw-ball-shadow:#BD452B; --rw-ball-body:#CD430E; --rw-ball-rim:#FF5D1D;
+  --nrw-ball-peak:#FFA64F; --nrw-ball-mid:#DE6624; --nrw-ball-shadow:#BD452B; --nrw-ball-body:#CD430E; --nrw-ball-rim:#FF5D1D;
   /* sets */
-  --rw-cond-best:#01D64B; --rw-cond-good:#AEFE01; --rw-cond-mid:#F5F300; --rw-cond-poor:#FFAE01; --rw-cond-worst:#F50100;
-  --rw-ahead:#CAFFFF; --rw-behind:#E02540;
-  --rw-stat-off:#E3B72A; --rw-stat-def:#16C988; --rw-stat-mental:#B1C1D4;
-  --rw-bonus-tp-bg:#29485B; --rw-bonus-tp:#02BBD0; --rw-bonus-syn-bg:#044048; --rw-bonus-syn:#00DCF1;
-  --rw-new:#FD5B4B; --rw-alert:#D63018;
-  --rw-pack-free:#026429; --rw-pack-core:#422A58; --rw-pack-edition:#4E4330;
+  --nrw-cond-best:#01D64B; --nrw-cond-good:#AEFE01; --nrw-cond-mid:#F5F300; --nrw-cond-poor:#FFAE01; --nrw-cond-worst:#F50100;
+  --nrw-ahead:#CAFFFF; --nrw-behind:#E02540;
+  --nrw-stat-off:#E3B72A; --nrw-stat-def:#16C988; --nrw-stat-mental:#B1C1D4;
+  --nrw-bonus-tp-bg:#29485B; --nrw-bonus-tp:#02BBD0; --nrw-bonus-syn-bg:#044048; --nrw-bonus-syn:#00DCF1;
+  --nrw-new:#FD5B4B; --nrw-alert:#D63018;
+  --nrw-pack-free:#026429; --nrw-pack-core:#422A58; --nrw-pack-edition:#4E4330;
   /* rarities */
-  --rw-r-c:#71767D; --rw-r-c-hi:#828990; --rw-r-c-badge:#353B3C;
-  --rw-r-uc:#81B76C; --rw-r-uc-ink:#7A9F73; --rw-r-uc-badge:#244020;
-  --rw-r-r:#6E8FA9; --rw-r-r-hi:#88B9CC; --rw-r-r-badge:#2B89CC;
-  --rw-r-ur:#C1A863; --rw-r-ur-hi:#DECB98; --rw-r-ur-lo:#B79F53; --rw-r-ur-in:#473508;
-  --rw-r-ep:#9F27C6; --rw-r-ep-hi:#B934E6; --rw-r-ep-pk:#FEE2FD; --rw-r-ep-neon:#4AE3F8; --rw-r-ep-in:#3B075B;
+  --nrw-r-c:#71767D; --nrw-r-c-hi:#828990; --nrw-r-c-badge:#353B3C;
+  --nrw-r-uc:#81B76C; --nrw-r-uc-ink:#7A9F73; --nrw-r-uc-badge:#244020;
+  --nrw-r-r:#6E8FA9; --nrw-r-r-hi:#88B9CC; --nrw-r-r-badge:#2B89CC;
+  --nrw-r-ur:#C1A863; --nrw-r-ur-hi:#DECB98; --nrw-r-ur-lo:#B79F53; --nrw-r-ur-in:#473508;
+  --nrw-r-ep:#9F27C6; --nrw-r-ep-hi:#B934E6; --nrw-r-ep-pk:#FEE2FD; --nrw-r-ep-neon:#4AE3F8; --nrw-r-ep-in:#3B075B;
   /* rarity cards: frame by rarity, field by edition */
-  --rw-ep-frame-hi:#F6D9FF; --rw-ep-frame-lo:#571E82; --rw-ep-ovr-ring:#52E2F7; --rw-ep-ovr-halo:#723B94;
-  --rw-ep-badge-gem:#1AF9FA; --rw-ur-badge-ink:#F7C3BE; --rw-ur-wing:#F5DB7C; --rw-ur-wing-lo:#A7783E; --rw-ovr-rim:#E1D5B3;
-  --rw-field-starter:#D7D6E6; --rw-field-starter-lo:#C2C1D6; --rw-field-starter-ring:#E1DFED; --rw-plate-starter:#232B3B; --rw-plate-starter-rim:#9FAAB4;
-  --rw-field-season:#21252A; --rw-field-season-ring:#373E47;
-  --rw-field-core-hi:#710384; --rw-field-core-mid:#231660; --rw-field-core-lo:#1B043B; --rw-field-core-shard:#CEC8EC; --rw-field-core-beam:#8ACAD7;
-  --rw-ed-starter:#B9EBFF; --rw-ed-starter-outline:#393C4D; --rw-ed-season:#FEFBDC; --rw-ed-core:#82E3FC; --rw-ed-core-glow:#A130CA;
+  --nrw-ep-frame-hi:#F6D9FF; --nrw-ep-frame-lo:#571E82; --nrw-ep-ovr-ring:#52E2F7; --nrw-ep-ovr-halo:#723B94;
+  --nrw-ep-badge-gem:#1AF9FA; --nrw-ur-badge-ink:#F7C3BE; --nrw-ur-wing:#F5DB7C; --nrw-ur-wing-lo:#A7783E; --nrw-ovr-rim:#E1D5B3;
+  --nrw-field-starter:#D7D6E6; --nrw-field-starter-lo:#C2C1D6; --nrw-field-starter-ring:#E1DFED; --nrw-plate-starter:#232B3B; --nrw-plate-starter-rim:#9FAAB4;
+  --nrw-field-season:#21252A; --nrw-field-season-ring:#373E47;
+  --nrw-field-core-hi:#710384; --nrw-field-core-mid:#231660; --nrw-field-core-lo:#1B043B; --nrw-field-core-shard:#CEC8EC; --nrw-field-core-beam:#8ACAD7;
+  --nrw-ed-starter:#B9EBFF; --nrw-ed-starter-outline:#393C4D; --nrw-ed-season:#FEFBDC; --nrw-ed-core:#82E3FC; --nrw-ed-core-glow:#A130CA;
   /* match-prep lineup */
-  --rw-lineup-ground:#1C1D1F; --rw-slot:#143D88; --rw-slot-hi:#154091; --rw-slot-rim:#1C50B2; --rw-slot-pos:#0D2758; --rw-slot-pos-ink:#EDF5FF;
-  --rw-schip:#CC8A22; --rw-schip-lo:#A06D20; --rw-mini-ur:#DBD078; --rw-mini-ur-lo:#C5AF77; --rw-mini-ep:#BD32E5; --rw-mini-ep-lo:#A129CE; --rw-mini-uc:#76996F;
-  --rw-plate-ep:#202736; --rw-stam-track:#000000; --rw-stam:#00BE0D; --rw-grade-well:#16213D; --rw-grade-well-lo:#0A0C20; --rw-grade:#BA9267; --rw-grade-lo:#8F6B4C;
-  --rw-box:#0C2A65; --rw-box-label:#BFC5CE; --rw-box-ink:#EBF0F4; --rw-box-bench:#212427; --rw-grade-bench:#1D1F21; --rw-tally:#0D0D0D; --rw-tally-ink:#999EA5;
+  --nrw-lineup-ground:#1C1D1F; --nrw-slot:#143D88; --nrw-slot-hi:#154091; --nrw-slot-rim:#1C50B2; --nrw-slot-pos:#0D2758; --nrw-slot-pos-ink:#EDF5FF;
+  --nrw-schip:#CC8A22; --nrw-schip-lo:#A06D20; --nrw-mini-ur:#DBD078; --nrw-mini-ur-lo:#C5AF77; --nrw-mini-ep:#BD32E5; --nrw-mini-ep-lo:#A129CE; --nrw-mini-uc:#76996F;
+  --nrw-plate-ep:#202736; --nrw-stam-track:#000000; --nrw-stam:#00BE0D; --nrw-grade-well:#16213D; --nrw-grade-well-lo:#0A0C20; --nrw-grade:#BA9267; --nrw-grade-lo:#8F6B4C;
+  --nrw-box:#0C2A65; --nrw-box-label:#BFC5CE; --nrw-box-ink:#EBF0F4; --nrw-box-bench:#212427; --nrw-grade-bench:#1D1F21; --nrw-tally:#0D0D0D; --nrw-tally-ink:#999EA5;
   /* in-match HUD */
-  --rw-sbg:#2A2E32; --rw-sbg-rim:#3D424A; --rw-sbg-home:#2666B8; --rw-sbg-away:#E64126; --rw-qchip:#C70D32; --rw-qchip-ink:#F4F1F4; --rw-qclock:#EAEDEF;
-  --rw-sbg-id:#F6F8FA; --rw-sbg-city:#9EA3AA; --rw-sbg-team:#EDF0F2; --rw-disc-you:#061C5A; --rw-disc-away:#F3F3F2;
-  --rw-sclk-core:#103E4E; --rw-sclk-mid:#0E2832; --rw-sclk-edge:#0D1519; --rw-sclk-rim:#19202A; --rw-sclk-digit:#03EEFE; --rw-sclk-halo:#0D6575; --rw-sclk-label:#A5A7AD;
-  --rw-board-home:#168CFB; --rw-board-away:#DF263D; --rw-board-clock:#C5C9CC; --rw-board-id:#B8BCBF; --rw-board-name:#ADB1B4; --rw-board-divider:#1C1D1F; --rw-board-pill:#1C1C1C; --rw-board-pill-ink:#E9EDF1;
+  --nrw-sbg:#2A2E32; --nrw-sbg-rim:#3D424A; --nrw-sbg-home:#2666B8; --nrw-sbg-away:#E64126; --nrw-qchip:#C70D32; --nrw-qchip-ink:#F4F1F4; --nrw-qclock:#EAEDEF;
+  --nrw-sbg-id:#F6F8FA; --nrw-sbg-city:#9EA3AA; --nrw-sbg-team:#EDF0F2; --nrw-disc-you:#061C5A; --nrw-disc-away:#F3F3F2;
+  --nrw-sclk-core:#103E4E; --nrw-sclk-mid:#0E2832; --nrw-sclk-edge:#0D1519; --nrw-sclk-rim:#19202A; --nrw-sclk-digit:#03EEFE; --nrw-sclk-halo:#0D6575; --nrw-sclk-label:#A5A7AD;
+  --nrw-board-home:#168CFB; --nrw-board-away:#DF263D; --nrw-board-clock:#C5C9CC; --nrw-board-id:#B8BCBF; --nrw-board-name:#ADB1B4; --nrw-board-divider:#1C1D1F; --nrw-board-pill:#1C1C1C; --nrw-board-pill-ink:#E9EDF1;
   /* set play */
-  --rw-cd-disc:#0D0D1C; --rw-cd-inner:#23262F; --rw-cd-track:#3C4146; --rw-cd-arc:#3BD738; --rw-cd-digit:#38FF35;
-  --rw-vchip-home:#015FC1; --rw-vchip-away:#C22600; --rw-act-face:#2E2F35; --rw-act-rim:#373B41; --rw-act-hi:#5C5D62; --rw-act-outer:#192030; --rw-act-label:#D8E1E3;
-  --rw-auto:#021027; --rw-auto-icon:#14A3B5; --rw-tap-ring:#BB3C39; --rw-tap:#2E7824; --rw-tap-lo:#255F1E; --rw-tap-icon:#A9D7A7; --rw-tap-timer:#2E9B43;
-  --rw-success:#1CA5D8; --rw-bubble:#0C6AC8; --rw-bubble-rim:#558FC5; --rw-bang:#ECFEFD; --rw-bang-glow:#A7FDFD; --rw-toast:#B80B0B; --rw-toast-icon:#850D0D;
+  --nrw-cd-disc:#0D0D1C; --nrw-cd-inner:#23262F; --nrw-cd-track:#3C4146; --nrw-cd-arc:#3BD738; --nrw-cd-digit:#38FF35;
+  --nrw-vchip-home:#015FC1; --nrw-vchip-away:#C22600; --nrw-act-face:#2E2F35; --nrw-act-rim:#373B41; --nrw-act-hi:#5C5D62; --nrw-act-outer:#192030; --nrw-act-label:#D8E1E3;
+  --nrw-auto:#021027; --nrw-auto-icon:#14A3B5; --nrw-tap-ring:#BB3C39; --nrw-tap:#2E7824; --nrw-tap-lo:#255F1E; --nrw-tap-icon:#A9D7A7; --nrw-tap-timer:#2E9B43;
+  --nrw-success:#1CA5D8; --nrw-bubble:#0C6AC8; --nrw-bubble-rim:#558FC5; --nrw-bang:#ECFEFD; --nrw-bang-glow:#A7FDFD; --nrw-toast:#B80B0B; --nrw-toast-icon:#850D0D;
   /* card back */
-  --rw-cb-frame:#5C6063; --rw-cb-frame-hi:#878E96; --rw-cb-head:#28344A; --rw-cb-head-hi:#333E52; --rw-cb-cell:#1D2532; --rw-cb-divider:#2E384A;
-  --rw-cb-level:#2AC2E7; --rw-cb-level-track:#0D1119; --rw-cb-fat-cell:#252629; --rw-cb-recover:#0AA0DD; --rw-cb-fatigue:#16BEE7; --rw-cb-fatigue-track:#3F474A;
-  --rw-cb-cond:#254229; --rw-cb-cond-ink:#00FF58; --rw-cb-ring-off:#D5AC2B; --rw-cb-ring-def:#16C988; --rw-cb-ring-mental:#B1C1D4; --rw-cb-ring-track:#363739;
-  --rw-cb-boost:#00E3FF; --rw-cb-plain:#EBF0F4; --rw-cb-band:#1C1E20; --rw-cb-abil:#232527; --rw-cb-pill:#191E26; --rw-cb-plus:#173548; --rw-cb-plus-ink:#00E2FD;
-  --rw-cb-skill:#C7B427; --rw-cb-skill-lo:#36300B;
+  --nrw-cb-frame:#5C6063; --nrw-cb-frame-hi:#878E96; --nrw-cb-head:#28344A; --nrw-cb-head-hi:#333E52; --nrw-cb-cell:#1D2532; --nrw-cb-divider:#2E384A;
+  --nrw-cb-level:#2AC2E7; --nrw-cb-level-track:#0D1119; --nrw-cb-fat-cell:#252629; --nrw-cb-recover:#0AA0DD; --nrw-cb-fatigue:#16BEE7; --nrw-cb-fatigue-track:#3F474A;
+  --nrw-cb-cond:#254229; --nrw-cb-cond-ink:#00FF58; --nrw-cb-ring-off:#D5AC2B; --nrw-cb-ring-def:#16C988; --nrw-cb-ring-mental:#B1C1D4; --nrw-cb-ring-track:#363739;
+  --nrw-cb-boost:#00E3FF; --nrw-cb-plain:#EBF0F4; --nrw-cb-band:#1C1E20; --nrw-cb-abil:#232527; --nrw-cb-pill:#191E26; --nrw-cb-plus:#173548; --nrw-cb-plus-ink:#00E2FD;
+  --nrw-cb-skill:#C7B427; --nrw-cb-skill-lo:#36300B;
   /* condition info panel */
-  --rw-cp-head:#2A2D32; --rw-cp-divider:#4E555B; --rw-cp-body:#222629; --rw-cp-card:#2E3235; --rw-cp-chip:#2C3F3B; --rw-cp-chip-ink:#34BD8B;
-  --rw-cp-desc:#B3B5BE; --rw-cp-row:#ECF0F4; --rw-cond-outline:#101B14;
+  --nrw-cp-head:#2A2D32; --nrw-cp-divider:#4E555B; --nrw-cp-body:#222629; --nrw-cp-card:#2E3235; --nrw-cp-chip:#2C3F3B; --nrw-cp-chip-ink:#34BD8B;
+  --nrw-cp-desc:#B3B5BE; --nrw-cp-row:#ECF0F4; --nrw-cond-outline:#101B14;
   /* home bar */
-  --rw-home-bar:#1D1F2C; --rw-home-bar-lo:#15161D; --rw-home-rim:#2F3142; --rw-home-hump:#3A3B4B; --rw-home-icon:#8B94A2;
+  --nrw-home-bar:#1D1F2C; --nrw-home-bar-lo:#15161D; --nrw-home-rim:#2F3142; --nrw-home-hump:#3A3B4B; --nrw-home-icon:#8B94A2;
   /* scout */
-  --rw-scout-price:#00729E; --rw-gold-bar:#D8A325; --rw-gold-bar-hi:#F6E154; --rw-pity-chip:#231430; --rw-pity-track:#4B535A; --rw-free-bar:#768478;
-  --rw-tip:#EBF0F4; --rw-tip-ink:#2C3034;
-  --rw-r-legend:unset; --rw-r-elite:unset; --rw-r-prime:unset; --rw-r-iconic:unset; --rw-r-goat:unset; /* measure on release */
+  --nrw-scout-price:#00729E; --nrw-gold-bar:#D8A325; --nrw-gold-bar-hi:#F6E154; --nrw-pity-chip:#231430; --nrw-pity-track:#4B535A; --nrw-free-bar:#768478;
+  --nrw-tip:#EBF0F4; --nrw-tip-ink:#2C3034;
+  /* tactics */
+  --nrw-pct:#403011; --nrw-pct-ink:#5FEB31; --nrw-mu-up-off:#FFECA0; --nrw-mu-up-def:#3DFF8F; --nrw-mu-down:#FD5B4B; --nrw-mu-even:#A2A6AB;
+  --nrw-tl-bar:#454B53; --nrw-tl-pill:#D9DFE5; --nrw-tl-row:#3D454B; --nrw-tl-ink:#F0F0F0; --nrw-tl-divider:#32383D; --nrw-tl-bolt:#E2B837;
+  --nrw-tac-head:#2A2E32; --nrw-tac-label:#B0B3BE; --nrw-tac-num:#F4FAFF; --nrw-tac-bonus:#285A65; --nrw-tac-bonus-ink:#07C1D9; --nrw-tac-pos:#265AA5; --nrw-court:#1F2022;
+  --nrw-grade-c:#967F62; --nrw-grade-b:#74868F; --nrw-grade-outline:#110E0E;
+  /* synergy */
+  --nrw-syn-ground:#1C1C1C; --nrw-syn-bar:#2A2E32; --nrw-syn-box:#515559; --nrw-syn-s:#EBF0F4; --nrw-syn-count:#1C1F21; --nrw-syn-gold:#F2C22E; --nrw-syn-btn:#3D454B;
+  --nrw-syn-row:#2E3235; --nrw-syn-row-rim:#373C3C; --nrw-syn-sub:#C2C3C4; --nrw-syn-tp-label:#BBBBBB; --nrw-syn-tp-pill:#1F2123;
+  --nrw-syn-chev:#3D454B; --nrw-syn-chev-open:#555F67; --nrw-syn-chev-ink:#D9DFE5; --nrw-syn-event:#169567; --nrw-syn-timer:#0D0D1C; --nrw-syn-timer-ink:#DBE1E5;
+  --nrw-syn-on:#35322E; --nrw-syn-rim:#DBB745; --nrw-syn-rim-in:#C2A240; --nrw-syn-glow:#48331C; --nrw-syn-divider:#52504E; --nrw-syn-tick:#D89B16; --nrw-syn-tick-ink:#FAF4E9;
+  --nrw-syn-target:#24211F; --nrw-syn-target-label:#ACAFBC; --nrw-syn-target-ink:#D9DFE5;
+  --nrw-chip-off:#514322; --nrw-chip-off-ink:#D0A92D; --nrw-chip-def:#264836; --nrw-chip-def-ink:#2AD898; --nrw-chip-men:#44484F; --nrw-chip-men-ink:#B5C8DF;
+  --nrw-r-legend:unset; --nrw-r-elite:unset; --nrw-r-prime:unset; --nrw-r-iconic:unset; --nrw-r-goat:unset; /* measure on release */
   /* ours — the clipboard */
-  --rw-board:#F5F5F1; --rw-board-ghost:#ECEBE5; --rw-print:#C8CCD0; --rw-marker:#121314; --rw-clip:#1B1C1E;
+  --nrw-board:#F5F5F1; --nrw-board-ghost:#ECEBE5; --nrw-print:#C8CCD0; --nrw-marker:#121314; --nrw-clip:#1B1C1E;
   /* type */
-  --rw-ui:'Open Sans','Noto Sans','Segoe UI',Roboto,sans-serif;
-  --rw-num:'Anton','Oswald','Arial Narrow',Impact,sans-serif; /* OVR, Team Power, scores */
-  --rw-wordmark:'Big Shoulders Display','Arial Narrow',Impact,sans-serif;
+  --nrw-ui:'Open Sans','Noto Sans','Segoe UI',Roboto,sans-serif;
+  --nrw-num:'Anton','Oswald','Arial Narrow',Impact,sans-serif; /* OVR, Team Power, scores */
+  --nrw-wordmark:'Big Shoulders Display','Arial Narrow',Impact,sans-serif;
   /* effects */
-  --rw-outline:0 0 1px #0A0B0C,0 1px 1px #0A0B0C,0 -1px 1px #0A0B0C,1px 0 1px #0A0B0C,-1px 0 1px #0A0B0C;
-  --rw-glow-cy:0 6px 18px rgba(0,174,239,.32);
+  --nrw-outline:0 0 1px #0A0B0C,0 1px 1px #0A0B0C,0 -1px 1px #0A0B0C,1px 0 1px #0A0B0C,-1px 0 1px #0A0B0C;
+  --nrw-glow-cy:0 6px 18px rgba(0,174,239,.32);
 }</pre>
         <h3>How it was measured</h3>
         <ul class="clean">
@@ -1943,17 +2162,17 @@ footer.end { color: var(--ink-4); font-size: 13.5px; padding-block: 30px 60px; }
     <section id="limits">
       <div class="sec-head"><div class="wrap"><div class="sec-head__inner"><h2>Limits</h2><p>What we deliberately don't take</p></div></div></div>
       <div class="wrap sec-body">
-        <p>RiseWiz is a fan companion tool, not a GRAVITY product, and it has no licence from the NBA or the NBPA. The visual language of the game's interface is fair to mirror. Identity, marks and likenesses are not.</p>
+        <p>NBARiseWiz is a fan companion tool, not a GRAVITY product, and it has no licence from the NBA or the NBPA. The visual language of the game's interface is fair to mirror. Identity, marks and likenesses are not.</p>
         <ul class="never-list">
-          <li><b>"NBA" is never brand type.</b> It never appears in the wordmark, a logo, a headline treatment or a favicon. "NBA RISE" is written out only in prose to name the game, as the disclaimer does.</li>
+          <li><b>"NBA" only as part of the game's title.</b> It appears directly before Rise, as in the NBARISEWIZ wordmark or "NBA RISE" in prose, or in a sentence that explains what NBA RISE is. Never NBA alone as brand type, never in a favicon, and never in a way that suggests the league made, licensed or endorses the site.</li>
           <li><b>No league or team marks.</b> No NBA logo or silhouette, no team logos or wordmarks, and no team colour schemes as decoration. Teams appear as three-letter tricodes in plain type.</li>
           <li><b>No photography or renders.</b> No player photos, card art, 3D models, arenas or store art. Cards are drawn in code with a plain silhouette.</li>
           <li><b>Names and numbers as reference data only.</b> Player names, ratings, odds and prices appear as facts the game publishes, never as endorsements.</li>
           <li><b>No official framing.</b> No GRAVITY marks, and no copy that implies partnership, endorsement or access to non-public data.</li>
-          <li><b>RISE only inside our wordmark.</b> Never set alone, never shaped like the game's logo, never in the game's italic.</li>
+          <li><b>NBARISE only inside our wordmark.</b> Never set alone, never shaped like the game's logo, never in the game's italic or colours.</li>
         </ul>
-        <div class="note"><p><strong>Disclaimer, as it ships.</strong> RiseWiz is an unofficial fan site for NBA RISE. It is not made, endorsed or reviewed by GRAVITY Co., Ltd., the NBA or the NBPA. NBA RISE is a product of GRAVITY Co., Ltd. Player names and statistics are used for reference.</p></div>
-        <footer class="end">Measured from a corpus of 424 screenshots of the global NBA RISE build (1.1.x), 8–9 November 2026, by component-region median sampling, median-cut clustering, OKLab hue-gap search and glyph-overlap type identification. Values are the game's, as rendered. The clipboard, the mark and the wordmark are RiseWiz's own, and owe nothing to the game, FHCWiz or UFMWiz.</footer>
+        <div class="note"><p><strong>Disclaimer, as it ships.</strong> NBARiseWiz is an unofficial fan site for NBA RISE. It is not made, endorsed or reviewed by GRAVITY Co., Ltd., the NBA or the NBPA. NBA RISE is a product of GRAVITY Co., Ltd. Player names and statistics are used for reference.</p></div>
+        <footer class="end">Measured from a corpus of 424 screenshots of the global NBA RISE build (1.1.x), 8–9 November 2026, by component-region median sampling, median-cut clustering, OKLab hue-gap search and glyph-overlap type identification. Values are the game's, as rendered. The clipboard, the mark and the wordmark are NBARiseWiz's own, and owe nothing to the game, FHCWiz or UFMWiz.</footer>
       </div>
     </section>
 

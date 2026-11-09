@@ -1,13 +1,13 @@
-# RiseWiz brand
+# NBARiseWiz brand
 
-The visual system and brand for **RiseWiz**, a fan companion for GRAVITY's NBA RISE. It is the third sibling of FHCWiz and UFMWiz.
+The visual system and brand for **NBARiseWiz**, a fan companion for NBA RISE, GRAVITY's officially licensed NBA card-strategy game. It is the third sibling of FHCWiz and UFMWiz.
 
 ## Files
 
 | Path | What it is |
 |---|---|
-| [`RiseWiz_Visual_System.html`](RiseWiz_Visual_System.html) | The full system: identity, voice, foundation, colour, type, texture, live components, rarities, the clipboard, rules, build and limits. Open it in a browser. Published copy: https://claude.ai/artifact/HQYr5ho3buzBmXzckeeSbf |
-| [`tokens.css`](tokens.css) | 273 drop-in custom properties (`--rw-*`), the same values the document uses |
+| [`NBARiseWiz_Visual_System.html`](NBARiseWiz_Visual_System.html) | The full system: identity, voice, foundation, colour, type, texture, live components, rarities, the clipboard, rules, build and limits. Open it in a browser. Published copy: https://claude.ai/artifact/HQYr5ho3buzBmXzckeeSbf |
+| [`tokens.css`](tokens.css) | 334 drop-in custom properties (`--nrw-*`), the same values the document uses |
 | [`measurements/samples.md`](measurements/samples.md) | Where every measured value came from: image, region and method |
 | [`measurements/font_fit.json`](measurements/font_fit.json) | Typeface identification for words: 32 faces scored against in-game text (Open Sans) |
 | [`measurements/font_fit_numerals.json`](measurements/font_fit_numerals.json) | Typeface identification for numbers: Team Power, scores and OVR scored against 35 condensed faces (Anton) |
@@ -24,10 +24,12 @@ The visual system and brand for **RiseWiz**, a fan companion for GRAVITY's NBA R
   - Gold is Team Power and synergy. Bronze chips are offensive tactics and mint chips are defensive tactics.
   - A five-step condition scale, and six rarity metals.
 - **Two typefaces, both identified by glyph overlap.** Words are Open Sans: Bold for interface text, ExtraBold for titles. Big numbers are Anton: Team Power, scores and OVR.
-- **Every hue is the game's.** An OKLab search with colour-vision simulation found no colour more than 6.3 ΔE from all 34 game accents. So RiseWiz owns a material, not a colour: **black marker on a white clipboard**.
+- **Every hue is the game's.** An OKLab search with colour-vision simulation found no colour more than 6.3 ΔE from all 34 game accents. So NBARiseWiz owns a material, not a colour: **black marker on a white clipboard**.
 - **The mark** is a W run off two screens, in basketball's own notation.
-- **The wordmark** is RISEWIZ in Big Shoulders Display Black. RISE is in the game's inactive grey `#8B94A2`, WIZ is white, and a white marker rule sits beneath.
-- **Name.** "NBA" never appears in brand type; the family pattern takes the game's own word, RISE. `risewiz.gg` is unregistered (`risewiz.com` is taken).
+- **The wordmark** is NBARISEWIZ in Big Shoulders Display Black. NBARISE is in the game's inactive grey `#8B94A2`, WIZ is white, and a white marker rule sits beneath.
+- **Name.** NBARiseWiz carries the game's full title, because "NBA Rise" is what players search for.
+  - "NBA" appears only directly before Rise, or in a sentence that explains what NBA RISE is. It never stands alone as brand type.
+  - `nbarisewiz.com`, `.gg`, `.net`, `.app` and `.io` are all unregistered (9 Nov 2026).
 
 ## Re-measuring
 
