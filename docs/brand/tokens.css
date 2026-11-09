@@ -97,7 +97,10 @@
   --nrw-au-head:#2A2D32; --nrw-au-wallet:#1B1F22; --nrw-au-tab-off:#3F474A; --nrw-au-tab-ink:#9A9FA5; --nrw-au-divider:#4E555B; --nrw-au-label:#92969B;
   --nrw-au-tile-rim:#3D3E40; --nrw-buynow:#B4811D; --nrw-buynow-ink:#F6ECD1; --nrw-au-price:#23272A; --nrw-au-price-ink:#DCE1E5; --nrw-au-bid-label:#95999E;
   --nrw-au-timer:#1C1C20; --nrw-au-timer-ink:#E0E4EA; --nrw-dia-hi:#63D6FA; --nrw-dia:#329FEA; --nrw-dia-lo:#1D578E;
-  --nrw-r-legend:unset; --nrw-r-elite:unset; --nrw-r-prime:unset; --nrw-r-iconic:unset; --nrw-r-goat:unset; /* measure on release */
+  /* Legend: crest measured from The Edition pack (NB-38); frame provisional until a Legend card is public */
+  --nrw-r-lg-gold:#CDA24A; --nrw-r-lg-gold-lo:#795C37; --nrw-r-lg-cream:#E3DED4; --nrw-r-lg-flame:#BD7338; --nrw-r-lg-ember:#AB5730; --nrw-r-lg-ground:#1B1F27;
+  --nrw-ed-edition-rim:#C9B7A5; --nrw-ed-edition-band:#917E5B; --nrw-ed-edition-band-lo:#735C3D; --nrw-ed-edition-ink:#CBC2A2;
+  --nrw-r-elite:unset; --nrw-r-prime:unset; --nrw-r-iconic:unset; --nrw-r-goat:unset; /* measure on release */
   /* ours — the clipboard */
   --nrw-board:#F5F5F1; --nrw-board-ghost:#ECEBE5; --nrw-print:#C8CCD0; --nrw-marker:#121314; --nrw-clip:#1B1C1E;
   /* type */

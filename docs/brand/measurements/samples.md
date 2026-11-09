@@ -16,7 +16,7 @@ Both are computed with `../tools/sample.py`. Coordinates are in the source image
 | AS-PH-6 | App Store PH screenshot 6, Match Preparation (full-bleed UI) | 1260×2736 | same, `[5]` |
 | AS-KR-7 | App Store KR iPhone screenshot 7, in-match SET PLAY | 1260×2736 | `country=kr`, `screenshotUrls[6]` |
 | AS-PH-7 | App Store PH screenshot 7, in-match gameplay with the SET PLAY countdown | 1260×2736 | same, `[6]` |
-| NB-02 / 17 / 25 / 27 / 28 / 29 / 31 / 32 / 33 / 34 | Player blog captures: home hub, tactic change, card back, Condition info panel, synergy list (closed and open), Scout, The Edition pack result, Auction, Arena opponent list | 1080×1920 (27: 886×779, 33: 886×836) | `blog.naver.com/12512512/224449341627` |
+| NB-02 / 17 / 25 / 27 / 28 / 29 / 31 / 32 / 33 / 34 / 38 | Player blog captures: home hub, tactic change, card back, Condition info panel, synergy list (closed and open), Scout, The Edition pack result, Auction, Arena opponent list, Best 5 event (with The Edition reward pack) | 1080×1920 (27: 886×779, 33: 886×836) | `blog.naver.com/12512512/224449341627` |
 | NG-08 | Launch-day player capture of a tactic change | 1080×2340 | `blog.naver.com/ngga32472/224449909504` |
 | DK-13 / 18 | Player blog captures of SET PLAY: defence action select, offence select with the auto pill | 1399×3000, 358×765 | `blog.naver.com/dekiruho123/224451027691` |
 | IN-z3 / z4 / z9 | iNews24 hands-on: live match, SET PLAY sequence, home hub | 780×880, 1160×478, 900×1170 | `m.inews24.com/v/2021080` |
@@ -91,7 +91,7 @@ Both are computed with `../tools/sample.py`. Coordinates are in the source image
 | Rare | frame `#88B9CC / #839EB4 / #6E8FA9`, badge `#2B89CC` | NB-32 R. Gobert; SITE-card 19 |
 | Ultra Rare | `#DECB98 → #C1A863 → #B79F53 → #E4CF79`, inner `#473508` | SITE-card 10 horizontal profile at y=250 |
 | Epic | `#9D67C2 → #A34ACA → #9F27C6`, inner `#4E006E / #3B075B`, neon `#4AE3F8`, OVR disc `#B145CB` | SITE-card 1 horizontal profile at y=250 |
-| Legend | not measured | No Legend card appears in any public screenshot as of 9 Nov 2026 |
+| Legend | crest and colours measured, frame provisional | See "Legend crest and The Edition" below. No Legend card appears in any public screenshot as of 9 Nov 2026 |
 
 ## Card art: frame by rarity, field by edition
 
@@ -221,6 +221,28 @@ Sources: NB-34 for the arena opponent list (a lossless capture), and NB-33 for t
 | Auction tile | ground `#1C1C1C`; tile `#2E3235`, top rim `#3D3E40`, edge `#363837` | 20,330–40,500; 260,335–290,360; vertical profile at x=280 (y 310–345); horizontal profile at y=450 (x 30–70) |
 | Prices | buy-now tag `#B4811D`, text `#F6ECD1`; price well `#23272A`, figure `#DCE1E5`; Diamond `#63D6FA` / `#329FEA` / `#1D578E`; bid label `#95999E` | 75,560–110,585; 85,562–190,585; 70,592–95,625; 115,595–270,622; 85,595–110,622; 70,645–200,667 |
 | Bid | `#00ADEF`, text `#E3F2FB`; timer pill `#1C1C20`, text `#E0E4EA` | 80,730–110,760; 120,738–225,768; 115,778–135,800; 140,778–225,800 |
+
+## Legend crest and The Edition
+
+No Legend card is public yet. The search covered:
+- the 424-screenshot corpus;
+- the official site's 19 card images;
+- every App Store region's screenshots, unchanged since the closed beta;
+- the odds pages, whose `icon_RL` Legend class has no image;
+- Naver blog search;
+- the official YouTube channel's thumbnails (its video frames sit behind a bot check).
+
+Two in-game sources do carry Legend art:
+- **NB-38:** the Best 5 event's reward is a "THE EDITION · FIXED RARITY Scout" pack that wears the game's **LEGEND crest**. The crest is about 45 px across in the source, so its values are anti-aliased medians grouped by hue.
+- **NB-31:** The Edition's own Scout tile and pack art.
+
+The card's frame construction is extrapolated from these colours. Re-measure it from the first Legend card screenshot.
+
+| Part | Values | Sample |
+|---|---|---|
+| LEGEND crest | gold `#CDA24A`, dark gold `#795C37`; plate flame `#BD7338` shading to `#AB5730` (rows run `#935542` at the top to `#CF8A36` at the bottom); letters and laurel highlights cream `#E3DED4`; diamond backing `#1B1F27` | NB-38 598,1452–652,1500, pixels grouped by hue and saturation; plate rows 606,1466–640,1471 and 606,1477–640,1482 |
+| Edition pack | silhouette rim light `#C9B7A5`; band `#917E5B` / `#735C3D` with `#CBC2A2` text; body `#322F2D` / `#202123` | NB-31 warm bright-pixel median in 175,1390–330,1505; 115,1630–320,1660; 345,1440–360,1520 |
+| Edition Scout tile | `#4E4330` | NB-31 600,1380–700,1400 |
 
 ## Absent-colour search
 
