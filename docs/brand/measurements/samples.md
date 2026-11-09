@@ -104,6 +104,23 @@ Both are computed with `../tools/sample.py`. Coordinates are in the source image
 | Starter field | `#D7D6E6` / `#C2C1D6`, rings `#E1DFED`; nameplate `#232B3B`, rim `#9FAAB4` | NB-23 Starter Epic card (K. Irving) |
 | Edition labels | Starter `#B9EBFF` upright, outline `#393C4D` · 25-26 SEASON `#FEFBDC` italic · THE Core `#82E3FC` italic, glow `#A130CA`, outline `#4E1A89` | NB-23 label region (bright and dark pixel medians); SITE-card 10; SITE-card 1 |
 
+## Match-prep lineup
+
+Source: NB-14, a lossless 1080×1920 Match Preparation capture from launch week. The lineup in the document is this screen's real roster. Starters: B. Miller UR 182, K. Irving Epic 186 (Starter), N. Reid UC 117, D. Vassell UR 157, S. Mamukelashvili UC 111. Bench: O. Anunoby UR 163, B. Carrington R 133, N. Queta UC 90 (Starter), V. Edgecombe UR 156 (Starter).
+
+| Part | Values | Sample |
+|---|---|---|
+| Starter slot | body `#143D88` / `#133A84`, top `#154091`, rim `#1C50B2`, inner shadow `#0E2E6D` | SF slot body 30,1060–36,1100; horizontal profile at y=1100 |
+| Tab | rises about 32 px above the slot's left shoulder | vertical profiles at x=40 (top at y≈900) and x=120 (top at y≈868) |
+| Position disc | `#0D2758`, text `#EDF5FF` | tab disc 110,880–140,895 |
+| S-chip | `#CC8A22`, shadow `#A06D20`, text `#F1EDE3` | 180,890–200,905 |
+| Mini-card frames | UR `#C5AF77 / #BDA359 / #DBD078`; Epic `#BD32E5 / #A129CE`, dark `#380F54`; UC `#76996F / #678C5F` | frame strips at x=38–42, 248–252, 452–456 |
+| Nameplates | standard `#1E1F21`; Epic `#202736` | plate regions |
+| Stamina | track `#000000`, segments `#00BE0D` | 70,1192–215,1196 |
+| Box score | grade well `#16213D` / `#0A0C20`, bronze `#BA9267` / `#8F6B4C`; PTS/AST `#0C2A65`, label `#BFC5CE`, value `#EBF0F4` | footer regions |
+| Bench | box `#212427`, grade well `#1D1F21`; label `#EBF0F4` with sub-position `#999EA5` | bench footer and label |
+| Ground · tally | `#1C1D1F`; tally pill `#0D0D0D`, text `#999EA5` | 500,1290–560,1300; 350,1320–420,1340 |
+
 ## Absent-colour search
 
 `../tools/absent.py` scores candidate colours against 34 game accents. The grid covers hue in 2° steps, HSL lightness 0.38–0.64 and saturation 0.75–1.0. Each candidate gets its minimum OKLab ΔE×100 under normal vision and Machado-2009 protan, deutan and tritan simulation.

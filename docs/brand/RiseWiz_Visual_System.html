@@ -298,38 +298,92 @@ th { font-weight: 700; font-size: 11.5px; letter-spacing: .1em; text-transform: 
 .disc--home { background: var(--hm-disc); } .disc--away { background: var(--aw-disc); }
 .postab { display: inline-block; background: var(--cy-tab); color: #0D2240; font-weight: 800; border-radius: 6px; padding: 1px 10px; font-size: 15px; }
 
-/* player card — measured anatomy, no portrait */
-.pcard { width: 168px; background: var(--hm-body); border-radius: 12px; padding: 8px 8px 9px; box-shadow: inset 0 0 0 2px var(--hm-mid); position: relative; flex: 0 0 auto; }
-.pcard--bench { background: var(--bench); box-shadow: inset 0 0 0 2px var(--bench-rim); }
-.pcard--away { background: var(--aw-deep); box-shadow: inset 0 0 0 3px #8A1C1C; }
-.pcard__top { display: flex; justify-content: flex-end; align-items: center; gap: 5px; margin: -2px 0 6px; }
-.pcard__pos { display: inline-grid; place-items: center; min-width: 34px; height: 26px; border-radius: 13px; background: #0D2858; font-weight: 800; font-size: 14px; color: #FFFFFF; padding: 0 6px; }
-.pcard__s { background: var(--gd-mid); border-radius: 7px; padding: 0 7px; font-weight: 800; font-size: 14px; color: #fff; text-shadow: 0 1px 1px rgba(80,40,0,.6); }
-.pcard__face { position: relative; background: #1C1D1F; border-radius: 8px; box-shadow: inset 0 0 0 2px var(--rim, var(--r-uc)); height: 150px; overflow: hidden; }
-.pcard__face svg.sil { position: absolute; right: 6px; bottom: 30px; width: 86px; height: 92px; color: #2A2D31; }
-.pcard__ovr { position: absolute; left: 7px; top: 7px; background: var(--well-2); border: 2px solid #D1C9A4; border-radius: 9px; padding: 1px 7px; font-weight: 800; font-size: 20px; color: var(--cy-peak); line-height: 1.25; }
-.pcard__ovr.lose { color: #E02540; }
-.pcard__poslbl { position: absolute; left: 9px; top: 44px; font-weight: 800; font-size: 12px; color: #FFFFFF; }
-.pcard__poslbl small { color: #9CA0A5; font-size: 10px; }
-.pcard__team { position: absolute; left: 9px; top: 66px; font-weight: 800; font-size: 11px; letter-spacing: .05em; color: #C9CDCF; background: #26292D; border-radius: 4px; padding: 0 5px; }
-.pcard__lv { position: absolute; left: 0; bottom: 0; right: 0; height: 30px; background: linear-gradient(0deg, rgba(10,10,10,.75), transparent); }
-.pcard__lv b { position: absolute; left: 9px; bottom: 5px; font-size: 13px; }
-.rarity { position: absolute; right: 7px; top: 8px; width: 30px; height: 30px; transform: rotate(45deg); border-radius: 4px; display: grid; place-items: center; box-shadow: inset 0 0 0 2px rgba(255,255,255,.85); }
-.rarity span { transform: rotate(-45deg); font-weight: 800; font-size: 10.5px; color: #FFFFFF; letter-spacing: -.02em; }
-.rarity--c { background: var(--r-c-badge); } .rarity--uc { background: var(--r-uc-badge); } .rarity--r { background: var(--r-r-badge); }
-.rarity--ur { background: linear-gradient(135deg, var(--r-ur-hi), var(--r-ur-lo)); } .rarity--ur span { color: #3A2B06; }
-.rarity--ep { background: linear-gradient(135deg, var(--r-ep-hi), var(--r-ep)); box-shadow: inset 0 0 0 2px var(--r-ep-neon); }
-.cond { position: absolute; right: 8px; bottom: 34px; width: 20px; height: 20px; }
-.pcard__name { background: var(--well); border-radius: 0 0 8px 8px; margin-top: -2px; text-align: center; font-weight: 700; font-size: 14px; padding: 6px 4px 5px; box-shadow: inset 0 0 0 2px var(--rim, var(--r-uc)); clip-path: inset(2px 0 0 0); }
-.stam { display: flex; align-items: center; gap: 5px; margin: 8px 2px 6px; }
-.stam svg { width: 10px; height: 14px; color: var(--gr); flex: 0 0 auto; }
-.stam i { flex: 1; height: 7px; border-radius: 3px; background: var(--gr); }
-.stam i.low { background: #FFD617; } .stam i.off { background: #0B140C; }
-.pcard__foot { display: grid; grid-template-columns: 40px 1fr 1fr; gap: 4px; }
-.pcard__foot div { background: var(--hm-box); border-radius: 6px; text-align: center; padding: 2px 0 1px; font-weight: 800; line-height: 1.15; }
-.pcard__foot div small { display: block; font-size: 10.5px; color: #B9C3D6; font-weight: 700; }
-.pcard--bench .pcard__foot div { background: #24282C; }
-.grade { display: grid !important; place-items: center; font-size: 22px; color: #CBA171 !important; font-style: italic; }
+/* ============ MATCH PREP LINEUP — navy slot, rarity mini-card, stamina, box score ============ */
+.lineup { width: 100%; background: #1C1D1F; border-radius: 8px; padding: 22px 0 18px; position: relative; overflow: hidden; }
+.lineup::before { content: ""; position: absolute; left: 50%; top: 10px; width: 520px; height: 488px; margin-left: -260px; background: var(--courtlines) no-repeat center / contain; opacity: .045; pointer-events: none; }
+.lineup__row { position: relative; display: flex; gap: 10px; justify-content: center; align-items: flex-start; padding: 0 16px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: thin; }
+.lineup__row > * { scroll-snap-align: center; }
+.lineup__row--start { padding-top: 34px; padding-bottom: 4px; }
+.lineup__tally { position: relative; display: block; width: max-content; max-width: calc(100% - 32px); margin: 18px auto 14px; background: #0D0D0D; color: #999EA5; font-weight: 700; font-size: 13.5px; border-radius: 999px; padding: 5px 18px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.lineup__tally b { color: #EBF0F4; font-weight: 700; }
+
+/* the starter slot */
+.mps { --sw: 184px; position: relative; flex: 0 0 auto; width: var(--sw); margin-top: 26px; padding: 8px 7px 8px; border-radius: 14px; background: linear-gradient(180deg, #154091 0%, #143D88 40%, #12387F 100%); border: 2px solid #1C50B2; box-shadow: 0 10px 22px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.08); }
+.mps--hi { margin-top: 0; }
+.mps::before { content: ""; position: absolute; top: -32px; right: -2px; width: 64%; height: 34px; background: #154091; border: 2px solid #1C50B2; border-bottom: 0; border-radius: 14px 14px 0 0; }
+.mps::after { content: ""; position: absolute; top: -16px; right: calc(64% - 2px); width: 16px; height: 16px; background: radial-gradient(circle at 0 0, rgba(21,64,145,0) 13.5px, #1C50B2 14px, #1C50B2 15.8px, #154091 16px); }
+.mps__tab { position: absolute; top: -27px; right: 6px; z-index: 2; display: flex; align-items: center; gap: 6px; }
+.mps__pos { display: inline-grid; place-items: center; min-width: 40px; height: 30px; padding: 0 8px; border-radius: 15px; background: #0D2758; color: #EDF5FF; font-weight: 800; font-size: 16px; box-shadow: inset 0 0 0 1px rgba(255,255,255,.08); }
+.schip { display: inline-flex; align-items: center; gap: 3px; height: 26px; padding: 0 8px 0 6px; border-radius: 8px; background: linear-gradient(180deg, #E0A33A, #CC8A22 55%, #A06D20); color: #FFFFFF; font-weight: 800; font-size: 16px; text-shadow: 0 1px 1px rgba(80,40,0,.7); box-shadow: inset 0 0 0 1px rgba(255,236,190,.35), 0 0 10px rgba(204,138,34,.35); }
+.schip i { font-style: italic; font-size: 15px; letter-spacing: -.04em; opacity: .95; }
+
+/* the mini card inside: frame by rarity, field by edition */
+.mpc { --mw: 100%; position: relative; border-radius: 10px; padding: 3px; background: var(--metal, #3A3F45); box-shadow: 0 3px 8px rgba(0,0,0,.45); transition: transform .25s cubic-bezier(.2,.7,.2,1); isolation: isolate; }
+.mpc:hover { transform: translateY(-3px); }
+.mpc__face { position: relative; height: 154px; border-radius: 8px 8px 2px 2px; overflow: hidden; background: var(--field, #1B1D20); box-shadow: inset 0 0 0 var(--pin-w, 1px) var(--pin, rgba(0,0,0,.45)); }
+.mpc__face .rc__art { position: absolute; inset: 0; width: 100%; height: 100%; }
+.mpc__ovr { position: absolute; left: 5px; top: 5px; z-index: 3; min-width: 46px; height: 32px; padding: 0 6px; border-radius: 10px; background: #202125; border: 2px solid #E1D5B3; display: grid; place-items: center; color: #CAFFFF; font-weight: 800; font-size: 19px; font-variant-numeric: tabular-nums; box-shadow: 0 2px 5px rgba(0,0,0,.5); }
+.mpc__ovr.lose { color: #E02540; }
+.mpc__pos { position: absolute; left: 6px; top: 42px; z-index: 3; background: rgba(31,33,38,.92); color: #FFFFFF; font-weight: 800; font-size: 11.5px; border-radius: 5px; padding: 0 6px; }
+.mpc__pos small { color: #9CA0A5; font-size: 9.5px; }
+.mpc__team { position: absolute; left: 6px; top: 63px; z-index: 3; font-weight: 800; font-size: 9.5px; letter-spacing: .08em; color: #C9CDCF; background: rgba(31,33,38,.88); border-radius: 4px; padding: 0 5px; }
+.mpc__crest { position: absolute; right: 2px; top: 2px; z-index: 3; width: 42px; height: 42px; overflow: visible; }
+.mpc__lv { position: absolute; left: 0; bottom: 0; z-index: 3; font-weight: 800; font-size: 12px; color: #FFFFFF; padding: 3px 14px 2px 7px; background: linear-gradient(90deg, rgba(8,8,10,.92) 55%, rgba(8,8,10,0)); border-top-right-radius: 8px; }
+.mpc__cond { position: absolute; right: 5px; bottom: 4px; z-index: 3; width: 26px; height: 26px; filter: drop-shadow(0 1px 1px rgba(0,0,0,.8)) drop-shadow(0 0 3px rgba(0,0,0,.6)); }
+.mpc__name { position: relative; margin-top: 3px; border-radius: 2px 2px 8px 8px; background: var(--plate, #1E1F21); text-align: center; font-weight: 800; font-size: 14.5px; color: #FFFFFF; padding: 6px 6px 6px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; box-shadow: inset 0 0 0 1px var(--plate-rim, rgba(255,255,255,.05)); }
+.mpc__sheen { position: absolute; inset: 0; z-index: 6; border-radius: inherit; pointer-events: none; }
+
+/* rarity metals at mini size */
+.mpc--c  { --metal: linear-gradient(165deg, #7E848B, #5E6268 55%, #45494E); --bust: #33373C; --jersey: #3B4046; --trim: #4A5057; --num: #5A6168; --rim: transparent; --ring: rgba(255,255,255,.025); }
+.mpc--uc { --metal: linear-gradient(165deg, #A9D49A, #76996F 40%, #678C5F 70%, #4E7046); --pin: rgba(169,212,154,.5); --bust: #2F3437; --jersey: #3C5A39; --trim: #81B76C; --num: #C2E6B4; --rim: rgba(169,212,154,.45); --ring: rgba(169,212,154,.05);
+  --field: radial-gradient(130% 90% at 75% 0%, #262B2C, #1A1D1F 70%); }
+.mpc--r  { --metal: repeating-linear-gradient(90deg, rgba(255,255,255,.07) 0 1px, rgba(255,255,255,0) 1px 3px), linear-gradient(165deg, #C9E3EE, #88B9CC 22%, #7191AD 55%, #59778F); --pin: rgba(136,185,204,.6);
+  --field: radial-gradient(120% 80% at 70% 0%, #1B1F27, #111116 70%); --bust: #2A313A; --jersey: #2E5674; --trim: #88B9CC; --num: #E2F1F7; --rim: rgba(136,185,204,.75); --rim-glow: rgba(136,185,204,.25); --ring: rgba(136,185,204,.07); }
+.mpc--ur { --metal: linear-gradient(160deg, #FFF3C4, #DBD078 16%, #C5AF77 36%, #8A6A2A 52%, #BDA359 70%, #E4CF79); --pin: rgba(71,53,8,.9); --pin-w: 2px;
+  --field: radial-gradient(120% 90% at 70% 5%, #2A2F34, #1C1F23 60%, #17191C); --bust: #2C2F33; --jersey: #141517; --trim: #C1A863; --num: #E4CF79; --rim: rgba(228,207,121,.8); --rim-glow: rgba(228,207,121,.3); --ring: rgba(255,255,255,.06);
+  box-shadow: 0 3px 8px rgba(0,0,0,.45), 0 0 12px rgba(219,208,120,.22); }
+.mpc--ep { --metal: linear-gradient(155deg, #F6D9FF 0%, #D292F5 14%, #BD32E5 34%, #A129CE 56%, #6B1E95 80%, #380F54 100%); --pin: #4AE3F8; --pin-w: 1.5px; --plate: #202736; --plate-rim: rgba(74,227,248,.35);
+  --field: radial-gradient(110% 80% at 88% 0%, #9A12BD 0%, #710384 26%, rgba(113,3,132,0) 62%), linear-gradient(205deg, #5A0F86 0%, #2B1468 46%, #1B043B 100%);
+  --bust: #2A0A45; --jersey: #5B1F8C; --trim: #4AE3F8; --num: #FEE2FD; --rim: #4AE3F8; --rim-glow: rgba(74,227,248,.65); --ring: rgba(165,232,251,.12);
+  box-shadow: 0 0 0 1px rgba(254,226,253,.45), 0 0 16px rgba(189,50,229,.65), 0 4px 10px rgba(0,0,0,.5); }
+.mpc--ep .mpc__face { box-shadow: inset 0 0 0 1.5px #4AE3F8, inset 0 0 12px rgba(74,227,248,.5); }
+.mpc--ep .mpc__crest { width: 48px; height: 48px; right: 0; top: 0; filter: drop-shadow(0 0 5px rgba(26,249,250,.55)) drop-shadow(0 0 8px rgba(186,104,217,.5)); }
+.mpc--ep .mpc__sheen, .mpc--ur .mpc__sheen { background-size: 320% 100%; }
+.mpc--ep .mpc__sheen { background-image: linear-gradient(112deg, rgba(255,255,255,0) 32%, rgba(165,232,251,.6) 43%, rgba(254,226,253,.7) 49%, rgba(186,104,217,.4) 55%, rgba(255,255,255,0) 66%); mix-blend-mode: overlay; animation: rc-sweep 5.2s ease-in-out infinite .6s; }
+.mpc--ur .mpc__sheen { background-image: linear-gradient(112deg, rgba(255,255,255,0) 38%, rgba(255,243,196,.55) 48%, rgba(255,255,255,0) 58%); mix-blend-mode: soft-light; animation: rc-sweep 8s ease-in-out infinite 2.2s; }
+.mpc--starter { --field: radial-gradient(120% 90% at 70% 0%, #E3E2EF, #CFCEE0 55%, #BDBCD2); --bust: #9796B0; --ring: rgba(255,255,255,.55); }
+.mpc--starter.mpc--ep { --jersey: #8C6FBD; --trim: #F6FBFF; --num: #FFFFFF; }
+.mpc--starter.mpc--ur { --jersey: #1C1D20; --trim: #B79F53; --num: #E4CF79; --bust: #8E8DA6; }
+.mpc--starter.mpc--uc { --jersey: #4F7A47; --trim: #E8F6E2; --num: #FFFFFF; --bust: #9796B0; }
+
+/* stamina and the box score */
+.stam2 { display: flex; align-items: center; gap: 6px; margin: 9px 1px 7px; }
+.stam2 svg { width: 12px; height: 16px; color: #00BE0D; flex: 0 0 auto; filter: drop-shadow(0 0 3px rgba(0,190,13,.5)); }
+.stam2 span { flex: 1; display: grid; grid-template-columns: repeat(5, 1fr); gap: 3px; background: #000000; border-radius: 5px; padding: 2px 3px; }
+.stam2 i { height: 7px; border-radius: 2.5px; background: linear-gradient(180deg, #2BE43A, #00BE0D 55%, #009908); }
+.stam2 i.low { background: linear-gradient(180deg, #FFE45C, #FFD617 55%, #CDA511); } .stam2 i.off { background: #0B140C; }
+.box3 { display: grid; grid-template-columns: 44px 1fr 1fr; gap: 4px; }
+.box3 > span { border-radius: 7px; text-align: center; padding: 3px 0 2px; background: #0C2A65; color: #EBF0F4; font-weight: 800; font-size: 18px; line-height: 1.05; font-variant-numeric: tabular-nums; }
+.box3 > span small { display: block; font-size: 11px; color: #BFC5CE; font-weight: 700; letter-spacing: .02em; }
+.box3 > .gl { display: grid; place-items: center; background: linear-gradient(180deg, #16213D, #0A0C20); font-size: 30px; font-style: italic; font-weight: 800; color: transparent; background-clip: padding-box; position: relative; }
+.box3 > .gl b { background: linear-gradient(180deg, #FFE2B8 0%, #E2B98A 30%, #BA9267 58%, #8F6B4C 80%, #CBA171 100%); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-stroke: .6px rgba(10,12,32,.6); line-height: 1; padding-right: 3px; }
+
+/* the bench: no slot, label above the card */
+.mpb { flex: 0 0 auto; width: 152px; }
+.mpb__lbl { display: flex; align-items: center; justify-content: center; gap: 7px; margin-bottom: 7px; font-weight: 800; font-size: 16px; color: #EBF0F4; }
+.mpb__lbl small { color: #999EA5; font-size: 16px; }
+.mpb .schip { height: 24px; font-size: 15px; }
+.mpb .mpc__face { height: 128px; }
+.mpb .mpc__ovr { min-width: 40px; height: 28px; font-size: 16.5px; }
+.mpb .mpc__pos { top: 36px; } .mpb .mpc__team { top: 55px; }
+.mpb .mpc__crest { width: 36px; height: 36px; }
+.mpb .mpc--ep .mpc__crest { width: 42px; height: 42px; }
+.mpb .mpc__name { font-size: 13px; padding: 5px 5px; }
+.mpb .box3 { grid-template-columns: 36px 1fr 1fr; }
+.mpb .box3 > span { background: #212427; font-size: 16px; }
+.mpb .box3 > .gl { background: #1D1F21; font-size: 25px; }
+@media (prefers-reduced-motion: reduce) { .mpc { transition: none; } .mpc:hover { transform: none; } .mpc__sheen { animation: none !important; } }
+@media (max-width: 1100px) { .lineup__row { justify-content: flex-start; } }
 
 /* ============ RARITY CARDS — rarity sets the frame, edition sets the field ============ */
 .rcards { width: 100%; display: flex; flex-wrap: wrap; gap: 34px 26px; align-items: flex-end; justify-content: center; perspective: 1100px; padding: 8px 4px 6px; }
@@ -886,54 +940,140 @@ footer.end { color: var(--ink-4); font-size: 13.5px; padding-block: 30px 60px; }
         <p class="cap">Defence is mint with a shield, and offence is bronze with a ball. The ⚡ chip is the stamina load a player carries from assigned tactics. Position discs take the side's colour: red for the opponent, blue for you. Formation slots use the cyan tab.</p>
 
         <h3>Player card — match preparation</h3>
-        <div class="stage" style="gap:16px">
-          <div class="pcard" style="--rim:var(--r-uc)">
-            <div class="pcard__top"><span class="pcard__pos">SF</span><span class="pcard__s">S 6</span></div>
-            <div class="pcard__face">
-              <svg class="sil"><use href="#sil"/></svg>
-              <span class="pcard__ovr">119</span><span class="pcard__poslbl">SF<small>/SG</small></span><span class="pcard__team">GSW</span>
-              <span class="rarity rarity--uc"><span>UC</span></span>
-              <svg class="cond"><use href="#c-good"/></svg>
-              <span class="pcard__lv"><b>Lv.1</b></span>
+        <div class="stage dark" style="padding:14px">
+          <div class="lineup">
+            <div class="lineup__row lineup__row--start">
+            <div class="mps">
+              <div class="mps__tab"><span class="mps__pos">SF</span><span class="schip"><i>S</i>3</span></div>
+              <div class="mpc mpc--ur">
+                <div class="mpc__face"><svg class="rc__art" viewBox="0 0 200 200" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><use href="#rings" width="200" height="200" style="color:var(--ring)"/><rect width="200" height="200" fill="url(#wm-season)"/><g class="bust"><use href="#bust" x="25" y="38" width="150" height="162"/></g><text x="100" y="174" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-size="30" style="fill:var(--num)">24</text></svg>
+                  <span class="mpc__ovr">182</span><span class="mpc__pos">SF<small>/SG</small></span><span class="mpc__team">CHA</span>
+                  <svg class="mpc__crest" viewBox="0 0 60 60" aria-hidden="true"><use href="#b-ur"/></svg>
+                  <span class="mpc__lv">Lv.1</span><svg class="mpc__cond" viewBox="0 0 24 24" aria-hidden="true"><use href="#c-best"/></svg>
+                </div>
+                <div class="mpc__name">B. Miller</div><i class="mpc__sheen"></i>
+              </div>
+              <div class="stam2"><svg viewBox="0 0 10 14" aria-hidden="true"><use href="#i-bolt"/></svg><span><i></i><i></i><i></i><i></i><i></i></span></div>
+              <div class="box3"><span class="gl"><b>C</b></span><span><small>PTS</small>0</span><span><small>AST</small>0</span></div>
             </div>
-            <div class="pcard__name">M. Moody</div>
-            <div class="stam"><svg><use href="#i-bolt"/></svg><i></i><i></i><i></i><i></i><i></i></div>
-            <div class="pcard__foot"><div class="grade">C</div><div><small>PTS</small>0</div><div><small>AST</small>0</div></div>
-          </div>
-          <div class="pcard" style="--rim:#0A285F">
-            <div class="pcard__top"><span class="pcard__pos">PF</span><span class="pcard__s">S 5</span></div>
-            <div class="pcard__face">
-              <svg class="sil"><use href="#sil"/></svg>
-              <span class="pcard__ovr">76</span><span class="pcard__poslbl">PF<small>/SF</small></span><span class="pcard__team">GSW</span>
-              <span class="rarity rarity--c"><span>C</span></span>
-              <svg class="cond"><use href="#c-poor"/></svg>
-              <span class="pcard__lv"><b>Lv.1</b></span>
+            <div class="mps mps--hi">
+              <div class="mps__tab"><span class="mps__pos">PG</span><span class="schip"><i>S</i>1</span></div>
+              <div class="mpc mpc--ep mpc--starter">
+                <div class="mpc__face"><svg class="rc__art" viewBox="0 0 200 200" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><use href="#rings" width="200" height="200" style="color:var(--ring)"/><rect width="200" height="200" fill="url(#wm-starter)"/><g class="bust"><use href="#bust" x="25" y="38" width="150" height="162"/></g><text x="100" y="174" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-size="30" style="fill:var(--num)">11</text></svg>
+                  <span class="mpc__ovr">186</span><span class="mpc__pos">PG<small>/SG</small></span><span class="mpc__team">DAL</span>
+                  <svg class="mpc__crest" viewBox="0 0 60 60" aria-hidden="true"><use href="#b-ep"/></svg>
+                  <span class="mpc__lv">Lv.14</span><svg class="mpc__cond" viewBox="0 0 24 24" aria-hidden="true"><use href="#c-best"/></svg>
+                </div>
+                <div class="mpc__name">K. Irving</div><i class="mpc__sheen"></i>
+              </div>
+              <div class="stam2"><svg viewBox="0 0 10 14" aria-hidden="true"><use href="#i-bolt"/></svg><span><i></i><i></i><i></i><i></i><i></i></span></div>
+              <div class="box3"><span class="gl"><b>C</b></span><span><small>PTS</small>0</span><span><small>AST</small>0</span></div>
             </div>
-            <div class="pcard__name">G. Santos</div>
-            <div class="stam"><svg><use href="#i-bolt"/></svg><i></i><i></i><i></i><i class="low"></i><i class="off"></i></div>
-            <div class="pcard__foot"><div class="grade">C</div><div><small>PTS</small>4</div><div><small>AST</small>1</div></div>
-          </div>
-          <div class="pcard pcard--bench" style="--rim:#3A3F45">
-            <div class="pcard__top"><span class="pcard__pos" style="background:#24282C">PG</span><span class="pcard__s">S 3</span></div>
-            <div class="pcard__face">
-              <svg class="sil"><use href="#sil"/></svg>
-              <span class="pcard__ovr">61</span><span class="pcard__poslbl">PG<small>/SG</small></span><span class="pcard__team">CHI</span>
-              <span class="rarity rarity--c"><span>C</span></span>
-              <svg class="cond"><use href="#c-worst"/></svg>
-              <span class="pcard__lv"><b>Lv.1</b></span>
+            <div class="mps">
+              <div class="mps__tab"><span class="mps__pos">C</span><span class="schip"><i>S</i>2</span></div>
+              <div class="mpc mpc--uc">
+                <div class="mpc__face"><svg class="rc__art" viewBox="0 0 200 200" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><use href="#rings" width="200" height="200" style="color:var(--ring)"/><rect width="200" height="200" fill="url(#wm-season)"/><g class="bust"><use href="#bust" x="25" y="38" width="150" height="162"/></g><text x="100" y="174" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-size="30" style="fill:var(--num)">11</text></svg>
+                  <span class="mpc__ovr">117</span><span class="mpc__pos">C<small>/PF</small></span><span class="mpc__team">MIN</span>
+                  <svg class="mpc__crest" viewBox="0 0 60 60" aria-hidden="true"><use href="#b-uc"/></svg>
+                  <span class="mpc__lv">Lv.1</span><svg class="mpc__cond" viewBox="0 0 24 24" aria-hidden="true"><use href="#c-good"/></svg>
+                </div>
+                <div class="mpc__name">N. Reid</div>
+              </div>
+              <div class="stam2"><svg viewBox="0 0 10 14" aria-hidden="true"><use href="#i-bolt"/></svg><span><i></i><i></i><i></i><i></i><i></i></span></div>
+              <div class="box3"><span class="gl"><b>C</b></span><span><small>PTS</small>0</span><span><small>AST</small>0</span></div>
             </div>
-            <div class="pcard__name">R. Dillingham</div>
-            <div class="stam"><svg><use href="#i-bolt"/></svg><i></i><i></i><i></i><i></i><i></i></div>
-            <div class="pcard__foot"><div class="grade">C</div><div><small>PTS</small>0</div><div><small>AST</small>0</div></div>
+            <div class="mps mps--hi">
+              <div class="mps__tab"><span class="mps__pos">SG</span><span class="schip"><i>S</i>1</span></div>
+              <div class="mpc mpc--ur">
+                <div class="mpc__face"><svg class="rc__art" viewBox="0 0 200 200" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><use href="#rings" width="200" height="200" style="color:var(--ring)"/><rect width="200" height="200" fill="url(#wm-season)"/><g class="bust"><use href="#bust" x="25" y="38" width="150" height="162"/></g><text x="100" y="174" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-size="30" style="fill:var(--num)">24</text></svg>
+                  <span class="mpc__ovr">157</span><span class="mpc__pos">SG<small>/SF</small></span><span class="mpc__team">SAS</span>
+                  <svg class="mpc__crest" viewBox="0 0 60 60" aria-hidden="true"><use href="#b-ur"/></svg>
+                  <span class="mpc__lv">Lv.1</span><svg class="mpc__cond" viewBox="0 0 24 24" aria-hidden="true"><use href="#c-poor"/></svg>
+                </div>
+                <div class="mpc__name">D. Vassell</div><i class="mpc__sheen"></i>
+              </div>
+              <div class="stam2"><svg viewBox="0 0 10 14" aria-hidden="true"><use href="#i-bolt"/></svg><span><i></i><i></i><i></i><i></i><i></i></span></div>
+              <div class="box3"><span class="gl"><b>C</b></span><span><small>PTS</small>0</span><span><small>AST</small>0</span></div>
+            </div>
+            <div class="mps">
+              <div class="mps__tab"><span class="mps__pos">PF</span><span class="schip"><i>S</i>2</span></div>
+              <div class="mpc mpc--uc">
+                <div class="mpc__face"><svg class="rc__art" viewBox="0 0 200 200" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><use href="#rings" width="200" height="200" style="color:var(--ring)"/><rect width="200" height="200" fill="url(#wm-season)"/><g class="bust"><use href="#bust" x="25" y="38" width="150" height="162"/></g><text x="100" y="174" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-size="30" style="fill:var(--num)">54</text></svg>
+                  <span class="mpc__ovr">111</span><span class="mpc__pos">PF<small>/C</small></span><span class="mpc__team">TOR</span>
+                  <svg class="mpc__crest" viewBox="0 0 60 60" aria-hidden="true"><use href="#b-uc"/></svg>
+                  <span class="mpc__lv">Lv.1</span><svg class="mpc__cond" viewBox="0 0 24 24" aria-hidden="true"><use href="#c-good"/></svg>
+                </div>
+                <div class="mpc__name">S. Mamukelashvili</div>
+              </div>
+              <div class="stam2"><svg viewBox="0 0 10 14" aria-hidden="true"><use href="#i-bolt"/></svg><span><i></i><i></i><i></i><i></i><i></i></span></div>
+              <div class="box3"><span class="gl"><b>C</b></span><span><small>PTS</small>0</span><span><small>AST</small>0</span></div>
+            </div>
+            </div>
+            <span class="lineup__tally"><b>SF</b>: 2, <b>PG</b>: 2, <b>C</b>: 1, <b>SG</b>: 2, <b>PF</b>: 1</span>
+            <div class="lineup__row">
+            <div class="mpb">
+              <div class="mpb__lbl"><span>SF<small>/PF</small></span><span class="schip"><i>S</i>2</span></div>
+              <div class="mpc mpc--ur">
+                <div class="mpc__face"><svg class="rc__art" viewBox="0 0 200 200" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><use href="#rings" width="200" height="200" style="color:var(--ring)"/><rect width="200" height="200" fill="url(#wm-season)"/><g class="bust"><use href="#bust" x="25" y="38" width="150" height="162"/></g><text x="100" y="174" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-size="30" style="fill:var(--num)">8</text></svg>
+                  <span class="mpc__ovr">163</span><span class="mpc__pos">SF<small>/PF</small></span><span class="mpc__team">NYK</span>
+                  <svg class="mpc__crest" viewBox="0 0 60 60" aria-hidden="true"><use href="#b-ur"/></svg>
+                  <span class="mpc__lv">Lv.1</span><svg class="mpc__cond" viewBox="0 0 24 24" aria-hidden="true"><use href="#c-best"/></svg>
+                </div>
+                <div class="mpc__name">O. Anunoby</div><i class="mpc__sheen"></i>
+              </div>
+              <div class="stam2"><svg viewBox="0 0 10 14" aria-hidden="true"><use href="#i-bolt"/></svg><span><i></i><i></i><i></i><i></i><i></i></span></div>
+              <div class="box3"><span class="gl"><b>C</b></span><span><small>PTS</small>0</span><span><small>AST</small>0</span></div>
+            </div>
+            <div class="mpb">
+              <div class="mpb__lbl"><span>PG<small>/SG</small></span><span class="schip"><i>S</i>2</span></div>
+              <div class="mpc mpc--r">
+                <div class="mpc__face"><svg class="rc__art" viewBox="0 0 200 200" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><use href="#rings" width="200" height="200" style="color:var(--ring)"/><rect width="200" height="200" fill="url(#wm-season)"/><g class="bust"><use href="#bust" x="25" y="38" width="150" height="162"/></g><text x="100" y="174" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-size="30" style="fill:var(--num)">7</text></svg>
+                  <span class="mpc__ovr">133</span><span class="mpc__pos">PG<small>/SG</small></span><span class="mpc__team">WAS</span>
+                  <svg class="mpc__crest" viewBox="0 0 60 60" aria-hidden="true"><use href="#b-r"/></svg>
+                  <span class="mpc__lv">Lv.1</span><svg class="mpc__cond" viewBox="0 0 24 24" aria-hidden="true"><use href="#c-best"/></svg>
+                </div>
+                <div class="mpc__name">B. Carrington</div>
+              </div>
+              <div class="stam2"><svg viewBox="0 0 10 14" aria-hidden="true"><use href="#i-bolt"/></svg><span><i></i><i></i><i></i><i></i><i></i></span></div>
+              <div class="box3"><span class="gl"><b>C</b></span><span><small>PTS</small>0</span><span><small>AST</small>0</span></div>
+            </div>
+            <div class="mpb">
+              <div class="mpb__lbl"><span>C</span><span class="schip"><i>S</i>2</span></div>
+              <div class="mpc mpc--uc mpc--starter">
+                <div class="mpc__face"><svg class="rc__art" viewBox="0 0 200 200" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><use href="#rings" width="200" height="200" style="color:var(--ring)"/><rect width="200" height="200" fill="url(#wm-starter)"/><g class="bust"><use href="#bust" x="25" y="38" width="150" height="162"/></g><text x="100" y="174" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-size="30" style="fill:var(--num)">88</text></svg>
+                  <span class="mpc__ovr">90</span><span class="mpc__pos">C</span><span class="mpc__team">BOS</span>
+                  <svg class="mpc__crest" viewBox="0 0 60 60" aria-hidden="true"><use href="#b-uc"/></svg>
+                  <span class="mpc__lv">Lv.1</span><svg class="mpc__cond" viewBox="0 0 24 24" aria-hidden="true"><use href="#c-mid"/></svg>
+                </div>
+                <div class="mpc__name">N. Queta</div>
+              </div>
+              <div class="stam2"><svg viewBox="0 0 10 14" aria-hidden="true"><use href="#i-bolt"/></svg><span><i></i><i></i><i></i><i></i><i></i></span></div>
+              <div class="box3"><span class="gl"><b>C</b></span><span><small>PTS</small>0</span><span><small>AST</small>0</span></div>
+            </div>
+            <div class="mpb">
+              <div class="mpb__lbl"><span>SG<small>/PG</small></span><span class="schip"><i>S</i>3</span></div>
+              <div class="mpc mpc--ur mpc--starter">
+                <div class="mpc__face"><svg class="rc__art" viewBox="0 0 200 200" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><use href="#rings" width="200" height="200" style="color:var(--ring)"/><rect width="200" height="200" fill="url(#wm-starter)"/><g class="bust"><use href="#bust" x="25" y="38" width="150" height="162"/></g><text x="100" y="174" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-size="30" style="fill:var(--num)">77</text></svg>
+                  <span class="mpc__ovr">156</span><span class="mpc__pos">SG<small>/PG</small></span><span class="mpc__team">PHI</span>
+                  <svg class="mpc__crest" viewBox="0 0 60 60" aria-hidden="true"><use href="#b-ur"/></svg>
+                  <span class="mpc__lv">Lv.1</span><svg class="mpc__cond" viewBox="0 0 24 24" aria-hidden="true"><use href="#c-best"/></svg>
+                </div>
+                <div class="mpc__name">V. Edgecombe</div><i class="mpc__sheen"></i>
+              </div>
+              <div class="stam2"><svg viewBox="0 0 10 14" aria-hidden="true"><use href="#i-bolt"/></svg><span><i></i><i></i><i></i><i></i><i></i></span></div>
+              <div class="box3"><span class="gl"><b>C</b></span><span><small>PTS</small>0</span><span><small>AST</small>0</span></div>
+            </div>
+            </div>
           </div>
         </div>
-        <p class="cap">The anatomy is measured; the portrait is not reproduced.</p>
+        <p class="cap">A real lineup from a launch-week Match Preparation screen, redrawn in code. The mini-cards carry the same rarity metals and edition fields as the Rarities section; portraits and team logos are replaced by a jersey bust and a tricode.</p>
         <ul class="clean">
-          <li><b>Frame.</b> Starters are framed in home navy <code>#143B85</code> with a <code>#1C57C3</code> edge, and the bench in slate <code>#363A40</code>.</li>
-          <li><b>Badges.</b> The S-count chip is gold. The OVR box is <code>#202125</code> with a champagne rim <code>#D1C9A4</code> and ice digits <code>#CAFFFF</code>.</li>
-          <li><b>Face border</b> takes the rarity colour.</li>
-          <li><b>Footer.</b> Five-segment stamina in green. PTS and AST boxes in <code>#0C2A65</code>. A bronze grade letter <code>#CBA171</code>.</li>
-          <li><b>Team.</b> We show the three-letter tricode where the game shows a team logo.</li>
+          <li><b>The slot.</b> Each starter stands in a navy slot (<code>#143D88</code>, rim <code>#1C50B2</code>) with a raised tab at the top right. The tab carries the position disc (<code>#0D2758</code>) and the gold S-chip (<code>#CC8A22</code>), which counts the synergies the player feeds.</li>
+          <li><b>The stagger.</b> The starting five alternate low, high, low, high, low, so the row reads as a lineup rather than a grid.</li>
+          <li><b>The mini-card.</b> Its frame takes the rarity: gold <code>#DBD078 → #C5AF77</code> for Ultra Rare, violet <code>#BD32E5 → #A129CE</code> with a cyan pinline for Epic, mint <code>#76996F</code> for Uncommon, steel for Rare and graphite for Common. Its field takes the edition, so Starter cards sit on pale ice. Epic nameplates turn navy (<code>#202736</code>).</li>
+          <li><b>The OVR box</b> is <code>#202125</code> with a cream rim and ice digits <code>#CAFFFF</code> at every rarity. In match prep, even an Epic keeps the box.</li>
+          <li><b>Under the card.</b> Five stamina segments in <code>#00BE0D</code> sit on a black track. The box score has the bronze grade letter in a navy well, then PTS and AST in <code>#0C2A65</code>.</li>
+          <li><b>The bench</b> has no slot: the position and S-chip sit above the card, and its box score drops to slate <code>#212427</code>. A black tally pill between the rows counts positions across the roster.</li>
         </ul>
 
         <h3>Performance comparison</h3>
@@ -1353,6 +1493,11 @@ footer.end { color: var(--ink-4); font-size: 13.5px; padding-block: 30px 60px; }
   --rw-field-season:#21252A; --rw-field-season-ring:#373E47;
   --rw-field-core-hi:#710384; --rw-field-core-mid:#231660; --rw-field-core-lo:#1B043B; --rw-field-core-shard:#CEC8EC; --rw-field-core-beam:#8ACAD7;
   --rw-ed-starter:#B9EBFF; --rw-ed-starter-outline:#393C4D; --rw-ed-season:#FEFBDC; --rw-ed-core:#82E3FC; --rw-ed-core-glow:#A130CA;
+  /* match-prep lineup */
+  --rw-lineup-ground:#1C1D1F; --rw-slot:#143D88; --rw-slot-hi:#154091; --rw-slot-rim:#1C50B2; --rw-slot-pos:#0D2758; --rw-slot-pos-ink:#EDF5FF;
+  --rw-schip:#CC8A22; --rw-schip-lo:#A06D20; --rw-mini-ur:#DBD078; --rw-mini-ur-lo:#C5AF77; --rw-mini-ep:#BD32E5; --rw-mini-ep-lo:#A129CE; --rw-mini-uc:#76996F;
+  --rw-plate-ep:#202736; --rw-stam-track:#000000; --rw-stam:#00BE0D; --rw-grade-well:#16213D; --rw-grade-well-lo:#0A0C20; --rw-grade:#BA9267; --rw-grade-lo:#8F6B4C;
+  --rw-box:#0C2A65; --rw-box-label:#BFC5CE; --rw-box-ink:#EBF0F4; --rw-box-bench:#212427; --rw-grade-bench:#1D1F21; --rw-tally:#0D0D0D; --rw-tally-ink:#999EA5;
   --rw-r-legend:unset; --rw-r-elite:unset; --rw-r-prime:unset; --rw-r-iconic:unset; --rw-r-goat:unset; /* measure on release */
   /* ours — the clipboard */
   --rw-board:#F5F5F1; --rw-board-ghost:#ECEBE5; --rw-print:#C8CCD0; --rw-marker:#121314; --rw-clip:#1B1C1E;

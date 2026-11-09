@@ -44,6 +44,11 @@
   --rw-field-season:#21252A; --rw-field-season-ring:#373E47;
   --rw-field-core-hi:#710384; --rw-field-core-mid:#231660; --rw-field-core-lo:#1B043B; --rw-field-core-shard:#CEC8EC; --rw-field-core-beam:#8ACAD7;
   --rw-ed-starter:#B9EBFF; --rw-ed-starter-outline:#393C4D; --rw-ed-season:#FEFBDC; --rw-ed-core:#82E3FC; --rw-ed-core-glow:#A130CA;
+  /* match-prep lineup */
+  --rw-lineup-ground:#1C1D1F; --rw-slot:#143D88; --rw-slot-hi:#154091; --rw-slot-rim:#1C50B2; --rw-slot-pos:#0D2758; --rw-slot-pos-ink:#EDF5FF;
+  --rw-schip:#CC8A22; --rw-schip-lo:#A06D20; --rw-mini-ur:#DBD078; --rw-mini-ur-lo:#C5AF77; --rw-mini-ep:#BD32E5; --rw-mini-ep-lo:#A129CE; --rw-mini-uc:#76996F;
+  --rw-plate-ep:#202736; --rw-stam-track:#000000; --rw-stam:#00BE0D; --rw-grade-well:#16213D; --rw-grade-well-lo:#0A0C20; --rw-grade:#BA9267; --rw-grade-lo:#8F6B4C;
+  --rw-box:#0C2A65; --rw-box-label:#BFC5CE; --rw-box-ink:#EBF0F4; --rw-box-bench:#212427; --rw-grade-bench:#1D1F21; --rw-tally:#0D0D0D; --rw-tally-ink:#999EA5;
   --rw-r-legend:unset; --rw-r-elite:unset; --rw-r-prime:unset; --rw-r-iconic:unset; --rw-r-goat:unset; /* measure on release */
   /* ours — the clipboard */
   --rw-board:#F5F5F1; --rw-board-ghost:#ECEBE5; --rw-print:#C8CCD0; --rw-marker:#121314; --rw-clip:#1B1C1E;
