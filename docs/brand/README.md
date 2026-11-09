@@ -6,12 +6,12 @@ The visual system and brand for **RiseWiz**, a fan companion for GRAVITY's NBA R
 
 | Path | What it is |
 |---|---|
-| [`RiseWiz_Visual_System.html`](RiseWiz_Visual_System.html) | The full system: identity, voice, foundation, colour, type, texture, live components, rarities, the clipboard, rules, build and limits. Open it in a browser. |
+| [`RiseWiz_Visual_System.html`](RiseWiz_Visual_System.html) | The full system: identity, voice, foundation, colour, type, texture, live components, rarities, the clipboard, rules, build and limits. Open it in a browser. Published copy: https://claude.ai/artifact/HQYr5ho3buzBmXzckeeSbf |
 | [`tokens.css`](tokens.css) | 117 drop-in custom properties (`--rw-*`), the same values the document uses |
 | [`measurements/samples.md`](measurements/samples.md) | Where every measured value came from: image, region and method |
 | [`measurements/font_fit.json`](measurements/font_fit.json) | Typeface identification: 32 faces scored against in-game text |
 | [`measurements/hue_occupancy.json`](measurements/hue_occupancy.json) | Hue distribution of the game's saturated UI pixels |
-| [`screenshots/catalog.csv`](screenshots/catalog.csv) | Every screenshot in the measured corpus, with source page and image URL |
+| [`screenshots/catalog.csv`](screenshots/catalog.csv) | All 424 screenshots in the corpus: source page and image URL, size, sha1, the screen shown, and whether it is full in-game UI. 142 are; 51 of those are from the July 2026 closed beta |
 | [`tools/`](tools/) | `sample.py` (region median and clusters, vertical profiles), `palette.py` (median-cut palette and dark-pixel bias), `huegap.py` (hue occupancy), `absent.py` (OKLab + colour-vision absent-colour search), `font_fit_render.js` + `font_fit.html` (renders candidate faces for overlap scoring) |
 
 ## The short version
