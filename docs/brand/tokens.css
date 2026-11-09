@@ -85,6 +85,18 @@
   --nrw-syn-on:#35322E; --nrw-syn-rim:#DBB745; --nrw-syn-rim-in:#C2A240; --nrw-syn-glow:#48331C; --nrw-syn-divider:#52504E; --nrw-syn-tick:#D89B16; --nrw-syn-tick-ink:#FAF4E9;
   --nrw-syn-target:#24211F; --nrw-syn-target-label:#ACAFBC; --nrw-syn-target-ink:#D9DFE5;
   --nrw-chip-off:#514322; --nrw-chip-off-ink:#D0A92D; --nrw-chip-def:#264836; --nrw-chip-def-ink:#2AD898; --nrw-chip-men:#44484F; --nrw-chip-men-ink:#B5C8DF;
+  /* arena */
+  --nrw-list-ground:#1C1C1C; --nrw-list-card:#2E3235; --nrw-list-divider:#4D555B;
+  --nrw-ar-action:#242628; --nrw-ar-refresh:#229E71; --nrw-ar-ranking:#3D454B; --nrw-ar-reward:#C29C3D; --nrw-ar-panel:#2A2E32;
+  --nrw-ar-norank:#202325; --nrw-ar-norank-card:#232528; --nrw-ar-label:#B3B6C1; --nrw-ar-count:#8B94A2; --nrw-ar-points:#16D2FF;
+  --nrw-league:#363C45; --nrw-league-rim:#949AA0; --nrw-league-ink:#F0F4F8; --nrw-league-label:#92989B; --nrw-league-next:#524430; --nrw-league-next-rim:#D2C1AB;
+  --nrw-ar-tip:#D9DFE5; --nrw-ar-disc:#3A3F44; --nrw-ar-badge:#0D0D1C; --nrw-ar-record:#454B53; --nrw-ar-def:#0F1112; --nrw-ar-def-rim:#4C545A; --nrw-ar-dot:#FF502E;
+  --nrw-tp-tag:#DDAB0B; --nrw-tp-tag-ink:#F3E3B8; --nrw-tp-arena:#E6B726;
+  --nrw-ar-sec-label:#999EA5; --nrw-ar-ticket:#2D3033; --nrw-ar-detail:#979CA3; --nrw-ar-mag:#32383D; --nrw-ar-mag-rim:#7F8589; --nrw-ar-mag-ink:#D4D7DA; --nrw-atk-inset:#007DAC;
+  /* auction */
+  --nrw-au-head:#2A2D32; --nrw-au-wallet:#1B1F22; --nrw-au-tab-off:#3F474A; --nrw-au-tab-ink:#9A9FA5; --nrw-au-divider:#4E555B; --nrw-au-label:#92969B;
+  --nrw-au-tile-rim:#3D3E40; --nrw-buynow:#B4811D; --nrw-buynow-ink:#F6ECD1; --nrw-au-price:#23272A; --nrw-au-price-ink:#DCE1E5; --nrw-au-bid-label:#95999E;
+  --nrw-au-timer:#1C1C20; --nrw-au-timer-ink:#E0E4EA; --nrw-dia-hi:#63D6FA; --nrw-dia:#329FEA; --nrw-dia-lo:#1D578E;
   --nrw-r-legend:unset; --nrw-r-elite:unset; --nrw-r-prime:unset; --nrw-r-iconic:unset; --nrw-r-goat:unset; /* measure on release */
   /* ours — the clipboard */
   --nrw-board:#F5F5F1; --nrw-board-ghost:#ECEBE5; --nrw-print:#C8CCD0; --nrw-marker:#121314; --nrw-clip:#1B1C1E;

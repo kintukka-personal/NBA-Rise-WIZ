@@ -583,18 +583,6 @@ th { font-weight: 700; font-size: 11.5px; letter-spacing: .1em; text-transform: 
 .pack .buy i { font-style: normal; color: var(--gd-peak); margin-right: 6px; }
 .pity { background: #000; border-radius: 6px; padding: 1px 8px; font-weight: 700; font-size: 12px; color: #E5EAEE; margin-left: 8px; }
 
-/* dense list — auction / arena pattern */
-.dlist { width: 100%; border-radius: 8px; overflow: hidden; background: var(--pill); }
-.dlist__row { display: grid; grid-template-columns: 54px minmax(0, 1.4fr) minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 9px 12px; background: var(--well); margin-bottom: 3px; }
-.dlist__row:last-child { margin-bottom: 0; }
-.dlist__head { background: transparent; color: var(--ink-4); font-weight: 700; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; padding-block: 8px 6px; }
-.dlist__row .rank { font-weight: 800; color: var(--ink-2); font-variant-numeric: tabular-nums; }
-.dlist__row .nm { font-weight: 700; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.dlist__row .nm small { display: block; color: var(--gd-peak); font-size: 12px; }
-.dlist__row .val { font-weight: 700; font-variant-numeric: tabular-nums; color: var(--ink-1); text-align: right; }
-.dlist__row .val i { font-style: normal; color: #4FA3FF; margin-right: 4px; }
-.mini { border-radius: 8px; padding: 6px 14px; font-weight: 800; font-size: 13px; background: var(--cy); color: #FFFFFF; text-shadow: var(--tmp-outline); }
-.buynow { display: inline-block; background: #B4811F; color: #FFFFFF; font-weight: 700; font-size: 11.5px; border-radius: 4px; padding: 0 6px; margin-right: 6px; }
 
 /* ============ SET PLAY — countdown, choose, time it, result ============ */
 .sp-beats { width: 100%; display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 12px; }
@@ -877,6 +865,106 @@ th { font-weight: 700; font-size: 11.5px; letter-spacing: .1em; text-transform: 
 .stat--off { background: #514322; color: #D0A92D; } .stat--def { background: #264836; color: #2AD898; } .stat--men { background: #44484F; color: #B5C8DF; }
 @media (max-width: 480px) { .srow { margin-left: 8px; margin-right: 8px; padding-left: 16px; gap: 7px; } .srow__txt b { font-size: 15px; } .srow__tp { flex-direction: column; align-items: flex-end; gap: 2px; font-size: 9.5px; } .srow__tp em { font-size: 13px; padding: 2px 7px; } .chev { width: 34px; height: 34px; } .scard { margin-left: 14px; margin-right: 14px; } .sev { left: 16px; } .synbar .lbl { font-size: 13px; } }
 
+
+/* ============ ARENA — opponent list (NB-34) ============ */
+.arena { width: 100%; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 14px; align-items: start; }
+.arena__panel, .arena__list, .auc { border-radius: 14px; overflow: hidden; box-shadow: inset 0 0 0 1px rgba(255,255,255,.05), 0 10px 24px rgba(0,0,0,.45); }
+.arena__panel { background: #2A2E32; }
+.ahead { position: relative; display: grid; grid-template-columns: 34px 1fr 34px; align-items: center; padding: 12px 12px 11px; text-align: center; background: linear-gradient(180deg, #303438, #232629); border-bottom: 2px solid #4D555B; }
+.ahead b { display: block; font-weight: 800; font-size: 20px; color: #F0F4FA; }
+.ahead small { display: inline-flex; align-items: center; gap: 4px; font-weight: 700; font-size: 12px; color: #CECCCE; }
+.ahead small svg { width: 12px; height: 12px; color: #CECCCE; }
+.ahead__back { color: #F0F4FA; } .ahead__back svg { width: 15px; height: 22px; }
+.ahead__info { width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; background: #151619; color: #F0F4FA; font-weight: 800; font-family: Georgia, serif; font-size: 17px; }
+.abtns { display: grid; grid-template-columns: minmax(0,1.5fr) minmax(0,1fr) minmax(0,1fr); gap: 9px; padding: 11px 12px; background: #242628; }
+.abtns .abtn:first-child { margin-right: auto; }
+.abtn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; height: 36px; border-radius: 11px; padding: 0 14px; background: #3D454B; color: #EBF0F4; font-weight: 800; font-size: 13.5px; white-space: nowrap; text-shadow: var(--tmp-outline); box-shadow: inset 0 0 0 1px rgba(255,255,255,.06), 0 3px 8px rgba(0,0,0,.35); }
+.abtn svg { width: 17px; height: 17px; }
+.abtn--refresh { background: #229E71; }
+.abtn--reward { background: #C29C3D; }
+.aleague { display: grid; grid-template-columns: 62px minmax(0,1fr) 34px 60px; align-items: center; gap: 10px; padding: 14px 12px 14px 14px; border-bottom: 2px solid #4D555B; }
+.lbadge { display: block; width: 100%; height: auto; overflow: visible; }
+.lbadge--sm { width: 30px; }
+.aleague__mid { min-width: 0; }
+.norank { display: inline-block; background: #202325; color: #EBF0F4; border-radius: 10px; padding: 3px 11px; font-weight: 800; font-size: 16px; line-height: 1.35; }
+.aleague__pts { display: flex; align-items: center; gap: 5px; margin-top: 7px; font-weight: 700; font-size: 11.5px; color: #B3B6C1; }
+.aleague__pts svg { width: 13px; height: 13px; }
+.aleague__pts span { margin-left: auto; color: #8B94A2; }
+.aleague__track { display: block; height: 7px; margin-top: 6px; border-radius: 4px; background: #4D555B; overflow: hidden; }
+.aleague__track b { display: block; height: 100%; width: 0; background: #16D2FF; }
+.areward { position: relative; display: grid; justify-items: center; padding-top: 18px; }
+.areward__tip { position: absolute; top: 0; left: 50%; transform: translateX(-50%); background: #D9DFE5; color: #2A2E32; border-radius: 8px; padding: 1px 9px; font-weight: 800; font-size: 11px; white-space: nowrap; }
+.areward__tip::after { content: ""; position: absolute; left: 50%; bottom: -4px; margin-left: -4px; border: 4px solid transparent; border-bottom: 0; border-top-color: #D9DFE5; }
+.areward__disc { position: relative; width: 54px; height: 54px; border-radius: 50%; display: grid; place-items: center; background: #3A3F44; box-shadow: inset 0 0 0 3px #4D555B, 0 3px 8px rgba(0,0,0,.4); }
+.areward__disc svg { width: 32px; height: 24px; }
+.areward__disc b { position: absolute; right: -6px; bottom: -4px; background: #0D0D1C; color: #FFFFFF; border-radius: 8px; padding: 0 6px; font-weight: 800; font-size: 11.5px; line-height: 1.5; }
+.arow { display: flex; align-items: center; gap: 9px; padding: 12px; }
+.abtn2 { height: 32px; display: inline-flex; align-items: center; border-radius: 10px; padding: 0 13px; background: #454B53; color: #EBF0F4; font-weight: 800; font-size: 12.5px; white-space: nowrap; }
+.atp { display: inline-flex; align-items: center; gap: 5px; margin-left: auto; font-family: var(--num-face); font-size: 22px; line-height: 1; color: #E6B726; text-shadow: var(--tmp-outline); }
+.atp i { font-family: var(--ui); font-style: normal; font-weight: 800; font-size: 10.5px; color: #F3E3B8; background: #DDAB0B; border-radius: 4px; padding: 1px 4px; text-shadow: 0 1px 0 rgba(120,80,0,.6); }
+.atp--sm { margin-left: 0; font-size: 18px; } .atp--sm i { font-size: 9.5px; }
+.adef { position: relative; margin-left: auto; height: 34px; display: inline-flex; align-items: center; border-radius: 10px; padding: 0 14px; background: #0F1112; color: #EBF0F4; font-weight: 800; font-size: 12.5px; white-space: nowrap; box-shadow: inset 0 0 0 2px #4C545A; }
+.adef i { position: absolute; right: -4px; top: -5px; width: 11px; height: 11px; border-radius: 50%; background: #FF502E; box-shadow: 0 0 6px rgba(255,80,46,.9); }
+.arena__list { background: #1C1C1C; padding-bottom: 12px; }
+.asec { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 10px 12px; }
+.asec > span:first-child { display: inline-flex; align-items: center; gap: 6px; font-weight: 800; font-size: 14px; color: #EBF0F4; }
+.asec > span:first-child svg { width: 14px; height: 16px; color: #EBF0F4; }
+.asec__t { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; font-size: 12px; color: #999EA5; white-space: nowrap; }
+.asec__t b { display: inline-flex; align-items: center; gap: 5px; background: #2D3033; color: #EBF0F4; border-radius: 10px; padding: 3px 10px; font-weight: 800; font-size: 14px; }
+.asec__t b svg { width: 15px; height: 15px; }
+.opp { margin: 0 12px 10px; border-radius: 18px; background: #2E3235; box-shadow: 0 3px 8px rgba(0,0,0,.4); }
+.opp__top { display: flex; align-items: center; gap: 9px; padding: 9px 10px 8px 12px; border-bottom: 2px solid #4D555B; }
+.opp__top .norank { font-size: 13.5px; padding: 2px 10px; background: #232528; }
+.opp__pts { display: inline-flex; align-items: center; gap: 5px; font-family: var(--num-face); font-size: 21px; line-height: 1; color: #16D2FF; text-shadow: var(--tmp-outline); }
+.opp__pts svg { width: 17px; height: 17px; }
+.opp__more { margin-left: auto; display: inline-flex; align-items: center; gap: 8px; font-weight: 700; font-size: 12px; color: #979CA3; white-space: nowrap; }
+.opp__more i { width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; background: #32383D; color: #D4D7DA; box-shadow: inset 0 0 0 2px #7F8589; }
+.opp__more i svg { width: 15px; height: 15px; }
+.opp__bot { display: flex; align-items: center; gap: 11px; padding: 10px 10px 12px 12px; }
+.opp__disc { flex: 0 0 auto; width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; background: #061C5A; color: #EAF1FF; box-shadow: 0 0 0 2px #3A3F44; }
+.opp__disc svg { width: 26px; height: 26px; }
+.opp__who { flex: 1; min-width: 0; }
+.opp__who b { display: block; font-weight: 800; font-size: 17px; color: #EBF0F4; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.atk { flex: 0 0 auto; display: inline-flex; align-items: center; gap: 8px; height: 46px; border-radius: 14px; padding: 0 16px 0 9px; background: #00AEEF; color: #FFFFFF; font-weight: 800; font-size: 15px; text-shadow: var(--tmp-outline); box-shadow: inset 0 0 0 1px rgba(160,232,255,.35), 0 0 14px rgba(0,174,239,.45); }
+.atk i { display: inline-flex; align-items: center; gap: 2px; background: #007DAC; border-radius: 8px; padding: 2px 7px 2px 5px; font-style: normal; font-size: 12.5px; text-shadow: none; }
+.atk i svg { width: 15px; height: 15px; }
+@media (max-width: 480px) { .aleague { grid-template-columns: 50px minmax(0,1fr) 28px 50px; gap: 8px; } .areward__disc { width: 46px; height: 46px; } .norank { font-size: 14px; } .abtn { padding: 0 9px; font-size: 12.5px; } .arow { flex-wrap: wrap; row-gap: 10px; } .asec__t > span { display: none; } .asec > span:first-child { font-size: 13px; } .opp__who b { white-space: normal; line-height: 1.15; } .atk { gap: 6px; padding: 0 11px 0 7px; font-size: 14px; } .atp { font-size: 20px; } .opp__more span { display: none; } .opp__who b { font-size: 15px; } .atk { padding-right: 12px; } }
+
+/* ============ AUCTION — tiles (NB-33) ============ */
+.auc { width: 100%; max-width: 520px; margin: 0 auto; background: #1C1C1C; }
+.auc__head { position: relative; padding: 13px 12px; text-align: center; background: #2A2D32; }
+.auc__head b { font-weight: 800; font-size: 20px; color: #F0F4FA; }
+.dia { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); display: inline-flex; align-items: center; gap: 6px; background: #1B1F22; color: #F4F9FC; border-radius: 12px; padding: 4px 11px 4px 8px; font-weight: 800; font-size: 14px; }
+.dia svg, .aprice svg { width: 17px; height: 15px; }
+.auc__tabs { display: flex; gap: 7px; overflow-x: auto; scrollbar-width: none; padding: 0 12px 11px; background: #2A2D32; -webkit-mask-image: linear-gradient(90deg, #000 88%, transparent); mask-image: linear-gradient(90deg, #000 88%, transparent); }
+.auc__tabs::-webkit-scrollbar { display: none; }
+.auc__tabs span { flex: 0 0 auto; height: 32px; display: grid; place-items: center; border-radius: 10px; padding: 0 16px; background: #3F474A; color: #9A9FA5; font-weight: 800; font-size: 13px; }
+.auc__tabs span.on, .seg i.on { background: #00ADEF; color: #E4FAFF; box-shadow: 0 0 10px rgba(0,173,239,.45); }
+.auc__sub { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 9px 12px; background: #2A2D32; border-top: 2px solid #4E555B; }
+.auc__sub > span:first-child { font-weight: 700; font-size: 13px; color: #92969B; }
+.seg { display: inline-flex; gap: 6px; }
+.seg i { font-style: normal; height: 30px; display: grid; place-items: center; border-radius: 10px; padding: 0 14px; background: #3F474A; color: #9A9FA5; font-weight: 800; font-size: 12.5px; }
+.auc__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; padding: 12px 12px 14px; }
+.atile { display: flex; flex-direction: column; gap: 5px; min-width: 0; border-radius: 16px; padding: 10px 9px 17px; background: #2E3235; box-shadow: inset 0 2px 0 #3D3E40, inset 0 0 0 1px #363837, 0 3px 8px rgba(0,0,0,.4); }
+.atile .mpc { width: 112px; margin: 0 auto 6px; }
+.atile .mpc__face { height: 122px; }
+.atile .mpc__ovr { font-size: 19px; min-width: 38px; height: 25px; padding: 0 4px; }
+.atile .mpc__pos { top: 34px; font-size: 10px; } .atile .mpc__pos small { font-size: 8.5px; }
+.atile .mpc__team { top: 52px; font-size: 8.5px; }
+.atile .mpc__crest { width: 34px; height: 34px; }
+.atile .mpc__lv { font-size: 10.5px; padding: 2px 10px 1px 5px; }
+.atile .mpc__cond { width: 20px; height: 20px; }
+.atile .mpc__name { font-size: 11px; padding: 3px 2px; }
+.buynow { align-self: flex-start; background: #B4811D; color: #F6ECD1; border-radius: 8px; padding: 1px 8px; font-weight: 800; font-size: 11.5px; }
+.atile small { font-weight: 700; font-size: 11.5px; color: #95999E; }
+.aprice { display: flex; align-items: center; justify-content: flex-end; gap: 6px; background: #23272A; border-radius: 9px; padding: 5px 8px; font-weight: 800; font-size: 15px; color: #DCE1E5; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.aprice--sm { font-size: 13px; padding: 4px 8px; }
+.bid { position: relative; margin: auto 0 0; display: grid; place-items: center; height: 42px; border-radius: 12px; background: #00ADEF; color: #E3F2FB; font-weight: 800; font-size: 15px; text-shadow: var(--tmp-outline); box-shadow: inset 0 0 0 1px rgba(160,232,255,.35), 0 0 12px rgba(0,173,239,.4); }
+.atile .bid { margin-top: auto; }
+.bid i { position: absolute; left: 50%; bottom: -12px; transform: translateX(-50%); display: inline-flex; align-items: center; gap: 4px; background: #1C1C20; color: #E0E4EA; border-radius: 9px; padding: 1px 8px; font-style: normal; font-size: 11.5px; text-shadow: none; white-space: nowrap; }
+.bid i svg { width: 11px; height: 11px; }
+@media (max-width: 480px) { .auc__grid { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 148px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; } .auc__grid::-webkit-scrollbar { display: none; } .atile { scroll-snap-align: start; } }
+
 /* ============ THE CLIPBOARD (ours) ============ */
 .board-fig { margin: 18px 0 24px; max-width: 560px; }
 .board-fig svg { width: 100%; height: auto; display: block; }
@@ -941,6 +1029,11 @@ footer.end { color: var(--ink-4); font-size: 13.5px; padding-block: 30px 60px; }
     <symbol id="mu-up" viewBox="0 0 20 16"><path d="M10 2.2 L17.6 13.8 H2.4 Z" fill="currentColor" stroke-linejoin="round" paint-order="stroke" style="stroke:var(--mu-ol,#24282C);stroke-width:3.2"/></symbol>
     <symbol id="mu-down" viewBox="0 0 20 16"><path d="M2.4 2.2 H17.6 L10 13.8 Z" fill="currentColor" stroke-linejoin="round" paint-order="stroke" style="stroke:var(--mu-ol,#24282C);stroke-width:3.2"/></symbol>
     <symbol id="mu-up2" viewBox="0 0 20 22"><path d="M10 1.8 L17.4 11.4 H2.6 Z M10 9.4 L17.4 20.2 H2.6 Z" fill="currentColor" stroke-linejoin="round" paint-order="stroke" style="stroke:var(--mu-ol,#24282C);stroke-width:3"/></symbol>
+    <symbol id="ic-dia" viewBox="0 0 20 18"><defs><linearGradient id="g-dia" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#63D6FA"/><stop offset=".5" stop-color="#329FEA"/><stop offset="1" stop-color="#1D578E"/></linearGradient></defs><path d="M5 1 H15 L19 6 L10 17 L1 6 Z" fill="url(#g-dia)"/><path d="M1 6 H19 M7 1 L5.6 6 L10 17 M13 1 L14.4 6 L10 17" fill="none" stroke="#C9F2FF" stroke-opacity=".6" stroke-width=".9"/></symbol>
+    <symbol id="ic-ticket" viewBox="0 0 20 20"><path d="M3.5 12.2 L12.2 3.5 L14.2 5.5 A1.7 1.7 0 0 0 16.5 7.8 L18.5 9.8 L9.8 18.5 L7.8 16.5 A1.7 1.7 0 0 0 5.5 14.2 Z" fill="currentColor"/><path d="M9.2 8.6 L11.4 10.8" stroke="#000000" stroke-opacity=".3" stroke-width="1.4" stroke-linecap="round"/></symbol>
+    <symbol id="ic-refresh" viewBox="0 0 20 20"><path d="M15.8 8.2 A6.2 6.2 0 0 0 4.6 6.2 M4.2 11.8 A6.2 6.2 0 0 0 15.4 13.8" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><path d="M16.9 3.4 V8.9 H11.4 Z M3.1 16.6 V11.1 H8.6 Z" fill="currentColor"/></symbol>
+    <symbol id="ic-doc" viewBox="0 0 16 18"><path d="M2 1 H10 L14 5 V17 H2 Z" fill="currentColor"/><path d="M5 8.5 H11 M5 11.5 H11 M5 14.5 H9" stroke="#1C1C1C" stroke-width="1.6"/></symbol>
+    <symbol id="ic-ball" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="currentColor"/><path d="M2 12 H22 M12 2 V22 M5 5 C9 9 9 15 5 19 M19 5 C15 9 15 15 19 19" stroke="#1C1C1C" stroke-opacity=".55" stroke-width="1.7" fill="none"/></symbol>
     <symbol id="i-bolt" viewBox="0 0 10 14"><path d="M6.5 0 L0 8 H4 L3 14 L10 5.5 H6 Z" fill="currentColor"/></symbol>
     <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 2 L20 5 V11 C20 16.5 16.4 20.4 12 22 C7.6 20.4 4 16.5 4 11 V5 Z" fill="currentColor"/><path d="M12 5.4 L17 7.3 V11.2 C17 14.9 14.7 17.6 12 18.7 C9.3 17.6 7 14.9 7 11.2 V7.3 Z" fill="none" stroke="#15563E" stroke-width="1.5" stroke-linejoin="round"/></symbol>
     <symbol id="i-ballic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="currentColor"/><path d="M2 12 H22 M12 2 V22 M5 5 C9 9 9 15 5 19 M19 5 C15 9 15 15 19 19" stroke="#664F20" stroke-width="1.7" fill="none"/></symbol>
@@ -1739,16 +1832,68 @@ footer.end { color: var(--ink-4); font-size: 13.5px; padding-block: 30px 60px; }
           <li><b>The pack art is our own.</b> GRAVITY's packs carry the league logo, so we draw a plain crimped foil pack with a ball.</li>
         </ul>
 
-        <h3>Dense list — the auction and arena pattern</h3>
-        <div class="stage">
-          <div class="dlist">
-            <div class="dlist__row dlist__head"><span>Rank</span><span>Club</span><span style="text-align:right">Power</span><span></span></div>
-            <div class="dlist__row"><span class="rank">1</span><span class="nm">Deathrush<small>TP 18,715</small></span><span class="val">10/10</span><span class="mini">Attack</span></div>
-            <div class="dlist__row"><span class="rank">2</span><span class="nm">9002920788<small>TP 11,236</small></span><span class="val">8/10</span><span class="mini">Attack</span></div>
-            <div class="dlist__row"><span class="rank">3</span><span class="nm">J. Embiid · Epic<small><span class="buynow">Buy now</span>200,000,000</small></span><span class="val"><i>◆</i>44,761</span><span class="mini">Bid</span></div>
+        <h3>Arena — the opponent list</h3>
+        <div class="stage dark" style="padding:14px">
+          <div class="arena">
+            <div class="arena__panel">
+              <div class="ahead"><span class="ahead__back"><svg viewBox="0 0 10 16" aria-hidden="true"><path d="M8 2 L2 8 L8 14" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>Arena</b><small>Time left <svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-clock"/></svg>6d 9h</small></div><span class="ahead__info">i</span></div>
+              <div class="abtns"><span class="abtn abtn--refresh"><svg viewBox="0 0 20 20" aria-hidden="true"><use href="#ic-refresh"/></svg>Refresh</span><span class="abtn">Ranking</span><span class="abtn abtn--reward">Reward</span></div>
+              <div class="aleague">
+                <svg class="lbadge" viewBox="0 0 60 70" aria-hidden="true"><path d="M5 5 H55 V48 L30 64 L5 48 Z" fill="#363C45" stroke="#949AA0" stroke-width="3.2" stroke-linejoin="round"/><path d="M10.5 10.5 H49.5 V45 L30 57.5 L10.5 45 Z" fill="none" stroke="#000000" stroke-opacity=".28" stroke-width="1.6"/><text x="30" y="38" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-style="italic" font-size="25" fill="#F0F4F8" letter-spacing="-1">10</text><text x="30" y="49" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-style="italic" font-size="7.4" fill="#92989B">LEAGUE</text></svg>
+                <div class="aleague__mid"><span class="norank">No rank</span><div class="aleague__pts"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-ball"/></svg>My points<span>0/100</span></div><i class="aleague__track"><b></b></i></div>
+                <svg class="lbadge" viewBox="0 0 60 70" aria-hidden="true"><path d="M5 5 H55 V48 L30 64 L5 48 Z" fill="#524430" stroke="#D2C1AB" stroke-width="3.2" stroke-linejoin="round"/><path d="M10.5 10.5 H49.5 V45 L30 57.5 L10.5 45 Z" fill="none" stroke="#000000" stroke-opacity=".28" stroke-width="1.6"/><text x="30" y="38" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-style="italic" font-size="25" fill="#F0F4F8" letter-spacing="-1">9</text><text x="30" y="49" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-style="italic" font-size="7.4" fill="#B0A58E">LEAGUE</text></svg>
+                <div class="areward"><span class="areward__tip">Reward</span><span class="areward__disc"><svg viewBox="0 0 16 12" aria-hidden="true"><use href="#ic-goldbar"/></svg><b>300</b></span></div>
+              </div>
+              <div class="arow"><span class="abtn2">Match record</span><span class="atp"><i>TP</i>16829</span><span class="adef">Defence team setup<i></i></span></div>
+            </div>
+            <div class="arena__list">
+              <div class="asec"><span><svg viewBox="0 0 16 18" aria-hidden="true"><use href="#ic-doc"/></svg>Recommended opponents</span><span class="asec__t"><span>Attack tickets</span><b><svg viewBox="0 0 20 20" aria-hidden="true"><use href="#ic-ticket"/></svg>10/10</b></span></div>
+                <div class="opp">
+                  <div class="opp__top"><span class="norank">No rank</span><svg class="lbadge lbadge--sm" viewBox="0 0 60 70" aria-hidden="true"><path d="M5 5 H55 V48 L30 64 L5 48 Z" fill="#363C45" stroke="#949AA0" stroke-width="3.2" stroke-linejoin="round"/><path d="M10.5 10.5 H49.5 V45 L30 57.5 L10.5 45 Z" fill="none" stroke="#000000" stroke-opacity=".28" stroke-width="1.6"/><text x="30" y="38" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-style="italic" font-size="25" fill="#F0F4F8" letter-spacing="-1">10</text><text x="30" y="49" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-style="italic" font-size="7.4" fill="#92989B">LEAGUE</text></svg><span class="opp__pts"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-ball"/></svg>97</span><span class="opp__more"><span>View details</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-mag"/></svg></i></span></div>
+                  <div class="opp__bot"><span class="opp__disc"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-ball"/></svg></span><div class="opp__who"><b>Backdoor Cut</b><span class="atp atp--sm"><i>TP</i>18715</span></div><span class="atk"><i><svg viewBox="0 0 20 20" aria-hidden="true"><use href="#ic-ticket"/></svg>-1</i>Attack</span></div>
+                </div>
+                <div class="opp">
+                  <div class="opp__top"><span class="norank">No rank</span><svg class="lbadge lbadge--sm" viewBox="0 0 60 70" aria-hidden="true"><path d="M5 5 H55 V48 L30 64 L5 48 Z" fill="#363C45" stroke="#949AA0" stroke-width="3.2" stroke-linejoin="round"/><path d="M10.5 10.5 H49.5 V45 L30 57.5 L10.5 45 Z" fill="none" stroke="#000000" stroke-opacity=".28" stroke-width="1.6"/><text x="30" y="38" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-style="italic" font-size="25" fill="#F0F4F8" letter-spacing="-1">10</text><text x="30" y="49" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-style="italic" font-size="7.4" fill="#92989B">LEAGUE</text></svg><span class="opp__pts"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-ball"/></svg>0</span><span class="opp__more"><span>View details</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-mag"/></svg></i></span></div>
+                  <div class="opp__bot"><span class="opp__disc"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-ball"/></svg></span><div class="opp__who"><b>9001437265</b><span class="atp atp--sm"><i>TP</i>11236</span></div><span class="atk"><i><svg viewBox="0 0 20 20" aria-hidden="true"><use href="#ic-ticket"/></svg>-1</i>Attack</span></div>
+                </div>
+                <div class="opp">
+                  <div class="opp__top"><span class="norank">No rank</span><svg class="lbadge lbadge--sm" viewBox="0 0 60 70" aria-hidden="true"><path d="M5 5 H55 V48 L30 64 L5 48 Z" fill="#363C45" stroke="#949AA0" stroke-width="3.2" stroke-linejoin="round"/><path d="M10.5 10.5 H49.5 V45 L30 57.5 L10.5 45 Z" fill="none" stroke="#000000" stroke-opacity=".28" stroke-width="1.6"/><text x="30" y="38" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-style="italic" font-size="25" fill="#F0F4F8" letter-spacing="-1">10</text><text x="30" y="49" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-style="italic" font-size="7.4" fill="#92989B">LEAGUE</text></svg><span class="opp__pts"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-ball"/></svg>0</span><span class="opp__more"><span>View details</span><i><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-mag"/></svg></i></span></div>
+                  <div class="opp__bot"><span class="opp__disc"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-ball"/></svg></span><div class="opp__who"><b>9001582093</b><span class="atp atp--sm"><i>TP</i>18520</span></div><span class="atk"><i><svg viewBox="0 0 20 20" aria-hidden="true"><use href="#ic-ticket"/></svg>-1</i>Attack</span></div>
+                </div>
+            </div>
           </div>
         </div>
-        <p class="cap">Flat <code>#1C1D1F</code> rows on a black gap, with the value right-aligned. The action is a small cyan button. Buy-now prices take a gold tag, and Diamonds are blue.</p>
+        <p class="cap">A launch-week arena, redrawn. Your league and the week's clock sit above the list. Each opponent is a two-part card: their rank, league and points on top, then who they are, their Team Power and the attack, which costs one ticket.</p>
+        <ul class="clean">
+          <li><b>One list language.</b> The arena, the synergy list and the auction share a <code>#1C1C1C</code> ground, <code>#2E3235</code> cards and a 2px <code>#4D555B</code> divider. Only the buttons change.</li>
+          <li><b>The action row.</b> Refresh is green <code>#229E71</code>, Ranking slate <code>#3D454B</code> and Reward gold <code>#C29C3D</code>, on a <code>#242628</code> strip.</li>
+          <li><b>League badges</b> are shields. The current one is slate <code>#363C45</code> with a <code>#949AA0</code> rim, the next one up is bronze <code>#524430</code> with <code>#D2C1AB</code>, and the number is <code>#F0F4F8</code> italic. The points bar is <code>#4D555B</code> until it fills.</li>
+          <li><b>Team Power in the arena</b> is <code>#E6B726</code> in Anton beside a <code>#DDAB0B</code> TP tag. League points are cyan <code>#16D2FF</code> beside a ball.</li>
+          <li><b>Attack</b> is the cyan primary with a <code>#007DAC</code> inset for the ticket cost. The defence-team button is near-black <code>#0F1112</code> with a <code>#4C545A</code> rim, and its <code>#FF502E</code> dot means it still needs setting.</li>
+          <li><b>What we change.</b> The game's header is a blurred arena photo, so ours is the slate ground. Each opponent's emblem defaults to the league logo, so ours is a plain ball disc. Club names and IDs are placeholders; the league, points and TP figures are the capture's.</li>
+        </ul>
+
+        <h3>Auction</h3>
+        <div class="stage dark" style="padding:14px">
+          <div class="auc">
+            <div class="auc__head"><b>Auction</b><span class="dia"><svg viewBox="0 0 20 18" aria-hidden="true"><use href="#ic-dia"/></svg>0</span></div>
+            <div class="auc__tabs"><span class="on">Home</span><span>Selling</span><span>Bidding</span><span>Search</span><span>Register</span><span>History</span></div>
+            <div class="auc__sub"><span>Recommended</span><span class="seg"><i>Exchange</i><i class="on">Auction</i></span></div>
+            <div class="auc__grid">
+              <div class="atile"><div class="mpc mpc--ep"><div class="mpc__face"><svg class="rc__art" viewBox="0 0 200 200" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><g class="shards"><use href="#shards" width="200" height="200"/></g><use href="#rings" width="200" height="200" style="color:var(--ring)"/><g class="bust"><use href="#bust" x="25" y="38" width="150" height="162"/></g><text x="100" y="174" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-size="30" style="fill:var(--num)">21</text></svg><span class="mpc__ovr">192</span><span class="mpc__pos">C</span><span class="mpc__team">PHI</span><svg class="mpc__crest" viewBox="0 0 60 60" aria-hidden="true"><use href="#b-ep"/></svg><span class="mpc__lv">Lv.1</span><svg class="mpc__cond" viewBox="0 0 24 24" aria-hidden="true"><use href="#c-mid"/></svg></div><div class="mpc__name">J. Embiid</div><i class="mpc__sheen"></i></div><span class="buynow">Buy now</span><div class="aprice"><svg viewBox="0 0 20 18" aria-hidden="true"><use href="#ic-dia"/></svg>200,000,000</div><small>Highest bid</small><div class="aprice aprice--sm"><svg viewBox="0 0 20 18" aria-hidden="true"><use href="#ic-dia"/></svg>44,761</div><span class="bid">Bid<i><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-clock"/></svg>02:10:43</i></span></div>
+              <div class="atile"><div class="mpc mpc--ep mpc--starter"><div class="mpc__face"><svg class="rc__art" viewBox="0 0 200 200" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><use href="#rings" width="200" height="200" style="color:var(--ring)"/><rect width="200" height="200" fill="url(#wm-starter)"/><g class="bust"><use href="#bust" x="25" y="38" width="150" height="162"/></g><text x="100" y="174" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-size="30" style="fill:var(--num)">5</text></svg><span class="mpc__ovr">151</span><span class="mpc__pos">SG<small>/SF</small></span><span class="mpc__team">MIN</span><svg class="mpc__crest" viewBox="0 0 60 60" aria-hidden="true"><use href="#b-ep"/></svg><span class="mpc__lv">Lv.1</span><svg class="mpc__cond" viewBox="0 0 24 24" aria-hidden="true"><use href="#c-mid"/></svg></div><div class="mpc__name">A. Edwards</div><i class="mpc__sheen"></i></div><small>Highest bid</small><div class="aprice"><svg viewBox="0 0 20 18" aria-hidden="true"><use href="#ic-dia"/></svg>44,000</div><span class="bid">Bid<i><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-clock"/></svg>01:29:18</i></span></div>
+              <div class="atile"><div class="mpc mpc--ep mpc--starter"><div class="mpc__face"><svg class="rc__art" viewBox="0 0 200 200" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><use href="#rings" width="200" height="200" style="color:var(--ring)"/><rect width="200" height="200" fill="url(#wm-starter)"/><g class="bust"><use href="#bust" x="25" y="38" width="150" height="162"/></g><text x="100" y="174" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-size="30" style="fill:var(--num)">7</text></svg><span class="mpc__ovr">151</span><span class="mpc__pos">SF<small>/SG</small></span><span class="mpc__team">BOS</span><svg class="mpc__crest" viewBox="0 0 60 60" aria-hidden="true"><use href="#b-ep"/></svg><span class="mpc__lv">Lv.1</span><svg class="mpc__cond" viewBox="0 0 24 24" aria-hidden="true"><use href="#c-mid"/></svg></div><div class="mpc__name">J. Brown</div><i class="mpc__sheen"></i></div><small>Highest bid</small><div class="aprice"><svg viewBox="0 0 20 18" aria-hidden="true"><use href="#ic-dia"/></svg>29,049</div><span class="bid">Bid<i><svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-clock"/></svg>00:15:04</i></span></div>
+            </div>
+          </div>
+        </div>
+        <p class="cap">The auction's home tab, redrawn from launch week with its real listings: three Epics, one with a buy-now price, every one with a live bid and a clock.</p>
+        <ul class="clean">
+          <li><b>Tabs and the toggle</b> are the game's standard pair, slate <code>#3F474A</code> off and cyan on, on a <code>#2A2D32</code> header. The tab row runs off the edge and scrolls, as it does in the game.</li>
+          <li><b>Each tile</b> is a <code>#2E3235</code> card with a <code>#3D3E40</code> top rim on the <code>#1C1C1C</code> list. The card sits at the top, then the prices, then the bid button. On phones the tiles swipe sideways, three to a row as in the game.</li>
+          <li><b>Prices</b> sit in <code>#23272A</code> wells, right-aligned in <code>#DCE1E5</code> after a blue Diamond (<code>#63D6FA</code> → <code>#329FEA</code> → <code>#1D578E</code>). A buy-now price takes a <code>#B4811D</code> tag with <code>#F6ECD1</code> text, and the bid label is <code>#95999E</code>.</li>
+          <li><b>Bid</b> is the cyan primary, and the time left hangs off its bottom edge in a <code>#1C1C20</code> pill.</li>
+          <li><b>Currencies carry their icon.</b> Diamond prices take the blue gem and Gold prices take the gold bar, so a number is never ambiguous.</li>
+        </ul>
       </div>
     </section>
 
@@ -2137,6 +2282,18 @@ footer.end { color: var(--ink-4); font-size: 13.5px; padding-block: 30px 60px; }
   --nrw-syn-on:#35322E; --nrw-syn-rim:#DBB745; --nrw-syn-rim-in:#C2A240; --nrw-syn-glow:#48331C; --nrw-syn-divider:#52504E; --nrw-syn-tick:#D89B16; --nrw-syn-tick-ink:#FAF4E9;
   --nrw-syn-target:#24211F; --nrw-syn-target-label:#ACAFBC; --nrw-syn-target-ink:#D9DFE5;
   --nrw-chip-off:#514322; --nrw-chip-off-ink:#D0A92D; --nrw-chip-def:#264836; --nrw-chip-def-ink:#2AD898; --nrw-chip-men:#44484F; --nrw-chip-men-ink:#B5C8DF;
+  /* arena */
+  --nrw-list-ground:#1C1C1C; --nrw-list-card:#2E3235; --nrw-list-divider:#4D555B;
+  --nrw-ar-action:#242628; --nrw-ar-refresh:#229E71; --nrw-ar-ranking:#3D454B; --nrw-ar-reward:#C29C3D; --nrw-ar-panel:#2A2E32;
+  --nrw-ar-norank:#202325; --nrw-ar-norank-card:#232528; --nrw-ar-label:#B3B6C1; --nrw-ar-count:#8B94A2; --nrw-ar-points:#16D2FF;
+  --nrw-league:#363C45; --nrw-league-rim:#949AA0; --nrw-league-ink:#F0F4F8; --nrw-league-label:#92989B; --nrw-league-next:#524430; --nrw-league-next-rim:#D2C1AB;
+  --nrw-ar-tip:#D9DFE5; --nrw-ar-disc:#3A3F44; --nrw-ar-badge:#0D0D1C; --nrw-ar-record:#454B53; --nrw-ar-def:#0F1112; --nrw-ar-def-rim:#4C545A; --nrw-ar-dot:#FF502E;
+  --nrw-tp-tag:#DDAB0B; --nrw-tp-tag-ink:#F3E3B8; --nrw-tp-arena:#E6B726;
+  --nrw-ar-sec-label:#999EA5; --nrw-ar-ticket:#2D3033; --nrw-ar-detail:#979CA3; --nrw-ar-mag:#32383D; --nrw-ar-mag-rim:#7F8589; --nrw-ar-mag-ink:#D4D7DA; --nrw-atk-inset:#007DAC;
+  /* auction */
+  --nrw-au-head:#2A2D32; --nrw-au-wallet:#1B1F22; --nrw-au-tab-off:#3F474A; --nrw-au-tab-ink:#9A9FA5; --nrw-au-divider:#4E555B; --nrw-au-label:#92969B;
+  --nrw-au-tile-rim:#3D3E40; --nrw-buynow:#B4811D; --nrw-buynow-ink:#F6ECD1; --nrw-au-price:#23272A; --nrw-au-price-ink:#DCE1E5; --nrw-au-bid-label:#95999E;
+  --nrw-au-timer:#1C1C20; --nrw-au-timer-ink:#E0E4EA; --nrw-dia-hi:#63D6FA; --nrw-dia:#329FEA; --nrw-dia-lo:#1D578E;
   --nrw-r-legend:unset; --nrw-r-elite:unset; --nrw-r-prime:unset; --nrw-r-iconic:unset; --nrw-r-goat:unset; /* measure on release */
   /* ours — the clipboard */
   --nrw-board:#F5F5F1; --nrw-board-ghost:#ECEBE5; --nrw-print:#C8CCD0; --nrw-marker:#121314; --nrw-clip:#1B1C1E;

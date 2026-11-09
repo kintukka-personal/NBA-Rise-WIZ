@@ -16,7 +16,7 @@ Both are computed with `../tools/sample.py`. Coordinates are in the source image
 | AS-PH-6 | App Store PH screenshot 6, Match Preparation (full-bleed UI) | 1260×2736 | same, `[5]` |
 | AS-KR-7 | App Store KR iPhone screenshot 7, in-match SET PLAY | 1260×2736 | `country=kr`, `screenshotUrls[6]` |
 | AS-PH-7 | App Store PH screenshot 7, in-match gameplay with the SET PLAY countdown | 1260×2736 | same, `[6]` |
-| NB-02 / 17 / 25 / 27 / 28 / 29 / 31 / 32 / 33 | Player blog captures: home hub, tactic change, card back, Condition info panel, synergy list (closed and open), Scout, The Edition pack result, Auction | 1080×1920 (27: 886×779, 33: 886×836) | `blog.naver.com/12512512/224449341627` |
+| NB-02 / 17 / 25 / 27 / 28 / 29 / 31 / 32 / 33 / 34 | Player blog captures: home hub, tactic change, card back, Condition info panel, synergy list (closed and open), Scout, The Edition pack result, Auction, Arena opponent list | 1080×1920 (27: 886×779, 33: 886×836) | `blog.naver.com/12512512/224449341627` |
 | NG-08 | Launch-day player capture of a tactic change | 1080×2340 | `blog.naver.com/ngga32472/224449909504` |
 | DK-13 / 18 | Player blog captures of SET PLAY: defence action select, offence select with the auto pill | 1399×3000, 358×765 | `blog.naver.com/dekiruho123/224451027691` |
 | IN-z3 / z4 / z9 | iNews24 hands-on: live match, SET PLAY sequence, home hub | 780×880, 1160×478, 900×1170 | `m.inews24.com/v/2021080` |
@@ -201,6 +201,26 @@ Sources:
 | Active synergy | fill `#35322E`; rim `#DBB745` (inner `#C2A240`, outer `#7D6326`); glow rising to `#48331C` over about 20 px; open chevron `#555F67` | NB-29 850,690–1000,720; horizontal profile at y=800 (x 30–80); vertical profile at x=500 (y 1160–1200); 945,1205–1010,1270 |
 | Open boost | divider `#52504E`; tick `#D89B16` with `#FAF4E9`; text `#D9DFE5`; target box `#24211F`, label `#ACAFBC` | 100,660–1000,666; 103,682–140,718; 160,690–790,715; 800,950–980,990; 120,960–240,995 |
 | Stat chips | offence `#514322` / `#D0A92D`; defence `#264836` / `#2AD898`; mental `#44484F` / `#B5C8DF` | 120,1012–345,1062; 357,1012–578,1062; 592,1012–780,1062 (fills by cluster, text by bright-pixel median) |
+
+## Arena and auction
+
+Sources: NB-34 for the arena opponent list (a lossless capture), and NB-33 for the auction home tab (a JPEG crop).
+
+| Part | Values | Sample |
+|---|---|---|
+| Arena action row | strip `#242628`; Refresh `#229E71`; Ranking `#3D454B`; Reward `#C29C3D`; button text `#EBF0F4` | NB-34 400,200–600,250; 290,200–320,245; 640,200–660,245; 860,200–880,245; bright-pixel medians inside each button |
+| League panel | ground `#2A2E32`; No-rank pill `#202325`, text `#EBF0F4`; label `#B3B6C1`; count `#8B94A2`; track and divider `#4D555B` | 30,300–60,320; 280,310–300,330; 325,400–440,425; 690,400–765,425; 300,450–840,462; 0,503–1080,510 |
+| League badges | current `#363C45`, rim `#949AA0`, number `#F0F4F8`, label `#92989B`; next league `#524430`, rim `#D2C1AB` | 95,345–115,365; vertical profiles at x=150 (y 320–470) and x=825 (y 335–425) |
+| Reward | tooltip `#D9DFE5`; disc `#3A3F44`, rim `#4D555B`; count pill `#0D0D1C` | 910,305–1010,335; 905,350–920,380; 955,420–1010,445 |
+| Lower row | Match record `#454B53`; TP tag `#DDAB0B`, text `#F3E3B8`; TP `#E6B726`; Defence team setup `#0F1112`, rim `#4C545A`; dot `#FF502E` | 45,540–75,590; 570,550–610,580; 625,545–720,585; 750,545–780,590 and vertical profile at x=760; 1020,525–1045,550 |
+| List header | ground `#1C1C1C`; title `#EBF0F4`; tickets label `#999EA5`; ticket pill `#2D3033` | 300,650–600,690; 75,645–200,680; 710,648–850,680; 880,645–900,690 |
+| Opponent card | card `#2E3235` with no rim; divider `#4D555B`; No-rank pill `#232528`; points `#16D2FF`; View details `#979CA3`; magnifier disc `#32383D`, ring `#7F8589`, icon `#D4D7DA`; name `#EBF0F4`; TP tag `#DDAC0C`, TP `#E6B726` | 500,735–700,815; 100,829–600,834; 85,745–100,800; 410,750–500,795; 790,755–905,785; 928,745–1000,810; 235,875–465,915; 235,940–280,970; 290,935–365,975; horizontal profile at y=900 |
+| Attack | `#00AEEF`, ticket inset `#007DAC` | 660,880–700,960; 745,905–790,940 |
+| Auction header | `#2A2D32`; wallet pill `#1B1F22`, count `#F4F9FC` | NB-33 100,40–300,120; 745,65–760,100; 785,65–815,100 |
+| Auction tabs | on `#00ADEF`, text `#E4FAFF`; off `#3F474A`, text `#9A9FA5`; divider `#4E555B`; sub-bar label `#92969B` | 60,165–90,200; 175,165–195,200; 200,170–280,198; 0,223–886,227; 55,255–190,282 |
+| Auction tile | ground `#1C1C1C`; tile `#2E3235`, top rim `#3D3E40`, edge `#363837` | 20,330–40,500; 260,335–290,360; vertical profile at x=280 (y 310–345); horizontal profile at y=450 (x 30–70) |
+| Prices | buy-now tag `#B4811D`, text `#F6ECD1`; price well `#23272A`, figure `#DCE1E5`; Diamond `#63D6FA` / `#329FEA` / `#1D578E`; bid label `#95999E` | 75,560–110,585; 85,562–190,585; 70,592–95,625; 115,595–270,622; 85,595–110,622; 70,645–200,667 |
+| Bid | `#00ADEF`, text `#E3F2FB`; timer pill `#1C1C20`, text `#E0E4EA` | 80,730–110,760; 120,738–225,768; 115,778–135,800; 140,778–225,800 |
 
 ## Absent-colour search
 
