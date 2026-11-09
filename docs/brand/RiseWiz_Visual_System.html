@@ -10,7 +10,7 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;0,800;1,700&family=Big+Shoulders+Display:wght@800;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;0,800;1,700&family=Anton&family=Big+Shoulders+Display:wght@800;900&display=swap">
 
 <style>
 /* ============================================================
@@ -137,6 +137,7 @@
   /* type */
   --ui:        'Open Sans', 'Noto Sans', 'Segoe UI', Roboto, sans-serif;
   --wm:        'Big Shoulders Display', 'Arial Narrow', Impact, sans-serif;
+  --num-face:  'Anton', 'Oswald', 'Arial Narrow', Impact, sans-serif;   /* the game's numeral face */
 
   --rail-w: 184px;
   --maxw: 1120px;
@@ -291,7 +292,8 @@ th { font-weight: 700; font-size: 11.5px; letter-spacing: .1em; text-transform: 
 .bonus { display: inline-block; border-radius: 6px; padding: 1px 7px; font-weight: 700; font-size: 13px; }
 .bonus--tp { background: #29485B; color: #02BBD0; }
 .bonus--syn { background: #044048; color: #00DCF1; }
-.tp { display: inline-flex; align-items: center; gap: 8px; font-weight: 800; color: var(--gd-peak); font-size: 26px; font-variant-numeric: tabular-nums; }
+.tp { display: inline-flex; align-items: center; gap: 8px; font-family: var(--num-face); font-weight: 400; letter-spacing: .015em; color: var(--gd-peak); font-size: 34px; line-height: 1; }
+.tp i { font-family: var(--ui); font-weight: 800; }
 .tp i { font-style: normal; background: linear-gradient(180deg, var(--gd-light), var(--gd-rim) 55%, #C08B0B); color: #3A2600; font-size: 12px; border-radius: 4px; padding: 1px 5px; }
 .load { display: inline-flex; align-items: center; gap: 2px; background: var(--void); color: #E4C401; font-weight: 800; border-radius: 6px; padding: 1px 7px; font-size: 14px; }
 .disc { display: inline-grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; color: #FFFFFF; font-weight: 800; font-size: 13px; box-shadow: 0 0 0 2px #FFFFFF inset; }
@@ -333,6 +335,8 @@ th { font-weight: 700; font-size: 11.5px; letter-spacing: .1em; text-transform: 
 .mpc__name { position: relative; margin-top: 3px; border-radius: 2px 2px 8px 8px; background: var(--plate, #1E1F21); text-align: center; font-weight: 800; font-size: 14.5px; color: #FFFFFF; padding: 6px 6px 6px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; box-shadow: inset 0 0 0 1px var(--plate-rim, rgba(255,255,255,.05)); }
 .mpc__sheen { position: absolute; inset: 0; z-index: 6; border-radius: inherit; pointer-events: none; }
 
+.mpc__ovr { font-family: var(--num-face); font-weight: 400; font-size: 25px; letter-spacing: .01em; text-shadow: var(--tmp-outline); }
+.mpb .mpc__ovr { font-size: 21px; }
 /* rarity metals at mini size */
 .mpc--c  { --metal: linear-gradient(165deg, #7E848B, #5E6268 55%, #45494E); --bust: #33373C; --jersey: #3B4046; --trim: #4A5057; --num: #5A6168; --rim: transparent; --ring: rgba(255,255,255,.025); }
 .mpc--uc { --metal: linear-gradient(165deg, #A9D49A, #76996F 40%, #678C5F 70%, #4E7046); --pin: rgba(169,212,154,.5); --bust: #2F3437; --jersey: #3C5A39; --trim: #81B76C; --num: #C2E6B4; --rim: rgba(169,212,154,.45); --ring: rgba(169,212,154,.05);
@@ -416,6 +420,7 @@ th { font-weight: 700; font-size: 11.5px; letter-spacing: .1em; text-transform: 
 .rc__tag { margin-top: 12px; text-align: center; font-weight: 700; font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-4); }
 .rc__tag b { color: var(--ink-1); font-weight: 800; }
 
+.rc__ovr { font-family: var(--num-face); font-weight: 400; font-size: 30px; letter-spacing: .01em; text-shadow: var(--tmp-outline); }
 /* Common — matte graphite. No light, no pattern, no sheen. */
 .rc--c { --metal: linear-gradient(165deg, #8A9097, #71767D 38%, #5E6268 72%, #4C5056); --fp: 4px; --ovr-rim: #B8B19C; --field: #1B1D20;
   --bust: #33373C; --jersey: #3B4046; --trim: #4A5057; --num: #5A6168; --rim: transparent; --ring: rgba(255,255,255,.025); }
@@ -444,7 +449,7 @@ th { font-weight: 700; font-size: 11.5px; letter-spacing: .1em; text-transform: 
   --bust: #2A0A45; --jersey: #5B1F8C; --trim: #4AE3F8; --num: #FEE2FD; --rim: #4AE3F8; --rim-glow: rgba(74,227,248,.65); --ring: rgba(165,232,251,.12);
   --sheen: .3; --cast: 0 0 0 1px rgba(254,226,253,.45), 0 0 26px rgba(186,104,217,.6), 0 16px 34px rgba(25,0,45,.7); }
 .rc--ep .rc__field { box-shadow: inset 0 0 0 2px #4AE3F8, inset 0 0 16px rgba(74,227,248,.55); }
-.rc--ep .rc__ovr { width: 58px; height: 58px; min-width: 0; padding: 0; border-radius: 50%; background: radial-gradient(circle at 50% 32%, #2A2F3B, #12151C 72%); border: 3px solid #52E2F7; font-size: 23px;
+.rc--ep .rc__ovr { width: 58px; height: 58px; min-width: 0; padding: 0; border-radius: 50%; background: radial-gradient(circle at 50% 32%, #2A2F3B, #12151C 72%); border: 3px solid #52E2F7; font-size: 28px;
   box-shadow: 0 0 0 3px #723B94, 0 0 18px rgba(82,226,247,.75), inset 0 -6px 10px rgba(0,0,0,.5); }
 .rc--ep .rc__pos { top: 72px; } .rc--ep .rc__team { top: 96px; }
 .rc--ep .rc__badge { filter: drop-shadow(0 0 6px rgba(26,249,250,.55)) drop-shadow(0 0 10px rgba(186,104,217,.5)); }
@@ -470,7 +475,7 @@ th { font-weight: 700; font-size: 11.5px; letter-spacing: .1em; text-transform: 
   .rc--ep .rc__frame::before, .rc--ur .rc__frame::before { animation: none; background-position: 50% 0; opacity: .5; }
 }
 @media (max-width: 860px) { .rcards--ladder { grid-template-columns: repeat(2, var(--cw)); --cw: 190px; } }
-@media (max-width: 480px) { .rcards { gap: 28px 12px; } .rc, .rcards--ladder { --w: 160px; --cw: 160px; } .rc__plate b { font-size: 16px; } .rc__ovr { font-size: 20px; min-width: 48px; height: 34px; } .rc--ep .rc__ovr { width: 50px; height: 50px; } .rc__ed { font-size: 11px; } }
+@media (max-width: 480px) { .rcards { gap: 28px 12px; } .rc, .rcards--ladder { --w: 160px; --cw: 160px; } .rc__plate b { font-size: 16px; } .rc__ovr { font-size: 25px; min-width: 48px; height: 34px; } .rc--ep .rc__ovr { width: 50px; height: 50px; } .rc__ed { font-size: 11px; } }
 
 /* performance comparison */
 .perf { display: grid; grid-template-columns: 34px minmax(0, 1fr) 34px; gap: 9px 10px; align-items: center; width: 100%; max-width: 640px; }
@@ -489,7 +494,7 @@ th { font-weight: 700; font-size: 11.5px; letter-spacing: .1em; text-transform: 
 .scorebug::before { content: ""; position: absolute; left: 0; bottom: 12px; height: 26px; width: 4px; background: var(--hm); }
 .scorebug::after { content: ""; position: absolute; right: 0; bottom: 12px; height: 26px; width: 4px; background: var(--aw); }
 .scorebug__row { display: flex; align-items: center; gap: 14px; justify-content: space-between; }
-.scorebug__sc { font-weight: 800; font-size: 30px; font-variant-numeric: tabular-nums; }
+.scorebug__sc { font-family: var(--num-face); font-weight: 400; font-size: 38px; line-height: 1.05; letter-spacing: .01em; text-shadow: var(--tmp-outline); }
 .qchip { background: var(--aw-nba); color: #FCF8F8; font-weight: 800; font-size: 12px; border-radius: 4px; padding: 0 6px; }
 .clock { color: var(--ink-2); font-weight: 700; font-size: 15px; font-variant-numeric: tabular-nums; }
 .team3 { font-weight: 800; font-size: 12px; letter-spacing: .06em; color: var(--ink-2); background: #34383D; border-radius: 50%; width: 38px; height: 38px; display: grid; place-items: center; }
@@ -850,16 +855,27 @@ footer.end { color: var(--ink-4); font-size: 13.5px; padding-block: 30px 60px; }
 
     <!-- ============ TYPE ============ -->
     <section id="type">
-      <div class="sec-head"><div class="wrap"><div class="sec-head__inner"><h2>Type</h2><p>Open Sans, identified, not guessed</p></div></div></div>
+      <div class="sec-head"><div class="wrap"><div class="sec-head__inner"><h2>Type</h2><p>Two faces, identified, not guessed</p></div></div></div>
       <div class="wrap sec-body">
-        <p class="lede">FHC's typeface was never identified. NBA RISE's was. <strong>The in-game UI is set in Open Sans</strong>, at Bold for interface text and ExtraBold for screen titles. It is rendered through TextMeshPro with a thin dark outline.</p>
+        <p class="lede">FHC's typeface was never identified. NBA RISE's two faces were. <strong>Words are set in Open Sans</strong>: Bold for interface text and ExtraBold for screen titles. <strong>Big numbers are set in Anton</strong>: OVR, Team Power and match scores. Both are rendered through TextMeshPro with a thin dark outline.</p>
+        <h3>Open Sans, for words</h3>
         <p>We tested 32 faces against crops of "MATCH PREPARATION" and "Warriors Teamwork" at matched height. The candidates were Open Sans, Noto Sans and Noto Sans KR, Pretendard, Nexon Football Gothic, S-Core Dream, Inter, Source Sans, Fira, Roboto, Hind, Mukta and others. On mixed case, Open Sans Bold matches the game's width-to-height ratio to the second decimal (12.80 against 12.81) and has the best glyph overlap (IoU 0.808).</p>
-        <p>Hind 700 scores slightly higher on the outlined caps title, because the outline thickens every stroke. On mixed case, though, Hind runs 7% narrower than the game, and no renderer narrows glyphs that much. The full score table ships in <code>measurements/font_fit.json</code>.</p>
+        <p>Hind 700 scores slightly higher on the outlined caps title, because the outline thickens every stroke. On mixed case, though, Hind runs 7% narrower than the game, and no renderer narrows glyphs that much.</p>
+        <h3>Anton, for numbers</h3>
+        <p>The Team Power figure, the scorebug and the OVR box all use a tall condensed numeral that Open Sans can't produce. We tested 35 condensed faces against "18545" (a lossless Korean capture) and "11717" (the English store shot). The candidates included Oswald, which GRAVITY's own website loads, plus Bebas Neue, Teko, Saira, Barlow, Roboto and Sofia Sans Condensed, Open Sans and Noto Sans at condensed widths, League Gothic, Antonio and Nexon Football Gothic.</p>
+        <ul class="clean">
+          <li><b>Team Power:</b> Anton overlaps at 0.878 and 0.880 on the two crops. The runner-up, Teko, manages 0.796. Oswald, the website's face, reaches only 0.711.</li>
+          <li><b>Scores:</b> Anton overlaps at 0.904 and 0.934, with a width-to-height ratio of 1.080 against the game's 1.089.</li>
+          <li><b>Card OVR:</b> Anton overlaps at 0.79, at 1.290 against the game's 1.281.</li>
+          <li><b>Shot clock:</b> the "17" is a wider geometric bold that no candidate matches. Open Sans 800 comes closest (0.73) but runs 10% narrow, so it stays unresolved and we set it in Open Sans 800.</li>
+        </ul>
+        <p>All the scores ship in <code>measurements/font_fit.json</code> and <code>measurements/font_fit_numerals.json</code>.</p>
         <div class="tbl"><table>
           <thead><tr><th>Face</th><th>Where the game uses it</th><th>Specimen</th></tr></thead>
           <tbody>
-            <tr><td>Open Sans 800</td><td>Screen titles, button labels, OVR, scores</td><td style="font-weight:800;font-size:24px;text-transform:uppercase;text-shadow:var(--tmp-outline)">Match preparation 119</td></tr>
-            <tr><td>Open Sans 700</td><td>Names, chips, tabs, list rows, labels</td><td style="font-weight:700;font-size:18px">Warriors Teamwork+ · Pass Interception (Mid)</td></tr>
+            <tr><td>Anton 400</td><td>Team Power, scores, OVR</td><td><span style="font-family:var(--num-face);font-size:34px;color:#F6C526;letter-spacing:.015em">18545</span> <span style="font-family:var(--num-face);font-size:30px;letter-spacing:.01em;text-shadow:var(--tmp-outline)">37 · 55</span> <span style="font-family:var(--num-face);font-size:28px;color:#CAFFFF;letter-spacing:.01em;text-shadow:var(--tmp-outline)">182</span></td></tr>
+            <tr><td>Open Sans 800</td><td>Screen titles, button labels, shot clock</td><td style="font-weight:800;font-size:24px;text-transform:uppercase;text-shadow:var(--tmp-outline)">Match preparation</td></tr>
+            <tr><td>Open Sans 700</td><td>Names, chips, tabs, list rows, labels, small figures (+2184, PTS)</td><td style="font-weight:700;font-size:18px">Warriors Teamwork+ · Pass Interception (Mid)</td></tr>
             <tr><td>Open Sans 600</td><td>Captions, timers, sub-labels</td><td style="font-weight:600;font-size:15px;color:#C9CDCF">Fatigue · recover in 00:11:56</td></tr>
           </tbody>
         </table></div>
@@ -868,7 +884,7 @@ footer.end { color: var(--ink-4); font-size: 13.5px; padding-block: 30px 60px; }
           <thead><tr><th>Role</th><th>Face</th><th>Size</th><th>Treatment</th></tr></thead>
           <tbody>
             <tr><td>Screen title</td><td>Open Sans 800</td><td>28–34px</td><td>Caps, outline</td></tr>
-            <tr><td>Score · OVR · TP</td><td>Open Sans 800</td><td>20–40px</td><td>Tabular numerals</td></tr>
+            <tr><td>OVR · Team Power · score</td><td>Anton 400</td><td>21–38px</td><td>Outline, +.01em tracking; small figures beside them stay Open Sans</td></tr>
             <tr><td>Button</td><td>Open Sans 800</td><td>16px</td><td>Caps, outline; two lines allowed ("AUTO / SUBSTITUTION")</td></tr>
             <tr><td>Player name</td><td>Open Sans 700</td><td>14px</td><td>Initial + surname: "M. Moody"</td></tr>
             <tr><td>Chip · tab</td><td>Open Sans 700</td><td>13–14px</td><td>Title case</td></tr>
@@ -878,7 +894,7 @@ footer.end { color: var(--ink-4); font-size: 13.5px; padding-block: 30px 60px; }
         </table></div>
         <h3>What the official site uses, and why we don't</h3>
         <p>GRAVITY's website (nbarise.gnjoy.com) loads Nexon Football Gothic, Pretendard, S-Core Dream, Oswald and Inter. None of them is the in-game face. They mark the marketing site, not the game. The store captions use a heavy condensed italic with a blue-to-red fill ("COLLECT YOUR STARS"); that is marketing art too.</p>
-        <p><strong>RiseWiz's own face</strong> is Big Shoulders Display Black, used in the wordmark and nowhere else. FHC took Anton and UFM took Bebas Neue. Big Shoulders was drawn for Chicago, a basketball city, and appears nowhere in the game or on its site.</p>
+        <p><strong>RiseWiz's own face</strong> is Big Shoulders Display Black, used in the wordmark and nowhere else. UFM took Bebas Neue. FHC took Anton, which here turns out to be the game's own numeral face, so in RiseWiz Anton only ever carries the game's numbers and never our brand. Big Shoulders was drawn for Chicago, a basketball city, and appears nowhere in the game or on its site.</p>
       </div>
     </section>
 
@@ -1448,7 +1464,7 @@ footer.end { color: var(--ink-4); font-size: 13.5px; padding-block: 30px 60px; }
       <div class="sec-head"><div class="wrap"><div class="sec-head__inner"><h2>Build</h2><p>Tokens, fonts and how to re-measure</p></div></div></div>
       <div class="wrap sec-body">
         <h3>Fonts</h3>
-        <pre class="tokens">&lt;link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&amp;family=Big+Shoulders+Display:wght@900&amp;display=swap"&gt;</pre>
+        <pre class="tokens">&lt;link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&amp;family=Anton&amp;family=Big+Shoulders+Display:wght@900&amp;display=swap"&gt;</pre>
         <h3>Tokens</h3>
         <p>Drop-in custom properties. The same values ship as <code>tokens.css</code> beside this file.</p>
         <pre class="tokens">:root {
@@ -1503,6 +1519,7 @@ footer.end { color: var(--ink-4); font-size: 13.5px; padding-block: 30px 60px; }
   --rw-board:#F5F5F1; --rw-board-ghost:#ECEBE5; --rw-print:#C8CCD0; --rw-marker:#121314; --rw-clip:#1B1C1E;
   /* type */
   --rw-ui:'Open Sans','Noto Sans','Segoe UI',Roboto,sans-serif;
+  --rw-num:'Anton','Oswald','Arial Narrow',Impact,sans-serif; /* OVR, Team Power, scores */
   --rw-wordmark:'Big Shoulders Display','Arial Narrow',Impact,sans-serif;
   /* effects */
   --rw-outline:0 0 1px #0A0B0C,0 1px 1px #0A0B0C,0 -1px 1px #0A0B0C,1px 0 1px #0A0B0C,-1px 0 1px #0A0B0C;
@@ -1512,7 +1529,7 @@ footer.end { color: var(--ink-4); font-size: 13.5px; padding-block: 30px 60px; }
         <ul class="clean">
           <li><b>Corpus.</b> 424 screenshots covering 42 distinct screens:<ul class="clean"><li>App Store sets in English and Korean: iPhone 1260×2736 and iPad 2048×2732.</li><li>Google Play sets in English, Korean, Thai, Indonesian and Filipino.</li><li>Korean hands-on press.</li><li>Player blogs: lossless 1080×1920 and 1399×3000 captures.</li><li>YouTube frames.</li></ul>142 images show full in-game UI. 51 of those come from the July 2026 closed beta and were used only where the launch build agrees. Colour was sampled from lossless PNGs wherever one existed. The catalogue lists every file with its page and image URL.</li>
           <li><b>Colour.</b> Median colour per component region plus four-colour median-cut clustering. Vertical profiles prove the fills are flat. Hue occupancy is computed across the corpus. The absent-colour search tests 3,000+ candidates in OKLab under normal vision and Machado protan, deutan and tritan simulation.</li>
-          <li><b>Type.</b> 32 candidate faces rendered at matched cap height, scored by glyph IoU and aspect ratio against in-game crops.</li>
+          <li><b>Type.</b> Candidate faces rendered at matched height and scored by glyph IoU and aspect ratio against in-game crops: 32 faces for words, 35 condensed faces for numerals, and 26 more for the score, OVR and shot clock.</li>
           <li><b>Re-measuring.</b> The scripts (<code>sample.py</code>, <code>palette.py</code>, <code>huegap.py</code>, <code>absent.py</code>) live in <code>docs/brand/tools/</code>. When a new rarity or screen ships, add its screenshot to the catalogue, sample it and add the token here first.</li>
         </ul>
       </div>

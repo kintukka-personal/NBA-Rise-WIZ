@@ -136,6 +136,16 @@ Source: NB-14, a lossless 1080×1920 Match Preparation capture from launch week.
 
 The rest of the wheel is occupied.
 
-## Typeface
+## Typefaces
 
-See `font_fit.json`. 32 faces were rendered and scored against two in-game crops. The result is Open Sans: Bold for interface text, ExtraBold for titles, rendered through TextMeshPro with a thin dark outline.
+**Words: Open Sans.** See `font_fit.json`. 32 faces were scored against two in-game crops. The result is Open Sans: Bold for interface text and ExtraBold for titles, rendered through TextMeshPro with a thin dark outline.
+
+**Numbers: Anton.** See `font_fit_numerals.json`. 35 condensed faces were scored against Team Power, and 26 faces against the score, OVR and shot clock.
+
+| Target | Anton IoU | Width ratio (game / Anton) | Next best |
+|---|---|---|---|
+| Team Power "18545" / "11717" | 0.878 / 0.880 | 2.649 / 2.576 | Teko 600, 0.796 |
+| Scores "37" / "55" | 0.904 / 0.934 | 1.089 / 1.080 | Teko 600, 0.822 |
+| OVR "119" | 0.790 | 1.281 / 1.290 | Russo One, 0.786 |
+
+Oswald, the face GRAVITY's website loads, reaches only 0.711. The shot clock "17" is unresolved: Open Sans 800 comes closest at 0.727 but runs 10% narrow.

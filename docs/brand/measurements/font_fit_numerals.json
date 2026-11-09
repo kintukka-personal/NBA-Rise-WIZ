@@ -1,0 +1,435 @@
+{
+ "method": "Each candidate rendered at 200px in Chromium, binarised, cropped to ink bounds, resized to the in-game crop bounds and scored by IoU; aspect = ink width / ink height. Game masks: gold pixels for Team Power, white for scores, ice for OVR, cyan for the shot clock.",
+ "targets": {
+  "TP 18545": "NB-14 (lossless KR Match Preparation, 1080x1920), aspect 2.649",
+  "TP 11717": "AS-PH-6 (English store Match Preparation, 1260x2736), aspect 2.381",
+  "score 37 / 55": "AS-PH-7 gameplay scorebug, aspect 1.089",
+  "OVR 119": "AS-PH-6 starter card OVR box (speck columns trimmed), aspect 1.281",
+  "shot clock 17": "AS-PH-7 shot clock, aspect 1.719"
+ },
+ "team_power_35_faces": [
+  {
+   "mean_iou": 0.879,
+   "font": "Anton",
+   "kr_iou": 0.878,
+   "kr_aspect": 2.576,
+   "en_iou": 0.88,
+   "en_aspect": 2.262
+  },
+  {
+   "mean_iou": 0.796,
+   "font": "Teko600",
+   "kr_iou": 0.785,
+   "kr_aspect": 3.213,
+   "en_iou": 0.807,
+   "en_aspect": 2.504
+  },
+  {
+   "mean_iou": 0.774,
+   "font": "SairaXC800",
+   "kr_iou": 0.747,
+   "kr_aspect": 2.56,
+   "en_iou": 0.801,
+   "en_aspect": 2.21
+  },
+  {
+   "mean_iou": 0.77,
+   "font": "SairaC700",
+   "kr_iou": 0.732,
+   "kr_aspect": 3.014,
+   "en_iou": 0.807,
+   "en_aspect": 2.522
+  },
+  {
+   "mean_iou": 0.758,
+   "font": "LeagueGothic",
+   "kr_iou": 0.831,
+   "kr_aspect": 2.073,
+   "en_iou": 0.686,
+   "en_aspect": 1.769
+  },
+  {
+   "mean_iou": 0.757,
+   "font": "SairaXC700",
+   "kr_iou": 0.717,
+   "kr_aspect": 2.532,
+   "en_iou": 0.796,
+   "en_aspect": 2.145
+  },
+  {
+   "mean_iou": 0.748,
+   "font": "Antonio700",
+   "kr_iou": 0.719,
+   "kr_aspect": 2.398,
+   "en_iou": 0.778,
+   "en_aspect": 2.169
+  },
+  {
+   "mean_iou": 0.737,
+   "font": "BarlowC700",
+   "kr_iou": 0.712,
+   "kr_aspect": 2.834,
+   "en_iou": 0.761,
+   "en_aspect": 2.336
+  },
+  {
+   "mean_iou": 0.729,
+   "font": "BarlowC800",
+   "kr_iou": 0.713,
+   "kr_aspect": 2.924,
+   "en_iou": 0.746,
+   "en_aspect": 2.436
+  },
+  {
+   "mean_iou": 0.728,
+   "font": "Mohave700",
+   "kr_iou": 0.769,
+   "kr_aspect": 2.808,
+   "en_iou": 0.687,
+   "en_aspect": 2.347
+  },
+  {
+   "mean_iou": 0.725,
+   "font": "Teko500",
+   "kr_iou": 0.707,
+   "kr_aspect": 2.905,
+   "en_iou": 0.743,
+   "en_aspect": 2.246
+  },
+  {
+   "mean_iou": 0.717,
+   "font": "EncodeC800",
+   "kr_iou": 0.668,
+   "kr_aspect": 3.263,
+   "en_iou": 0.765,
+   "en_aspect": 2.591
+  },
+  {
+   "mean_iou": 0.712,
+   "font": "Khand700",
+   "kr_iou": 0.747,
+   "kr_aspect": 2.93,
+   "en_iou": 0.677,
+   "en_aspect": 2.453
+  },
+  {
+   "mean_iou": 0.711,
+   "font": "Oswald700",
+   "kr_iou": 0.773,
+   "kr_aspect": 2.868,
+   "en_iou": 0.649,
+   "en_aspect": 2.432
+  },
+  {
+   "mean_iou": 0.709,
+   "font": "Mohave600",
+   "kr_iou": 0.733,
+   "kr_aspect": 2.782,
+   "en_iou": 0.686,
+   "en_aspect": 2.26
+  },
+  {
+   "mean_iou": 0.675,
+   "font": "Oswald600",
+   "kr_iou": 0.739,
+   "kr_aspect": 2.826,
+   "en_iou": 0.612,
+   "en_aspect": 2.389
+  },
+  {
+   "mean_iou": 0.666,
+   "font": "Khand600",
+   "kr_iou": 0.686,
+   "kr_aspect": 2.872,
+   "en_iou": 0.645,
+   "en_aspect": 2.35
+  },
+  {
+   "mean_iou": 0.617,
+   "font": "SofiaXC800",
+   "kr_iou": 0.613,
+   "kr_aspect": 2.902,
+   "en_iou": 0.621,
+   "en_aspect": 2.727
+  },
+  {
+   "mean_iou": 0.607,
+   "font": "Oswald500",
+   "kr_iou": 0.687,
+   "kr_aspect": 2.801,
+   "en_iou": 0.526,
+   "en_aspect": 2.34
+  },
+  {
+   "mean_iou": 0.588,
+   "font": "SofiaC800",
+   "kr_iou": 0.58,
+   "kr_aspect": 3.319,
+   "en_iou": 0.596,
+   "en_aspect": 3.174
+  },
+  {
+   "mean_iou": 0.585,
+   "font": "ArchivoN700",
+   "kr_iou": 0.549,
+   "kr_aspect": 3.098,
+   "en_iou": 0.621,
+   "en_aspect": 3.168
+  },
+  {
+   "mean_iou": 0.582,
+   "font": "Pathway",
+   "kr_iou": 0.554,
+   "kr_aspect": 2.39,
+   "en_iou": 0.61,
+   "en_aspect": 1.921
+  },
+  {
+   "mean_iou": 0.58,
+   "font": "Antonio600",
+   "kr_iou": 0.558,
+   "kr_aspect": 2.307,
+   "en_iou": 0.601,
+   "en_aspect": 2.25
+  },
+  {
+   "mean_iou": 0.576,
+   "font": "Fjalla",
+   "kr_iou": 0.584,
+   "kr_aspect": 2.753,
+   "en_iou": 0.568,
+   "en_aspect": 2.377
+  },
+  {
+   "mean_iou": 0.574,
+   "font": "RobotoC800",
+   "kr_iou": 0.611,
+   "kr_aspect": 3.322,
+   "en_iou": 0.537,
+   "en_aspect": 3.415
+  },
+  {
+   "mean_iou": 0.571,
+   "font": "SofiaXC700",
+   "kr_iou": 0.559,
+   "kr_aspect": 2.729,
+   "en_iou": 0.583,
+   "en_aspect": 2.561
+  },
+  {
+   "mean_iou": 0.565,
+   "font": "BigShoulders800",
+   "kr_iou": 0.562,
+   "kr_aspect": 2.543,
+   "en_iou": 0.567,
+   "en_aspect": 1.994
+  },
+  {
+   "mean_iou": 0.55,
+   "font": "Bebas",
+   "kr_iou": 0.626,
+   "kr_aspect": 2.618,
+   "en_iou": 0.473,
+   "en_aspect": 2.693
+  },
+  {
+   "mean_iou": 0.548,
+   "font": "NexonFootball",
+   "kr_iou": 0.594,
+   "kr_aspect": 3.463,
+   "en_iou": 0.502,
+   "en_aspect": 3.559
+  },
+  {
+   "mean_iou": 0.544,
+   "font": "RobotoC700",
+   "kr_iou": 0.575,
+   "kr_aspect": 3.301,
+   "en_iou": 0.513,
+   "en_aspect": 3.371
+  },
+  {
+   "mean_iou": 0.491,
+   "font": "PTSansN700",
+   "kr_iou": 0.469,
+   "kr_aspect": 3.11,
+   "en_iou": 0.512,
+   "en_aspect": 3.203
+  },
+  {
+   "mean_iou": 0.482,
+   "font": "NotoCond800",
+   "kr_iou": 0.523,
+   "kr_aspect": 3.129,
+   "en_iou": 0.442,
+   "en_aspect": 3.224
+  },
+  {
+   "mean_iou": 0.48,
+   "font": "OpenSansCond700",
+   "kr_iou": 0.519,
+   "kr_aspect": 3.068,
+   "en_iou": 0.442,
+   "en_aspect": 3.161
+  },
+  {
+   "mean_iou": 0.478,
+   "font": "NotoCond900",
+   "kr_iou": 0.528,
+   "kr_aspect": 3.252,
+   "en_iou": 0.428,
+   "en_aspect": 3.357
+  },
+  {
+   "mean_iou": 0.477,
+   "font": "OpenSansCond800",
+   "kr_iou": 0.525,
+   "kr_aspect": 3.252,
+   "en_iou": 0.428,
+   "en_aspect": 3.357
+  }
+ ],
+ "score_ovr_shotclock": {
+  "37": {
+   "target_aspect": 1.089,
+   "top6": [
+    {
+     "iou": 0.904,
+     "font": "Anton",
+     "aspect": 1.08
+    },
+    {
+     "iou": 0.791,
+     "font": "Teko600",
+     "aspect": 1.22
+    },
+    {
+     "iou": 0.783,
+     "font": "Fredoka700",
+     "aspect": 1.479
+    },
+    {
+     "iou": 0.765,
+     "font": "Nunito900",
+     "aspect": 1.566
+    },
+    {
+     "iou": 0.753,
+     "font": "Oswald700",
+     "aspect": 1.048
+    },
+    {
+     "iou": 0.752,
+     "font": "Kanit700",
+     "aspect": 1.489
+    }
+   ]
+  },
+  "55": {
+   "target_aspect": 1.089,
+   "top6": [
+    {
+     "iou": 0.934,
+     "font": "Anton",
+     "aspect": 1.086
+    },
+    {
+     "iou": 0.822,
+     "font": "Teko600",
+     "aspect": 1.291
+    },
+    {
+     "iou": 0.822,
+     "font": "Oswald700",
+     "aspect": 1.139
+    },
+    {
+     "iou": 0.794,
+     "font": "Rubik700",
+     "aspect": 1.718
+    },
+    {
+     "iou": 0.785,
+     "font": "Rubik800",
+     "aspect": 1.796
+    },
+    {
+     "iou": 0.779,
+     "font": "Inter800",
+     "aspect": 1.601
+    }
+   ]
+  },
+  "119": {
+   "target_aspect": 1.281,
+   "top6": [
+    {
+     "iou": 0.79,
+     "font": "Anton",
+     "aspect": 1.29
+    },
+    {
+     "iou": 0.786,
+     "font": "Russo",
+     "aspect": 1.944
+    },
+    {
+     "iou": 0.784,
+     "font": "Inter800",
+     "aspect": 1.947
+    },
+    {
+     "iou": 0.78,
+     "font": "Baloo800",
+     "aspect": 2.031
+    },
+    {
+     "iou": 0.778,
+     "font": "SairaXC800",
+     "aspect": 1.277
+    },
+    {
+     "iou": 0.764,
+     "font": "Oswald700",
+     "aspect": 1.479
+    }
+   ]
+  },
+  "17": {
+   "target_aspect": 1.719,
+   "top6": [
+    {
+     "iou": 0.727,
+     "font": "OpenSans800",
+     "aspect": 1.538
+    },
+    {
+     "iou": 0.707,
+     "font": "OpenSans700",
+     "aspect": 1.469
+    },
+    {
+     "iou": 0.701,
+     "font": "Rubik700",
+     "aspect": 1.471
+    },
+    {
+     "iou": 0.657,
+     "font": "Rubik800",
+     "aspect": 1.55
+    },
+    {
+     "iou": 0.642,
+     "font": "Exo2_800",
+     "aspect": 1.399
+    },
+    {
+     "iou": 0.631,
+     "font": "Russo",
+     "aspect": 1.364
+    }
+   ]
+  }
+ },
+ "conclusion": "Anton is the numeral face: Team Power IoU 0.878/0.880 (next best Teko 0.796, Oswald 0.711), scores 0.904/0.934 at aspect 1.080 vs 1.089, OVR 0.79 at 1.290 vs 1.281. The shot clock is a wider geometric bold left unresolved; Open Sans 800 is closest (0.727) but 10% narrow."
+}

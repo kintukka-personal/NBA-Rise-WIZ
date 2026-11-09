@@ -1,7 +1,7 @@
 /* RiseWiz design tokens.
    Game-side values measured from NBA RISE (GRAVITY, global build 1.1.x) screenshots, 8-9 Nov 2026.
    The clipboard block (--rw-board ... --rw-clip) and --rw-wordmark are RiseWiz's own.
-   Fonts: https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&family=Big+Shoulders+Display:wght@900&display=swap */
+   Fonts: https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&family=Anton&family=Big+Shoulders+Display:wght@900&display=swap */
 :root {
   /* grounds */
   --rw-void:#000000; --rw-pill:#0D0D0D; --rw-well-blue:#0F141C; --rw-letterbox:#1A1B1E;
@@ -54,6 +54,7 @@
   --rw-board:#F5F5F1; --rw-board-ghost:#ECEBE5; --rw-print:#C8CCD0; --rw-marker:#121314; --rw-clip:#1B1C1E;
   /* type */
   --rw-ui:'Open Sans','Noto Sans','Segoe UI',Roboto,sans-serif;
+  --rw-num:'Anton','Oswald','Arial Narrow',Impact,sans-serif; /* OVR, Team Power, scores */
   --rw-wordmark:'Big Shoulders Display','Arial Narrow',Impact,sans-serif;
   /* effects */
   --rw-outline:0 0 1px #0A0B0C,0 1px 1px #0A0B0C,0 -1px 1px #0A0B0C,1px 0 1px #0A0B0C,-1px 0 1px #0A0B0C;

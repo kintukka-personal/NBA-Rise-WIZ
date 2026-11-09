@@ -7,12 +7,13 @@ The visual system and brand for **RiseWiz**, a fan companion for GRAVITY's NBA R
 | Path | What it is |
 |---|---|
 | [`RiseWiz_Visual_System.html`](RiseWiz_Visual_System.html) | The full system: identity, voice, foundation, colour, type, texture, live components, rarities, the clipboard, rules, build and limits. Open it in a browser. Published copy: https://claude.ai/artifact/HQYr5ho3buzBmXzckeeSbf |
-| [`tokens.css`](tokens.css) | 170 drop-in custom properties (`--rw-*`), the same values the document uses |
+| [`tokens.css`](tokens.css) | 171 drop-in custom properties (`--rw-*`), the same values the document uses |
 | [`measurements/samples.md`](measurements/samples.md) | Where every measured value came from: image, region and method |
-| [`measurements/font_fit.json`](measurements/font_fit.json) | Typeface identification: 32 faces scored against in-game text |
+| [`measurements/font_fit.json`](measurements/font_fit.json) | Typeface identification for words: 32 faces scored against in-game text (Open Sans) |
+| [`measurements/font_fit_numerals.json`](measurements/font_fit_numerals.json) | Typeface identification for numbers: Team Power, scores and OVR scored against 35 condensed faces (Anton) |
 | [`measurements/hue_occupancy.json`](measurements/hue_occupancy.json) | Hue distribution of the game's saturated UI pixels |
 | [`screenshots/catalog.csv`](screenshots/catalog.csv) | All 424 screenshots in the corpus: source page and image URL, size, sha1, the screen shown, and whether it is full in-game UI. 142 are; 51 of those are from the July 2026 closed beta |
-| [`tools/`](tools/) | `sample.py` (region median and clusters, vertical profiles), `palette.py` (median-cut palette and dark-pixel bias), `huegap.py` (hue occupancy), `absent.py` (OKLab + colour-vision absent-colour search), `font_fit_render.js` + `font_fit.html` (renders candidate faces for overlap scoring) |
+| [`tools/`](tools/) | `sample.py` (region median and clusters, vertical profiles), `palette.py` (median-cut palette and dark-pixel bias), `huegap.py` (hue occupancy), `absent.py` (OKLab + colour-vision absent-colour search), `font_fit_render.js` + `font_fit.html` and `font_fit_numerals_render.js` + `font_fit_numerals.html` (render candidate faces for overlap scoring) |
 
 ## The short version
 
@@ -22,7 +23,7 @@ The visual system and brand for **RiseWiz**, a fan companion for GRAVITY's NBA R
   - Cyan `#00AEEF` commits. Home is blue `#158EFD` and away is red `#DF263D`.
   - Gold is Team Power and synergy. Bronze chips are offensive tactics and mint chips are defensive tactics.
   - A five-step condition scale, and six rarity metals.
-- **The typeface is Open Sans**: Bold for interface text, ExtraBold for titles. It was identified by glyph overlap, not guessed.
+- **Two typefaces, both identified by glyph overlap.** Words are Open Sans: Bold for interface text, ExtraBold for titles. Big numbers are Anton: Team Power, scores and OVR.
 - **Every hue is the game's.** An OKLab search with colour-vision simulation found no colour more than 6.3 ΔE from all 34 game accents. So RiseWiz owns a material, not a colour: **black marker on a white clipboard**.
 - **The mark** is a W run off two screens, in basketball's own notation.
 - **The wordmark** is RISEWIZ in Big Shoulders Display Black. RISE is in the game's inactive grey `#8B94A2`, WIZ is white, and a white marker rule sits beneath.
