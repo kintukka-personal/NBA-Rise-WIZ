@@ -1,0 +1,56 @@
+/* RiseWiz design tokens.
+   Game-side values measured from NBA RISE (GRAVITY, global build 1.1.x) screenshots, 8-9 Nov 2026.
+   The clipboard block (--rw-board ... --rw-clip) and --rw-wordmark are RiseWiz's own.
+   Fonts: https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&family=Big+Shoulders+Display:wght@900&display=swap */
+:root {
+  /* grounds */
+  --rw-void:#000000; --rw-pill:#0D0D0D; --rw-well-blue:#0F141C; --rw-letterbox:#1A1B1E;
+  --rw-well:#1C1D1F; --rw-well-2:#202125; --rw-ground:#2A2E32; --rw-bench:#363A40;
+  --rw-raised:#3D454B; --rw-tab-off:#40474B;
+  /* text */
+  --rw-ink:#FFFFFF; --rw-ink-1:#E5EAEE; --rw-ink-2:#C9CDCF; --rw-ink-3:#A1AAB2;
+  --rw-ink-4:#9C9EAB; --rw-ink-5:#8B94A2; --rw-value:#F6C526;
+  /* cyan */
+  --rw-cy-deep:#0C1C24; --rw-cy-body:#00729E; --rw-cy:#00AEEF; --rw-cy-rim:#21F9FD; --rw-cy-peak:#CAFFFF;
+  --rw-cy-tab:#39D3FF; --rw-cy-bar:#16BEE7; --rw-cy-clock:#03EBFD; --rw-cy-glow:#39EFFB;
+  /* home · away */
+  --rw-hm-deep:#0C204C; --rw-hm-body:#143B85; --rw-hm-mid:#1C57C3; --rw-hm:#158EFD; --rw-hm-peak:#63A9E7;
+  --rw-hm-disc:#1E4484; --rw-hm-box:#0C2A65;
+  --rw-aw-deep:#6A1414; --rw-aw-body:#B80B0B; --rw-aw-nba:#C70D2E; --rw-aw:#DF263D; --rw-aw-sel:#DD4A7F; --rw-aw-disc:#D01B1B;
+  /* gold · bronze · mint · green */
+  --rw-gd-deep:#523206; --rw-gd-body:#A77422; --rw-gd-mid:#C28422; --rw-gd-rim:#DEAE1E; --rw-gd-peak:#F6C526; --rw-gd-light:#F8E1A2;
+  --rw-of-deep:#3F2B10; --rw-of:#6C5322; --rw-of-mid:#AA965A; --rw-of-ink:#DECB87; --rw-of-peak:#FEF1A3;
+  --rw-df-deep:#114430; --rw-df:#225542; --rw-df-mid:#378E62; --rw-df-ink:#6FE9A4; --rw-df-peak:#3DFE8F;
+  --rw-gr-deep:#0F3C0D; --rw-gr-body:#007F08; --rw-gr:#00C10D; --rw-gr-peak:#39FF35; --rw-stam-low:#FFD617; --rw-load:#E4C401;
+  /* the ball */
+  --rw-ball-peak:#FFA64F; --rw-ball-mid:#DE6624; --rw-ball-shadow:#BD452B; --rw-ball-body:#CD430E; --rw-ball-rim:#FF5D1D;
+  /* sets */
+  --rw-cond-best:#01D64B; --rw-cond-good:#AEFE01; --rw-cond-mid:#F5F300; --rw-cond-poor:#FFAE01; --rw-cond-worst:#F50100;
+  --rw-ahead:#CAFFFF; --rw-behind:#E02540;
+  --rw-stat-off:#E3B72A; --rw-stat-def:#16C988; --rw-stat-mental:#B1C1D4;
+  --rw-bonus-tp-bg:#29485B; --rw-bonus-tp:#02BBD0; --rw-bonus-syn-bg:#044048; --rw-bonus-syn:#00DCF1;
+  --rw-new:#FD5B4B; --rw-alert:#D63018;
+  --rw-pack-free:#026429; --rw-pack-core:#422A58; --rw-pack-edition:#4E4330;
+  /* rarities */
+  --rw-r-c:#71767D; --rw-r-c-hi:#828990; --rw-r-c-badge:#353B3C;
+  --rw-r-uc:#81B76C; --rw-r-uc-ink:#7A9F73; --rw-r-uc-badge:#244020;
+  --rw-r-r:#6E8FA9; --rw-r-r-hi:#88B9CC; --rw-r-r-badge:#2B89CC;
+  --rw-r-ur:#C1A863; --rw-r-ur-hi:#DECB98; --rw-r-ur-lo:#B79F53; --rw-r-ur-in:#473508;
+  --rw-r-ep:#9F27C6; --rw-r-ep-hi:#B934E6; --rw-r-ep-pk:#FEE2FD; --rw-r-ep-neon:#4AE3F8; --rw-r-ep-in:#3B075B;
+  /* rarity cards: frame by rarity, field by edition */
+  --rw-ep-frame-hi:#F6D9FF; --rw-ep-frame-lo:#571E82; --rw-ep-ovr-ring:#52E2F7; --rw-ep-ovr-halo:#723B94;
+  --rw-ep-badge-gem:#1AF9FA; --rw-ur-badge-ink:#F7C3BE; --rw-ur-wing:#F5DB7C; --rw-ur-wing-lo:#A7783E; --rw-ovr-rim:#E1D5B3;
+  --rw-field-starter:#D7D6E6; --rw-field-starter-lo:#C2C1D6; --rw-field-starter-ring:#E1DFED; --rw-plate-starter:#232B3B; --rw-plate-starter-rim:#9FAAB4;
+  --rw-field-season:#21252A; --rw-field-season-ring:#373E47;
+  --rw-field-core-hi:#710384; --rw-field-core-mid:#231660; --rw-field-core-lo:#1B043B; --rw-field-core-shard:#CEC8EC; --rw-field-core-beam:#8ACAD7;
+  --rw-ed-starter:#B9EBFF; --rw-ed-starter-outline:#393C4D; --rw-ed-season:#FEFBDC; --rw-ed-core:#82E3FC; --rw-ed-core-glow:#A130CA;
+  --rw-r-legend:unset; --rw-r-elite:unset; --rw-r-prime:unset; --rw-r-iconic:unset; --rw-r-goat:unset; /* measure on release */
+  /* ours — the clipboard */
+  --rw-board:#F5F5F1; --rw-board-ghost:#ECEBE5; --rw-print:#C8CCD0; --rw-marker:#121314; --rw-clip:#1B1C1E;
+  /* type */
+  --rw-ui:'Open Sans','Noto Sans','Segoe UI',Roboto,sans-serif;
+  --rw-wordmark:'Big Shoulders Display','Arial Narrow',Impact,sans-serif;
+  /* effects */
+  --rw-outline:0 0 1px #0A0B0C,0 1px 1px #0A0B0C,0 -1px 1px #0A0B0C,1px 0 1px #0A0B0C,-1px 0 1px #0A0B0C;
+  --rw-glow-cy:0 6px 18px rgba(0,174,239,.32);
+}

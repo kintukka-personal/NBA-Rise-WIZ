@@ -1,0 +1,368 @@
+{
+ "method": "Each candidate rendered at 160px in Chromium, binarised, cropped to ink bounds, resized to the in-game crop bounds, scored by IoU; aspect = ink width / ink height.",
+ "targets": {
+  "MATCH_PREPARATION": {
+   "source": "App Store PH screenshot 6 (match preparation, 1260x2736)",
+   "aspect": 14.319
+  },
+  "Warriors_Teamwork": {
+   "source": "same screenshot, synergy tooltip row 1",
+   "aspect": 12.812
+  }
+ },
+ "candidates": {
+  "Hind_700": {
+   "MATCH_PREPARATION": {
+    "iou": 0.751,
+    "aspect": 14.586
+   },
+   "Warriors_Teamwork": {
+    "iou": 0.748,
+    "aspect": 11.882
+   },
+   "mean_iou": 0.75
+  },
+  "OpenSans_800": {
+   "MATCH_PREPARATION": {
+    "iou": 0.672,
+    "aspect": 14.907
+   },
+   "Warriors_Teamwork": {
+    "iou": 0.8,
+    "aspect": 13.071
+   },
+   "mean_iou": 0.736
+  },
+  "OpenSans_700": {
+   "MATCH_PREPARATION": {
+    "iou": 0.649,
+    "aspect": 14.551
+   },
+   "Warriors_Teamwork": {
+    "iou": 0.808,
+    "aspect": 12.798
+   },
+   "mean_iou": 0.729
+  },
+  "Mukta_700": {
+   "MATCH_PREPARATION": {
+    "iou": 0.69,
+    "aspect": 14.21
+   },
+   "Warriors_Teamwork": {
+    "iou": 0.768,
+    "aspect": 11.718
+   },
+   "mean_iou": 0.729
+  },
+  "Mukta_800": {
+   "MATCH_PREPARATION": {
+    "iou": 0.718,
+    "aspect": 14.438
+   },
+   "Warriors_Teamwork": {
+    "iou": 0.735,
+    "aspect": 11.897
+   },
+   "mean_iou": 0.726
+  },
+  "Inter_800": {
+   "MATCH_PREPARATION": {
+    "iou": 0.679,
+    "aspect": 14.617
+   },
+   "Warriors_Teamwork": {
+    "iou": 0.704,
+    "aspect": 12.373
+   },
+   "mean_iou": 0.692
+  },
+  "Hind_600": {
+   "MATCH_PREPARATION": {
+    "iou": 0.676,
+    "aspect": 14.207
+   },
+   "Warriors_Teamwork": {
+    "iou": 0.706,
+    "aspect": 11.695
+   },
+   "mean_iou": 0.691
+  },
+  "Sarabun_800": {
+   "MATCH_PREPARATION": {
+    "iou": 0.649,
+    "aspect": 13.647
+   },
+   "Warriors_Teamwork": {
+    "iou": 0.641,
+    "aspect": 11.744
+   },
+   "mean_iou": 0.645
+  },
+  "NotoSans_700": {
+   "MATCH_PREPARATION": {
+    "iou": 0.543,
+    "aspect": 14.314
+   },
+   "Warriors_Teamwork": {
+    "iou": 0.741,
+    "aspect": 12.645
+   },
+   "mean_iou": 0.642
+  },
+  "FiraSans_800": {
+   "MATCH_PREPARATION": {
+    "iou": 0.641,
+    "aspect": 12.966
+   },
+   "Warriors_Teamwork": {
+    "iou": 0.643,
+    "aspect": 10.627
+   },
+   "mean_iou": 0.642
+  },
+  "NotoSans_800": {
+   "MATCH_PREPARATION": {
+    "iou": 0.528,
+    "aspect": 14.517
+   },
+   "Warriors_Teamwork": {
+    "iou": 0.755,
+    "aspect": 12.784
+   },
+   "mean_iou": 0.641
+  },
+  "NotoSansThai_800": {
+   "MATCH_PREPARATION": {
+    "iou": 0.522,
+    "aspect": 14.534
+   },
+   "Warriors_Teamwork": {
+    "iou": 0.755,
+    "aspect": 12.808
+   },
+   "mean_iou": 0.639
+  },
+  "NotoSans_900": {
+   "MATCH_PREPARATION": {
+    "iou": 0.512,
+    "aspect": 14.746
+   },
+   "Warriors_Teamwork": {
+    "iou": 0.734,
+    "aspect": 12.96
+   },
+   "mean_iou": 0.623
+  },
+  "PRE_700": {
+   "MATCH_PREPARATION": {
+    "iou": 0.615,
+    "aspect": 14.248
+   },
+   "Warriors_Teamwork": {
+    "iou": 0.628,
+    "aspect": 12.14
+   },
+   "mean_iou": 0.621
+  },
+  "SCD_900": {
+   "MATCH_PREPARATION": {
+    "iou": 0.608,
+    "aspect": 13.224
+   },
+   "Warriors_Teamwork": {
+    "iou": 0.626,
+    "aspect": 12.344
+   },
+   "mean_iou": 0.617
+  },
+  "Kanit_600": {
+   "MATCH_PREPARATION": {
+    "iou": 0.609,
+    "aspect": 14.72
+   },
+   "Warriors_Teamwork": {
+    "iou": 0.617,
+    "aspect": 12.791
+   },
+   "mean_iou": 0.613
+  },
+  "TitilliumWeb_700": {
+   "MATCH_PREPARATION": {
+    "iou": 0.572,
+    "aspect": 13.469
+   },
+   "Warriors_Teamwork": {
+    "iou": 0.651,
+    "aspect": 11.921
+   },
+   "mean_iou": 0.611
+  },
+  "Prompt_700": {
+   "MATCH_PREPARATION": {
+    "iou": 0.601,
+    "aspect": 14.274
+   },
+   "Warriors_Teamwork": {
+    "iou": 0.616,
+    "aspect": 12.504
+   },
+   "mean_iou": 0.609
+  },
+  "Roboto_900": {
+   "MATCH_PREPARATION": {
+    "iou": 0.657,
+    "aspect": 14.008
+   },
+   "Warriors_Teamwork": {
+    "iou": 0.535,
+    "aspect": 11.615
+   },
+   "mean_iou": 0.596
+  },
+  "Archivo_800": {
+   "MATCH_PREPARATION": {
+    "iou": 0.533,
+    "aspect": 15.939
+   },
+   "Warriors_Teamwork": {
+    "iou": 0.651,
+    "aspect": 13.169
+   },
+   "mean_iou": 0.592
+  },
+  "NotoSansKR_900": {
+   "MATCH_PREPARATION": {
+    "iou": 0.503,
+    "aspect": 13.846
+   },
+   "Warriors_Teamwork": {
+    "iou": 0.655,
+    "aspect": 11.726
+   },
+   "mean_iou": 0.579
+  },
+  "Assistant_800": {
+   "MATCH_PREPARATION": {
+    "iou": 0.527,
+    "aspect": 13.991
+   },
+   "Warriors_Teamwork": {
+    "iou": 0.629,
+    "aspect": 11.75
+   },
+   "mean_iou": 0.578
+  },
+  "Catamaran_800": {
+   "MATCH_PREPARATION": {
+    "iou": 0.419,
+    "aspect": 14.788
+   },
+   "Warriors_Teamwork": {
+    "iou": 0.733,
+    "aspect": 12.051
+   },
+   "mean_iou": 0.576
+  },
+  "SourceSans3_900": {
+   "MATCH_PREPARATION": {
+    "iou": 0.519,
+    "aspect": 14.009
+   },
+   "Warriors_Teamwork": {
+    "iou": 0.631,
+    "aspect": 11.75
+   },
+   "mean_iou": 0.575
+  },
+  "Kanit_500": {
+   "MATCH_PREPARATION": {
+    "iou": 0.541,
+    "aspect": 14.495
+   },
+   "Warriors_Teamwork": {
+    "iou": 0.602,
+    "aspect": 12.518
+   },
+   "mean_iou": 0.572
+  },
+  "Lato_900": {
+   "MATCH_PREPARATION": {
+    "iou": 0.631,
+    "aspect": 14.261
+   },
+   "Warriors_Teamwork": {
+    "iou": 0.511,
+    "aspect": 12.025
+   },
+   "mean_iou": 0.571
+  },
+  "Heebo_800": {
+   "MATCH_PREPARATION": {
+    "iou": 0.635,
+    "aspect": 13.983
+   },
+   "Warriors_Teamwork": {
+    "iou": 0.501,
+    "aspect": 11.648
+   },
+   "mean_iou": 0.568
+  },
+  "Yantramanav_900": {
+   "MATCH_PREPARATION": {
+    "iou": 0.555,
+    "aspect": 13.868
+   },
+   "Warriors_Teamwork": {
+    "iou": 0.571,
+    "aspect": 11.357
+   },
+   "mean_iou": 0.563
+  },
+  "NFG_400": {
+   "MATCH_PREPARATION": {
+    "iou": 0.547,
+    "aspect": 12.833
+   },
+   "Warriors_Teamwork": {
+    "iou": 0.579,
+    "aspect": 11.75
+   },
+   "mean_iou": 0.563
+  },
+  "NotoSansKR_700": {
+   "MATCH_PREPARATION": {
+    "iou": 0.461,
+    "aspect": 13.488
+   },
+   "Warriors_Teamwork": {
+    "iou": 0.65,
+    "aspect": 11.606
+   },
+   "mean_iou": 0.555
+  },
+  "Prompt_600": {
+   "MATCH_PREPARATION": {
+    "iou": 0.567,
+    "aspect": 14.171
+   },
+   "Warriors_Teamwork": {
+    "iou": 0.493,
+    "aspect": 12.529
+   },
+   "mean_iou": 0.53
+  },
+  "Rubik_700": {
+   "MATCH_PREPARATION": {
+    "iou": 0.5,
+    "aspect": 14.741
+   },
+   "Warriors_Teamwork": {
+    "iou": 0.549,
+    "aspect": 12.658
+   },
+   "mean_iou": 0.524
+  }
+ },
+ "conclusion": "Open Sans Bold: best mixed-case IoU (0.808) and aspect 12.80 vs 12.81 target. Titles render heavier (ExtraBold + TextMeshPro outline)."
+}
