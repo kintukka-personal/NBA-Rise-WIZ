@@ -7,7 +7,7 @@ The visual system and brand for **NBARiseWiz**, a fan companion for NBA RISE, GR
 | Path | What it is |
 |---|---|
 | [`NBARiseWiz_Visual_System.html`](NBARiseWiz_Visual_System.html) | The full system: identity, voice, foundation, colour, type, texture, live components, rarities, the clipboard, rules, build and limits. Open it in a browser. Published copy: https://claude.ai/artifact/HQYr5ho3buzBmXzckeeSbf |
-| [`tokens.css`](tokens.css) | 396 drop-in custom properties (`--nrw-*`), the same values the document uses |
+| [`tokens.css`](tokens.css) | 476 drop-in custom properties (`--nrw-*`), the same values the document uses |
 | [`measurements/samples.md`](measurements/samples.md) | Where every measured value came from: image, region and method |
 | [`measurements/font_fit.json`](measurements/font_fit.json) | Typeface identification for words: 32 faces scored against in-game text (Open Sans) |
 | [`measurements/font_fit_numerals.json`](measurements/font_fit_numerals.json) | Typeface identification for numbers: Team Power, scores and OVR scored against 35 condensed faces (Anton) |
@@ -39,7 +39,7 @@ When GRAVITY ships a new screen or rarity:
 3. Log the value in `measurements/samples.md`.
 4. Add the token to both `tokens.css` and the Build section of the HTML.
 
-The Legend card is half measured. Its crest and colours come from the game's LEGEND crest on The Edition reward pack and from The Edition's pack art. Its frame is drawn from those colours, because no Legend card is public yet; re-measure it from the first screenshot. The four reserved grades above Legend (Elite, Prime, Iconic, GOAT) are still unmeasured.
+The Legend card is measured from two launch-day auction listings, L. Johnson and T. Parker. The four reserved grades above Legend (Elite, Prime, Iconic and GOAT) are still unmeasured, because no public screenshot shows them yet.
 
 `tools/font_fit.html` expects the candidate fonts to be loadable. Google Fonts load directly. The official site's fonts (Nexon Football Gothic, Pretendard, S-Core Dream) are not committed here; fetch them from nbarise.gnjoy.com's own stylesheet to re-run that comparison.
 

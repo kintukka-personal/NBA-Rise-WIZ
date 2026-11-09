@@ -17,7 +17,7 @@ Both are computed with `../tools/sample.py`. Coordinates are in the source image
 | AS-KR-7 | App Store KR iPhone screenshot 7, in-match SET PLAY | 1260×2736 | `country=kr`, `screenshotUrls[6]` |
 | AS-PH-7 | App Store PH screenshot 7, in-match gameplay with the SET PLAY countdown | 1260×2736 | same, `[6]` |
 | NB-02 / 17 / 25 / 27 / 28 / 29 / 31 / 32 / 33 / 34 / 38 | Player blog captures: home hub, tactic change, card back, Condition info panel, synergy list (closed and open), Scout, The Edition pack result, Auction, Arena opponent list, Best 5 event (with The Edition reward pack) | 1080×1920 (27: 886×779, 33: 886×836) | `blog.naver.com/12512512/224449341627` |
-| NG-08 | Launch-day player capture of a tactic change | 1080×2340 | `blog.naver.com/ngga32472/224449909504` |
+| NG-02 / 08 / 13 | Launch-day player captures: owned-player collection, tactic change, auction home (with two Legend listings) | 1080×2340 | `blog.naver.com/ngga32472/224449909504` |
 | DK-13 / 18 | Player blog captures of SET PLAY: defence action select, offence select with the auto pill | 1399×3000, 358×765 | `blog.naver.com/dekiruho123/224451027691` |
 | IN-z3 / z4 / z9 | iNews24 hands-on: live match, SET PLAY sequence, home hub | 780×880, 1160×478, 900×1170 | `m.inews24.com/v/2021080` |
 | SITE-card | Official site card art (Epic, Ultra Rare, Rare) | 377×497 | `imgc.gnjoy.com/games/nbarise/official/card/card-N.webp` |
@@ -91,7 +91,7 @@ Both are computed with `../tools/sample.py`. Coordinates are in the source image
 | Rare | frame `#88B9CC / #839EB4 / #6E8FA9`, badge `#2B89CC` | NB-32 R. Gobert; SITE-card 19 |
 | Ultra Rare | `#DECB98 → #C1A863 → #B79F53 → #E4CF79`, inner `#473508` | SITE-card 10 horizontal profile at y=250 |
 | Epic | `#9D67C2 → #A34ACA → #9F27C6`, inner `#4E006E / #3B075B`, neon `#4AE3F8`, OVR disc `#B145CB` | SITE-card 1 horizontal profile at y=250 |
-| Legend | crest and colours measured, frame provisional | See "Legend crest and The Edition" below. No Legend card appears in any public screenshot as of 9 Nov 2026 |
+| Legend | champagne frame `#F3E7C9 → #EADA91 → #C3A479 → #735324`; field `#050100` with bronze glow `#563D23`; OVR disc `#1C2026`, rim `#CBBD93`; stars `#FCEFC2` | NG-13: L. Johnson 220 and T. Parker 289. See "Legend card" below |
 
 ## Card art: frame by rarity, field by edition
 
@@ -222,27 +222,60 @@ Sources: NB-34 for the arena opponent list (a lossless capture), and NB-33 for t
 | Prices | buy-now tag `#B4811D`, text `#F6ECD1`; price well `#23272A`, figure `#DCE1E5`; Diamond `#63D6FA` / `#329FEA` / `#1D578E`; bid label `#95999E` | 75,560–110,585; 85,562–190,585; 70,592–95,625; 115,595–270,622; 85,595–110,622; 70,645–200,667 |
 | Bid | `#00ADEF`, text `#E3F2FB`; timer pill `#1C1C20`, text `#E0E4EA` | 80,730–110,760; 120,738–225,768; 115,778–135,800; 140,778–225,800 |
 
-## Legend crest and The Edition
+## Legend card
 
-No Legend card is public yet. The search covered:
-- the 424-screenshot corpus;
-- the official site's 19 card images;
-- every App Store region's screenshots, unchanged since the closed beta;
-- the odds pages, whose `icon_RL` Legend class has no image;
-- Naver blog search;
-- the official YouTube channel's thumbnails (its video frames sit behind a bot check).
-
-Two in-game sources do carry Legend art:
-- **NB-38:** the Best 5 event's reward is a "THE EDITION · FIXED RARITY Scout" pack that wears the game's **LEGEND crest**. The crest is about 45 px across in the source, so its values are anti-aliased medians grouped by hue.
-- **NB-31:** The Edition's own Scout tile and pack art.
-
-The card's frame construction is extrapolated from these colours. Re-measure it from the first Legend card screenshot.
+Source: NG-13, a launch-day auction home tab. It lists two Legends from The Edition: **L. Johnson** (220, Lv.1, PF/SF, buy now 20,000,000) and **T. Parker** (289, Lv.50, PG). The values come from L. Johnson's card, which sits at about 185×250 px in the capture, and were checked against T. Parker's. The LEGEND crest had already been read off The Edition reward pack in NB-38, and the two agree.
 
 | Part | Values | Sample |
 |---|---|---|
-| LEGEND crest | gold `#CDA24A`, dark gold `#795C37`; plate flame `#BD7338` shading to `#AB5730` (rows run `#935542` at the top to `#CF8A36` at the bottom); letters and laurel highlights cream `#E3DED4`; diamond backing `#1B1F27` | NB-38 598,1452–652,1500, pixels grouped by hue and saturation; plate rows 606,1466–640,1471 and 606,1477–640,1482 |
-| Edition pack | silhouette rim light `#C9B7A5`; band `#917E5B` / `#735C3D` with `#CBC2A2` text; body `#322F2D` / `#202123` | NB-31 warm bright-pixel median in 175,1390–330,1505; 115,1630–320,1660; 345,1440–360,1520 |
-| Edition Scout tile | `#4E4330` | NB-31 600,1380–700,1400 |
+| Frame | highlight `#F3E7C9` / top `#FDFCEE`; face `#EADA91` / `#E7D58E`; shadow `#8B8144`; right side bronze `#C3A479` → `#AB824D` → `#735324`; inner pin `#FBF9CB` on `#474430` | NG-13 horizontal profiles at y=1260 (x 100–135) and y=1300 (x 280–300); vertical profile at x=230 (y 1140–1170) |
+| Field | black `#050100`, bronze glow `#563D23` / `#583F23`, highlight `#937E5E` | inside edge at y=1260; 252,1165–275,1195; T. Parker 930,1800–960,1830 |
+| Portrait | black and white inside a white halo `#E9EEF1` | visual; halo bright-pixel median |
+| OVR | disc `#1C2026`, rim `#CBBD93`, digits `#E9EEF3` | 118,1155–178,1212 (dark, bright and warm-rim pixel medians) |
+| Name and level | name printed on the art, `#E9EEF1` with a `#121213` outline; Lv pill `#020202`, text `#F8F7F7` | 143,1312–255,1332; 120,1330–177,1350 |
+| Band | `#3F281E` (from `#4A3220` to `#2E1C12`), top line `#D8BB78` over `#433510`, bottom rim `#967A60` | vertical profile at x=150 (y 1355–1400) |
+| Stars | `#FCEFC2`, outline `#291C0A`, three each side of the crest | 122,1362–172,1378 |
+| LEGEND crest | gold `#CDA24A`, dark gold `#795C37`; plate `#BD7338` → `#AB5730`; letters `#E3DED4`; backing `#1B1F27` | NB-38 598,1452–652,1500, grouped by hue (crest about 45 px wide); NG-13 178,1345–222,1385 agrees (`#FFEFD8` cream, `#936331` orange, `#AF9058` gold) |
+| The Edition pack | rim light `#C9B7A5`; band `#917E5B` / `#735C3D`, text `#CBC2A2`; body `#202123` / `#322F2D`; Scout tile `#4E4330` | NB-31 175,1390–330,1505 (warm bright pixels); 115,1630–320,1660; 345,1440–360,1520; 600,1380–700,1400 |
+
+## Hub and HUD
+
+Source: NB-02, the lossless launch-week home hub.
+
+| Part | Values | Sample |
+|---|---|---|
+| Sky | `#043654` → `#09547D` → `#0B6B94` → `#388AA9` | vertical scan at x=20–40 |
+| HUD pills | `#EBF0F4`; text `#2A2E32`; label `#9CA1A8`; TP tag `#DDAB0D` with `#F3E2B3`, TP `#DA9B1C`; silver coin `#C4C6C7` / `#707376` | 340,50–380,60; 150,45–330,75; 515,88–560,110; 155,88–195,115; 205,85–270,118; 690,45–760,115 |
+| Menu | disc `#2A2E32`, lines `#B2B6C1`, alert `#E5381E` | 950,70–960,90; 965,65–1010,100; 1010,30–1040,58 |
+| Event card | `#6CD4FE` → `#A4AFED` → `#FF75CF`, lighter at the top (`#AABDF1` → `#CC97E1` at x=540); track `#0D0D0D`; fill `#1FF9FE` / `#0BD4FE`; count `#EEFCFC` with a `#5792B4` shadow; label `#E7EDF1` | 130,200–150,220; 520,195–540,210; 950,250–965,270; vertical profile at x=540; 300,280–700,295; 150,280–280,295; 230,200–295,250; 160,320–330,345 |
+| REWARD flag and prize | flag `#0D0D0D`, text and underline `#16FAFA` / `#15F2F2`; prize card `#4181AB` → `#0A1C2B`, count `#161C26` | 600,195–700,240; 625,200–750,232; 810,195–890,350; 890,305–935,345 |
+| Event icon | `#53CB7C`, `#032103`, `#DCF1C8` | 150,195–215,265 |
+| Mode buttons | disc `#284C84` → `#0F1F35`, ring `#F7FDFF`; pill `#161C22`, text `#E4E4E0` | vertical profiles at x=90 and x=990 (y 410–580) |
+
+## Packs and the opening
+
+Sources: NB-31 for the pack art on the Scout tab, and NB-32 for The Edition ten-pack result.
+
+| Part | Values | Sample |
+|---|---|---|
+| Free pack | foil `#EEEEED`; silhouette `#ADB7EA`, offset `#9ABDC6`; type `#33405B` / `#384763`, sub `#627698` | NB-31 150,420–200,470; 150,640–300,690 |
+| The Core pack | foil `#151522`; back glow `#413052`; rim cyan `#27B5DD`, pink `#C83667`; name `#BE66CB` with `#DFE6EC` highlight | 140,1100–340,1175 and 180,850–400,1050, grouped by hue; 400,900–430,950 |
+| Opening ground | `#0A1823`, glow `#1F3A54`, deep `#050D14` | NB-32 20,600–60,700 |
+| Opening type | title `#CFD3DA`; pack name `#AFB0B4`; "Tap to close" `#EEF3FC` | 420,170–660,220; 380,240–700,280; 450,1800–630,1840 |
+| Mission toast | `#1C1C1C`, highlight `#38D4FF` | 600,60–700,80; 390,70–750,100 |
+| New dot · buttons | `#FD5B4B`; `#00AEEF` | 168,440–184,458; 120,1660–160,1730 |
+
+## Collection
+
+Source: NG-02, the launch-day owned-player list.
+
+| Part | Values | Sample |
+|---|---|---|
+| Header and bar | `#2B2E33`; title `#E9EFF5`; rule `#4E555D`; count `#9BA0A5` | NG-02 700,120–800,150; 430,170–650,230; vertical profile at x=540 (y 240–300); 110,295–240,330 |
+| Sort and filter | pill `#3F474A`, text `#999EA4`; disc `#41464B` | 610,292–625,338; 628,302–860,330; 968,285–1030,345 |
+| Ground | `#1C1C1C` | 20,380–50,680 |
+| In-lineup tag | `#031925` / `#051123`, rim `#27D3F1`, text `#25D0E3` | 145,382–270,425; vertical profile at x=207 (y 370–432) |
+| Lock pill | `#3F474A` | 40,2185–270,2240 |
 
 ## Absent-colour search
 

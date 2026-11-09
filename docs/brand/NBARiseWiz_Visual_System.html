@@ -456,31 +456,36 @@ th { font-weight: 700; font-size: 11.5px; letter-spacing: .1em; text-transform: 
 .rc--ep .rc__frame::before { background-image: linear-gradient(112deg, rgba(255,255,255,0) 32%, rgba(165,232,251,.6) 43%, rgba(254,226,253,.7) 49%, rgba(186,104,217,.4) 55%, rgba(255,255,255,0) 66%); mix-blend-mode: overlay; animation: rc-sweep 5.2s ease-in-out infinite; }
 .rc--ur .rc__frame::before { background-image: linear-gradient(112deg, rgba(255,255,255,0) 38%, rgba(255,243,196,.55) 48%, rgba(255,255,255,0) 58%); mix-blend-mode: soft-light; animation: rc-sweep 8s ease-in-out infinite 1.5s; }
 @keyframes rc-sweep { 0%, 18% { background-position: 108% 0; } 62%, 100% { background-position: -8% 0; } }
-/* Legend — ember gold. Crest and colours measured from the game's LEGEND crest and The Edition pack; the frame is provisional */
-.rc--lg { --fp: 8px; --metal: linear-gradient(150deg, #F6EEDF 0%, #E3DED4 7%, #CDA24A 22%, #A9782F 38%, #BD7338 55%, #AB5730 70%, #6A3119 86%, #2A140C 100%);
-  --field: radial-gradient(58% 46% at 50% 44%, rgba(205,162,74,.34), rgba(205,162,74,0) 72%), radial-gradient(120% 90% at 50% 0%, #2E2820 0%, #1B1F27 58%, #121419 100%);
-  --plate: #1B1F27; --plate-rim: rgba(205,162,74,.45);
-  --bust: #14161C; --jersey: #241D16; --trim: #CDA24A; --num: #E3DED4; --rim: #C9B7A5; --rim-glow: rgba(201,183,165,.7); --ring: rgba(205,162,74,.08);
-  --sheen: .3; --cast: 0 0 0 1px rgba(227,222,212,.5), 0 0 28px rgba(205,162,74,.5), 0 16px 34px rgba(42,20,12,.75); }
-.rc--lg .rc__field { box-shadow: inset 0 0 0 2px #CDA24A, inset 0 0 0 3px rgba(171,87,48,.85), inset 0 0 18px rgba(189,115,56,.55); }
-.rc--lg .rc__art .rays { mix-blend-mode: screen; }
-.rc--lg .rc__ovr { left: 15px; top: 15px; width: 44px; height: 44px; min-width: 0; padding: 0; border-radius: 7px; transform: rotate(45deg); border: 2.5px solid #CDA24A;
-  background: radial-gradient(circle at 50% 30%, #2E2820, #14161C 75%); box-shadow: 0 0 0 2px #2A140C, 0 0 0 3.5px #BD7338, 0 0 18px rgba(205,162,74,.7), inset 0 -6px 10px rgba(0,0,0,.55); }
-.rc--lg .rc__ovr i { transform: rotate(-45deg); font-style: normal; font-size: 24px; color: #E3DED4; }
-.rc--lg .rc__pos { top: 80px; } .rc--lg .rc__team { top: 104px; }
-.rc--lg .rc__badge { width: 64px; height: 64px; right: 2px; top: 2px; filter: drop-shadow(0 0 6px rgba(189,115,56,.65)) drop-shadow(0 0 10px rgba(205,162,74,.45)); }
-.rc__ed--edition { color: #E3DED4; font-style: normal; letter-spacing: .04em; text-shadow: 0 0 1px #3A2414, 0 1px 0 #3A2414, 0 -1px 0 #3A2414, 0 0 6px rgba(189,115,56,.95), 0 0 14px rgba(205,162,74,.6); }
-.rc--lg .rc__plate::before { content: ""; position: absolute; left: 14px; right: 14px; top: 0; height: 2px; background: linear-gradient(90deg, rgba(189,115,56,0), #CDA24A 30%, #E3DED4 50%, #CDA24A 70%, rgba(189,115,56,0)); }
-.rc--lg .rc__frame::after { content: ""; position: absolute; left: 6%; right: 6%; bottom: -22px; height: 22px; background: radial-gradient(closest-side, rgba(189,115,56,.75), rgba(189,115,56,0)); filter: blur(5px); z-index: -1; pointer-events: none; }
-.rc--lg .rc__frame::before { content: ""; position: absolute; inset: 0; border-radius: inherit; z-index: 6; pointer-events: none; background-size: 320% 100%;
-  background-image: linear-gradient(112deg, rgba(255,255,255,0) 34%, rgba(246,238,223,.55) 45%, rgba(205,162,74,.6) 50%, rgba(189,115,56,.45) 55%, rgba(255,255,255,0) 66%); mix-blend-mode: overlay; animation: rc-sweep 6.4s ease-in-out infinite .8s; }
-.rc__tag small { display: block; margin-top: 3px; font-weight: 700; font-size: 10.5px; letter-spacing: .02em; text-transform: none; color: var(--ink-4); }
+/* Legend — champagne gold, chamfered, monochrome portrait, six stars and the crest at the foot (NG-13: L. Johnson 220, T. Parker 289) */
+.rc--lg { --fp: 7px; --metal: linear-gradient(150deg, #FDFCEE 0%, #F3E7C9 9%, #EADA91 24%, #D3C17D 38%, #C3A479 54%, #AB824D 70%, #735324 88%, #5A4019 100%);
+  --field: radial-gradient(70% 55% at 60% 28%, rgba(147,126,94,.5), rgba(86,61,35,.45) 35%, rgba(5,1,0,0) 72%), linear-gradient(180deg, #0D0905, #050100 65%, #0A0604);
+  --bust: #5A5A5D; --jersey: #3A3D41; --trim: #E9EEF1; --num: #E9EEF1; --rim: #E9EEF1; --rim-glow: rgba(233,238,241,.85); --ring: rgba(203,189,147,.08);
+  --sheen: .25; --cast: none; filter: drop-shadow(0 12px 16px rgba(0,0,0,.55)) drop-shadow(0 0 12px rgba(234,218,145,.32)); }
+.rc--lg .rc__frame { clip-path: polygon(14px 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 0 100%, 0 14px); border-radius: 0 0 12px 12px; }
+.rc--lg .rc__field { border-radius: 2px; clip-path: polygon(9px 0, calc(100% - 9px) 0, 100% 9px, 100% 100%, 0 100%, 0 9px); box-shadow: inset 0 0 0 1.5px #FBF9CB, inset 0 0 0 3px #474430; }
+.rc--lg .rc__frame::after { content: ""; position: absolute; left: 1px; right: 1px; top: 40%; height: 20%; z-index: 2; pointer-events: none;
+  background: repeating-linear-gradient(180deg, rgba(71,68,48,.85) 0 2px, rgba(251,249,203,.7) 2px 4px, rgba(0,0,0,0) 4px 9px) left / 4px 100% no-repeat,
+              repeating-linear-gradient(180deg, rgba(71,68,48,.85) 0 2px, rgba(251,249,203,.5) 2px 4px, rgba(0,0,0,0) 4px 9px) right / 4px 100% no-repeat; }
+.rc--lg .rc__ovr { width: 58px; height: 58px; min-width: 0; padding: 0; border-radius: 50%; background: radial-gradient(circle at 50% 34%, #2A2F37, #1C2026 70%); border: 3px solid #CBBD93; color: #E9EEF3; font-size: 28px;
+  box-shadow: 0 0 0 2px #2A1F10, 0 4px 10px rgba(0,0,0,.6); }
+.rc--lg .rc__pos { top: 72px; } .rc--lg .rc__team { top: 96px; }
+.rc__cond { position: absolute; right: 8px; bottom: 56px; z-index: 3; width: 30px; height: 30px; filter: drop-shadow(0 1px 1px rgba(0,0,0,.8)) drop-shadow(0 0 3px rgba(0,0,0,.6)); }
+.rc__lgname { position: absolute; left: 0; right: 0; bottom: 30px; z-index: 3; text-align: center; font-weight: 800; font-size: 19px; color: #E9EEF1; white-space: nowrap;
+  text-shadow: 0 0 1px #121213, 1px 1px 0 #121213, -1px -1px 0 #121213, 1px -1px 0 #121213, -1px 1px 0 #121213, 0 2px 6px rgba(0,0,0,.8); }
+.rc--lg .rc__lv { left: 6px; bottom: 5px; background: #020202; border-radius: 10px; padding: 2px 10px; color: #F8F7F7; }
+.rc__band { position: relative; margin-top: 3px; height: 30px; display: flex; align-items: center; justify-content: space-between; padding: 0 8px; border-radius: 2px 2px 9px 9px;
+  background: linear-gradient(180deg, #4A3220, #3F281E 45%, #2E1C12); box-shadow: inset 0 2px 0 #D8BB78, inset 0 3px 0 #433510, inset 0 -2px 0 #967A60; }
+.rc__band .stars { display: flex; gap: 1px; }
+.rc__band .stars svg { width: 15px; height: 15px; filter: drop-shadow(0 0 3px rgba(252,239,194,.55)); }
+.rc__crest { position: absolute; left: 50%; top: -24px; width: 52px; height: 52px; transform: translateX(-50%); z-index: 4; overflow: visible; filter: drop-shadow(0 0 6px rgba(189,115,56,.6)) drop-shadow(0 2px 3px rgba(0,0,0,.6)); }
+.rc--lg .rc__frame::before { content: ""; position: absolute; inset: 0; z-index: 6; pointer-events: none; background-size: 320% 100%;
+  background-image: linear-gradient(112deg, rgba(255,255,255,0) 36%, rgba(253,252,238,.6) 46%, rgba(234,218,145,.55) 51%, rgba(255,255,255,0) 62%); mix-blend-mode: overlay; animation: rc-sweep 7s ease-in-out infinite .8s; }
 @media (prefers-reduced-motion: reduce) {
   .rc { transition: none; }
   .rc--ep .rc__frame::before, .rc--ur .rc__frame::before, .rc--lg .rc__frame::before { animation: none; background-position: 50% 0; opacity: .5; }
 }
 @media (max-width: 860px) { .rcards--ladder { grid-template-columns: repeat(2, var(--cw)); --cw: 190px; } }
-@media (max-width: 480px) { .rcards { gap: 28px 12px; } .rc, .rcards--ladder { --w: 160px; --cw: 160px; } .rc__plate b { font-size: 16px; } .rc__ovr { font-size: 25px; min-width: 48px; height: 34px; } .rc--ep .rc__ovr { width: 50px; height: 50px; } .rc--lg .rc__ovr { width: 38px; height: 38px; min-width: 0; left: 13px; top: 13px; } .rc--lg .rc__ovr i { font-size: 20px; } .rc--lg .rc__pos { top: 68px; } .rc--lg .rc__badge { width: 54px; height: 54px; } .rc__ed { font-size: 11px; } }
+@media (max-width: 480px) { .rcards { gap: 28px 12px; } .rc, .rcards--ladder { --w: 160px; --cw: 160px; } .rc__plate b { font-size: 16px; } .rc__ovr { font-size: 25px; min-width: 48px; height: 34px; } .rc--ep .rc__ovr { width: 50px; height: 50px; } .rc--lg .rc__ovr { width: 50px; height: 50px; font-size: 24px; } .rc--lg .rc__pos { top: 62px; } .rc--lg .rc__team { top: 84px; } .rc__lgname { font-size: 15px; bottom: 28px; } .rc__band .stars svg { width: 12px; height: 12px; } .rc__crest { width: 44px; height: 44px; top: -20px; } .rc__cond { width: 24px; height: 24px; bottom: 48px; } .rc__ed { font-size: 11px; } }
 @media (max-width: 350px) { .rcards--ladder { grid-template-columns: var(--cw); } .rcards--ladder, .rcards--ladder .rc { --w: 196px; --cw: 196px; } }
 
 /* performance comparison */
@@ -574,17 +579,6 @@ th { font-weight: 700; font-size: 11.5px; letter-spacing: .1em; text-transform: 
 .sring text { font-family: var(--ui); font-weight: 800; font-size: 24px; fill: #FFFFFF; }
 
 /* hub */
-.hud { display: inline-flex; align-items: center; gap: 8px; background: #EBF0F4; color: #2B2E33; border-radius: 999px; padding: 5px 16px 5px 6px; font-weight: 700; font-size: 14px; }
-.hud i { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; font-style: normal; font-size: 12px; }
-.hud .g { background: linear-gradient(180deg, #F8E1A2, #DEAE1E); } .hud .s { background: linear-gradient(180deg, #E8EAEE, #9EA4AB); }
-.hud small { display: block; font-size: 10.5px; color: #8E949B; font-weight: 600; line-height: 1; }
-.eventbar { width: 100%; max-width: 520px; border-radius: 18px; padding: 12px 16px 12px; background: linear-gradient(90deg, #6DD2FD, #A8A8E8 45%, #FE75D0); box-shadow: 0 8px 22px rgba(254,117,208,.25); }
-.eventbar b { color: #FFFFFF; font-size: 22px; font-weight: 800; text-shadow: 0 1px 2px rgba(0,40,70,.4); }
-.eventbar b small { font-size: 13px; opacity: .8; }
-.eventbar .track { height: 12px; background: #0D0C0C; border-radius: 6px; margin-top: 6px; overflow: hidden; }
-.eventbar .track i { display: block; height: 100%; width: 62%; background: #21F9FD; }
-.eventbar .reward { float: right; background: #0B0B0B; color: #26BABA; font-weight: 800; font-size: 12px; letter-spacing: .06em; padding: 3px 12px; transform: skewX(-18deg); margin-top: 4px; }
-.sky { background: linear-gradient(180deg, #093750, #388AA9 55%, #B7C9CF); border-radius: 8px; padding: 18px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; width: 100%; }
 
 /* pack tiles */
 .packs { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; width: 100%; }
@@ -735,7 +729,8 @@ th { font-weight: 700; font-size: 11.5px; letter-spacing: .1em; text-transform: 
 .ptile--free { background: radial-gradient(120% 140% at 15% 50%, #0A7A37 0%, #026429 55%, #01521F 100%); }
 .ptile--core { background: radial-gradient(120% 140% at 15% 50%, #573A78 0%, #422A58 55%, #33213F 100%); }
 .ptile--edition { background: radial-gradient(120% 140% at 15% 50%, #63563D 0%, #4E4330 55%, #3D3426 100%); }
-.pack-art { grid-column: 1; grid-row: 1 / 4; align-self: center; width: 96px; height: 144px; margin-top: 4px; }
+.pack-art { grid-column: 1; grid-row: 1 / 4; align-self: center; width: 96px; margin-top: 4px; }
+.pack-art .pk { width: 100%; }
 .ptile > h5, .ptile > p, .pity2, .freebar { grid-column: 2; }
 .ptrack, .pbtns { grid-column: 1 / -1; }
 .pack-art svg { width: 100%; height: 100%; display: block; filter: drop-shadow(0 6px 10px rgba(0,0,0,.45)); }
@@ -755,7 +750,7 @@ th { font-weight: 700; font-size: 11.5px; letter-spacing: .1em; text-transform: 
 .freebar { position: relative; margin-top: 26px; border-radius: 12px; background: #768478; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 9px; font-weight: 800; font-size: 15px; color: #FFFFFF; }
 .freebar b { background: #2E3A30; border-radius: 6px; padding: 1px 9px; font-size: 13px; }
 .freebar em { position: absolute; top: -16px; left: 50%; transform: translateX(-50%); font-style: normal; background: #EBF0F4; color: #2C3034; border-radius: 999px; font-size: 11px; font-weight: 700; padding: 2px 10px; white-space: nowrap; box-shadow: 0 2px 6px rgba(0,0,0,.3); }
-@media (max-width: 420px) { .ptile { grid-template-columns: 80px minmax(0,1fr); column-gap: 12px; } .pack-art { width: 80px; height: 120px; } .ptile h5 { font-size: 17px; } .pbtn { font-size: 13px; gap: 5px; } .pbtn span { font-size: 11.5px; } }
+@media (max-width: 420px) { .ptile { grid-template-columns: 80px minmax(0,1fr); column-gap: 12px; } .pack-art { width: 80px; } .ptile h5 { font-size: 17px; } .pbtn { font-size: 13px; gap: 5px; } .pbtn span { font-size: 11.5px; } }
 
 
 /* ============ TACTICS — the tactic-change board (NB-17) ============ */
@@ -978,6 +973,121 @@ th { font-weight: 700; font-size: 11.5px; letter-spacing: .1em; text-transform: 
 .bid i svg { width: 11px; height: 11px; }
 @media (max-width: 480px) { .auc__grid { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 148px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; } .auc__grid::-webkit-scrollbar { display: none; } .atile { scroll-snap-align: start; } }
 
+
+/* ============ HUB + HUD (NB-02) ============ */
+.hub { position: relative; width: 100%; max-width: 440px; margin: 0 auto; border-radius: 22px; overflow: hidden; padding: 12px 10px 0;
+  background: radial-gradient(90% 40% at 50% 46%, rgba(183,201,207,.28), rgba(183,201,207,0) 70%), linear-gradient(180deg, #043654 0%, #09547D 12%, #0B6B94 26%, #388AA9 58%, #6A93A1 74%, #1E3540 100%);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.08), 0 14px 30px rgba(0,0,0,.5); }
+.hudrow { display: flex; align-items: center; gap: 6px; }
+.hpill { flex: 1 1 0; min-width: 0; display: flex; align-items: center; gap: 6px; height: 44px; border-radius: 22px; padding: 0 10px 0 4px; background: #EBF0F4; color: #2A2E32; box-shadow: 0 3px 8px rgba(0,30,50,.35); }
+.hpill--me { flex: 1.35 1 0; }
+.hpill > span:last-child { min-width: 0; line-height: 1.1; }
+.hpill b { display: block; font-weight: 800; font-size: 12.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.hpill small { display: block; font-weight: 700; font-size: 10px; color: #9CA1A8; }
+.hpill__disc { flex: 0 0 auto; width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; background: #061C5A; color: #EAF1FF; font-weight: 800; font-size: 9.5px; box-shadow: 0 0 0 2px #FFFFFF; }
+.hp-tp { display: inline-flex; align-items: center; gap: 3px; font-family: var(--num-face); font-size: 14px; color: #DA9B1C; }
+.hp-tp i { font-family: var(--ui); font-style: normal; font-weight: 800; font-size: 8.5px; color: #F3E2B3; background: #DDAB0D; border-radius: 3px; padding: 0 3px; }
+.hpill__ico { position: relative; flex: 0 0 auto; width: 34px; height: 34px; display: grid; place-items: center; }
+.hpill__ico svg { width: 30px; height: 24px; }
+.hpill__ico--silver { border-radius: 50%; background: radial-gradient(circle at 40% 35%, #DEE1E3, #C4C6C7 50%, #A8AAAC 78%, #707376); box-shadow: inset 0 0 0 2px #A8AAAC; }
+.hpill__ico--silver svg { width: 20px; height: 20px; color: #8E9194; }
+.hpill__ico em { position: absolute; right: -3px; bottom: -2px; width: 15px; height: 15px; border-radius: 50%; display: grid; place-items: center; background: #B88A22; color: #FFFFFF; font-style: normal; font-weight: 800; font-size: 12px; line-height: 1; box-shadow: 0 0 0 1.5px #FFFFFF; }
+.hmenu { position: relative; flex: 0 0 auto; width: 44px; height: 44px; border-radius: 50%; display: grid; place-content: center; gap: 4px; background: #2A2E32; box-shadow: inset 0 0 0 2px #3D454B, 0 3px 8px rgba(0,0,0,.35); }
+.hmenu i { display: block; width: 18px; height: 3px; border-radius: 2px; background: #B2B6C1; }
+.hmenu em { position: absolute; right: -2px; top: -3px; width: 16px; height: 16px; border-radius: 50%; display: grid; place-items: center; background: #E5381E; color: #FFFFFF; font-style: normal; font-weight: 800; font-size: 11px; box-shadow: 0 0 6px rgba(229,56,30,.8); }
+.evcard { position: relative; display: grid; grid-template-columns: 46px minmax(0,1fr) 62px; gap: 8px; align-items: center; margin: 14px 4px 0; padding: 12px 10px 10px 12px; border-radius: 22px;
+  background: linear-gradient(180deg, rgba(255,255,255,.18), rgba(255,255,255,0) 45%), linear-gradient(90deg, #6CD4FE 0%, #A4AFED 50%, #FF75CF 100%); box-shadow: 0 8px 20px rgba(255,117,207,.28); }
+.evcard__hex svg { width: 46px; height: 50px; display: block; }
+.evcard__main b { font-weight: 800; font-size: 26px; line-height: 1; color: #EEFCFC; text-shadow: 0 2px 0 #5792B4, 0 0 6px rgba(87,146,180,.6); }
+.evcard__main b small { font-size: 13px; font-weight: 700; opacity: .9; }
+.evcard__track { display: block; height: 10px; margin: 7px 0 6px; border-radius: 3px; background: #0D0D0D; overflow: hidden; }
+.evcard__track s { display: block; height: 100%; background: linear-gradient(180deg, #1FF9FE, #0BD4FE); }
+.evcard__lbl { display: inline-flex; align-items: center; gap: 5px; font-weight: 700; font-size: 11px; color: #E7EDF1; text-shadow: 0 1px 1px rgba(40,60,110,.5); }
+.evcard__lbl svg { width: 12px; height: 12px; color: #E7EDF1; }
+.evcard__reward { position: absolute; right: 70px; top: 10px; padding: 3px 14px 3px 16px; background: #0D0D0D; color: #16FAFA; font-weight: 800; font-size: 12px; letter-spacing: .04em; clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%); box-shadow: 0 2px 0 #15F2F2; }
+.evcard__prize { position: relative; height: 70px; border-radius: 8px; display: grid; place-items: center; overflow: hidden; background: radial-gradient(90% 70% at 50% 30%, #4181AB, #0A1C2B 75%); box-shadow: 0 0 0 1px rgba(202,241,247,.35); }
+.evcard__prize svg { position: absolute; bottom: -2px; width: 46px; height: 50px; color: #0A1C2B; filter: drop-shadow(0 0 2px #CAF1F7); }
+.evcard__prize b { position: relative; font-weight: 800; font-size: 15px; color: #FFFFFF; text-shadow: 0 0 6px #4181AB, 0 1px 2px #000000; }
+.evcard__prize em { z-index: 1; position: absolute; right: 3px; bottom: 3px; min-width: 18px; height: 18px; border-radius: 9px; display: grid; place-items: center; background: #161C26; color: #ADA9B5; font-style: normal; font-weight: 800; font-size: 11px; }
+.hubcols { display: grid; grid-template-columns: 74px 1fr 74px; gap: 6px; padding: 14px 0 6px; min-height: 420px; }
+.hubcol { display: grid; align-content: start; gap: 10px; }
+.hbtn { display: grid; justify-items: center; gap: 3px; }
+.hbtn > i { position: relative; width: 62px; height: 62px; border-radius: 50%; display: grid; place-items: center; font-style: normal; color: #FFFFFF;
+  background: radial-gradient(circle at 50% 30%, #3B6EA6, #284C84 55%, #0F1F35 100%); box-shadow: inset 0 0 0 2.5px #F7FDFF, 0 4px 10px rgba(0,20,40,.45); }
+.hbtn > i svg { width: 26px; height: 26px; margin-top: -8px; }
+.hbtn > i b { position: absolute; left: -6px; right: -6px; bottom: 5px; text-align: center; font-weight: 800; font-size: 9px; letter-spacing: .02em; line-height: 1; text-transform: uppercase;
+  text-shadow: 0 0 1px #0F1F35, 1px 1px 0 #0F1F35, -1px -1px 0 #0F1F35, 1px -1px 0 #0F1F35, -1px 1px 0 #0F1F35; }
+.hbtn small { min-width: 54px; text-align: center; background: #161C22; color: #E4E4E0; border-radius: 6px; padding: 1px 6px; font-weight: 700; font-size: 10px; font-variant-numeric: tabular-nums; }
+.hbtn .vs { font-weight: 800; font-style: italic; font-size: 20px; margin-top: -8px; color: #FFFFFF; text-shadow: 0 0 1px #0F1F35, 0 1px 0 #C8311B; }
+.hubmid { display: grid; place-items: center; }
+.hubmid span { writing-mode: vertical-rl; transform: rotate(180deg); font-weight: 700; font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.45); }
+.hub .homebar-wrap { padding-top: 58px; }
+.hub .homebar { border-radius: 22px 22px 0 0; }
+@media (max-width: 400px) { .hudrow { gap: 4px; } .hpill b { font-size: 10.5px; overflow: visible; } .hpill { gap: 3px; padding-right: 6px; height: 40px; } .hpill small { font-size: 9px; } .hpill__disc { width: 28px; height: 28px; font-size: 8px; } .hpill__ico { width: 26px; height: 26px; } .hpill__ico svg { width: 24px; height: 18px; } .hpill__ico--silver svg { width: 15px; height: 15px; } .hp-tp { font-size: 12px; } .hmenu { width: 38px; height: 38px; } .hubcols { grid-template-columns: 66px 1fr 66px; } .hbtn > i { width: 56px; height: 56px; } }
+
+/* ============ PACKS (NB-31) + OPENING RESULT (NB-32) ============ */
+.packrow { width: 100%; display: flex; flex-wrap: wrap; justify-content: center; gap: 18px 26px; }
+.packrow figure { margin: 0; display: grid; justify-items: center; gap: 8px; }
+.packrow figcaption { font-weight: 700; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-4); }
+.pk { display: block; width: 150px; height: auto; overflow: visible; filter: drop-shadow(0 10px 14px rgba(0,0,0,.5)); }
+.pk--free { --pk-body: #EEEEED; --pk-back: #D2D6DA; --pk-sil: #ADB7EA; --pk-sil-2: #9ABDC6; --pk-rim: #D8DAE6; --pk-glow: rgba(154,189,198,.0); --pk-label: #33405B; }
+.pk--core { --pk-body: #151522; --pk-back: #2B2340; --pk-sil: #0F1423; --pk-sil-2: #C83667; --pk-rim: #27B5DD; --pk-glow: rgba(39,181,221,.65); --pk-label: #DFE6EC; }
+.pk--edition { --pk-body: #202123; --pk-back: #322F2D; --pk-sil: #14161C; --pk-sil-2: #322F2D; --pk-rim: #C9B7A5; --pk-glow: rgba(201,183,165,.6); --pk-label: #CBC2A2; }
+.open { width: 100%; max-width: 460px; margin: 0 auto; border-radius: 18px; overflow: hidden; padding: 12px 12px 16px; text-align: center;
+  background: radial-gradient(80% 50% at 50% 40%, #1F3A54, #0A1823 60%, #050D14); box-shadow: inset 0 0 0 1px rgba(255,255,255,.06), 0 14px 30px rgba(0,0,0,.5); }
+.open__toast { display: flex; align-items: center; gap: 8px; text-align: left; margin: 0 auto 14px; max-width: 360px; border-radius: 18px; padding: 7px 12px 7px 7px; background: #1C1C1C; color: #EBF0F4; font-weight: 700; font-size: 12px; line-height: 1.3; box-shadow: 0 6px 14px rgba(0,0,0,.45); }
+.open__toast i { flex: 0 0 auto; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: #2A2E32; color: #D8A325; }
+.open__toast i svg { width: 18px; height: 18px; }
+.open__toast b { color: #38D4FF; }
+.open h5 { margin: 0; font-weight: 800; font-size: 20px; color: #EBF0F4; }
+.open > p { margin: 2px 0 12px; font-weight: 700; font-size: 12.5px; color: #AFB0B4; }
+.open__rows { display: grid; gap: 8px; justify-items: center; }
+.open__row { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+.open__card { position: relative; width: 92px; }
+.open__card > i { position: absolute; left: -3px; top: -3px; z-index: 8; width: 12px; height: 12px; border-radius: 50%; background: #FD5B4B; box-shadow: 0 0 0 1.5px #0A1823; }
+.mpc--sm .mpc__face { height: 100px; }
+.mpc--sm .mpc__ovr { font-size: 17px; min-width: 32px; height: 22px; padding: 0 3px; border-radius: 7px; left: 3px; top: 3px; }
+.mpc--sm .mpc__pos { top: 28px; left: 3px; font-size: 8.5px; padding: 0 4px; } .mpc--sm .mpc__pos small { font-size: 7.5px; }
+.mpc--sm .mpc__team { display: none; }
+.mpc--sm .mpc__crest { width: 28px; height: 28px; }
+.mpc--sm .mpc__lv { font-size: 9px; padding: 1px 8px 1px 4px; }
+.mpc--sm .mpc__cond { width: 16px; height: 16px; right: 3px; bottom: 3px; }
+.mpc--sm .mpc__name { font-size: 10px; padding: 3px 2px; }
+.open__btns { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 16px 0 10px; }
+.open__btns .pbtn { height: 44px; font-size: 14px; }
+.open__tap { margin: 0; font-weight: 700; font-size: 12.5px; color: #EEF3FC; }
+
+/* ============ COLLECTION GRID (NG-02) ============ */
+.coll { width: 100%; max-width: 520px; margin: 0 auto; border-radius: 18px; overflow: hidden; background: #1C1C1C; box-shadow: inset 0 0 0 1px rgba(255,255,255,.05), 0 14px 30px rgba(0,0,0,.5); }
+.coll__head { position: relative; padding: 14px; text-align: center; background: #2B2E33; border-bottom: 2px solid #4E555D; }
+.coll__head b { font-weight: 800; font-size: 19px; color: #E9EFF5; }
+.coll__head svg { position: absolute; left: 16px; top: 50%; width: 12px; height: 20px; margin-top: -10px; color: #E9EFF5; }
+.coll__bar { display: flex; align-items: center; gap: 10px; padding: 9px 12px; background: #2B2E33; }
+.coll__count { display: inline-flex; align-items: center; gap: 6px; font-weight: 800; font-size: 14px; color: #9BA0A5; margin-right: auto; }
+.coll__count svg { width: 18px; height: 18px; color: #9BA0A5; }
+.coll__sort { display: inline-flex; align-items: center; gap: 8px; height: 30px; padding: 0 12px; border-radius: 8px; background: #3F474A; color: #999EA4; font-weight: 800; font-size: 12px; letter-spacing: .02em; white-space: nowrap; }
+.coll__sort svg { width: 12px; height: 8px; }
+.coll__filter { width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; background: #41464B; color: #999EA4; }
+.coll__filter svg { width: 16px; height: 16px; }
+.coll__grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 22px 10px; padding: 22px 12px 14px; }
+.coll__item { position: relative; min-width: 0; }
+.inlineup { position: absolute; left: 50%; top: -11px; z-index: 8; transform: translateX(-50%); white-space: nowrap; background: #031925; color: #25D0E3; border-radius: 9px; padding: 1px 10px; font-weight: 800; font-size: 11.5px; box-shadow: inset 0 0 0 1.5px #27D3F1, 0 2px 6px rgba(0,0,0,.5); }
+@media (max-width: 480px) {
+  .coll__grid { gap: 20px 7px; padding: 20px 8px 12px; }
+  .coll .mpc__face { height: 112px; }
+  .coll .mpc__ovr { font-size: 18px; min-width: 34px; height: 24px; padding: 0 3px; }
+  .coll .mpc__pos { top: 31px; font-size: 9px; } .coll .mpc__pos small { font-size: 8px; }
+  .coll .mpc__team { display: none; }
+  .coll .mpc__crest { width: 30px; height: 30px; }
+  .coll .mpc__lv { font-size: 9.5px; padding: 1px 8px 1px 4px; }
+  .coll .mpc__cond { width: 18px; height: 18px; }
+  .coll .mpc__name { font-size: 10.5px; }
+  .inlineup { font-size: 10px; padding: 0 7px; }
+  .coll__bar { gap: 7px; padding: 8px 9px; } .coll__count { font-size: 13px; } .coll__sort { font-size: 10.5px; padding: 0 9px; gap: 6px; } .coll__filter { flex: 0 0 auto; width: 30px; height: 30px; }
+  .open__card { width: 86px; }
+}
+.mpc--starter.mpc--r { --jersey: #2E5674; --trim: #E2F1F7; --num: #FFFFFF; --bust: #9796B0; }
+
 /* ============ THE CLIPBOARD (ours) ============ */
 .board-fig { margin: 18px 0 24px; max-width: 560px; }
 .board-fig svg { width: 100%; height: auto; display: block; }
@@ -1047,6 +1157,24 @@ footer.end { color: var(--ink-4); font-size: 13.5px; padding-block: 30px 60px; }
     <symbol id="ic-refresh" viewBox="0 0 20 20"><path d="M15.8 8.2 A6.2 6.2 0 0 0 4.6 6.2 M4.2 11.8 A6.2 6.2 0 0 0 15.4 13.8" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><path d="M16.9 3.4 V8.9 H11.4 Z M3.1 16.6 V11.1 H8.6 Z" fill="currentColor"/></symbol>
     <symbol id="ic-doc" viewBox="0 0 16 18"><path d="M2 1 H10 L14 5 V17 H2 Z" fill="currentColor"/><path d="M5 8.5 H11 M5 11.5 H11 M5 14.5 H9" stroke="#1C1C1C" stroke-width="1.6"/></symbol>
     <symbol id="ic-ball" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="currentColor"/><path d="M2 12 H22 M12 2 V22 M5 5 C9 9 9 15 5 19 M19 5 C15 9 15 15 19 19" stroke="#1C1C1C" stroke-opacity=".55" stroke-width="1.7" fill="none"/></symbol>
+    <linearGradient id="g-edband" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#B9A57C"/><stop offset=".45" stop-color="#917E5B"/><stop offset="1" stop-color="#735C3D"/></linearGradient>
+    <symbol id="star5" viewBox="0 0 20 20"><path d="M10 1.6 L12.6 7.2 L18.7 7.8 L14.1 11.9 L15.5 18 L10 14.9 L4.5 18 L5.9 11.9 L1.3 7.8 L7.4 7.2 Z" fill="#FCEFC2" stroke="#291C0A" stroke-width="1.3" stroke-linejoin="round"/></symbol>
+    <symbol id="pk-body" viewBox="0 0 120 170"><defs><linearGradient id="g-foil" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#FFFFFF" stop-opacity=".0"/><stop offset=".12" stop-color="#FFFFFF" stop-opacity=".22"/><stop offset=".2" stop-color="#FFFFFF" stop-opacity="0"/><stop offset=".55" stop-color="#FFFFFF" stop-opacity=".1"/><stop offset=".62" stop-color="#FFFFFF" stop-opacity="0"/><stop offset=".9" stop-color="#000000" stop-opacity=".18"/><stop offset="1" stop-color="#000000" stop-opacity=".3"/></linearGradient></defs>
+      <path d="M6 10 L10 6 L14 10 L18 6 L22 10 L26 6 L30 10 L34 6 L38 10 L42 6 L46 10 L50 6 L54 10 L58 6 L62 10 L66 6 L70 10 L74 6 L78 10 L82 6 L86 10 L90 6 L94 10 L98 6 L102 10 L106 6 L110 10 L114 6 L114 160 L110 164 L106 160 L102 164 L98 160 L94 164 L90 160 L86 164 L82 160 L78 164 L74 160 L70 164 L66 160 L62 164 L58 160 L54 164 L50 160 L46 164 L42 160 L38 164 L34 160 L30 164 L26 160 L22 164 L18 160 L14 164 L10 160 L6 164 Z" style="fill:var(--pk-body)"/><path d="M6 10 L10 6 L14 10 L18 6 L22 10 L26 6 L30 10 L34 6 L38 10 L42 6 L46 10 L50 6 L54 10 L58 6 L62 10 L66 6 L70 10 L74 6 L78 10 L82 6 L86 10 L90 6 L94 10 L98 6 L102 10 L106 6 L110 10 L114 6 L114 160 L110 164 L106 160 L102 164 L98 160 L94 164 L90 160 L86 164 L82 160 L78 164 L74 160 L70 164 L66 160 L62 164 L58 160 L54 164 L50 160 L46 164 L42 160 L38 164 L34 160 L30 164 L26 160 L22 164 L18 160 L14 164 L10 160 L6 164 Z" fill="url(#g-foil)"/>
+      <path d="M6 20 H114 M6 150 H114" stroke="#000000" stroke-opacity=".18" stroke-width="1.2" fill="none"/>
+      <g style="filter:drop-shadow(0 0 4px var(--pk-glow))"><circle cx="64" cy="50" r="17" style="fill:var(--pk-sil-2)" opacity=".85"/><path d="M26 116 C28 88 44 76 64 76 C84 76 100 88 102 116 Z" style="fill:var(--pk-sil-2)" opacity=".85"/>
+      <circle cx="60" cy="50" r="17" style="fill:var(--pk-sil);stroke:var(--pk-rim);stroke-width:1.8"/><path d="M22 116 C24 88 40 76 60 76 C80 76 96 88 98 116 Z" style="fill:var(--pk-sil);stroke:var(--pk-rim);stroke-width:1.8"/></g></symbol>
+    <symbol id="ic-hex" viewBox="0 0 46 50"><polygon points="23,2 43,13.5 43,36.5 23,48 3,36.5 3,13.5" fill="#53CB7C" stroke="#DCF1C8" stroke-width="2"/><polygon points="23,8 38,16.5 38,33.5 23,42 8,33.5 8,16.5" fill="#032103"/><circle cx="25" cy="17" r="4.5" fill="#DCF1C8"/><path d="M14 38 C15 29 19 24 25 24 C30 24 33 28 34 34 L30 34 L29 30 L27 38 Z" fill="#DCF1C8"/><circle cx="31" cy="13" r="3" fill="#DCF1C8"/></symbol>
+    <symbol id="ic-star" viewBox="0 0 24 24"><path d="M12 2 L14.9 8.6 L22 9.3 L16.6 14 L18.2 21 L12 17.3 L5.8 21 L7.4 14 L2 9.3 L9.1 8.6 Z" fill="currentColor"/></symbol>
+    <symbol id="ic-bubble" viewBox="0 0 24 24"><path d="M3 5 H21 V16 H11 L6 20 V16 H3 Z" fill="currentColor"/><path d="M8 9.5 H16 M8 12.5 H13" stroke="#0F1F35" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="ic-flag" viewBox="0 0 24 24"><path d="M5 2 V22" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M6 3 H19 L16 8 L19 13 H6 Z" fill="currentColor"/></symbol>
+    <symbol id="ic-trophy" viewBox="0 0 24 24"><path d="M7 3 H17 V9 A5 5 0 0 1 7 9 Z M9 15 H15 L16 19 H8 Z M6 20 H18 V22 H6 Z" fill="currentColor"/><path d="M7 5 H3 C3 9 5 10 7 10 M17 5 H21 C21 9 19 10 17 10" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M11 13 H13 V15 H11 Z" fill="currentColor"/></symbol>
+    <symbol id="ic-cart" viewBox="0 0 24 24"><path d="M2 4 H5 L7.5 15 H18 L20.5 7 H6.2" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="9" cy="19.5" r="1.8" fill="currentColor"/><circle cx="16.5" cy="19.5" r="1.8" fill="currentColor"/></symbol>
+    <symbol id="ic-stairs" viewBox="0 0 24 24"><path d="M3 20 H8 V15 H13 V10 H18 V5 H21 V20 Z" fill="currentColor"/></symbol>
+    <symbol id="ic-cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2.5" fill="currentColor"/><path d="M7 3 V7 M17 3 V7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M8 13.5 L11 16.5 L16.5 10.5" fill="none" stroke="#0F1F35" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="ic-gift" viewBox="0 0 24 24"><rect x="3" y="9" width="18" height="12" rx="1.5" fill="currentColor"/><rect x="2" y="6" width="20" height="4" rx="1" fill="currentColor"/><path d="M12 6 V21" stroke="#0F1F35" stroke-width="2"/><path d="M12 6 C9 1 5 3 7 6 M12 6 C15 1 19 3 17 6" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+    <symbol id="ic-cards" viewBox="0 0 24 24"><rect x="3" y="4" width="13" height="17" rx="2" fill="currentColor"/><path d="M18 6 L21 7 L18.5 20 L17 19.6" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="9.5" cy="10.5" r="2.6" fill="#2B2E33"/><path d="M5.5 18 C6 15 7.5 14 9.5 14 C11.5 14 13 15 13.5 18 Z" fill="#2B2E33"/></symbol>
+    <symbol id="ic-sliders" viewBox="0 0 24 24"><path d="M7 3 V21 M17 3 V21" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><circle cx="7" cy="15" r="3" fill="#41464B" stroke="currentColor" stroke-width="2.2"/><circle cx="17" cy="8" r="3" fill="#41464B" stroke="currentColor" stroke-width="2.2"/></symbol>
     <symbol id="i-bolt" viewBox="0 0 10 14"><path d="M6.5 0 L0 8 H4 L3 14 L10 5.5 H6 Z" fill="currentColor"/></symbol>
     <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 2 L20 5 V11 C20 16.5 16.4 20.4 12 22 C7.6 20.4 4 16.5 4 11 V5 Z" fill="currentColor"/><path d="M12 5.4 L17 7.3 V11.2 C17 14.9 14.7 17.6 12 18.7 C9.3 17.6 7 14.9 7 11.2 V7.3 Z" fill="none" stroke="#15563E" stroke-width="1.5" stroke-linejoin="round"/></symbol>
     <symbol id="i-ballic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="currentColor"/><path d="M2 12 H22 M12 2 V22 M5 5 C9 9 9 15 5 19 M19 5 C15 9 15 15 19 19" stroke="#664F20" stroke-width="1.7" fill="none"/></symbol>
@@ -1836,31 +1964,117 @@ footer.end { color: var(--ink-4); font-size: 13.5px; padding-block: 30px 60px; }
           <li><b>The condition arrows</b> carry a dark <code>#101B14</code> outline. Normal points left, not right.</li>
         </ul>
 
-        <h3>Hub, HUD and packs</h3>
-        <div class="sky">
-          <span class="hud"><i class="g">G</i><span>6,700<small>Gold</small></span></span>
-          <span class="hud"><i class="s">S</i><span>71,300<small>Silver</small></span></span>
-          <div class="eventbar"><span class="reward">REWARD</span><b>23<small> /90</small></b><div class="track"><i></i></div></div>
+        <h3>Hub and HUD</h3>
+        <div class="stage dark" style="padding:16px">
+          <div class="hub">
+            <div class="hudrow">
+              <span class="hpill hpill--me"><span class="hpill__disc">YOU</span><span><b>9004418290</b><span class="hp-tp"><i>TP</i>17071</span></span></span>
+              <span class="hpill"><span class="hpill__ico"><svg viewBox="0 0 16 12" aria-hidden="true"><use href="#ic-goldbar"/></svg><em>+</em></span><span><b>6,700</b><small>Gold</small></span></span>
+              <span class="hpill"><span class="hpill__ico hpill__ico--silver"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-ball"/></svg></span><span><b>71,300</b><small>Silver</small></span></span>
+              <span class="hmenu" aria-label="Menu"><i></i><i></i><i></i><em>!</em></span>
+            </div>
+            <div class="evcard">
+              <span class="evcard__hex"><svg viewBox="0 0 46 50" aria-hidden="true"><use href="#ic-hex"/></svg></span>
+              <div class="evcard__main"><b>23<small> /90</small></b><i class="evcard__track"><s style="width:24%"></s></i><span class="evcard__lbl">3-Point Contest <svg viewBox="0 0 16 16" aria-hidden="true"><use href="#ic-clock"/></svg>2d 10h</span></div>
+              <span class="evcard__reward">REWARD</span>
+              <span class="evcard__prize"><svg viewBox="0 0 86 92" aria-hidden="true"><use href="#sil"/></svg><b>+200</b><em>5</em></span>
+            </div>
+            <div class="hubcols">
+              <div class="hubcol"><span class="hbtn"><i><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-star"/></svg><b>Board</b></i><small>Event</small></span><span class="hbtn"><i><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-bubble"/></svg><b>Predict</b></i><small>01:50:53</small></span><span class="hbtn"><i><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-flag"/></svg><b>Takeover</b></i><small>Ended</small></span><span class="hbtn"><i><span class="vs">VS</span><b>Club clash</b></i><small>02:20:53</small></span><span class="hbtn"><i><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-trophy"/></svg><b>Arena</b></i><small>6d 9h</small></span></div>
+              <div class="hubmid"><span>Featured players stand here</span></div>
+              <div class="hubcol"><span class="hbtn"><i><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-cart"/></svg><b>Shop</b></i><small>Shop</small></span><span class="hbtn"><i><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-ticket"/></svg><b>Season pass</b></i><small>11d 10h</small></span><span class="hbtn"><i><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-stairs"/></svg><b>Step up</b></i><small>1d 10h</small></span><span class="hbtn"><i><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-cal"/></svg><b>Membership</b></i><small>6d 10h</small></span><span class="hbtn"><i><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-gift"/></svg><b>Package</b></i><small>1d 3h</small></span></div>
+            </div>
+              <div class="homebar-wrap">
+                <nav class="homebar" aria-label="Home bar, as drawn">
+                  <span class="hb-item"><svg viewBox="0 0 36 36" aria-hidden="true"><use href="#ic-team"/></svg>My team</span>
+                  <span class="hb-item"><svg viewBox="0 0 36 36" aria-hidden="true"><use href="#ic-scout"/></svg>Scout</span>
+                  <span></span>
+                  <span class="hb-item"><svg viewBox="0 0 36 36" aria-hidden="true"><use href="#ic-club"/></svg>Club</span>
+                  <span class="hb-item"><svg viewBox="0 0 36 36" aria-hidden="true"><use href="#ic-scale"/></svg>Auction</span>
+                  <div class="ball"><svg class="seams" viewBox="0 0 100 100" aria-hidden="true"><use href="#seams"/></svg><span>PLAY</span></div>
+                </nav>
+              </div>
+          </div>
         </div>
-        <div class="stage" style="margin-top:12px">
+        <p class="cap">The launch-week home hub, redrawn. It is the one light place in the game: a sky that runs from <code>#043654</code> to <code>#0B6B94</code> and on to <code>#388AA9</code>, with white HUD pills along the top.</p>
+        <ul class="clean">
+          <li><b>The HUD row</b> is four pieces on <code>#EBF0F4</code> pills with <code>#2A2E32</code> text and <code>#9CA1A8</code> labels. They are your club with its Team Power (<code>#DA9B1C</code> after a <code>#DDAB0D</code> tag), Gold with a buy badge, Silver, and a <code>#2A2E32</code> menu with a <code>#E5381E</code> alert.</li>
+          <li><b>The event card</b> runs <code>#6CD4FE</code> → <code>#A4AFED</code> → <code>#FF75CF</code> and is lighter at the top. Progress fills cyan <code>#1FF9FE</code> on a <code>#0D0D0D</code> track, and the REWARD flag is cyan <code>#16FAFA</code> on black.</li>
+          <li><b>Mode buttons</b> stand in two columns of five: a navy disc with a white <code>#F7FDFF</code> ring, its name printed across the bottom, and a <code>#161C22</code> pill beneath with the time left or its section.</li>
+          <li><b>What we change.</b> The game fills the middle with photographs of real players and uses the league logo as your club emblem. We leave the sky clear and use a plain disc, and our icons are our own. The club ID is a placeholder; the figures are the capture's.</li>
+        </ul>
+
+        <h3>Scout</h3>
+        <div class="stage dark" style="padding:16px">
           <div class="ptiles">
-            <div class="ptile ptile--free"><span class="pack-art" style="--pk:#DDE3E8;--pk-ink:#2A3B32"><svg viewBox="0 0 100 150" aria-hidden="true"><use href="#pack"/><text x="50" y="118" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-size="12" fill="#2A3B32">FREE PACK</text></svg></span><span class="odds"><i>i</i>View odds</span><h5>Free pack</h5><p>Free once a day</p>
+            <div class="ptile ptile--free"><span class="pack-art"><svg class="pk pk--free" viewBox="-4 -2 140 176" role="img" aria-label="Free pack, drawn"><g transform="translate(14 4) rotate(5 60 85)" opacity=".75"><use href="#pk-body" width="120" height="170" style="--pk-body:var(--pk-back);--pk-sil:var(--pk-back);--pk-sil-2:var(--pk-back);--pk-rim:rgba(255,255,255,.12)"/></g><use href="#pk-body" width="120" height="170"/><text x="12" y="27" font-family="Open Sans, sans-serif" font-weight="800" font-size="7.5" letter-spacing=".04em" fill="#33405B">CARDPACK</text><text x="60" y="140" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-size="15" fill="#33405B" stroke="none" stroke-width="0" paint-order="stroke">FREE PACK</text><text x="60" y="152" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-size="7.5" fill="#627698">SCOUT</text></svg></span><span class="odds"><i>i</i>View odds</span><h5>Free pack</h5><p>Free once a day</p>
               <div class="freebar"><em>Resets daily at 00:00 UTC</em><b>0/1</b>Free</div></div>
-            <div class="ptile ptile--core"><span class="pack-art" style="--pk:#2B2340;--pk-ink:#C9A7F0"><svg viewBox="0 0 100 150" aria-hidden="true"><use href="#pack"/><text x="50" y="118" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-size="12" fill="#C9A7F0">THE CORE</text></svg></span><span class="odds"><i>i</i>View odds</span><h5>The Core pack</h5><p>Players from The Core theme</p>
+            <div class="ptile ptile--core"><span class="pack-art"><svg class="pk pk--core" viewBox="-4 -2 140 176" role="img" aria-label="The Core pack, drawn"><g transform="translate(14 4) rotate(5 60 85)" opacity=".75"><use href="#pk-body" width="120" height="170" style="--pk-body:var(--pk-back);--pk-sil:var(--pk-back);--pk-sil-2:var(--pk-back);--pk-rim:rgba(255,255,255,.12)"/></g><use href="#pk-body" width="120" height="170"/><text x="12" y="27" font-family="Open Sans, sans-serif" font-weight="800" font-size="7.5" letter-spacing=".04em" fill="#DFE6EC">CARDPACK</text><text x="60" y="140" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-size="15" fill="#BE66CB" stroke="#27B5DD" stroke-width="0.9" paint-order="stroke">THE CORE</text><text x="60" y="152" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-size="7.5" fill="#DFE6EC">THEME SCOUT</text></svg></span><span class="odds"><i>i</i>View odds</span><h5>The Core pack</h5><p>Players from The Core theme</p>
               <div class="pity2">Epic guaranteed in 100 cards <b>0/100</b></div><div class="ptrack"><i></i></div>
               <div class="pbtns"><span class="pbtn"><span><svg class="goldbar" viewBox="0 0 16 12" aria-hidden="true"><use href="#ic-goldbar"/></svg>500</span>1 card</span><span class="pbtn"><span><svg class="goldbar" viewBox="0 0 16 12" aria-hidden="true"><use href="#ic-goldbar"/></svg>5000</span>10 cards</span></div></div>
-            <div class="ptile ptile--edition"><span class="pack-art" style="--pk:#2A251C;--pk-ink:#E4CF79"><svg viewBox="0 0 100 150" aria-hidden="true"><use href="#pack"/><text x="50" y="118" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-size="12" fill="#E4CF79">THE EDITION</text></svg></span><span class="odds"><i>i</i>View odds</span><h5>The Edition pack</h5><p>Legends from The Edition theme</p>
+            <div class="ptile ptile--edition"><span class="pack-art"><svg class="pk pk--edition" viewBox="-4 -2 140 176" role="img" aria-label="The Edition pack, drawn"><g transform="translate(14 4) rotate(5 60 85)" opacity=".75"><use href="#pk-body" width="120" height="170" style="--pk-body:var(--pk-back);--pk-sil:var(--pk-back);--pk-sil-2:var(--pk-back);--pk-rim:rgba(255,255,255,.12)"/></g><use href="#pk-body" width="120" height="170"/><rect x="6" y="122" width="108" height="30" fill="url(#g-edband)"/><use href="#b-lg" x="44" y="66" width="40" height="40"/><text x="12" y="27" font-family="Open Sans, sans-serif" font-weight="800" font-size="7.5" letter-spacing=".04em" fill="#CBC2A2">CARDPACK</text><text x="60" y="140" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-size="13.5" fill="#CBC2A2" stroke="#3A2414" stroke-width="0.9" paint-order="stroke">THE EDITION</text><text x="60" y="152" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-size="7.5" fill="#CBC2A2">FIXED RARITY SCOUT</text></svg></span><span class="odds"><i>i</i>View odds</span><h5>The Edition pack</h5><p>Legends from The Edition theme</p>
               <div class="pity2">Legend guaranteed in 200 cards <b>0/200</b></div><div class="ptrack"><i style="width:4%"></i></div>
               <div class="pbtns"><span class="pbtn"><span><svg class="goldbar" viewBox="0 0 16 12" aria-hidden="true"><use href="#ic-goldbar"/></svg>500</span>1 card</span><span class="pbtn"><span><svg class="goldbar" viewBox="0 0 16 12" aria-hidden="true"><use href="#ic-goldbar"/></svg>5000</span>10 cards</span></div></div>
           </div>
         </div>
-        <p class="cap">The HUD pills are the only white surfaces the game owns, and they live only on the sky hub.</p>
+        <p class="cap">The Scout tab: one tile per pack line, lit from the pack side.</p>
         <ul class="clean">
           <li><b>Scout tiles</b> are one colour per pack line: free <code>#026429</code>, The Core <code>#422A58</code>, The Edition <code>#4E4330</code>, each lit from the pack side.</li>
           <li><b>Each tile</b> carries a "View odds" chip, the pack name in <code>#EBF0F4</code> and a dimmed subtitle. The pity line shows its counter chip (<code>#231430</code> on The Core) above a <code>#4B535A</code> track.</li>
           <li><b>The buy buttons</b> come in pairs, 1 card and 10 cards, in <code>#00AEEF</code>. The gold price sits in a <code>#00729E</code> inset.</li>
           <li><b>The free tile</b> swaps the buttons for a <code>#768478</code> counter bar and a white reset tooltip.</li>
-          <li><b>The pack art is our own.</b> GRAVITY's packs carry the league logo, so we draw a plain crimped foil pack with a ball.</li>
+          <li><b>The pack art</b> is the same drawing as in Packs below, scaled to the tile.</li>
+        </ul>
+
+        <h3>Packs and the opening</h3>
+        <div class="stage dark" style="padding:22px 16px">
+          <div class="packrow">
+            <figure><svg class="pk pk--free" viewBox="-4 -2 140 176" role="img" aria-label="Free pack, drawn"><g transform="translate(14 4) rotate(5 60 85)" opacity=".75"><use href="#pk-body" width="120" height="170" style="--pk-body:var(--pk-back);--pk-sil:var(--pk-back);--pk-sil-2:var(--pk-back);--pk-rim:rgba(255,255,255,.12)"/></g><use href="#pk-body" width="120" height="170"/><text x="12" y="27" font-family="Open Sans, sans-serif" font-weight="800" font-size="7.5" letter-spacing=".04em" fill="#33405B">CARDPACK</text><text x="60" y="140" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-size="15" fill="#33405B" stroke="none" stroke-width="0" paint-order="stroke">FREE PACK</text><text x="60" y="152" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-size="7.5" fill="#627698">SCOUT</text></svg><figcaption>Free</figcaption></figure>
+            <figure><svg class="pk pk--core" viewBox="-4 -2 140 176" role="img" aria-label="The Core pack, drawn"><g transform="translate(14 4) rotate(5 60 85)" opacity=".75"><use href="#pk-body" width="120" height="170" style="--pk-body:var(--pk-back);--pk-sil:var(--pk-back);--pk-sil-2:var(--pk-back);--pk-rim:rgba(255,255,255,.12)"/></g><use href="#pk-body" width="120" height="170"/><text x="12" y="27" font-family="Open Sans, sans-serif" font-weight="800" font-size="7.5" letter-spacing=".04em" fill="#DFE6EC">CARDPACK</text><text x="60" y="140" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-size="15" fill="#BE66CB" stroke="#27B5DD" stroke-width="0.9" paint-order="stroke">THE CORE</text><text x="60" y="152" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-size="7.5" fill="#DFE6EC">THEME SCOUT</text></svg><figcaption>The Core</figcaption></figure>
+            <figure><svg class="pk pk--edition" viewBox="-4 -2 140 176" role="img" aria-label="The Edition pack, drawn"><g transform="translate(14 4) rotate(5 60 85)" opacity=".75"><use href="#pk-body" width="120" height="170" style="--pk-body:var(--pk-back);--pk-sil:var(--pk-back);--pk-sil-2:var(--pk-back);--pk-rim:rgba(255,255,255,.12)"/></g><use href="#pk-body" width="120" height="170"/><rect x="6" y="122" width="108" height="30" fill="url(#g-edband)"/><use href="#b-lg" x="44" y="66" width="40" height="40"/><text x="12" y="27" font-family="Open Sans, sans-serif" font-weight="800" font-size="7.5" letter-spacing=".04em" fill="#CBC2A2">CARDPACK</text><text x="60" y="140" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-size="13.5" fill="#CBC2A2" stroke="#3A2414" stroke-width="0.9" paint-order="stroke">THE EDITION</text><text x="60" y="152" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-size="7.5" fill="#CBC2A2">FIXED RARITY SCOUT</text></svg><figcaption>The Edition</figcaption></figure>
+          </div>
+        </div>
+        <div class="stage dark" style="padding:16px;margin-top:12px">
+          <div class="open">
+            <div class="open__toast"><i><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-star"/></svg></i><span>Mission <b>[Buy one pack in Scout]</b> complete.</span></div>
+            <h5>Open result</h5><p>The Edition player pack</p>
+            <div class="open__rows">
+              <div class="open__row"><div class="open__card"><i></i><div class="mpc mpc--c mpc--sm"><div class="mpc__face"><svg class="rc__art" viewBox="0 0 200 200" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><use href="#rings" width="200" height="200" style="color:var(--ring)"/><rect width="200" height="200" fill="url(#wm-season)"/><g class="bust"><use href="#bust" x="25" y="38" width="150" height="162"/></g><text x="100" y="174" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-size="30" style="fill:var(--num)">12</text></svg><span class="mpc__ovr">60</span><span class="mpc__pos">PF<small>/SF</small></span><span class="mpc__team">PHI</span><svg class="mpc__crest" viewBox="0 0 60 60" aria-hidden="true"><use href="#b-c"/></svg><span class="mpc__lv">Lv.1</span><svg class="mpc__cond" viewBox="0 0 24 24" aria-hidden="true"><use href="#c-mid"/></svg></div><div class="mpc__name">T. Watford</div><i class="mpc__sheen"></i></div></div><div class="open__card"><i></i><div class="mpc mpc--c mpc--sm"><div class="mpc__face"><svg class="rc__art" viewBox="0 0 200 200" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><use href="#rings" width="200" height="200" style="color:var(--ring)"/><rect width="200" height="200" fill="url(#wm-season)"/><g class="bust"><use href="#bust" x="25" y="38" width="150" height="162"/></g><text x="100" y="174" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-size="30" style="fill:var(--num)">9</text></svg><span class="mpc__ovr">60</span><span class="mpc__pos">PG<small>/SG</small></span><span class="mpc__team">CLE</span><svg class="mpc__crest" viewBox="0 0 60 60" aria-hidden="true"><use href="#b-c"/></svg><span class="mpc__lv">Lv.1</span><svg class="mpc__cond" viewBox="0 0 24 24" aria-hidden="true"><use href="#c-mid"/></svg></div><div class="mpc__name">C. Porter Jr.</div><i class="mpc__sheen"></i></div></div><div class="open__card"><i></i><div class="mpc mpc--c mpc--sm"><div class="mpc__face"><svg class="rc__art" viewBox="0 0 200 200" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><use href="#rings" width="200" height="200" style="color:var(--ring)"/><rect width="200" height="200" fill="url(#wm-season)"/><g class="bust"><use href="#bust" x="25" y="38" width="150" height="162"/></g><text x="100" y="174" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-size="30" style="fill:var(--num)">13</text></svg><span class="mpc__ovr">60</span><span class="mpc__pos">PF<small>/SF</small></span><span class="mpc__team">POR</span><svg class="mpc__crest" viewBox="0 0 60 60" aria-hidden="true"><use href="#b-c"/></svg><span class="mpc__lv">Lv.1</span><svg class="mpc__cond" viewBox="0 0 24 24" aria-hidden="true"><use href="#c-mid"/></svg></div><div class="mpc__name">K. Murray</div><i class="mpc__sheen"></i></div></div></div>
+              <div class="open__row"><div class="open__card"><i></i><div class="mpc mpc--c mpc--sm"><div class="mpc__face"><svg class="rc__art" viewBox="0 0 200 200" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><use href="#rings" width="200" height="200" style="color:var(--ring)"/><rect width="200" height="200" fill="url(#wm-season)"/><g class="bust"><use href="#bust" x="25" y="38" width="150" height="162"/></g><text x="100" y="174" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-size="30" style="fill:var(--num)">0</text></svg><span class="mpc__ovr">60</span><span class="mpc__pos">PG</span><span class="mpc__team">HOU</span><svg class="mpc__crest" viewBox="0 0 60 60" aria-hidden="true"><use href="#b-c"/></svg><span class="mpc__lv">Lv.1</span><svg class="mpc__cond" viewBox="0 0 24 24" aria-hidden="true"><use href="#c-mid"/></svg></div><div class="mpc__name">A. Holiday</div><i class="mpc__sheen"></i></div></div><div class="open__card"><i></i><div class="mpc mpc--r mpc--sm"><div class="mpc__face"><svg class="rc__art" viewBox="0 0 200 200" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><use href="#rings" width="200" height="200" style="color:var(--ring)"/><rect width="200" height="200" fill="url(#wm-season)"/><g class="bust"><use href="#bust" x="25" y="38" width="150" height="162"/></g><text x="100" y="174" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-size="30" style="fill:var(--num)">27</text></svg><span class="mpc__ovr">117</span><span class="mpc__pos">C</span><span class="mpc__team">MIN</span><svg class="mpc__crest" viewBox="0 0 60 60" aria-hidden="true"><use href="#b-r"/></svg><span class="mpc__lv">Lv.1</span><svg class="mpc__cond" viewBox="0 0 24 24" aria-hidden="true"><use href="#c-mid"/></svg></div><div class="mpc__name">R. Gobert</div><i class="mpc__sheen"></i></div></div><div class="open__card"><i></i><div class="mpc mpc--c mpc--sm"><div class="mpc__face"><svg class="rc__art" viewBox="0 0 200 200" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><use href="#rings" width="200" height="200" style="color:var(--ring)"/><rect width="200" height="200" fill="url(#wm-season)"/><g class="bust"><use href="#bust" x="25" y="38" width="150" height="162"/></g><text x="100" y="174" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-size="30" style="fill:var(--num)">23</text></svg><span class="mpc__ovr">60</span><span class="mpc__pos">SF<small>/PF</small></span><span class="mpc__team">MEM</span><svg class="mpc__crest" viewBox="0 0 60 60" aria-hidden="true"><use href="#b-c"/></svg><span class="mpc__lv">Lv.1</span><svg class="mpc__cond" viewBox="0 0 24 24" aria-hidden="true"><use href="#c-mid"/></svg></div><div class="mpc__name">C. Coward</div><i class="mpc__sheen"></i></div></div><div class="open__card"><i></i><div class="mpc mpc--c mpc--sm"><div class="mpc__face"><svg class="rc__art" viewBox="0 0 200 200" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><use href="#rings" width="200" height="200" style="color:var(--ring)"/><rect width="200" height="200" fill="url(#wm-season)"/><g class="bust"><use href="#bust" x="25" y="38" width="150" height="162"/></g><text x="100" y="174" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-size="30" style="fill:var(--num)">7</text></svg><span class="mpc__ovr">59</span><span class="mpc__pos">SF<small>/PF</small></span><span class="mpc__team">MIN</span><svg class="mpc__crest" viewBox="0 0 60 60" aria-hidden="true"><use href="#b-c"/></svg><span class="mpc__lv">Lv.1</span><svg class="mpc__cond" viewBox="0 0 24 24" aria-hidden="true"><use href="#c-mid"/></svg></div><div class="mpc__name">J. Ingles</div><i class="mpc__sheen"></i></div></div></div>
+              <div class="open__row"><div class="open__card"><i></i><div class="mpc mpc--c mpc--sm"><div class="mpc__face"><svg class="rc__art" viewBox="0 0 200 200" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><use href="#rings" width="200" height="200" style="color:var(--ring)"/><rect width="200" height="200" fill="url(#wm-season)"/><g class="bust"><use href="#bust" x="25" y="38" width="150" height="162"/></g><text x="100" y="174" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-size="30" style="fill:var(--num)">10</text></svg><span class="mpc__ovr">60</span><span class="mpc__pos">SG<small>/SF</small></span><span class="mpc__team">UTA</span><svg class="mpc__crest" viewBox="0 0 60 60" aria-hidden="true"><use href="#b-c"/></svg><span class="mpc__lv">Lv.1</span><svg class="mpc__cond" viewBox="0 0 24 24" aria-hidden="true"><use href="#c-mid"/></svg></div><div class="mpc__name">S. Mykhailiuk</div><i class="mpc__sheen"></i></div></div><div class="open__card"><i></i><div class="mpc mpc--c mpc--sm"><div class="mpc__face"><svg class="rc__art" viewBox="0 0 200 200" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><use href="#rings" width="200" height="200" style="color:var(--ring)"/><rect width="200" height="200" fill="url(#wm-season)"/><g class="bust"><use href="#bust" x="25" y="38" width="150" height="162"/></g><text x="100" y="174" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-size="30" style="fill:var(--num)">35</text></svg><span class="mpc__ovr">60</span><span class="mpc__pos">C<small>/PF</small></span><span class="mpc__team">DAL</span><svg class="mpc__crest" viewBox="0 0 60 60" aria-hidden="true"><use href="#b-c"/></svg><span class="mpc__lv">Lv.1</span><svg class="mpc__cond" viewBox="0 0 24 24" aria-hidden="true"><use href="#c-mid"/></svg></div><div class="mpc__name">M. Bagley III</div><i class="mpc__sheen"></i></div></div><div class="open__card"><i></i><div class="mpc mpc--uc mpc--sm"><div class="mpc__face"><svg class="rc__art" viewBox="0 0 200 200" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><use href="#rings" width="200" height="200" style="color:var(--ring)"/><rect width="200" height="200" fill="url(#wm-season)"/><g class="bust"><use href="#bust" x="25" y="38" width="150" height="162"/></g><text x="100" y="174" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-size="30" style="fill:var(--num)">2</text></svg><span class="mpc__ovr">81</span><span class="mpc__pos">PF<small>/SF</small></span><span class="mpc__team">LAL</span><svg class="mpc__crest" viewBox="0 0 60 60" aria-hidden="true"><use href="#b-uc"/></svg><span class="mpc__lv">Lv.1</span><svg class="mpc__cond" viewBox="0 0 24 24" aria-hidden="true"><use href="#c-mid"/></svg></div><div class="mpc__name">J. Vanderbilt</div><i class="mpc__sheen"></i></div></div></div>
+            </div>
+            <div class="open__btns"><span class="pbtn"><span><svg class="goldbar" viewBox="0 0 16 12" aria-hidden="true"><use href="#ic-goldbar"/></svg>500</span>1 pack</span><span class="pbtn"><span><svg class="goldbar" viewBox="0 0 16 12" aria-hidden="true"><use href="#ic-goldbar"/></svg>5000</span>10 packs</span></div>
+            <p class="open__tap">Tap to close</p>
+          </div>
+        </div>
+        <p class="cap">Packs, and a real launch-week ten-pack from The Edition: nine base cards and a Rare. Every new card carries a <code>#FD5B4B</code> dot.</p>
+        <ul class="clean">
+          <li><b>Every pack line has its own foil.</b> The free pack is white <code>#EEEEED</code> with a lavender <code>#ADB7EA</code> silhouette and navy <code>#33405B</code> type. The Core is midnight <code>#151522</code> with a neon rim, cyan <code>#27B5DD</code> and pink <code>#C83667</code>, and its name in <code>#BE66CB</code>. The Edition is near-black with a <code>#C9B7A5</code> rim light and a gold <code>#917E5B</code> band.</li>
+          <li><b>The packs are our own drawing.</b> Each keeps the game's anatomy: crimped ends, a CARDPACK label, a rim-lit silhouette, and the line's name low on the pack, with a second pack behind. They carry no league logo. The Edition pack wears the LEGEND crest, as the fixed-rarity Edition pack does.</li>
+          <li><b>The opening</b> sits on dark arena blue (<code>#0A1823</code>). The title is in <code>#EBF0F4</code> over the pack's name in <code>#AFB0B4</code>, then the cards in rows of three, four and three, and the same 1-pack and 10-pack buttons as Scout. A mission toast in <code>#1C1C1C</code> highlights its task in <code>#38D4FF</code>.</li>
+        </ul>
+
+        <h3>Card collection</h3>
+        <div class="stage dark" style="padding:16px">
+          <div class="coll">
+            <div class="coll__head"><svg viewBox="0 0 10 16" aria-hidden="true"><path d="M8 2 L2 8 L8 14" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg><b>Owned players</b></div>
+            <div class="coll__bar"><span class="coll__count"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-cards"/></svg>66/1000</span><span class="coll__sort">OVERALL · High to low<svg viewBox="0 0 16 10" aria-hidden="true"><use href="#ic-chev"/></svg></span><span class="coll__filter"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-sliders"/></svg></span></div>
+            <div class="coll__grid">
+              <div class="coll__item"><span class="inlineup">In lineup</span><div class="mpc mpc--ep mpc--starter"><div class="mpc__face"><svg class="rc__art" viewBox="0 0 200 200" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><use href="#rings" width="200" height="200" style="color:var(--ring)"/><rect width="200" height="200" fill="url(#wm-starter)"/><g class="bust"><use href="#bust" x="25" y="38" width="150" height="162"/></g><text x="100" y="174" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-size="30" style="fill:var(--num)">77</text></svg><span class="mpc__ovr">149</span><span class="mpc__pos">PG<small>/SG</small></span><span class="mpc__team">LAL</span><svg class="mpc__crest" viewBox="0 0 60 60" aria-hidden="true"><use href="#b-ep"/></svg><span class="mpc__lv">Lv.12</span><svg class="mpc__cond" viewBox="0 0 24 24" aria-hidden="true"><use href="#c-best"/></svg></div><div class="mpc__name">L. Dončić</div><i class="mpc__sheen"></i></div></div>
+              <div class="coll__item"><span class="inlineup">In lineup</span><div class="mpc mpc--ur"><div class="mpc__face"><svg class="rc__art" viewBox="0 0 200 200" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><use href="#rings" width="200" height="200" style="color:var(--ring)"/><rect width="200" height="200" fill="url(#wm-season)"/><g class="bust"><use href="#bust" x="25" y="38" width="150" height="162"/></g><text x="100" y="174" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-size="30" style="fill:var(--num)">7</text></svg><span class="mpc__ovr">142</span><span class="mpc__pos">C<small>/PF</small></span><span class="mpc__team">OKC</span><svg class="mpc__crest" viewBox="0 0 60 60" aria-hidden="true"><use href="#b-ur"/></svg><span class="mpc__lv">Lv.1</span><svg class="mpc__cond" viewBox="0 0 24 24" aria-hidden="true"><use href="#c-worst"/></svg></div><div class="mpc__name">C. Holmgren</div><i class="mpc__sheen"></i></div></div>
+              <div class="coll__item"><span class="inlineup">In lineup</span><div class="mpc mpc--ur mpc--starter"><div class="mpc__face"><svg class="rc__art" viewBox="0 0 200 200" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><use href="#rings" width="200" height="200" style="color:var(--ring)"/><rect width="200" height="200" fill="url(#wm-starter)"/><g class="bust"><use href="#bust" x="25" y="38" width="150" height="162"/></g><text x="100" y="174" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-size="30" style="fill:var(--num)">24</text></svg><span class="mpc__ovr">130</span><span class="mpc__pos">SF<small>/SG</small></span><span class="mpc__team">CHA</span><svg class="mpc__crest" viewBox="0 0 60 60" aria-hidden="true"><use href="#b-ur"/></svg><span class="mpc__lv">Lv.3</span><svg class="mpc__cond" viewBox="0 0 24 24" aria-hidden="true"><use href="#c-best"/></svg></div><div class="mpc__name">B. Miller</div><i class="mpc__sheen"></i></div></div>
+              <div class="coll__item"><span class="inlineup">In lineup</span><div class="mpc mpc--ur mpc--starter"><div class="mpc__face"><svg class="rc__art" viewBox="0 0 200 200" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><use href="#rings" width="200" height="200" style="color:var(--ring)"/><rect width="200" height="200" fill="url(#wm-starter)"/><g class="bust"><use href="#bust" x="25" y="38" width="150" height="162"/></g><text x="100" y="174" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-size="30" style="fill:var(--num)">34</text></svg><span class="mpc__ovr">129</span><span class="mpc__pos">C<small>/PF</small></span><span class="mpc__team">ORL</span><svg class="mpc__crest" viewBox="0 0 60 60" aria-hidden="true"><use href="#b-ur"/></svg><span class="mpc__lv">Lv.1</span><svg class="mpc__cond" viewBox="0 0 24 24" aria-hidden="true"><use href="#c-best"/></svg></div><div class="mpc__name">W. Carter Jr.</div><i class="mpc__sheen"></i></div></div>
+              <div class="coll__item"><span class="inlineup">In lineup</span><div class="mpc mpc--ur mpc--starter"><div class="mpc__face"><svg class="rc__art" viewBox="0 0 200 200" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><use href="#rings" width="200" height="200" style="color:var(--ring)"/><rect width="200" height="200" fill="url(#wm-starter)"/><g class="bust"><use href="#bust" x="25" y="38" width="150" height="162"/></g><text x="100" y="174" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-size="30" style="fill:var(--num)">1</text></svg><span class="mpc__ovr">127</span><span class="mpc__pos">PG<small>/SG</small></span><span class="mpc__team">HOU</span><svg class="mpc__crest" viewBox="0 0 60 60" aria-hidden="true"><use href="#b-ur"/></svg><span class="mpc__lv">Lv.1</span><svg class="mpc__cond" viewBox="0 0 24 24" aria-hidden="true"><use href="#c-best"/></svg></div><div class="mpc__name">A. Thompson</div><i class="mpc__sheen"></i></div></div>
+              <div class="coll__item"><span class="inlineup">In lineup</span><div class="mpc mpc--r mpc--starter"><div class="mpc__face"><svg class="rc__art" viewBox="0 0 200 200" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><use href="#rings" width="200" height="200" style="color:var(--ring)"/><rect width="200" height="200" fill="url(#wm-starter)"/><g class="bust"><use href="#bust" x="25" y="38" width="150" height="162"/></g><text x="100" y="174" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-size="30" style="fill:var(--num)">5</text></svg><span class="mpc__ovr">120</span><span class="mpc__pos">SG<small>/SF</small></span><span class="mpc__team">OKC</span><svg class="mpc__crest" viewBox="0 0 60 60" aria-hidden="true"><use href="#b-r"/></svg><span class="mpc__lv">Lv.9</span><svg class="mpc__cond" viewBox="0 0 24 24" aria-hidden="true"><use href="#c-best"/></svg></div><div class="mpc__name">L. Dort</div><i class="mpc__sheen"></i></div></div>
+            </div>
+          </div>
+        </div>
+        <p class="cap">A launch-day collection, redrawn with its real top six: sorted by OVERALL, three to a row, and every one of them in the lineup.</p>
+        <ul class="clean">
+          <li><b>The bar</b> carries the count (<code>#9BA0A5</code>, 66 of 1,000 slots), the sort in a <code>#3F474A</code> pill and the filter in a <code>#41464B</code> disc, on the <code>#2B2E33</code> header under a <code>#4E555D</code> rule.</li>
+          <li><b>In lineup</b> is a cyan tag that sits on each card's top edge: <code>#25D0E3</code> text on <code>#031925</code> inside a <code>#27D3F1</code> rim.</li>
+          <li><b>The cards are the same mini-cards as the lineup.</b> Rarity sets the frame, edition sets the field, and the condition arrow sits bottom right, so Holmgren's red Worst arrow reads at a glance.</li>
+          <li><b>On phones</b> the grid keeps three columns and the cards shrink, as the game's do.</li>
         </ul>
 
         <h3>Arena — the opponent list</h3>
@@ -1932,7 +2146,7 @@ footer.end { color: var(--ink-4); font-size: 13.5px; padding-block: 30px 60px; }
     <section id="rarities">
       <div class="sec-head"><div class="wrap"><div class="sec-head__inner"><h2>Rarities</h2><p>Six metals, measured off card frames</p></div></div></div>
       <div class="wrap sec-body">
-        <p class="lede">Rarity is the first thing a player reads, before the number. Each step up the ladder adds one more material: a pinline at Uncommon, brushed metal and rim light at Rare, a gold bevel and foil at Ultra Rare, holo, neon and light shards at Epic, and at Legend an ember-gold frame on The Edition's black, rim-lit field. Move over a card to tilt it.</p>
+        <p class="lede">Rarity is the first thing a player reads, before the number. Each step up the ladder adds one more material: a pinline at Uncommon, brushed metal and rim light at Rare, a gold bevel and foil at Ultra Rare, holo, neon and light shards at Epic. Legend changes the card itself: a chamfered champagne-gold frame, a black-and-white portrait, the name printed on the art, and six stars around the crest at its foot. Move over a card to tilt it.</p>
         <div class="stage dark" style="padding:28px 22px 26px">
           <div class="rcards rcards--ladder">
           <div class="rc rc--c" data-tilt>
@@ -2024,23 +2238,23 @@ footer.end { color: var(--ink-4); font-size: 13.5px; padding-block: 30px 60px; }
             <div class="rc__frame">
               <div class="rc__field">
                 <svg class="rc__art" viewBox="0 0 200 200" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
-                  <g class="rays"><use href="#ed-rays" width="200" height="200"/></g><use href="#rings" width="200" height="200" style="color:var(--ring)"/>
+                  <use href="#rings" width="200" height="200" style="color:var(--ring)"/>
                   <g class="bust"><use href="#bust" x="25" y="38" width="150" height="162"/></g>
-                  <text x="100" y="172" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-size="28" style="fill:var(--num)">9</text>
+                  <text x="100" y="168" text-anchor="middle" font-family="Open Sans, sans-serif" font-weight="800" font-size="26" style="fill:var(--num)">2</text>
                 </svg>
-                <span class="rc__ovr"><i>—</i></span><span class="rc__pos">PG</span>
-                <svg class="rc__badge" viewBox="0 0 60 60" aria-hidden="true"><use href="#b-lg"/></svg>
-                <span class="rc__lv">Lv.1</span><span class="rc__ed rc__ed--edition">THE EDITION</span>
+                <span class="rc__ovr">220</span><span class="rc__pos">PF<small>/SF</small></span><span class="rc__team">CHA</span>
+                <svg class="rc__cond" viewBox="0 0 24 24" aria-hidden="true"><use href="#c-mid"/></svg>
+                <span class="rc__lgname">L. Johnson</span><span class="rc__lv">Lv.1</span>
               </div>
-              <div class="rc__plate"><small>Tony</small><b>Parker</b></div>
+              <div class="rc__band"><span class="stars"><svg viewBox="0 0 20 20" aria-hidden="true"><use href="#star5"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><use href="#star5"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><use href="#star5"/></svg></span><svg class="rc__crest" viewBox="0 0 60 60" aria-hidden="true"><use href="#b-lg"/></svg><span class="stars"><svg viewBox="0 0 20 20" aria-hidden="true"><use href="#star5"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><use href="#star5"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><use href="#star5"/></svg></span></div>
               <i class="rc__sheen"></i>
             </div>
-            <div class="rc__tag"><b>Legend</b> · 0.1%<small>Crest measured · frame provisional</small></div>
+            <div class="rc__tag"><b>Legend</b> · 0.1%</div>
           </div>
           </div>
         </div>
         <p class="cap">Drawn in code from the measured frames. The player is a plain bust with the jersey number; no portrait, logo or card art is reproduced.</p>
-        <div class="note"><p><strong>The Legend card is half measured.</strong> Its crest and colours are the game's own: the LEGEND crest and The Edition pack art on a launch-week reward pack, plus The Edition's Scout pack. No Legend card is public yet, so the frame's construction (ember metal, diamond OVR, rim-lit field) is our extrapolation up the ladder, and its OVR shows a dash rather than an invented number. Re-measure it from the first Legend screenshot.</p></div>
+        <div class="note"><p><strong>The Legend card is measured from two launch-day auction listings:</strong> L. Johnson (220, Lv.1) and T. Parker (289, Lv.50). It is the only rarity that changes the card's anatomy. The rarity badge leaves the top corner for the foot, the name prints on the art instead of a plate, and the portrait turns black and white inside a white halo. The crest's colours were first read from The Edition reward pack and agree with the card.</p></div>
         <div class="tbl"><table>
           <thead><tr><th>Rarity</th><th>Frame metal</th><th>Badge</th><th>Pull rate (paid)</th></tr></thead>
           <tbody>
@@ -2049,7 +2263,7 @@ footer.end { color: var(--ink-4); font-size: 13.5px; padding-block: 30px 60px; }
             <tr><td>Rare</td><td><span class="sw" style="background:#88B9CC"></span>steel <code>#88B9CC → #839EB4 → #6E8FA9</code></td><td>blue <code>#2B89CC</code>, face <code>#C5DBE9</code></td><td>15%</td></tr>
             <tr><td>Ultra Rare</td><td><span class="sw" style="background:#C1A863"></span>champagne <code>#DECB98 → #C1A863 → #B79F53 → #E4CF79</code>, inner <code>#473508</code></td><td>dark hexagon in a gold bevel, cream-to-coral UR, gold wing</td><td>7.5%</td></tr>
             <tr><td>Epic</td><td><span class="sw" style="background:#9F27C6"></span>violet <code>#B934E6 → #A34ACA → #9F27C6</code>, neon pinline <code>#4AE3F8</code>, inner <code>#3B075B</code></td><td>violet crystal with wings and a cyan drop; OVR in a round disc with a cyan <code>#52E2F7</code> ring</td><td>0.5%</td></tr>
-            <tr><td>Legend</td><td><span class="sw" style="background:#BD7338"></span>ember gold <code>#E3DED4 → #CDA24A → #BD7338 → #AB5730</code>, gold pinline <code>#CDA24A</code>, field <code>#1B1F27</code> with <code>#C9B7A5</code> rim light. <em>Provisional:</em> no Legend card is public yet, so the frame is drawn from the crest and The Edition pack</td><td>measured: a gold diamond with laurels on a <code>#1B1F27</code> backing, a <code>#BD7338</code> plate with cream <code>#E3DED4</code> LEGEND letters, and a gold drop beneath</td><td>0.1% (themed packs)</td></tr>
+            <tr><td>Legend</td><td><span class="sw" style="background:#EADA91"></span>champagne <code>#FDFCEE → #F3E7C9 → #EADA91 → #C3A479 → #AB824D → #735324</code>, chamfered top corners, inner pin <code>#FBF9CB</code> on <code>#474430</code>; black field <code>#050100</code> with bronze glow <code>#563D23</code> and a black-and-white portrait</td><td>no corner badge: the LEGEND crest sits at the foot between ★★★ and ★★★ (<code>#FCEFC2</code>) on a <code>#3F281E</code> band; OVR in a <code>#1C2026</code> disc with a <code>#CBBD93</code> rim</td><td>0.1% (themed packs)</td></tr>
           </tbody>
         </table></div>
         <p>GRAVITY's odds pages already define four grades above Legend: <strong>Elite, Prime, Iconic and GOAT</strong>. None holds a card yet. The token set reserves <code>--r-elite</code> through <code>--r-goat</code>, to be measured on release.</p>
@@ -2336,9 +2550,26 @@ footer.end { color: var(--ink-4); font-size: 13.5px; padding-block: 30px 60px; }
   --nrw-au-head:#2A2D32; --nrw-au-wallet:#1B1F22; --nrw-au-tab-off:#3F474A; --nrw-au-tab-ink:#9A9FA5; --nrw-au-divider:#4E555B; --nrw-au-label:#92969B;
   --nrw-au-tile-rim:#3D3E40; --nrw-buynow:#B4811D; --nrw-buynow-ink:#F6ECD1; --nrw-au-price:#23272A; --nrw-au-price-ink:#DCE1E5; --nrw-au-bid-label:#95999E;
   --nrw-au-timer:#1C1C20; --nrw-au-timer-ink:#E0E4EA; --nrw-dia-hi:#63D6FA; --nrw-dia:#329FEA; --nrw-dia-lo:#1D578E;
-  /* Legend: crest measured from The Edition pack (NB-38); frame provisional until a Legend card is public */
+  /* Legend: card measured from NG-13 (L. Johnson 220, T. Parker 289); crest also on The Edition pack (NB-38) */
+  --nrw-r-lg-frame-hi:#F3E7C9; --nrw-r-lg-frame:#EADA91; --nrw-r-lg-frame-mid:#C3A479; --nrw-r-lg-frame-lo:#735324; --nrw-r-lg-pin:#FBF9CB; --nrw-r-lg-pin-lo:#474430;
+  --nrw-r-lg-field:#050100; --nrw-r-lg-glow:#563D23; --nrw-r-lg-halo:#E9EEF1; --nrw-r-lg-ovr:#1C2026; --nrw-r-lg-ovr-rim:#CBBD93;
+  --nrw-r-lg-band:#3F281E; --nrw-r-lg-band-line:#D8BB78; --nrw-r-lg-band-rim:#967A60; --nrw-r-lg-star:#FCEFC2; --nrw-r-lg-star-outline:#291C0A;
   --nrw-r-lg-gold:#CDA24A; --nrw-r-lg-gold-lo:#795C37; --nrw-r-lg-cream:#E3DED4; --nrw-r-lg-flame:#BD7338; --nrw-r-lg-ember:#AB5730; --nrw-r-lg-ground:#1B1F27;
   --nrw-ed-edition-rim:#C9B7A5; --nrw-ed-edition-band:#917E5B; --nrw-ed-edition-band-lo:#735C3D; --nrw-ed-edition-ink:#CBC2A2;
+  /* hub and HUD */
+  --nrw-sky-top:#043654; --nrw-sky-mid:#0B6B94; --nrw-hud-pill:#EBF0F4; --nrw-hud-ink:#2A2E32; --nrw-hud-label:#9CA1A8; --nrw-hud-tp:#DA9B1C; --nrw-hud-tp-tag:#DDAB0D; --nrw-hud-tp-tag-ink:#F3E2B3;
+  --nrw-coin:#C4C6C7; --nrw-coin-lo:#707376; --nrw-hud-menu:#2A2E32; --nrw-hud-menu-ink:#B2B6C1; --nrw-hud-alert:#E5381E;
+  --nrw-ev-left:#6CD4FE; --nrw-ev-mid:#A4AFED; --nrw-ev-right:#FF75CF; --nrw-ev-track:#0D0D0D; --nrw-ev-fill:#1FF9FE; --nrw-ev-fill-lo:#0BD4FE; --nrw-ev-num:#EEFCFC; --nrw-ev-num-shadow:#5792B4;
+  --nrw-ev-label:#E7EDF1; --nrw-reward:#0D0D0D; --nrw-reward-ink:#16FAFA; --nrw-ev-prize:#4181AB; --nrw-ev-prize-lo:#0A1C2B; --nrw-ev-count:#161C26; --nrw-hex:#53CB7C; --nrw-hex-dark:#032103; --nrw-hex-light:#DCF1C8;
+  --nrw-hub-disc:#284C84; --nrw-hub-disc-lo:#0F1F35; --nrw-hub-ring:#F7FDFF; --nrw-hub-pill:#161C22; --nrw-hub-pill-ink:#E4E4E0;
+  /* packs and the opening */
+  --nrw-pk-free:#EEEEED; --nrw-pk-free-sil:#ADB7EA; --nrw-pk-free-sil-2:#9ABDC6; --nrw-pk-free-ink:#33405B; --nrw-pk-free-sub:#627698;
+  --nrw-pk-core:#151522; --nrw-pk-core-back:#413052; --nrw-pk-core-cyan:#27B5DD; --nrw-pk-core-pink:#C83667; --nrw-pk-core-name:#BE66CB; --nrw-pk-core-ink:#DFE6EC;
+  --nrw-pk-edition:#202123; --nrw-pk-edition-back:#322F2D;
+  --nrw-open-bg:#0A1823; --nrw-open-glow:#1F3A54; --nrw-open-sub:#AFB0B4; --nrw-open-tap:#EEF3FC; --nrw-toast-dark:#1C1C1C; --nrw-toast-hl:#38D4FF;
+  /* collection */
+  --nrw-col-head:#2B2E33; --nrw-col-rule:#4E555D; --nrw-col-count:#9BA0A5; --nrw-col-sort:#3F474A; --nrw-col-sort-ink:#999EA4; --nrw-col-filter:#41464B; --nrw-col-title:#E9EFF5;
+  --nrw-lineup:#031925; --nrw-lineup-rim:#27D3F1; --nrw-lineup-ink:#25D0E3;
   --nrw-r-elite:unset; --nrw-r-prime:unset; --nrw-r-iconic:unset; --nrw-r-goat:unset; /* measure on release */
   /* ours — the clipboard */
   --nrw-board:#F5F5F1; --nrw-board-ghost:#ECEBE5; --nrw-print:#C8CCD0; --nrw-marker:#121314; --nrw-clip:#1B1C1E;
