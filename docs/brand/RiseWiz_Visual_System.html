@@ -488,20 +488,70 @@ th { font-weight: 700; font-size: 11.5px; letter-spacing: .1em; text-transform: 
 .perf__bar.sel { box-shadow: 0 0 0 2px var(--cy-glow), 0 0 12px rgba(57,239,251,.6); }
 .perf__bar.sel .a { background: var(--aw-sel); }
 
-/* scorebug + shot clock */
-.bug { display: flex; gap: 12px; align-items: stretch; flex-wrap: wrap; }
-.scorebug { position: relative; background: var(--ground); border-radius: 16px; padding: 12px 22px 10px; min-width: 300px; box-shadow: 0 0 0 1px #3A3E43; overflow: hidden; }
-.scorebug::before { content: ""; position: absolute; left: 0; bottom: 12px; height: 26px; width: 4px; background: var(--hm); }
-.scorebug::after { content: ""; position: absolute; right: 0; bottom: 12px; height: 26px; width: 4px; background: var(--aw); }
-.scorebug__row { display: flex; align-items: center; gap: 14px; justify-content: space-between; }
-.scorebug__sc { font-family: var(--num-face); font-weight: 400; font-size: 38px; line-height: 1.05; letter-spacing: .01em; text-shadow: var(--tmp-outline); }
-.qchip { background: var(--aw-nba); color: #FCF8F8; font-weight: 800; font-size: 12px; border-radius: 4px; padding: 0 6px; }
-.clock { color: var(--ink-2); font-weight: 700; font-size: 15px; font-variant-numeric: tabular-nums; }
-.team3 { font-weight: 800; font-size: 12px; letter-spacing: .06em; color: var(--ink-2); background: #34383D; border-radius: 50%; width: 38px; height: 38px; display: grid; place-items: center; }
-.scorebug__meta { display: flex; justify-content: space-between; font-size: 12px; font-weight: 700; color: var(--ink-1); margin-top: 3px; }
-.shotclock { background: linear-gradient(180deg, #0D1012, #0F181C); border-radius: 16px; box-shadow: 0 0 0 1px #233A44, 0 0 16px rgba(3,235,253,.12) inset; width: 112px; display: grid; place-items: center; padding: 8px 0 6px; }
-.shotclock b { color: var(--cy-clock); font-size: 40px; font-weight: 800; line-height: 1; font-variant-numeric: tabular-nums; text-shadow: 0 0 10px rgba(3,235,253,.45); }
-.shotclock small { font-size: 11px; font-weight: 700; color: #90949B; letter-spacing: .04em; }
+/* ============ IN-MATCH HUD — scorebug, shot clock, header scoreboard ============ */
+.court-bg { position: relative; width: 100%; border-radius: 8px; overflow: hidden; padding: 70px 16px 24px; display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; align-items: stretch;
+  background: radial-gradient(140% 100% at 50% 0%, rgba(0,0,0,0) 35%, rgba(0,0,0,.5) 100%), linear-gradient(172deg, #CDAE5B 0%, #B98C45 48%, #8E6532 100%); }
+.court-bg::before { content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: repeating-linear-gradient(90deg, rgba(255,255,255,.06) 0 2px, rgba(0,0,0,0) 2px 48px), repeating-linear-gradient(90deg, rgba(90,50,10,.09) 0 1px, rgba(0,0,0,0) 1px 24px); }
+.court-bg::after { content: ""; position: absolute; left: -12%; right: -12%; top: -150%; height: 200%; border: 4px solid rgba(255,255,255,.8); border-radius: 50%; pointer-events: none; }
+.court-bg > * { position: relative; z-index: 1; }
+.court-bg .tag { position: absolute; left: 14px; top: 12px; z-index: 1; font-weight: 700; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.8); text-shadow: 0 1px 2px rgba(0,0,0,.5); }
+
+.tdisc { width: 46px; height: 46px; border-radius: 50%; flex: 0 0 auto; display: grid; place-items: center; font-weight: 800; font-size: 12px; letter-spacing: .04em; }
+.tdisc--you { background: radial-gradient(circle at 50% 32%, #1F4699, #061C5A 72%); color: #FFFFFF; box-shadow: 0 0 0 2px rgba(255,255,255,.14), inset 0 -5px 9px rgba(0,0,0,.45); }
+.tdisc--away { background: radial-gradient(circle at 50% 30%, #FFFFFF, #F3F3F2 60%, #D9D9D7); color: #111417; box-shadow: 0 0 0 2px rgba(17,20,23,.35); }
+
+/* scorebug — the 3D-play HUD */
+.sbg { position: relative; flex: 1 1 360px; max-width: 448px; min-width: 0; background: #2A2E32; border: 2px solid #3D424A; border-radius: 18px; padding: 12px 18px 11px; box-shadow: 0 10px 24px rgba(0,0,0,.45); }
+.sbg::before, .sbg::after { content: ""; position: absolute; bottom: 14px; width: 5px; height: 30px; }
+.sbg::before { left: -2px; background: #2666B8; border-radius: 0 2px 2px 0; }
+.sbg::after { right: -2px; background: #E64126; border-radius: 2px 0 0 2px; }
+.sbg__row { display: grid; grid-template-columns: 46px minmax(0,1fr) auto minmax(0,1fr) 46px; align-items: center; gap: 6px; }
+.sbg__sc { font-family: var(--num-face); font-weight: 400; font-size: 44px; line-height: 1; letter-spacing: .01em; color: #FFFFFF; text-align: center; text-shadow: var(--tmp-outline); }
+.qmid { display: inline-flex; align-items: center; gap: 7px; white-space: nowrap; }
+.qchip { background: #C70D32; color: #F4F1F4; font-weight: 800; font-size: 13px; line-height: 1; border-radius: 6px; padding: 4px 9px; }
+.qclock { color: #EAEDEF; font-weight: 700; font-size: 15px; font-variant-numeric: tabular-nums; }
+.sbg__meta { display: flex; justify-content: space-between; align-items: flex-end; gap: 10px; margin-top: 6px; padding: 0 2px; }
+.sbg__id { font-weight: 700; font-size: 14px; color: #F6F8FA; font-variant-numeric: tabular-nums; }
+.sbg__opp { text-align: right; font-weight: 800; font-size: 16px; line-height: 1.1; color: #EDF0F2; }
+.sbg__opp small { display: block; font-weight: 700; font-size: 11.5px; color: #9EA3AA; }
+
+/* shot clock — a teal well, cyan digits */
+.sclk { flex: 0 0 auto; width: 134px; min-height: 120px; border-radius: 22px; border: 2px solid #19202A; display: grid; place-items: center; align-content: center; gap: 4px;
+  background: radial-gradient(circle at 50% 42%, #103E4E 0%, #103746 26%, #0E2832 52%, #0E1F27 70%, #0D1519 100%);
+  box-shadow: 0 10px 24px rgba(0,0,0,.5), inset 0 0 0 1px rgba(3,238,254,.06), inset 0 0 22px rgba(0,0,0,.35); }
+.sclk b { display: inline-block; font-weight: 800; font-size: 52px; line-height: 1; color: #03EEFE; transform: scaleX(1.12); font-variant-numeric: tabular-nums;
+  text-shadow: 0 0 6px rgba(3,238,254,.55), 0 0 20px rgba(13,101,117,.95); }
+.sclk small { font-weight: 700; font-size: 12.5px; letter-spacing: .02em; color: #A5A7AD; text-transform: uppercase; }
+.sclk--sm { width: 96px; min-height: 86px; border-radius: 17px; }
+.sclk--sm b { font-size: 36px; } .sclk--sm small { font-size: 10px; }
+.sclk-states { display: flex; flex-wrap: wrap; gap: 14px; align-items: flex-start; }
+.sclk-states figure { margin: 0; text-align: center; }
+.sclk-states figcaption { margin-top: 8px; font-size: 12.5px; color: var(--ink-3); max-width: 13ch; }
+
+/* header scoreboard — match prep and the live simulation */
+.sbh { position: relative; width: 100%; background: #2A2E32; padding: 14px 18px 28px; display: grid; grid-template-columns: minmax(0,1fr) auto auto auto minmax(0,1fr); align-items: center; gap: 6px clamp(10px, 3vw, 30px); border-bottom: 6px solid #1C1D1F; margin-bottom: 22px; }
+.sbh::before, .sbh::after { content: ""; position: absolute; top: 10px; bottom: 12px; width: 7px; }
+.sbh::before { left: 0; background: #168CFB; } .sbh::after { right: 0; background: #DF263D; }
+.sbh__team { display: flex; flex-direction: column; align-items: center; gap: 6px; min-width: 0; }
+.sbh__team .tdisc { width: 56px; height: 56px; font-size: 14px; }
+.sbh__team small { font-weight: 700; font-size: 14px; color: #B8BCBF; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
+.sbh__team--away small { color: #ADB1B4; }
+.sbh__sc { font-family: var(--num-face); font-weight: 400; font-size: 52px; line-height: 1; letter-spacing: .01em; color: #FFFFFF; text-align: center; min-width: 1.2em; text-shadow: var(--tmp-outline); }
+.sbh .qclock { color: #C5C9CC; font-size: 18px; }
+.sbh .qchip { font-size: 15px; padding: 5px 10px; }
+.sbh__pill { position: absolute; left: 50%; bottom: -21px; transform: translateX(-50%); background: #1C1C1C; color: #E9EDF1; font-weight: 700; font-size: 13.5px; letter-spacing: .03em; text-transform: uppercase; border-radius: 999px; padding: 7px 20px; white-space: nowrap; }
+.sbh-wrap { width: 100%; display: grid; gap: 18px; }
+@media (max-width: 560px) {
+  .sbh { padding: 12px 12px 26px; gap: 6px 8px; } .sbh__team .tdisc { width: 40px; height: 40px; font-size: 10.5px; } .sbh__sc { font-size: 38px; } .sbh .qclock { font-size: 13px; } .sbh .qchip { font-size: 11.5px; padding: 4px 7px; }
+  .sbh__team small { font-size: 10px; white-space: normal; text-align: center; line-height: 1.15; overflow-wrap: normal; } .sbh__team:not(.sbh__team--away) small { font-size: 9.5px; letter-spacing: -.01em; font-variant-numeric: tabular-nums; } .sbh__sc { min-width: 0; } .sbh__pill { font-size: 10.5px; padding: 6px 13px; }
+  .court-bg { padding: 54px 10px 18px; gap: 8px; flex-wrap: nowrap; }
+  .sbg { flex: 1 1 auto; padding: 8px 9px 7px; border-radius: 14px; } .sbg__row { grid-template-columns: 30px minmax(0,1fr) auto minmax(0,1fr) 30px; gap: 3px; }
+  .tdisc { width: 30px; height: 30px; font-size: 8.5px; } .sbg__sc { font-size: 30px; } .qmid { gap: 4px; } .qclock { font-size: 11.5px; } .qchip { font-size: 10.5px; padding: 3px 6px; border-radius: 5px; }
+  .sbg__id { font-size: 11px; } .sbg__opp { font-size: 12.5px; } .sbg__opp small { font-size: 9.5px; } .sbg::before, .sbg::after { height: 22px; bottom: 10px; width: 4px; }
+  .sclk { width: 84px; min-height: 0; border-radius: 16px; padding: 8px 0 7px; } .sclk b { font-size: 34px; } .sclk small { font-size: 9px; }
+}
+}
 
 /* set play ring */
 .ring { position: relative; width: 108px; height: 108px; border-radius: 50%; background: #0D0D1C; display: grid; place-items: center; box-shadow: 0 0 0 4px #1E202A; }
@@ -1105,15 +1155,65 @@ footer.end { color: var(--ink-4); font-size: 13.5px; padding-block: 30px 60px; }
         </div>
         <p class="cap">One bar per position, home from the left and away from the right, split at a white glint. A selected row rings in cyan, and its away half turns pink, <code>#DD4A7F</code>.</p>
 
-        <h3>Scorebug, shot clock, set play</h3>
-        <div class="stage dark" style="align-items:center">
-          <div class="bug">
-            <div class="scorebug">
-              <div class="scorebug__row"><span class="team3">YOU</span><span class="scorebug__sc">37</span><span><span class="qchip">Q2</span> <span class="clock">03:07</span></span><span class="scorebug__sc">55</span><span class="team3">BKN</span></div>
-              <div class="scorebug__meta"><span>8781487235</span><span>Brooklyn Nets</span></div>
+        <h3>Scorebug and shot clock</h3>
+        <div class="stage dark" style="padding:14px">
+          <div class="court-bg">
+            <span class="tag">3D play · a flat stand-in for the floor</span>
+            <div class="sbg">
+              <div class="sbg__row"><span class="tdisc tdisc--you">YOU</span><b class="sbg__sc">37</b><span class="qmid"><span class="qchip">Q2</span><span class="qclock">03:07</span></span><b class="sbg__sc">55</b><span class="tdisc tdisc--away">BKN</span></div>
+              <div class="sbg__meta"><span class="sbg__id">8781487235</span><span class="sbg__opp"><small>Brooklyn</small>Nets</span></div>
             </div>
-            <div class="shotclock"><b>17</b><small>SHOT CLOCK</small></div>
+            <div class="sclk"><b>17</b><small>Shot clock</small></div>
           </div>
+        </div>
+        <p class="cap">The launch-week gameplay HUD from the App Store set, redrawn in code. Team logos are replaced by discs: navy with initials for your club and white with a tricode for the opponent.</p>
+        <ul class="clean">
+          <li><b>The scorebug</b> is a flat <code>#2A2E32</code> panel with a 2px <code>#3D424A</code> rim and an 18px radius. The scores are Anton, white with the TextMeshPro outline.</li>
+          <li><b>The middle</b> holds a <code>#C70D32</code> quarter chip and an <code>#EAEDEF</code> game clock.</li>
+          <li><b>The second row</b> carries your user ID (<code>#F6F8FA</code>) on the left. On the right, the opponent's city sits small in <code>#9EA3AA</code> over the team name in <code>#EDF0F2</code>.</li>
+          <li><b>The stripes are short</b>, sitting at the lower corners only: home <code>#2666B8</code> and away <code>#E64126</code>. That away colour is an orange-red, not the <code>#DF263D</code> away red used everywhere else, and only the scorebug uses it.</li>
+          <li><b>The shot clock</b> is its own square well beside the scorebug. It runs from teal <code>#103E4E</code> at the centre to <code>#0D1519</code> at the edges, with a <code>#19202A</code> rim. The digits are <code>#03EEFE</code> with a <code>#0D6575</code> halo, over a <code>#A5A7AD</code> label.</li>
+          <li><b>The shot clock face is unresolved</b> (see Type). It is drawn in Open Sans 800, stretched horizontally to 112% to reach the measured width.</li>
+        </ul>
+        <div class="stage dark">
+          <div class="sclk-states">
+            <figure><div class="sclk sclk--sm"><b>24</b><small>Shot clock</small></div><figcaption>A fresh possession</figcaption></figure>
+            <figure><div class="sclk sclk--sm"><b>17</b><small>Shot clock</small></div><figcaption>Mid-possession</figcaption></figure>
+            <figure><div class="sclk sclk--sm"><b>08</b><small>Shot clock</small></div><figcaption>Always two digits: the game pads 8 to 08</figcaption></figure>
+          </div>
+        </div>
+
+        <h3>Header scoreboard</h3>
+        <div class="stage dark" style="padding:18px 14px 14px">
+          <div class="sbh-wrap">
+            <div class="sbh">
+              <div class="sbh__team"><span class="tdisc tdisc--you">YOU</span><small>8781487235</small></div>
+              <b class="sbh__sc">0</b>
+              <span class="qmid"><span class="qchip">Q1</span><span class="qclock">12:00</span></span>
+              <b class="sbh__sc">0</b>
+              <div class="sbh__team sbh__team--away"><span class="tdisc tdisc--away">BKN</span><small>Nets</small></div>
+              <span class="sbh__pill">Performance comparison</span>
+            </div>
+            <div class="sbh">
+              <div class="sbh__team"><span class="tdisc tdisc--you">YOU</span><small>9035687079</small></div>
+              <b class="sbh__sc">97</b>
+              <span class="qmid"><span class="qchip">Q4</span><span class="qclock">04:57</span></span>
+              <b class="sbh__sc">69</b>
+              <div class="sbh__team sbh__team--away"><span class="tdisc tdisc--away">WAS</span><small>Washington Wizards</small></div>
+              <span class="sbh__pill">Performance comparison</span>
+            </div>
+          </div>
+        </div>
+        <p class="cap">Match Preparation (top) and the live simulation (bottom): the same board, before tip-off and late in the fourth.</p>
+        <ul class="clean">
+          <li><b>This board runs the full width</b> of the screen, unlike the scorebug. Its stripes run its full height, in home <code>#168CFB</code> and away <code>#DF263D</code>.</li>
+          <li><b>The quarter clock</b> greys down to <code>#C5C9CC</code>.</li>
+          <li><b>The teams.</b> The user ID (<code>#B8BCBF</code>) and the opponent's name (<code>#ADB1B4</code>) sit under their discs.</li>
+          <li><b>Underneath,</b> a 6px <code>#1C1D1F</code> divider closes the board. A black <code>#1C1C1C</code> "Performance comparison" pill sits across it and opens the comparison bars below.</li>
+        </ul>
+
+        <h3>Set play</h3>
+        <div class="stage dark" style="align-items:center">
           <div class="ring"><svg viewBox="0 0 108 108"><circle cx="54" cy="54" r="48" fill="none" stroke="#2E9B43" stroke-width="5" stroke-dasharray="301.6" stroke-dashoffset="225" stroke-linecap="round"/></svg><b>1</b></div>
           <span class="success">Success</span>
           <span class="toast"><span>The opponent changed tactics</span><span class="coach">HC</span></span>
@@ -1514,6 +1614,11 @@ footer.end { color: var(--ink-4); font-size: 13.5px; padding-block: 30px 60px; }
   --rw-schip:#CC8A22; --rw-schip-lo:#A06D20; --rw-mini-ur:#DBD078; --rw-mini-ur-lo:#C5AF77; --rw-mini-ep:#BD32E5; --rw-mini-ep-lo:#A129CE; --rw-mini-uc:#76996F;
   --rw-plate-ep:#202736; --rw-stam-track:#000000; --rw-stam:#00BE0D; --rw-grade-well:#16213D; --rw-grade-well-lo:#0A0C20; --rw-grade:#BA9267; --rw-grade-lo:#8F6B4C;
   --rw-box:#0C2A65; --rw-box-label:#BFC5CE; --rw-box-ink:#EBF0F4; --rw-box-bench:#212427; --rw-grade-bench:#1D1F21; --rw-tally:#0D0D0D; --rw-tally-ink:#999EA5;
+  /* in-match HUD */
+  --rw-sbg:#2A2E32; --rw-sbg-rim:#3D424A; --rw-sbg-home:#2666B8; --rw-sbg-away:#E64126; --rw-qchip:#C70D32; --rw-qchip-ink:#F4F1F4; --rw-qclock:#EAEDEF;
+  --rw-sbg-id:#F6F8FA; --rw-sbg-city:#9EA3AA; --rw-sbg-team:#EDF0F2; --rw-disc-you:#061C5A; --rw-disc-away:#F3F3F2;
+  --rw-sclk-core:#103E4E; --rw-sclk-mid:#0E2832; --rw-sclk-edge:#0D1519; --rw-sclk-rim:#19202A; --rw-sclk-digit:#03EEFE; --rw-sclk-halo:#0D6575; --rw-sclk-label:#A5A7AD;
+  --rw-board-home:#168CFB; --rw-board-away:#DF263D; --rw-board-clock:#C5C9CC; --rw-board-id:#B8BCBF; --rw-board-name:#ADB1B4; --rw-board-divider:#1C1D1F; --rw-board-pill:#1C1C1C; --rw-board-pill-ink:#E9EDF1;
   --rw-r-legend:unset; --rw-r-elite:unset; --rw-r-prime:unset; --rw-r-iconic:unset; --rw-r-goat:unset; /* measure on release */
   /* ours — the clipboard */
   --rw-board:#F5F5F1; --rw-board-ghost:#ECEBE5; --rw-print:#C8CCD0; --rw-marker:#121314; --rw-clip:#1B1C1E;

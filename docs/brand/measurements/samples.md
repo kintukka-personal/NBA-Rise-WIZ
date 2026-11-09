@@ -121,6 +121,24 @@ Source: NB-14, a lossless 1080×1920 Match Preparation capture from launch week.
 | Bench | box `#212427`, grade well `#1D1F21`; label `#EBF0F4` with sub-position `#999EA5` | bench footer and label |
 | Ground · tally | `#1C1D1F`; tally pill `#0D0D0D`, text `#999EA5` | 500,1290–560,1300; 350,1320–420,1340 |
 
+## In-match HUD
+
+Sources:
+- **Scorebug and shot clock:** AS-PH-7, the gameplay screenshot from the App Store PH set (iPhone 1260×2736; the iPad 2048×2732 copy matches).
+- **Two-digit shot clock:** IN-z4, the iNews24 SET PLAY sequence ("18", "08").
+- **Header scoreboard:** AS-PH-6 for Match Preparation and IN-z3 for the live simulation.
+
+| Part | Values | Sample |
+|---|---|---|
+| Scorebug panel | `#2A2E32`, rim `#3D424A` (2 px), radius ≈ 18 px at phone scale | 360,2380–560,2420; left-edge profile at y=2300 |
+| Scorebug stripes | home `#2666B8`, away `#E64126` (orange-red, scorebug only), lower corners only | 100,2335–108,2390 and 879,2335–887,2390 |
+| Quarter chip · clock | `#C70D32`, ink `#E8E5E8`; clock `#EAEDEF` | 415,2255–425,2280; 500,2255–580,2285 |
+| Second row | user ID `#F6F8FA`; city `#9EA3AA`; team `#EDF0F2` | 135,2350–300,2375; 765,2335–855,2353; 790,2360–855,2390 |
+| Shot clock | radial: centre `#103E4E` → `#103746` → `#0E2832` → `#0E1F27` → edge `#0D1519`; rim `#19202A` | horizontal profile at y=2300 and vertical at x=1040 |
+| Shot clock digits · label | `#03EEFE`, halo `#0D6575`; label `#A5A7AD` | 1000,2260–1100,2340; 960,2355–1130,2380 |
+| Header board | ground `#2A2E32`; full-height stripes home `#168CFB`, away `#DF263D`; clock `#C5C9CC`; ID `#B8BCBF`; name `#ADB1B4` | AS-PH-6 stripe profile at x=4 (y 440–590); text regions |
+| Header divider · pill | divider `#1C1D1F`; pill `#1C1C1C`, text `#E9EDF1` | vertical profile at x=630 |
+
 ## Absent-colour search
 
 `../tools/absent.py` scores candidate colours against 34 game accents. The grid covers hue in 2° steps, HSL lightness 0.38–0.64 and saturation 0.75–1.0. Each candidate gets its minimum OKLab ΔE×100 under normal vision and Machado-2009 protan, deutan and tritan simulation.
