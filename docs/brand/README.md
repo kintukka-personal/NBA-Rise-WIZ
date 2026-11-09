@@ -1,18 +1,19 @@
-# RiseWiz brand
+# NBARiseWiz brand
 
-The visual system and brand for **RiseWiz**, a fan companion for GRAVITY's NBA RISE. It is the third sibling of FHCWiz and UFMWiz.
+The visual system and brand for **NBARiseWiz**, a fan companion for NBA RISE, GRAVITY's officially licensed NBA card-strategy game. It is the third sibling of FHCWiz and UFMWiz.
 
 ## Files
 
 | Path | What it is |
 |---|---|
-| [`RiseWiz_Visual_System.html`](RiseWiz_Visual_System.html) | The full system: identity, voice, foundation, colour, type, texture, live components, rarities, the clipboard, rules, build and limits. Open it in a browser. Published copy: https://claude.ai/artifact/HQYr5ho3buzBmXzckeeSbf |
-| [`tokens.css`](tokens.css) | 143 drop-in custom properties (`--rw-*`), the same values the document uses |
+| [`NBARiseWiz_Visual_System.html`](NBARiseWiz_Visual_System.html) | The full system: identity, voice, foundation, colour, type, texture, live components, rarities, the clipboard, rules, build and limits. Open it in a browser. Published copy: https://claude.ai/artifact/HQYr5ho3buzBmXzckeeSbf |
+| [`tokens.css`](tokens.css) | 476 drop-in custom properties (`--nrw-*`), the same values the document uses |
 | [`measurements/samples.md`](measurements/samples.md) | Where every measured value came from: image, region and method |
-| [`measurements/font_fit.json`](measurements/font_fit.json) | Typeface identification: 32 faces scored against in-game text |
+| [`measurements/font_fit.json`](measurements/font_fit.json) | Typeface identification for words: 32 faces scored against in-game text (Open Sans) |
+| [`measurements/font_fit_numerals.json`](measurements/font_fit_numerals.json) | Typeface identification for numbers: Team Power, scores and OVR scored against 35 condensed faces (Anton) |
 | [`measurements/hue_occupancy.json`](measurements/hue_occupancy.json) | Hue distribution of the game's saturated UI pixels |
 | [`screenshots/catalog.csv`](screenshots/catalog.csv) | All 424 screenshots in the corpus: source page and image URL, size, sha1, the screen shown, and whether it is full in-game UI. 142 are; 51 of those are from the July 2026 closed beta |
-| [`tools/`](tools/) | `sample.py` (region median and clusters, vertical profiles), `palette.py` (median-cut palette and dark-pixel bias), `huegap.py` (hue occupancy), `absent.py` (OKLab + colour-vision absent-colour search), `font_fit_render.js` + `font_fit.html` (renders candidate faces for overlap scoring) |
+| [`tools/`](tools/) | `sample.py` (region median and clusters, vertical profiles), `palette.py` (median-cut palette and dark-pixel bias), `huegap.py` (hue occupancy), `absent.py` (OKLab + colour-vision absent-colour search), `font_fit_render.js` + `font_fit.html` and `font_fit_numerals_render.js` + `font_fit_numerals.html` (render candidate faces for overlap scoring) |
 
 ## The short version
 
@@ -22,11 +23,13 @@ The visual system and brand for **RiseWiz**, a fan companion for GRAVITY's NBA R
   - Cyan `#00AEEF` commits. Home is blue `#158EFD` and away is red `#DF263D`.
   - Gold is Team Power and synergy. Bronze chips are offensive tactics and mint chips are defensive tactics.
   - A five-step condition scale, and six rarity metals.
-- **The typeface is Open Sans**: Bold for interface text, ExtraBold for titles. It was identified by glyph overlap, not guessed.
-- **Every hue is the game's.** An OKLab search with colour-vision simulation found no colour more than 6.3 ΔE from all 34 game accents. So RiseWiz owns a material, not a colour: **black marker on a white clipboard**.
+- **Two typefaces, both identified by glyph overlap.** Words are Open Sans: Bold for interface text, ExtraBold for titles. Big numbers are Anton: Team Power, scores and OVR.
+- **Every hue is the game's.** An OKLab search with colour-vision simulation found no colour more than 6.3 ΔE from all 34 game accents. So NBARiseWiz owns a material, not a colour: **black marker on a white clipboard**.
 - **The mark** is a W run off two screens, in basketball's own notation.
-- **The wordmark** is RISEWIZ in Big Shoulders Display Black. RISE is in the game's inactive grey `#8B94A2`, WIZ is white, and a white marker rule sits beneath.
-- **Name.** "NBA" never appears in brand type; the family pattern takes the game's own word, RISE. `risewiz.gg` is unregistered (`risewiz.com` is taken).
+- **The wordmark** is NBARISEWIZ in Big Shoulders Display Black. NBARISE is in the game's inactive grey `#8B94A2`, WIZ is white, and a white marker rule sits beneath.
+- **Name.** NBARiseWiz carries the game's full title, because "NBA Rise" is what players search for.
+  - "NBA" appears only directly before Rise, or in a sentence that explains what NBA RISE is. It never stands alone as brand type.
+  - `nbarisewiz.com`, `.gg`, `.net`, `.app` and `.io` are all unregistered (9 Nov 2026).
 
 ## Re-measuring
 
@@ -36,7 +39,7 @@ When GRAVITY ships a new screen or rarity:
 3. Log the value in `measurements/samples.md`.
 4. Add the token to both `tokens.css` and the Build section of the HTML.
 
-The Legend frame and the four reserved grades above it (Elite, Prime, Iconic, GOAT) are still unmeasured. No public screenshot shows them yet.
+The Legend card is measured from two launch-day auction listings, L. Johnson and T. Parker. The four reserved grades above Legend (Elite, Prime, Iconic and GOAT) are still unmeasured, because no public screenshot shows them yet.
 
 `tools/font_fit.html` expects the candidate fonts to be loadable. Google Fonts load directly. The official site's fonts (Nexon Football Gothic, Pretendard, S-Core Dream) are not committed here; fetch them from nbarise.gnjoy.com's own stylesheet to re-run that comparison.
 

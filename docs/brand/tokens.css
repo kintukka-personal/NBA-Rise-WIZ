@@ -1,56 +1,130 @@
-/* RiseWiz design tokens.
+/* NBARiseWiz design tokens.
    Game-side values measured from NBA RISE (GRAVITY, global build 1.1.x) screenshots, 8-9 Nov 2026.
-   The clipboard block (--rw-board ... --rw-clip) and --rw-wordmark are RiseWiz's own.
-   Fonts: https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&family=Big+Shoulders+Display:wght@900&display=swap */
+   The clipboard block (--nrw-board ... --nrw-clip) and --nrw-wordmark are NBARiseWiz's own.
+   Fonts: https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&family=Anton&family=Big+Shoulders+Display:wght@900&display=swap */
 :root {
   /* grounds */
-  --rw-void:#000000; --rw-pill:#0D0D0D; --rw-well-blue:#0F141C; --rw-letterbox:#1A1B1E;
-  --rw-well:#1C1D1F; --rw-well-2:#202125; --rw-ground:#2A2E32; --rw-bench:#363A40;
-  --rw-raised:#3D454B; --rw-tab-off:#40474B;
+  --nrw-void:#000000; --nrw-pill:#0D0D0D; --nrw-well-blue:#0F141C; --nrw-letterbox:#1A1B1E;
+  --nrw-well:#1C1D1F; --nrw-well-2:#202125; --nrw-ground:#2A2E32; --nrw-bench:#363A40;
+  --nrw-raised:#3D454B; --nrw-tab-off:#40474B;
   /* text */
-  --rw-ink:#FFFFFF; --rw-ink-1:#E5EAEE; --rw-ink-2:#C9CDCF; --rw-ink-3:#A1AAB2;
-  --rw-ink-4:#9C9EAB; --rw-ink-5:#8B94A2; --rw-value:#F6C526;
+  --nrw-ink:#FFFFFF; --nrw-ink-1:#E5EAEE; --nrw-ink-2:#C9CDCF; --nrw-ink-3:#A1AAB2;
+  --nrw-ink-4:#9C9EAB; --nrw-ink-5:#8B94A2; --nrw-value:#F6C526;
   /* cyan */
-  --rw-cy-deep:#0C1C24; --rw-cy-body:#00729E; --rw-cy:#00AEEF; --rw-cy-rim:#21F9FD; --rw-cy-peak:#CAFFFF;
-  --rw-cy-tab:#39D3FF; --rw-cy-bar:#16BEE7; --rw-cy-clock:#03EBFD; --rw-cy-glow:#39EFFB;
+  --nrw-cy-deep:#0C1C24; --nrw-cy-body:#00729E; --nrw-cy:#00AEEF; --nrw-cy-rim:#21F9FD; --nrw-cy-peak:#CAFFFF;
+  --nrw-cy-tab:#39D3FF; --nrw-cy-bar:#16BEE7; --nrw-cy-clock:#03EBFD; --nrw-cy-glow:#39EFFB;
   /* home · away */
-  --rw-hm-deep:#0C204C; --rw-hm-body:#143B85; --rw-hm-mid:#1C57C3; --rw-hm:#158EFD; --rw-hm-peak:#63A9E7;
-  --rw-hm-disc:#1E4484; --rw-hm-box:#0C2A65;
-  --rw-aw-deep:#6A1414; --rw-aw-body:#B80B0B; --rw-aw-nba:#C70D2E; --rw-aw:#DF263D; --rw-aw-sel:#DD4A7F; --rw-aw-disc:#D01B1B;
+  --nrw-hm-deep:#0C204C; --nrw-hm-body:#143B85; --nrw-hm-mid:#1C57C3; --nrw-hm:#158EFD; --nrw-hm-peak:#63A9E7;
+  --nrw-hm-disc:#1E4484; --nrw-hm-box:#0C2A65;
+  --nrw-aw-deep:#6A1414; --nrw-aw-body:#B80B0B; --nrw-aw-nba:#C70D2E; --nrw-aw:#DF263D; --nrw-aw-sel:#DD4A7F; --nrw-aw-disc:#D01B1B;
   /* gold · bronze · mint · green */
-  --rw-gd-deep:#523206; --rw-gd-body:#A77422; --rw-gd-mid:#C28422; --rw-gd-rim:#DEAE1E; --rw-gd-peak:#F6C526; --rw-gd-light:#F8E1A2;
-  --rw-of-deep:#3F2B10; --rw-of:#6C5322; --rw-of-mid:#AA965A; --rw-of-ink:#DECB87; --rw-of-peak:#FEF1A3;
-  --rw-df-deep:#114430; --rw-df:#225542; --rw-df-mid:#378E62; --rw-df-ink:#6FE9A4; --rw-df-peak:#3DFE8F;
-  --rw-gr-deep:#0F3C0D; --rw-gr-body:#007F08; --rw-gr:#00C10D; --rw-gr-peak:#39FF35; --rw-stam-low:#FFD617; --rw-load:#E4C401;
+  --nrw-gd-deep:#523206; --nrw-gd-body:#A77422; --nrw-gd-mid:#C28422; --nrw-gd-rim:#DEAE1E; --nrw-gd-peak:#F6C526; --nrw-gd-light:#F8E1A2;
+  --nrw-of-deep:#403011; --nrw-of:#6C5322; --nrw-of-sel:#6A552A; --nrw-of-head:#CCBD82; --nrw-of-ink:#FFECA0; --nrw-of-tag:#695122; --nrw-of-tag-ink:#F5E296;
+  --nrw-df:#175B42; --nrw-df-sel:#1C5D45; --nrw-df-head:#37CC74; --nrw-df-ink:#3DFF9E; --nrw-df-peak:#3DFF8F; --nrw-df-tag:#175940; --nrw-df-tag-ink:#55E49D;
+  --nrw-gr-deep:#0F3C0D; --nrw-gr-body:#007F08; --nrw-gr:#00C10D; --nrw-gr-peak:#39FF35; --nrw-stam-low:#FFCE16; --nrw-stam-mid:#86CD00; --nrw-load:#FDD800;
   /* the ball */
-  --rw-ball-peak:#FFA64F; --rw-ball-mid:#DE6624; --rw-ball-shadow:#BD452B; --rw-ball-body:#CD430E; --rw-ball-rim:#FF5D1D;
+  --nrw-ball-peak:#FFA64F; --nrw-ball-mid:#DE6624; --nrw-ball-shadow:#BD452B; --nrw-ball-body:#CD430E; --nrw-ball-rim:#FF5D1D;
   /* sets */
-  --rw-cond-best:#01D64B; --rw-cond-good:#AEFE01; --rw-cond-mid:#F5F300; --rw-cond-poor:#FFAE01; --rw-cond-worst:#F50100;
-  --rw-ahead:#CAFFFF; --rw-behind:#E02540;
-  --rw-stat-off:#E3B72A; --rw-stat-def:#16C988; --rw-stat-mental:#B1C1D4;
-  --rw-bonus-tp-bg:#29485B; --rw-bonus-tp:#02BBD0; --rw-bonus-syn-bg:#044048; --rw-bonus-syn:#00DCF1;
-  --rw-new:#FD5B4B; --rw-alert:#D63018;
-  --rw-pack-free:#026429; --rw-pack-core:#422A58; --rw-pack-edition:#4E4330;
+  --nrw-cond-best:#01D64B; --nrw-cond-good:#AEFE01; --nrw-cond-mid:#F5F300; --nrw-cond-poor:#FFAE01; --nrw-cond-worst:#F50100;
+  --nrw-ahead:#CAFFFF; --nrw-behind:#E02540;
+  --nrw-stat-off:#E3B72A; --nrw-stat-def:#16C988; --nrw-stat-mental:#B1C1D4;
+  --nrw-bonus-tp-bg:#29485B; --nrw-bonus-tp:#02BBD0; --nrw-bonus-syn-bg:#044048; --nrw-bonus-syn:#00DCF1;
+  --nrw-new:#FD5B4B; --nrw-alert:#D63018;
+  --nrw-pack-free:#026429; --nrw-pack-core:#422A58; --nrw-pack-edition:#4E4330;
   /* rarities */
-  --rw-r-c:#71767D; --rw-r-c-hi:#828990; --rw-r-c-badge:#353B3C;
-  --rw-r-uc:#81B76C; --rw-r-uc-ink:#7A9F73; --rw-r-uc-badge:#244020;
-  --rw-r-r:#6E8FA9; --rw-r-r-hi:#88B9CC; --rw-r-r-badge:#2B89CC;
-  --rw-r-ur:#C1A863; --rw-r-ur-hi:#DECB98; --rw-r-ur-lo:#B79F53; --rw-r-ur-in:#473508;
-  --rw-r-ep:#9F27C6; --rw-r-ep-hi:#B934E6; --rw-r-ep-pk:#FEE2FD; --rw-r-ep-neon:#4AE3F8; --rw-r-ep-in:#3B075B;
+  --nrw-r-c:#71767D; --nrw-r-c-hi:#828990; --nrw-r-c-badge:#353B3C;
+  --nrw-r-uc:#81B76C; --nrw-r-uc-ink:#7A9F73; --nrw-r-uc-badge:#244020;
+  --nrw-r-r:#6E8FA9; --nrw-r-r-hi:#88B9CC; --nrw-r-r-badge:#2B89CC;
+  --nrw-r-ur:#C1A863; --nrw-r-ur-hi:#DECB98; --nrw-r-ur-lo:#B79F53; --nrw-r-ur-in:#473508;
+  --nrw-r-ep:#9F27C6; --nrw-r-ep-hi:#B934E6; --nrw-r-ep-pk:#FEE2FD; --nrw-r-ep-neon:#4AE3F8; --nrw-r-ep-in:#3B075B;
   /* rarity cards: frame by rarity, field by edition */
-  --rw-ep-frame-hi:#F6D9FF; --rw-ep-frame-lo:#571E82; --rw-ep-ovr-ring:#52E2F7; --rw-ep-ovr-halo:#723B94;
-  --rw-ep-badge-gem:#1AF9FA; --rw-ur-badge-ink:#F7C3BE; --rw-ur-wing:#F5DB7C; --rw-ur-wing-lo:#A7783E; --rw-ovr-rim:#E1D5B3;
-  --rw-field-starter:#D7D6E6; --rw-field-starter-lo:#C2C1D6; --rw-field-starter-ring:#E1DFED; --rw-plate-starter:#232B3B; --rw-plate-starter-rim:#9FAAB4;
-  --rw-field-season:#21252A; --rw-field-season-ring:#373E47;
-  --rw-field-core-hi:#710384; --rw-field-core-mid:#231660; --rw-field-core-lo:#1B043B; --rw-field-core-shard:#CEC8EC; --rw-field-core-beam:#8ACAD7;
-  --rw-ed-starter:#B9EBFF; --rw-ed-starter-outline:#393C4D; --rw-ed-season:#FEFBDC; --rw-ed-core:#82E3FC; --rw-ed-core-glow:#A130CA;
-  --rw-r-legend:unset; --rw-r-elite:unset; --rw-r-prime:unset; --rw-r-iconic:unset; --rw-r-goat:unset; /* measure on release */
+  --nrw-ep-frame-hi:#F6D9FF; --nrw-ep-frame-lo:#571E82; --nrw-ep-ovr-ring:#52E2F7; --nrw-ep-ovr-halo:#723B94;
+  --nrw-ep-badge-gem:#1AF9FA; --nrw-ur-badge-ink:#F7C3BE; --nrw-ur-wing:#F5DB7C; --nrw-ur-wing-lo:#A7783E; --nrw-ovr-rim:#E1D5B3;
+  --nrw-field-starter:#D7D6E6; --nrw-field-starter-lo:#C2C1D6; --nrw-field-starter-ring:#E1DFED; --nrw-plate-starter:#232B3B; --nrw-plate-starter-rim:#9FAAB4;
+  --nrw-field-season:#21252A; --nrw-field-season-ring:#373E47;
+  --nrw-field-core-hi:#710384; --nrw-field-core-mid:#231660; --nrw-field-core-lo:#1B043B; --nrw-field-core-shard:#CEC8EC; --nrw-field-core-beam:#8ACAD7;
+  --nrw-ed-starter:#B9EBFF; --nrw-ed-starter-outline:#393C4D; --nrw-ed-season:#FEFBDC; --nrw-ed-core:#82E3FC; --nrw-ed-core-glow:#A130CA;
+  /* match-prep lineup */
+  --nrw-lineup-ground:#1C1D1F; --nrw-slot:#143D88; --nrw-slot-hi:#154091; --nrw-slot-rim:#1C50B2; --nrw-slot-pos:#0D2758; --nrw-slot-pos-ink:#EDF5FF;
+  --nrw-schip:#CC8A22; --nrw-schip-lo:#A06D20; --nrw-mini-ur:#DBD078; --nrw-mini-ur-lo:#C5AF77; --nrw-mini-ep:#BD32E5; --nrw-mini-ep-lo:#A129CE; --nrw-mini-uc:#76996F;
+  --nrw-plate-ep:#202736; --nrw-stam-track:#000000; --nrw-stam:#00BE0D; --nrw-grade-well:#16213D; --nrw-grade-well-lo:#0A0C20; --nrw-grade:#BA9267; --nrw-grade-lo:#8F6B4C;
+  --nrw-box:#0C2A65; --nrw-box-label:#BFC5CE; --nrw-box-ink:#EBF0F4; --nrw-box-bench:#212427; --nrw-grade-bench:#1D1F21; --nrw-tally:#0D0D0D; --nrw-tally-ink:#999EA5;
+  /* in-match HUD */
+  --nrw-sbg:#2A2E32; --nrw-sbg-rim:#3D424A; --nrw-sbg-home:#2666B8; --nrw-sbg-away:#E64126; --nrw-qchip:#C70D32; --nrw-qchip-ink:#F4F1F4; --nrw-qclock:#EAEDEF;
+  --nrw-sbg-id:#F6F8FA; --nrw-sbg-city:#9EA3AA; --nrw-sbg-team:#EDF0F2; --nrw-disc-you:#061C5A; --nrw-disc-away:#F3F3F2;
+  --nrw-sclk-core:#103E4E; --nrw-sclk-mid:#0E2832; --nrw-sclk-edge:#0D1519; --nrw-sclk-rim:#19202A; --nrw-sclk-digit:#03EEFE; --nrw-sclk-halo:#0D6575; --nrw-sclk-label:#A5A7AD;
+  --nrw-board-home:#168CFB; --nrw-board-away:#DF263D; --nrw-board-clock:#C5C9CC; --nrw-board-id:#B8BCBF; --nrw-board-name:#ADB1B4; --nrw-board-divider:#1C1D1F; --nrw-board-pill:#1C1C1C; --nrw-board-pill-ink:#E9EDF1;
+  /* set play */
+  --nrw-cd-disc:#0D0D1C; --nrw-cd-inner:#23262F; --nrw-cd-track:#3C4146; --nrw-cd-arc:#3BD738; --nrw-cd-digit:#38FF35;
+  --nrw-vchip-home:#015FC1; --nrw-vchip-away:#C22600; --nrw-act-face:#2E2F35; --nrw-act-rim:#373B41; --nrw-act-hi:#5C5D62; --nrw-act-outer:#192030; --nrw-act-label:#D8E1E3;
+  --nrw-auto:#021027; --nrw-auto-icon:#14A3B5; --nrw-tap-ring:#BB3C39; --nrw-tap:#2E7824; --nrw-tap-lo:#255F1E; --nrw-tap-icon:#A9D7A7; --nrw-tap-timer:#2E9B43;
+  --nrw-success:#1CA5D8; --nrw-bubble:#0C6AC8; --nrw-bubble-rim:#558FC5; --nrw-bang:#ECFEFD; --nrw-bang-glow:#A7FDFD; --nrw-toast:#B80B0B; --nrw-toast-icon:#850D0D;
+  /* card back */
+  --nrw-cb-frame:#5C6063; --nrw-cb-frame-hi:#878E96; --nrw-cb-head:#28344A; --nrw-cb-head-hi:#333E52; --nrw-cb-cell:#1D2532; --nrw-cb-divider:#2E384A;
+  --nrw-cb-level:#2AC2E7; --nrw-cb-level-track:#0D1119; --nrw-cb-fat-cell:#252629; --nrw-cb-recover:#0AA0DD; --nrw-cb-fatigue:#16BEE7; --nrw-cb-fatigue-track:#3F474A;
+  --nrw-cb-cond:#254229; --nrw-cb-cond-ink:#00FF58; --nrw-cb-ring-off:#D5AC2B; --nrw-cb-ring-def:#16C988; --nrw-cb-ring-mental:#B1C1D4; --nrw-cb-ring-track:#363739;
+  --nrw-cb-boost:#00E3FF; --nrw-cb-plain:#EBF0F4; --nrw-cb-band:#1C1E20; --nrw-cb-abil:#232527; --nrw-cb-pill:#191E26; --nrw-cb-plus:#173548; --nrw-cb-plus-ink:#00E2FD;
+  --nrw-cb-skill:#C7B427; --nrw-cb-skill-lo:#36300B;
+  /* condition info panel */
+  --nrw-cp-head:#2A2D32; --nrw-cp-divider:#4E555B; --nrw-cp-body:#222629; --nrw-cp-card:#2E3235; --nrw-cp-chip:#2C3F3B; --nrw-cp-chip-ink:#34BD8B;
+  --nrw-cp-desc:#B3B5BE; --nrw-cp-row:#ECF0F4; --nrw-cond-outline:#101B14;
+  /* home bar */
+  --nrw-home-bar:#1D1F2C; --nrw-home-bar-lo:#15161D; --nrw-home-rim:#2F3142; --nrw-home-hump:#3A3B4B; --nrw-home-icon:#8B94A2;
+  /* scout */
+  --nrw-scout-price:#00729E; --nrw-gold-bar:#D8A325; --nrw-gold-bar-hi:#F6E154; --nrw-pity-chip:#231430; --nrw-pity-track:#4B535A; --nrw-free-bar:#768478;
+  --nrw-tip:#EBF0F4; --nrw-tip-ink:#2C3034;
+  /* tactics */
+  --nrw-pct:#403011; --nrw-pct-ink:#5FEB31; --nrw-mu-up-off:#FFECA0; --nrw-mu-up-def:#3DFF8F; --nrw-mu-down:#FD5B4B; --nrw-mu-even:#A2A6AB;
+  --nrw-tl-bar:#454B53; --nrw-tl-pill:#D9DFE5; --nrw-tl-row:#3D454B; --nrw-tl-ink:#F0F0F0; --nrw-tl-divider:#32383D; --nrw-tl-bolt:#E2B837;
+  --nrw-tac-head:#2A2E32; --nrw-tac-label:#B0B3BE; --nrw-tac-num:#F4FAFF; --nrw-tac-bonus:#285A65; --nrw-tac-bonus-ink:#07C1D9; --nrw-tac-pos:#265AA5; --nrw-court:#1F2022;
+  --nrw-grade-c:#967F62; --nrw-grade-b:#74868F; --nrw-grade-outline:#110E0E;
+  /* synergy */
+  --nrw-syn-ground:#1C1C1C; --nrw-syn-bar:#2A2E32; --nrw-syn-box:#515559; --nrw-syn-s:#EBF0F4; --nrw-syn-count:#1C1F21; --nrw-syn-gold:#F2C22E; --nrw-syn-btn:#3D454B;
+  --nrw-syn-row:#2E3235; --nrw-syn-row-rim:#373C3C; --nrw-syn-sub:#C2C3C4; --nrw-syn-tp-label:#BBBBBB; --nrw-syn-tp-pill:#1F2123;
+  --nrw-syn-chev:#3D454B; --nrw-syn-chev-open:#555F67; --nrw-syn-chev-ink:#D9DFE5; --nrw-syn-event:#169567; --nrw-syn-timer:#0D0D1C; --nrw-syn-timer-ink:#DBE1E5;
+  --nrw-syn-on:#35322E; --nrw-syn-rim:#DBB745; --nrw-syn-rim-in:#C2A240; --nrw-syn-glow:#48331C; --nrw-syn-divider:#52504E; --nrw-syn-tick:#D89B16; --nrw-syn-tick-ink:#FAF4E9;
+  --nrw-syn-target:#24211F; --nrw-syn-target-label:#ACAFBC; --nrw-syn-target-ink:#D9DFE5;
+  --nrw-chip-off:#514322; --nrw-chip-off-ink:#D0A92D; --nrw-chip-def:#264836; --nrw-chip-def-ink:#2AD898; --nrw-chip-men:#44484F; --nrw-chip-men-ink:#B5C8DF;
+  /* arena */
+  --nrw-list-ground:#1C1C1C; --nrw-list-card:#2E3235; --nrw-list-divider:#4D555B;
+  --nrw-ar-action:#242628; --nrw-ar-refresh:#229E71; --nrw-ar-ranking:#3D454B; --nrw-ar-reward:#C29C3D; --nrw-ar-panel:#2A2E32;
+  --nrw-ar-norank:#202325; --nrw-ar-norank-card:#232528; --nrw-ar-label:#B3B6C1; --nrw-ar-count:#8B94A2; --nrw-ar-points:#16D2FF;
+  --nrw-league:#363C45; --nrw-league-rim:#949AA0; --nrw-league-ink:#F0F4F8; --nrw-league-label:#92989B; --nrw-league-next:#524430; --nrw-league-next-rim:#D2C1AB;
+  --nrw-ar-tip:#D9DFE5; --nrw-ar-disc:#3A3F44; --nrw-ar-badge:#0D0D1C; --nrw-ar-record:#454B53; --nrw-ar-def:#0F1112; --nrw-ar-def-rim:#4C545A; --nrw-ar-dot:#FF502E;
+  --nrw-tp-tag:#DDAB0B; --nrw-tp-tag-ink:#F3E3B8; --nrw-tp-arena:#E6B726;
+  --nrw-ar-sec-label:#999EA5; --nrw-ar-ticket:#2D3033; --nrw-ar-detail:#979CA3; --nrw-ar-mag:#32383D; --nrw-ar-mag-rim:#7F8589; --nrw-ar-mag-ink:#D4D7DA; --nrw-atk-inset:#007DAC;
+  /* auction */
+  --nrw-au-head:#2A2D32; --nrw-au-wallet:#1B1F22; --nrw-au-tab-off:#3F474A; --nrw-au-tab-ink:#9A9FA5; --nrw-au-divider:#4E555B; --nrw-au-label:#92969B;
+  --nrw-au-tile-rim:#3D3E40; --nrw-buynow:#B4811D; --nrw-buynow-ink:#F6ECD1; --nrw-au-price:#23272A; --nrw-au-price-ink:#DCE1E5; --nrw-au-bid-label:#95999E;
+  --nrw-au-timer:#1C1C20; --nrw-au-timer-ink:#E0E4EA; --nrw-dia-hi:#63D6FA; --nrw-dia:#329FEA; --nrw-dia-lo:#1D578E;
+  /* Legend: card measured from NG-13 (L. Johnson 220, T. Parker 289); crest also on The Edition pack (NB-38) */
+  --nrw-r-lg-frame-hi:#F3E7C9; --nrw-r-lg-frame:#EADA91; --nrw-r-lg-frame-mid:#C3A479; --nrw-r-lg-frame-lo:#735324; --nrw-r-lg-pin:#FBF9CB; --nrw-r-lg-pin-lo:#474430;
+  --nrw-r-lg-field:#050100; --nrw-r-lg-glow:#563D23; --nrw-r-lg-halo:#E9EEF1; --nrw-r-lg-ovr:#1C2026; --nrw-r-lg-ovr-rim:#CBBD93;
+  --nrw-r-lg-band:#3F281E; --nrw-r-lg-band-line:#D8BB78; --nrw-r-lg-band-rim:#967A60; --nrw-r-lg-star:#FCEFC2; --nrw-r-lg-star-outline:#291C0A;
+  --nrw-r-lg-gold:#CDA24A; --nrw-r-lg-gold-lo:#795C37; --nrw-r-lg-cream:#E3DED4; --nrw-r-lg-flame:#BD7338; --nrw-r-lg-ember:#AB5730; --nrw-r-lg-ground:#1B1F27;
+  --nrw-ed-edition-rim:#C9B7A5; --nrw-ed-edition-band:#917E5B; --nrw-ed-edition-band-lo:#735C3D; --nrw-ed-edition-ink:#CBC2A2;
+  /* hub and HUD */
+  --nrw-sky-top:#043654; --nrw-sky-mid:#0B6B94; --nrw-hud-pill:#EBF0F4; --nrw-hud-ink:#2A2E32; --nrw-hud-label:#9CA1A8; --nrw-hud-tp:#DA9B1C; --nrw-hud-tp-tag:#DDAB0D; --nrw-hud-tp-tag-ink:#F3E2B3;
+  --nrw-coin:#C4C6C7; --nrw-coin-lo:#707376; --nrw-hud-menu:#2A2E32; --nrw-hud-menu-ink:#B2B6C1; --nrw-hud-alert:#E5381E;
+  --nrw-ev-left:#6CD4FE; --nrw-ev-mid:#A4AFED; --nrw-ev-right:#FF75CF; --nrw-ev-track:#0D0D0D; --nrw-ev-fill:#1FF9FE; --nrw-ev-fill-lo:#0BD4FE; --nrw-ev-num:#EEFCFC; --nrw-ev-num-shadow:#5792B4;
+  --nrw-ev-label:#E7EDF1; --nrw-reward:#0D0D0D; --nrw-reward-ink:#16FAFA; --nrw-ev-prize:#4181AB; --nrw-ev-prize-lo:#0A1C2B; --nrw-ev-count:#161C26; --nrw-hex:#53CB7C; --nrw-hex-dark:#032103; --nrw-hex-light:#DCF1C8;
+  --nrw-hub-disc:#284C84; --nrw-hub-disc-lo:#0F1F35; --nrw-hub-ring:#F7FDFF; --nrw-hub-pill:#161C22; --nrw-hub-pill-ink:#E4E4E0;
+  /* packs and the opening */
+  --nrw-pk-free:#EEEEED; --nrw-pk-free-sil:#ADB7EA; --nrw-pk-free-sil-2:#9ABDC6; --nrw-pk-free-ink:#33405B; --nrw-pk-free-sub:#627698;
+  --nrw-pk-core:#151522; --nrw-pk-core-back:#413052; --nrw-pk-core-cyan:#27B5DD; --nrw-pk-core-pink:#C83667; --nrw-pk-core-name:#BE66CB; --nrw-pk-core-ink:#DFE6EC;
+  --nrw-pk-edition:#202123; --nrw-pk-edition-back:#322F2D;
+  --nrw-open-bg:#0A1823; --nrw-open-glow:#1F3A54; --nrw-open-sub:#AFB0B4; --nrw-open-tap:#EEF3FC; --nrw-toast-dark:#1C1C1C; --nrw-toast-hl:#38D4FF;
+  /* collection */
+  --nrw-col-head:#2B2E33; --nrw-col-rule:#4E555D; --nrw-col-count:#9BA0A5; --nrw-col-sort:#3F474A; --nrw-col-sort-ink:#999EA4; --nrw-col-filter:#41464B; --nrw-col-title:#E9EFF5;
+  --nrw-lineup:#031925; --nrw-lineup-rim:#27D3F1; --nrw-lineup-ink:#25D0E3;
+  --nrw-r-elite:unset; --nrw-r-prime:unset; --nrw-r-iconic:unset; --nrw-r-goat:unset; /* measure on release */
   /* ours — the clipboard */
-  --rw-board:#F5F5F1; --rw-board-ghost:#ECEBE5; --rw-print:#C8CCD0; --rw-marker:#121314; --rw-clip:#1B1C1E;
+  --nrw-board:#F5F5F1; --nrw-board-ghost:#ECEBE5; --nrw-print:#C8CCD0; --nrw-marker:#121314; --nrw-clip:#1B1C1E;
   /* type */
-  --rw-ui:'Open Sans','Noto Sans','Segoe UI',Roboto,sans-serif;
-  --rw-wordmark:'Big Shoulders Display','Arial Narrow',Impact,sans-serif;
+  --nrw-ui:'Open Sans','Noto Sans','Segoe UI',Roboto,sans-serif;
+  --nrw-num:'Anton','Oswald','Arial Narrow',Impact,sans-serif; /* OVR, Team Power, scores */
+  --nrw-wordmark:'Big Shoulders Display','Arial Narrow',Impact,sans-serif;
   /* effects */
-  --rw-outline:0 0 1px #0A0B0C,0 1px 1px #0A0B0C,0 -1px 1px #0A0B0C,1px 0 1px #0A0B0C,-1px 0 1px #0A0B0C;
-  --rw-glow-cy:0 6px 18px rgba(0,174,239,.32);
+  --nrw-outline:0 0 1px #0A0B0C,0 1px 1px #0A0B0C,0 -1px 1px #0A0B0C,1px 0 1px #0A0B0C,-1px 0 1px #0A0B0C;
+  --nrw-glow-cy:0 6px 18px rgba(0,174,239,.32);
 }
